@@ -210,20 +210,11 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 .full-scroll-shell{
   position:relative;
   border-radius:12px;
-  overflow:hidden;
+  overflow:visible;
 }
 .full-scroll{
-  --row-h:145px;
-  --gap:9px;
-  height:calc(var(--row-h) * 4 + var(--gap) * 3);
-  overflow-y:auto;
-  overflow-x:hidden;
-  overscroll-behavior:contain;
-  scroll-behavior:smooth;
-  padding:28px 24px 92px;
-  scroll-padding:28px 24px 92px;
-  scrollbar-width:thin;
-  scrollbar-color:#3b464c transparent;
+  overflow:visible;
+  padding:28px 24px 4px;
 }
 .full-scroll .grid.compact{
   grid-template-columns:repeat(9,minmax(0,1fr));
@@ -236,11 +227,13 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 }
 #full .poster-deferred.is-loaded{opacity:1}
 .full-loader{
-  position:absolute;
-  z-index:5;
+  position:fixed;
+  z-index:30;
   left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
+  bottom:18px;
+  transform:translateX(-50%);
+  width:max-content;
+  margin:0;
   display:flex;
   align-items:center;
   gap:9px;
@@ -266,63 +259,19 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
   animation:fullLoaderSpin .72s linear infinite;
 }
 @keyframes fullLoaderSpin{to{transform:rotate(360deg)}}
-.full-scroll-cue{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:118px;
-  pointer-events:none;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-end;
-  gap:2px;
-  padding-bottom:13px;
-  color:var(--t);
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  background:linear-gradient(
-    to bottom,
-    rgba(14,18,20,0) 0%,
-    rgba(14,18,20,.22) 30%,
-    rgba(14,18,20,.78) 72%,
-    #0e1214 100%
-  );
-  transition:opacity .25s ease;
-}
-.full-scroll-cue.is-hidden{opacity:0}
-.full-scroll-arrow{
-  color:var(--a);
-  font-size:22px;
-  line-height:1;
-  animation:fullCue 1.8s ease-in-out infinite;
-}
-@keyframes fullCue{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(4px)}
-}
+.full-progress{position:sticky;z-index:18;top:12px;width:max-content;margin:0 0 16px auto;padding:7px 10px;border:1px solid #39454b;border-radius:999px;background:rgba(10,13,14,.9);backdrop-filter:blur(10px);color:#9da5a9;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 8px 22px rgba(0,0,0,.2)}
+.full-progress b{margin-left:5px;color:var(--a);font-weight:850}
+.full-sentinel{height:1px;width:100%;pointer-events:none}
 @media(prefers-reduced-motion:reduce){
-  .full-scroll{scroll-behavior:auto}
-  .full-scroll-arrow{animation:none}
   .full-loader-ring{animation:none}
   #full .poster-deferred{transition:none}
 }
 @media(max-width:850px){
-  .full-scroll{
-    --row-h:178px;
-    height:calc(var(--row-h) * 4 + var(--gap) * 3);
-  }
   .full-scroll .grid.compact{grid-template-columns:repeat(5,minmax(0,1fr))}
 }
 @media(max-width:540px){
-  .full-scroll{
-    --row-h:190px;
-    height:calc(var(--row-h) * 4 + var(--gap) * 3);
-  }
   .full-scroll .grid.compact{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .full-progress{top:8px}
 }
 
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.grid.compact{grid-template-columns:repeat(9,minmax(0,1fr))}.tile{position:relative;aspect-ratio:2/3;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#151a1d;cursor:pointer;color:inherit;padding:0;text-align:left}.compact .tile{aspect-ratio:3/4;content-visibility:auto;contain-intrinsic-size:120px 160px}.tile img{width:100%;height:100%;object-fit:cover}.tile:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.92))}.rank{position:absolute;z-index:2;top:7px;left:7px;border:1px solid var(--a);color:var(--a);background:#080a0bcc;border-radius:8px;padding:5px 7px;font-size:10px;font-weight:800}.name{position:absolute;z-index:2;left:8px;right:8px;bottom:8px;font:650 15px/1 'Inter Tight',sans-serif;letter-spacing:-.015em}.compact .name{font-size:11px}.hover{position:absolute;z-index:3;inset:0;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(transparent,rgba(0,0,0,.96));opacity:0;transition:.16s;font-size:10px}.tile:hover .hover{opacity:1}.hover b{color:var(--a)}.insight-card{
@@ -471,7 +420,7 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 .site-layout{grid-template-columns:minmax(0,1fr) 280px}
 .pad{padding:32px;border-top:0}
 .sec.open:not(.full-ranking-sec),.sec.open:not(.full-ranking-sec)>.content,.sec.open:not(.full-ranking-sec) .inner{overflow:visible}
-.full-scroll{padding:18px 18px 72px}
+.full-scroll{padding:18px}
 .stack .sec{--section-accent:var(--a)}
 .stack .sec:nth-child(2){--section-accent:var(--wine-bright)}
 .stack .sec:nth-child(3){--section-accent:var(--orange)}
@@ -499,12 +448,8 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 @media(max-width:850px){.hero-header{min-height:450px}.hero-title h1{font-size:clamp(56px,12vw,88px);line-height:.92}.shell{margin-top:-28px}.site-layout{grid-template-columns:1fr}.pad{padding:26px}}
 @media(max-width:540px){.hero-header{min-height:410px}.hero-media{top:-6%;height:112%}.hero-title{inset:19% 14px 12%}.hero-title h1{font-size:clamp(45px,13.8vw,62px);line-height:.93;letter-spacing:-.045em}.hero-title-line{gap:7px}.hero-medallion img{width:42px;border-width:1.5px}.hero-medallion+.hero-medallion{margin-left:-10px}.hero-title-cue{bottom:-2px}.hero-title-cue svg{width:16px;height:28px}.shell{margin-top:-22px}.pad{padding:22px}.heroTop{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:176px}.heroTop .tile:nth-child(1){grid-row:span 2}.heroTop .tile:nth-child(2),.heroTop .tile:nth-child(3),.heroTop .tile:nth-child(4),.heroTop .tile:nth-child(5){min-height:176px}.heroTop .name{font-size:14px}.heroTop .tile:nth-child(1) .name{font-size:19px}#topRest{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}#topRest .name{font-size:10px;line-height:1.05}.full-scroll{padding-inline:18px}}
 
-/* #26–135: fixed-height accordion.
-   No scrollHeight measurement, no auto-height handoff, no layout recalculation. */
-.full-ranking-sec{
-  --full-open-height:640px;
-  overflow-anchor:none;
-}
+/* #26–135: progressive batches in the document's normal scroll flow. */
+.full-ranking-sec{overflow-anchor:none}
 .full-ranking-sec .content{
   height:0 !important;
   opacity:0;
@@ -516,15 +461,11 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 .full-ranking-sec .full-scroll-shell,.full-ranking-sec .full-scroll,.full-ranking-sec #full{overflow-anchor:none}
 .stack,.sec,.content{overflow-anchor:none}
 .full-ranking-sec.open .content{
-  height:var(--full-open-height) !important;
+  height:auto !important;
   opacity:1;
+  overflow:visible;
 }
-@media(max-width:850px){
-  .full-ranking-sec{--full-open-height:772px}
-}
-@media(max-width:540px){
-  .full-ranking-sec{--full-open-height:820px}
-}
+.full-ranking-sec.open,.full-ranking-sec.open .inner{overflow:visible}
 
 </style></head><body><header class="hero-header"><img class="hero-media" src="assets/cinema-hero.jpg" alt="" aria-hidden="true"><nav class="hero-nav" aria-label="Présentation"><span>Aimer Star Wars à 40 ans</span><span>Une communauté de 9 cinéphiles</span></nav><div class="hero-title"><h1><span class="hero-title-line"><span>Top films</span><span class="hero-top-three" id="heroTopThree" aria-label="Les trois premiers films du classement"></span></span><em>2000–2024</em></h1><span class="hero-title-cue" aria-hidden="true"><svg viewBox="0 0 24 36"><path d="M12 2v30m-6-6 6 6 6-6"/></svg></span></div></header><div class="shell">
 <div class="site-layout">
@@ -538,15 +479,13 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 <section class="sec full-ranking-sec"><button class="toggle"><div><div class="k">Le classement complet</div><strong>#25–135</strong></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad">
       <div class="full-scroll-shell" id="fullScrollShell">
         <div class="full-scroll" id="fullScroll">
+          <div class="full-progress" id="fullProgress">Affichés <b id="fullRange">#26–50</b></div>
           <div class="grid compact" id="full"></div>
-        </div>
-        <div class="full-loader" id="fullLoader" role="status" aria-live="polite">
-          <span class="full-loader-ring" aria-hidden="true"></span>
-          <span>Chargement des affiches</span>
-        </div>
-        <div class="full-scroll-cue" id="fullScrollCue" aria-hidden="true">
-          <span>Voir plus</span>
-          <span class="full-scroll-arrow">↓</span>
+          <div class="full-loader is-hidden" id="fullLoader" role="status" aria-live="polite">
+            <span class="full-loader-ring" aria-hidden="true"></span>
+            <span>Suite du classement</span>
+          </div>
+          <div class="full-sentinel" id="fullSentinel" aria-hidden="true"></div>
         </div>
       </div>
     </div></div></div></section>
@@ -623,8 +562,9 @@ const topRest=document.getElementById('topRest');
 const fullGrid=document.getElementById('full');
 const bottomGrid=document.getElementById('bottom');
 const fullScroll=document.getElementById('fullScroll');
-const fullScrollCue=document.getElementById('fullScrollCue');
 const fullLoader=document.getElementById('fullLoader');
+const fullRange=document.getElementById('fullRange');
+const fullSentinel=document.getElementById('fullSentinel');
 const ghostsEl=document.getElementById('ghosts');
 const mb=document.getElementById('mb');
 const modal=document.getElementById('modal');
@@ -633,7 +573,6 @@ function bindCoverFlow(){
   if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
 
   const topTiles=[...document.querySelectorAll('#topHero .tile, #topRest .tile')];
-  const fullTiles=[...document.querySelectorAll('#full .tile')];
 
   function resetTile(tile){
     tile.classList.remove('cf-active','cf-near1','cf-near2','cf-near3');
@@ -716,11 +655,13 @@ function bindCoverFlow(){
 
   const clearFull=()=>{
     fullGrid.classList.remove('coverflow-active');
-    fullTiles.forEach(resetTile);
+    fullGrid.querySelectorAll('.tile').forEach(resetTile);
   };
 
-  fullTiles.forEach(tileEl=>{
-    tileEl.addEventListener('pointerenter',()=>{
+  fullGrid.addEventListener('pointerover',event=>{
+      const tileEl=event.target.closest('.tile');
+      if(!tileEl||!fullGrid.contains(tileEl)||tileEl.contains(event.relatedTarget)) return;
+      const fullTiles=[...fullGrid.querySelectorAll('.tile')];
       fullGrid.classList.add('coverflow-active');
 
       // Cover-flow neighbours are determined visually within the SAME ROW,
@@ -763,7 +704,6 @@ function bindCoverFlow(){
           item.el.style.setProperty('--cf-x',`${side*5}px`);
         }
       });
-    });
   });
 
   fullGrid.addEventListener('pointerleave',clearFull);
@@ -857,7 +797,7 @@ function render(){
   heroTopThree.innerHTML=films.filter(f=>f.rank<=3).map((f,i)=>`<span class="hero-medallion" style="--i:${i}"><img src="${f.img}" alt="#${f.rank} · ${f.title}"></span>`).join('');
   topHero.innerHTML=films.filter(f=>f.rank<=5).map(f=>tile(f,{lazy:false})).join('');
   topRest.innerHTML=films.filter(f=>f.rank>=6 && f.rank<=25).map(f=>tile(f,{lazy:false})).join('');
-  fullGrid.innerHTML=films.filter(f=>f.rank>25).map(f=>tile(f,{lazy:true,deferImages:true})).join('');
+  fullGrid.innerHTML='';
   bottomGrid.innerHTML=films.filter(f=>f.rank>=126).map(f=>tile(f,{lazy:true})).join('');
   ghostsEl.innerHTML=ghosts.map((g,i)=>`<button class="card" data-g="${i}"><b>${g[0]}</b><span>${g[1]}</span></button>`).join('');
   bindCoverFlow();
@@ -929,56 +869,69 @@ function showGhost(i){
   mb.classList.add('open');
 }
 
-function updateFullScrollCue(){
-  if(!fullScroll || !fullScrollCue) return;
-  const atBottom=fullScroll.scrollTop + fullScroll.clientHeight >= fullScroll.scrollHeight - 8;
-  const hasMoved=fullScroll.scrollTop > 24;
-  fullScrollCue.classList.toggle('is-hidden',hasMoved || atBottom);
-}
-fullScroll.addEventListener('scroll',updateFullScrollCue,{passive:true});
-requestAnimationFrame(updateFullScrollCue);
-
 const sections=[...document.querySelectorAll('.sec')];
-let fullImagesStarted=false;
-let fullLoaderCycle=0;
+const fullBatchEnds=[50,75,100,135];
+let fullBatchIndex=0;
+let fullBatchLoading=false;
+let fullLastLoadScrollY=0;
+let fullScrollQueued=false;
 
-function resetFullLoader(){
-  fullLoaderCycle+=1;
-  fullLoader.classList.remove('is-hidden');
-  return fullLoaderCycle;
-}
-
-function hideFullLoader(cycle){
-  if(cycle===fullLoaderCycle) fullLoader.classList.add('is-hidden');
-}
-
-function startFullImages(cycle){
-  if(fullImagesStarted){
-    window.setTimeout(()=>hideFullLoader(cycle),650);
-    return;
-  }
-  fullImagesStarted=true;
-
-  const images=[...fullGrid.querySelectorAll('img[data-src]')];
-  const tracked=new Set(images.slice(0,18));
-  const hideLoader=()=>hideFullLoader(cycle);
-
-  function settle(image,loaded){
-    if(loaded) image.classList.add('is-loaded');
-    if(tracked.delete(image) && tracked.size===0) hideLoader();
-  }
-
-  images.forEach(image=>{
-    image.addEventListener('load',()=>settle(image,true),{once:true});
-    image.addEventListener('error',()=>settle(image,false),{once:true});
+function loadBatchImages(images){
+  return Promise.all(images.map(image=>new Promise(resolve=>{
+    let settled=false;
+    const settle=loaded=>{
+      if(settled) return;
+      settled=true;
+      if(loaded) image.classList.add('is-loaded');
+      resolve();
+    };
+    image.addEventListener('load',()=>settle(true),{once:true});
+    image.addEventListener('error',()=>settle(false),{once:true});
     image.src=image.dataset.src;
     image.removeAttribute('data-src');
-    if(image.complete) settle(image,image.naturalWidth>0);
-  });
-
-  if(!tracked.size) hideLoader();
-  window.setTimeout(hideLoader,2800);
+    if(image.complete) settle(image.naturalWidth>0);
+  })));
 }
+
+async function appendFullBatch(){
+  const section=fullGrid.closest('.full-ranking-sec');
+  if(fullBatchLoading||fullBatchIndex>=fullBatchEnds.length||!section.classList.contains('open')) return;
+  fullBatchLoading=true;
+  fullLoader.classList.remove('is-hidden');
+
+  const end=fullBatchEnds[fullBatchIndex];
+  const start=fullBatchIndex===0?26:fullBatchEnds[fullBatchIndex-1]+1;
+  const batch=films.filter(f=>f.rank>=start&&f.rank<=end);
+  fullGrid.insertAdjacentHTML('beforeend',batch.map(f=>tile(f,{lazy:true,deferImages:true})).join(''));
+  fullRange.textContent=`#26–${end}`;
+  fullBatchIndex+=1;
+
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  const images=[...fullGrid.querySelectorAll('img[data-src]')];
+  await Promise.all([
+    Promise.race([loadBatchImages(images),new Promise(resolve=>setTimeout(resolve,2400))]),
+    new Promise(resolve=>setTimeout(resolve,420))
+  ]);
+
+  fullLoader.classList.add('is-hidden');
+  fullLastLoadScrollY=window.scrollY;
+  fullBatchLoading=false;
+}
+
+function maybeAppendFullBatch(){
+  fullScrollQueued=false;
+  const section=fullGrid.closest('.full-ranking-sec');
+  if(!section.classList.contains('open')||fullBatchLoading||fullBatchIndex===0||fullBatchIndex>=fullBatchEnds.length) return;
+  const closeToNext=fullSentinel.getBoundingClientRect().top<=window.innerHeight+Math.min(360,window.innerHeight*.4);
+  const movedDown=window.scrollY>=fullLastLoadScrollY+90;
+  if(closeToNext&&movedDown) appendFullBatch();
+}
+
+window.addEventListener('scroll',()=>{
+  if(fullScrollQueued) return;
+  fullScrollQueued=true;
+  requestAnimationFrame(maybeAppendFullBatch);
+},{passive:true});
 
 function finishOpen(section){
   if(section.classList.contains('full-ranking-sec')) return;
@@ -989,13 +942,14 @@ function finishOpen(section){
 function openSection(section){
   const content=section.querySelector('.content');
 
-  // Heavy section: reveal the fixed-height shell instantly. Poster requests
-  // begin on the following paint so the loader and skeletons appear first.
+  // The full ranking opens in normal page flow. Its already revealed batches
+  // are preserved when the accordion is closed and reopened.
   if(section.classList.contains('full-ranking-sec')){
     content.style.removeProperty('height');
     section.classList.add('open');
-    const cycle=resetFullLoader();
-    requestAnimationFrame(()=>requestAnimationFrame(()=>startFullImages(cycle)));
+    fullLastLoadScrollY=window.scrollY;
+    if(fullBatchLoading) fullLoader.classList.remove('is-hidden');
+    if(fullBatchIndex===0) requestAnimationFrame(()=>appendFullBatch());
     return;
   }
 
@@ -1017,10 +971,10 @@ function closeSection(section){
   if(!section.classList.contains('open')) return;
   const content=section.querySelector('.content');
 
-  // Heavy section: no measuring, just remove the class.
+  // The progressive ranking closes instantly without discarding its batches.
   if(section.classList.contains('full-ranking-sec')){
     content.style.removeProperty('height');
-    resetFullLoader();
+    fullLoader.classList.add('is-hidden');
     section.classList.remove('open');
     return;
   }
@@ -1036,7 +990,7 @@ function closeSection(section){
 function closeSectionImmediately(section){
   if(!section.classList.contains('open')) return;
   const content=section.querySelector('.content');
-  if(section.classList.contains('full-ranking-sec')) resetFullLoader();
+  if(section.classList.contains('full-ranking-sec')) fullLoader.classList.add('is-hidden');
   content.style.transition='none';
   section.classList.remove('open');
   content.style.height='0px';
