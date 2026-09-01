@@ -44,10 +44,12 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080a0b}
   const hearts='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 18.3 4.4 15.2C2 13 3.2 9.3 6.1 9.3c1.1 0 2 .5 2.7 1.4.6-.9 1.5-1.4 2.6-1.4 2.9 0 4.1 3.7 1.7 5.9l-3.3 3.1c-.6.6-1.5.6-2.1 0Z" fill="none" stroke="currentColor" stroke-width="1.55"/><path d="M14.1 18.3 10.8 15.2c-2.4-2.2-1.2-5.9 1.7-5.9 1.1 0 2 .5 2.7 1.4.6-.9 1.5-1.4 2.6-1.4 2.9 0 4.1 3.7 1.7 5.9l-3.3 3.1c-.6.6-1.5.6-2.1 0Z" fill="none" stroke="currentColor" stroke-width="1.55"/></svg>';
   const norm=s=>(s||'').toLowerCase().replace(/^[#]?\d+\.?\s*/,'').replace(/\s+/g,' ').trim();
 
-  function patch(d){
-    if(!d || d.documentElement.dataset.aswaV5==='1') return Promise.resolve();
+  async function patch(d){
+    if(!d) return;
+    const firstPass=d.documentElement.dataset.aswaV5!=='1';
     d.documentElement.dataset.aswaV5='1';
 
+    if(firstPass){
     const style=d.createElement('style');
     style.id='aswa-v5-fixes';
     style.textContent=`
@@ -73,10 +75,16 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080a0b}
       @media(prefers-reduced-motion:reduce){.sec.open .inner{animation:none!important}}
     `;
     d.head.appendChild(style);
+    }
 
     let hero=d.querySelector('.hero-media');
-    if(hero){
-      hero.src='/assets/header-lotr.webp?v=5';
+    if(hero && hero.dataset.aswaHero!=='v5'){
+      try{
+        const b64=await fetch('/assets/header-lotr.webp.b64.txt?v=5',{cache:'force-cache'}).then(r=>r.text());
+        hero.src='data:image/webp;base64,'+b64.trim();
+        hero.dataset.aswaHero='v5';
+      }catch(e){console.error('ASWA40 hero payload',e)}
+
       hero.removeAttribute('srcset');
       hero.style.objectPosition='center 58%';
       hero.style.filter='saturate(.8) contrast(1.08) brightness(.72)';
