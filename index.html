@@ -1,1 +1,135 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aimer Star Wars à 40 ans</title><style>:root{--bg:#080a0b;--panel:#0f1315;--line:#283238;--text:#f3f1e9;--muted:#929da2;--lime:#c8ff1a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}.shell{max-width:1450px;margin:auto;padding:28px}header{margin-bottom:26px}.eyebrow{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}h1{font:500 clamp(42px,6vw,76px)/.92 Georgia,serif;letter-spacing:-.05em;margin:8px 0 10px}h1 em{font-style:normal;color:var(--lime)}.sub{color:var(--muted);max-width:760px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}.stack{display:grid;gap:10px}.sec{border:1px solid var(--line);border-radius:18px;background:var(--panel);overflow:hidden}.toggle{width:100%;border:0;background:transparent;color:inherit;padding:17px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer}.toggle strong{font:500 29px/1 Georgia,serif}.arr{color:var(--lime);font-size:22px;transition:.25s}.sec.open .arr{transform:rotate(180deg)}.content{display:none;border-top:1px solid var(--line)}.sec.open .content{display:block}.pad{padding:16px}.hero{display:grid;grid-template-columns:1.45fr 1fr 1fr;grid-auto-rows:210px;gap:10px}.card{position:relative;border:1px solid var(--line);border-radius:12px;background:#151a1d;min-height:145px;padding:14px;overflow:hidden;transition:.25s}.card:hover{transform:translateY(-3px) scale(1.02);border-color:#56636a;box-shadow:0 18px 40px rgba(0,0,0,.34)}.hero .card:first-child{grid-row:span 2}.rank{display:inline-block;border:1px solid var(--lime);color:var(--lime);border-radius:8px;padding:4px 6px;font-size:10px;font-weight:800}.title{font:500 18px/1.05 Georgia,serif;margin-top:12px}.stats{font-size:11px;color:var(--muted);margin-top:8px}.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.grid.compact{grid-template-columns:repeat(9,minmax(0,1fr))}.compact .card{min-height:120px}.compact .title{font-size:13px}.sidebar{position:sticky;top:18px;display:grid;gap:10px}.side-title{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}.insight{border:1px solid var(--line);border-radius:14px;background:#14191c;padding:14px;display:grid;grid-template-columns:28px 1fr;gap:10px}.icon{font-size:20px}.insight:nth-of-type(2) .icon{color:#ffd166}.insight:nth-of-type(3) .icon{color:#ff7ab6}.insight:nth-of-type(4) .icon{color:#6fe7ff}.insight:nth-of-type(5) .icon{color:var(--lime)}.insight b{display:block;font-size:13px}.insight span{display:block;color:var(--muted);font-size:11px;margin-top:4px}.ghosts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.ghost{border:1px solid var(--line);border-radius:12px;padding:14px;background:#14191c}.ghost b{font:500 15px Georgia,serif}.ghost span{display:block;color:var(--muted);font-size:10px;margin-top:6px}.notice{border:1px dashed #465159;border-radius:12px;padding:12px;color:var(--muted);font-size:11px;margin-bottom:12px}@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static;order:-1}.grid.compact{grid-template-columns:repeat(5,1fr)}}@media(max-width:560px){.shell{padding:16px}.hero{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.hero .card:first-child{grid-column:span 2;grid-row:auto}.grid,.grid.compact{grid-template-columns:repeat(2,1fr)}.ghosts{grid-template-columns:1fr}.toggle strong{font-size:24px}}</style></head><body><div class="shell"><header><div class="eyebrow">Aimer Star Wars à 40 ans · classement collectif</div><h1>Top films <em>2000–2024</em></h1><div class="sub">9 cinéphiles · 225 choix · #1 = 25 points. Version live de secours pendant la restauration complète des affiches.</div></header><div class="layout"><main class="stack"><section class="sec open"><button class="toggle"><strong>01 · Top 25 collectif</strong><span class="arr">⌄</span></button><div class="content"><div class="pad"><div class="hero" id="top5"></div><div class="grid" id="top25" style="margin-top:10px"></div></div></div></section><section class="sec"><button class="toggle"><strong>02 · Classement complet</strong><span class="arr">⌄</span></button><div class="content"><div class="pad"><div class="notice">Le classement complet est fonctionnel. Les affiches seront réinjectées dans le prochain push propre.</div><div class="grid compact" id="full"></div></div></div></section><section class="sec"><button class="toggle"><strong>03 · Grands oublis</strong><span class="arr">⌄</span></button><div class="content"><div class="pad"><div class="ghosts" id="ghosts"></div></div></div></section></main><aside class="sidebar"><div class="side-title">Insights collectifs</div><div class="insight"><div class="icon">✦</div><div><b>Religion commune</b><span>LOTR atteint 8/9.</span></div></div><div class="insight"><div class="icon">●</div><div><b>Monsieur Consensus</b><span>Simon place 14 choix dans le Top 25.</span></div></div><div class="insight"><div class="icon">∞</div><div><b>Duo cinéphile</b><span>Alex + Simon partagent 11 choix.</span></div></div><div class="insight"><div class="icon">◌</div><div><b>OVNI culturel</b><span>JB compte 17 choix uniques.</span></div></div></aside></div></div><script>const films=[[1,'Lord of the Rings',164,'8/9','#1'],[2,'Inglourious Basterds',111,'7/9','#1'],[3,'Spirited Away',79,'4/9','#2'],[4,'The Social Network',71,'4/9','#1'],[5,"Christopher Nolan’s Batman",62,'4/9','#1'],[6,'The Departed',61,'4/9','#7'],[7,'Lost in Translation',59,'5/9','#5'],[8,'Amélie',57,'5/9','#3'],[9,'Gladiator',54,'3/9','#2'],[10,'Kill Bill',51,'4/9','#9'],[11,'Crouching Tiger, Hidden Dragon',51,'3/9','#3'],[12,'Requiem for a Dream',48,'2/9','#2'],[13,'Catch Me If You Can',47,'3/9','#8'],[14,'Sideways',44,'3/9','#6'],[15,'City of God',43,'3/9','#5'],[16,'Snatch',42,'2/9','#3'],[17,'Shaun of the Dead',39,'2/9','#2'],[18,'Black Hawk Down',39,'2/9','#5'],[19,'Dune',38,'5/9','#10'],[20,'A Prophet',38,'3/9','#10'],[21,'The Wolf of Wall Street',38,'3/9','#10'],[22,'Slumdog Millionaire',37,'2/9','#4'],[23,'Children of Men',35,'2/9','#4'],[24,'Inception',33,'2/9','#6'],[25,"The King’s Speech",32,'2/9','#6'],[26,'Whiplash',31,'3/9','#9'],[27,'Ex Machina',31,'2/9','#3'],[28,'Parasite',29,'4/9','#9'],[29,'Mad Max: Fury Road',29,'2/9','#3'],[30,'The Grand Budapest Hotel',29,'2/9','#6'],[31,'No Country for Old Men',27,'3/9','#9'],[32,'Harry Potter',27,'2/9','#11'],[33,"Pan's Labyrinth",27,'2/9','#12'],[34,'American Psycho',26,'2/9','#1'],[35,'Superbad',26,'2/9','#13'],[36,'Dunkirk',25,'4/9','#17'],[37,'Ratatouille',25,'2/9','#12'],[38,'Moonlight',25,'2/9','#13'],[39,'Anora',25,'1/9','#1'],[40,'High Fidelity',25,'1/9','#1'],[41,'Maelström',25,'1/9','#1'],[42,'The Taste of Others',25,'1/9','#1'],[43,'Almost Famous',24,'1/9','#2'],[44,'Everything Everywhere All at Once',24,'1/9','#2'],[45,'Into the Wild',24,'1/9','#2'],[46,'There Will Be Blood',24,'1/9','#2'],[47,'Bobby Jones: Stroke of Genius',23,'1/9','#3'],[48,'Hot Fuzz',23,'1/9','#3'],[49,'Reality',23,'1/9','#3'],[50,'Traffic',23,'1/9','#3']];const c=f=>`<div class="card"><span class="rank">#${f[0]}</span><div class="title">${f[1]}</div><div class="stats"><b>${f[2]}</b> pts · ${f[3]} votes · Best rank ${f[4]}</div></div>`;top5.innerHTML=films.slice(0,5).map(c).join('');top25.innerHTML=films.slice(5,25).map(c).join('');full.innerHTML=films.slice(25).map(c).join('')+`<div class="card"><div class="title">#51–135</div><div class="stats">Le reste du classement sera restauré avec les affiches dans le prochain push complet.</div></div>`;const gs=['Mulholland Drive','In the Mood for Love','Eternal Sunshine of the Spotless Mind','Yi Yi','The Tree of Life','A Separation','Portrait of a Lady on Fire','Oldboy','WALL-E','The Master','Roma','Before Sunset','Lady Bird','La La Land','Oppenheimer'];ghosts.innerHTML=gs.map(x=>`<div class="ghost"><b>${x}</b><span>0/9 votes</span></div>`).join('');document.querySelectorAll('.toggle').forEach(b=>b.onclick=()=>{const s=b.closest('.sec');document.querySelectorAll('.sec').forEach(o=>{if(o!==s)o.classList.remove('open')});s.classList.toggle('open')});</script></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aimer Star Wars à 40 ans</title><style>:root{--bg:#080a0b;--card:#0e1214;--line:#283238;--text:#f3f1e9;--muted:#929da2;--lime:#c8ff1a;--gold:#f2c94c;--pink:#ff65bd;--cyan:#5ce1e6}*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Helvetica,Arial,sans-serif}.shell{max-width:1450px;margin:auto;padding:28px}.eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}h1{font:500 clamp(42px,6vw,76px)/.92 Georgia,serif;letter-spacing:-.05em;margin:9px 0 10px}h1 em{font-style:normal;color:var(--lime)}.sub{max-width:760px;color:var(--muted);line-height:1.5}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start;margin-top:26px}.stack{display:grid;gap:10px}.sec{border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden}.toggle{width:100%;border:0;background:none;color:inherit;padding:17px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left}.toggle strong{font:500 29px/1 Georgia,serif}.toggle small{display:block;color:var(--muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.1em;margin-bottom:7px}.arr{color:var(--lime);font-size:22px;transition:.35s}.sec.open .arr{transform:rotate(180deg)}.content{display:none;border-top:1px solid var(--line)}.sec.open .content{display:block}.pad{padding:16px}.hero{display:grid;grid-template-columns:1.45fr 1fr 1fr;grid-auto-rows:210px;gap:10px;margin-bottom:10px}.hero .tile:first-child{grid-row:span 2}.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.grid.compact{grid-template-columns:repeat(9,minmax(0,1fr));gap:9px}.tile{position:relative;border:1px solid #20292e;border-radius:13px;overflow:hidden;aspect-ratio:2/3;background:#151b1e;cursor:pointer;isolation:isolate;transform:translateZ(0);transition:transform .42s cubic-bezier(.18,.89,.24,1.14),filter .28s,opacity .28s,border-color .28s,box-shadow .28s}.hero .tile{aspect-ratio:auto;min-height:0}.tile img{width:100%;height:100%;object-fit:cover;display:block;background:#151b1e}.tile:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.9));z-index:1;pointer-events:none}.rank{position:absolute;z-index:3;left:8px;top:8px;background:var(--lime);color:#080a0b;border-radius:999px;padding:5px 7px;font-weight:900;font-size:10px}.name{position:absolute;z-index:3;left:10px;right:10px;bottom:9px;font-weight:800;font-size:12px;line-height:1.1;text-shadow:0 2px 10px #000}.hover{position:absolute;z-index:4;inset:auto 7px 7px 7px;padding:9px;border:1px solid rgba(255,255,255,.15);border-radius:9px;background:rgba(5,7,8,.9);opacity:0;transition:.22s;pointer-events:none;font-size:10px}.tile:hover .hover{opacity:1}.tile:hover .name{opacity:0}.grid:hover .tile{opacity:.62;filter:saturate(.72) brightness(.8)}.grid .tile:hover{opacity:1;filter:none;transform:translateY(-5px) scale(1.13);z-index:15;border-color:#637178;box-shadow:0 22px 44px rgba(0,0,0,.5)}.hero:hover .tile{opacity:.72;filter:saturate(.82) brightness(.85)}.hero .tile:hover{opacity:1;filter:none;transform:translateY(-3px) scale(1.08);z-index:15}.fullScroll{height:620px;overflow:auto;padding-right:4px;scrollbar-width:thin}.fadecue{position:sticky;bottom:0;height:85px;margin-top:-85px;pointer-events:none;background:linear-gradient(transparent,var(--card));display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;color:var(--lime);font-weight:900;font-size:18px}.absents{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.absent{border:1px solid var(--line);border-radius:12px;padding:15px;min-height:90px;background:#111719;cursor:pointer;transition:.3s}.absent:hover{transform:scale(1.04);border-color:#536169}.absent b{display:block;font-family:Georgia,serif;font-size:18px}.absent small{color:var(--muted)}aside{position:sticky;top:18px;display:grid;gap:10px}.side-title{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:2px}.insight{border:1px solid var(--line);border-radius:16px;padding:15px;background:var(--card)}.insight .ic{font-size:25px;line-height:1;margin-bottom:12px}.insight b{font:500 21px/1.05 Georgia,serif;display:block;margin-bottom:7px}.insight p{font-size:12px;line-height:1.45;color:#bdc5c8;margin:0}.religion .ic{color:var(--lime)}.consensus .ic{color:var(--gold)}.duo .ic{color:var(--pink)}.ovni .ic{color:var(--cyan)}dialog{border:1px solid #344047;border-radius:18px;background:#0c1012;color:var(--text);padding:0;width:min(720px,92vw);box-shadow:0 30px 100px #000}dialog::backdrop{background:rgba(0,0,0,.78);backdrop-filter:blur(5px)}.modal{display:grid;grid-template-columns:180px 1fr;gap:20px;padding:20px}.modal img{width:180px;aspect-ratio:2/3;object-fit:cover;border-radius:11px;background:#151b1e}.modal h2{font:500 34px/1 Georgia,serif;margin:4px 0 14px}.stats{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.stat{border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:11px}.detail{font-size:13px;line-height:1.5;color:#c0c7ca}.lb{display:inline-block;margin-top:16px;padding:10px 13px;border-radius:999px;background:var(--lime);color:#080a0b;font-weight:900;text-decoration:none;font-size:12px}.close{position:absolute;right:14px;top:12px;border:0;background:none;color:#fff;font-size:26px;cursor:pointer}.posterFallback{background:radial-gradient(circle at 20% 15%,#364249,#111719 55%,#080a0b)}@media(max-width:1000px){.layout{grid-template-columns:1fr}aside{position:static;grid-template-columns:repeat(2,1fr)}.side-title{grid-column:1/-1}.grid.compact{grid-template-columns:repeat(6,1fr)}}@media(max-width:680px){.shell{padding:18px}.hero{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.hero .tile:first-child{grid-column:1/-1;grid-row:auto;min-height:320px}.grid,.grid.compact{grid-template-columns:repeat(3,1fr)}.absents{grid-template-columns:1fr 1fr}aside{grid-template-columns:1fr}.modal{grid-template-columns:100px 1fr;gap:14px}.modal img{width:100px}.modal h2{font-size:25px}.fullScroll{height:720px}}</style></head><body><main class="shell"><div class="eyebrow">AIMER STAR WARS À 40 ANS · 9 CINÉPHILES · 225 CHOIX</div><h1>Le Top films <em>2000–2024</em></h1><div class="sub">25 ans de cinéma passés au vote. #1 = 25 points, #25 = 1 point. Les films d’une même franchise sont regroupés.</div><div class="layout"><div class="stack"><section class="sec open"><button class="toggle"><span><small>01 · LE CLASSEMENT COLLECTIF</small><strong>Top 25</strong></span><span class="arr">⌄</span></button><div class="content"><div class="pad"><div class="hero" id="hero"></div><div class="grid" id="toprest"></div></div></div></section><section class="sec"><button class="toggle"><span><small>02 · TOUS LES FILMS CITÉS</small><strong>#26–135</strong></span><span class="arr">⌄</span></button><div class="content"><div class="pad"><div class="fullScroll"><div class="grid compact" id="full"></div><div class="fadecue">↓</div></div></div></div></section><section class="sec"><button class="toggle"><span><small>03 · ZÉRO VOTE SUR NEUF</small><strong>Les grands absents</strong></span><span class="arr">⌄</span></button><div class="content"><div class="pad"><div class="absents" id="absents"></div></div></div></section><section class="sec"><button class="toggle"><span><small>04 · LA QUEUE DU CLASSEMENT</small><strong>Les 10 derniers</strong></span><span class="arr">⌄</span></button><div class="content"><div class="pad"><div class="grid" id="bottom"></div></div></div></section></div><aside><div class="side-title">Insights collectifs</div><div class="insight religion"><div class="ic">✦</div><b>Une religion commune</b><p>Le Seigneur des anneaux domine avec 164 points et apparaît chez 8 des 9 votants.</p></div><div class="insight consensus"><div class="ic">◎</div><b>Le consensus</b><p>Simon place 14 films du Top 25 collectif dans sa propre liste, le meilleur taux d’alignement du groupe.</p></div><div class="insight duo"><div class="ic">∞</div><b>Le duo</b><p>Alex + Simon partagent 11 films, le duo le plus synchronisé du groupe.</p></div><div class="insight ovni"><div class="ic">◇</div><b>Les OVNI</b><p>JB mène avec 17 choix uniques, suivi de Quentin et Monette à 13.</p></div></aside></div></main><dialog id="dlg"><button class="close" aria-label="Fermer">×</button><div class="modal"><img id="mimg" alt=""><div><div class="eyebrow" id="mk"></div><h2 id="mt"></h2><div class="stats" id="ms"></div><div class="detail" id="md"></div><a class="lb" id="ml" target="_blank" rel="noopener">Voir sur Letterboxd ↗</a></div></div></dialog><script>const raw=`1|Lord of the Rings (franchise)|164|8/9|1
+2|Inglourious Basterds|111|7/9|1
+3|Spirited Away|79|4/9|2
+4|The Social Network|71|4/9|1
+5|Christopher Nolan’s Batman (franchise)|62|4/9|1
+6|The Departed|61|4/9|7
+7|Lost in Translation|59|5/9|5
+8|Amélie|57|5/9|3
+9|Gladiator|54|3/9|2
+10|Kill Bill (franchise)|51|4/9|9
+11|Crouching Tiger, Hidden Dragon|51|3/9|3
+12|Requiem for a Dream|48|2/9|2
+13|Catch Me If You Can|47|3/9|8
+14|Sideways|44|3/9|6
+15|City of God|43|3/9|5
+16|Snatch|42|2/9|3
+17|Shaun of the Dead|39|2/9|2
+18|Black Hawk Down|39|2/9|5
+19|Dune (franchise)|38|5/9|10
+20|A Prophet|38|3/9|10
+21|The Wolf of Wall Street|38|3/9|10
+22|Slumdog Millionaire|37|2/9|4
+23|Children of Men|35|2/9|4
+24|Inception|33|2/9|6
+25|The King’s Speech|32|2/9|6
+26|Whiplash|31|3/9|9
+27|Ex Machina|31|2/9|3
+28|Parasite|29|4/9|9
+29|Mad Max: Fury Road|29|2/9|3
+30|The Grand Budapest Hotel|29|2/9|6
+31|No Country for Old Men|27|3/9|9
+32|Harry Potter (franchise)|27|2/9|11
+33|Pan's Labyrinth|27|2/9|12
+34|American Psycho|26|2/9|1
+35|Superbad|26|2/9|13
+36|Dunkirk|25|4/9|17
+37|Ratatouille|25|2/9|12
+38|Moonlight|25|2/9|13
+39|Anora|25|1/9|1
+40|High Fidelity|25|1/9|1
+41|Maelström|25|1/9|1
+42|The Taste of Others|25|1/9|1
+43|Almost Famous|24|1/9|2
+44|Everything Everywhere All at Once|24|1/9|2
+45|Into the Wild|24|1/9|2
+46|There Will Be Blood|24|1/9|2
+47|Bobby Jones: Stroke of Genius|23|1/9|3
+48|Hot Fuzz|23|1/9|3
+49|Reality|23|1/9|3
+50|Traffic|23|1/9|3
+51|Incendies|22|2/9|13
+52|Once Upon a Time… in Hollywood|22|2/9|14
+53|Donnie Darko|22|1/9|4
+54|My Wife Is an Actress|22|1/9|4
+55|Read My Lips|22|1/9|4
+56|Drive|21|2/9|15
+57|28 Days Later|21|1/9|5
+58|L’Auberge espagnole|21|1/9|5
+59|The Darjeeling Limited|21|1/9|5
+60|Up|21|1/9|5
+61|Astérix & Obélix : Mission Cléopâtre|20|1/9|6
+62|Mondays in the Sun|20|1/9|6
+63|The Assassination of Jesse James by the Coward Robert Ford|19|1/9|7
+64|The Last King of Scotland|19|1/9|7
+65|The Pianist|19|1/9|7
+66|The Squid and the Whale|19|1/9|7
+67|This Is the End|19|1/9|7
+68|Happily Ever After|18|1/9|8
+69|Memories of Murder|18|1/9|8
+70|Michael Clayton|18|1/9|8
+71|The Royal Tenenbaums|18|1/9|8
+72|V for Vendetta|17|1/9|9
+73|Zodiac|17|1/9|9
+74|Get Out|16|2/9|14
+75|OSS 117 (franchise)|16|1/9|10
+76|Ponyo|16|1/9|10
+77|Django Unchained|15|2/9|16
+78|Brokeback Mountain|15|1/9|11
+79|Dallas Buyers Club|14|2/9|18
+80|Blade Runner 2049|14|1/9|12
+81|Downfall|14|1/9|12
+82|Fantastic Mr. Fox|14|1/9|12
+83|Toy Story 3|14|1/9|12
+84|Casino Royale|13|2/9|16
+85|12 Years a Slave|11|1/9|15
+86|Moneyball|11|1/9|15
+87|The Intouchables|11|1/9|15
+88|Silver Linings Playbook|10|1/9|16
+89|Ocean's Eleven|9|2/9|19
+90|Blue Jasmine|9|1/9|17
+91|Ghost in the Shell|9|1/9|17
+92|The Hunt|9|1/9|17
+93|Avengers (franchise)|8|1/9|18
+94|Boyhood|8|1/9|18
+95|Inherent Vice|8|1/9|18
+96|Midnight in Paris|8|1/9|18
+97|What We Do in the Shadows|8|1/9|18
+98|Hell or High Water|7|1/9|19
+99|Her|7|1/9|19
+100|Interstellar|7|1/9|19
+101|The 40-Year-Old Virgin|7|1/9|19
+102|The Big Short|7|1/9|19
+103|Wild Tales|7|1/9|19
+104|Arrival|6|1/9|20
+105|Inside Out|6|1/9|20
+106|Pirates of the Caribbean (franchise)|6|1/9|20
+107|The Witch|6|1/9|20
+108|About Schmidt|5|1/9|21
+109|Phantom Thread|5|1/9|21
+110|Sink or Swim|5|1/9|21
+111|The Boy and the Beast|5|1/9|21
+112|The Butterfly|5|1/9|21
+113|The Last Duel|5|1/9|21
+114|The Revenant|5|1/9|21
+115|A History of Violence|4|1/9|22
+116|Big Fish|4|1/9|22
+117|The Chorus|4|1/9|22
+118|The Coffee Table|4|1/9|22
+119|Uncut Gems|4|1/9|22
+120|X-Men (franchise)|4|1/9|22
+121|All Quiet on the Western Front|3|1/9|23
+122|Another Round|3|1/9|23
+123|Bourne (franchise)|3|1/9|23
+124|Finding Nemo|3|1/9|23
+125|The Help|3|1/9|23
+126|The Worst Person in the World|3|1/9|23
+127|My Octopus Teacher|2|1/9|24
+128|Spider-Verse (franchise)|2|1/9|24
+129|The Zone of Interest|2|1/9|24
+130|Tommy's Honour|2|1/9|24
+131|Unbreakable|2|1/9|24
+132|American Gangster|1|1/9|25
+133|Memento|1|1/9|25
+134|Perfect Days|1|1/9|25
+135|Triangle of Sadness|1|1/9|25`;const films=raw.split('\n').map(x=>{const [rank,title,points,votes,best]=x.split('|');return{rank:+rank,title,points:+points,votes,best:+best}});const abs=`Mulholland Drive|In the Mood for Love|Eternal Sunshine of the Spotless Mind|Yi Yi|The Tree of Life|A Separation|Portrait of a Lady on Fire|Oldboy|WALL-E|The Master|Roma|Before Sunset|Lady Bird|La La Land|Oppenheimer`.split('|');const wiki={"Lord of the Rings (franchise)":"The Lord of the Rings: The Fellowship of the Ring","Christopher Nolan’s Batman (franchise)":"The Dark Knight","Kill Bill (franchise)":"Kill Bill: Volume 1","Dune (franchise)":"Dune (2021 film)","Harry Potter (franchise)":"Harry Potter and the Prisoner of Azkaban (film)","OSS 117 (franchise)":"OSS 117: Cairo, Nest of Spies","Avengers (franchise)":"The Avengers (2012 film)","Pirates of the Caribbean (franchise)":"Pirates of the Caribbean: The Curse of the Black Pearl","X-Men (franchise)":"X-Men (film)","Bourne (franchise)":"The Bourne Identity (2002 film)","Spider-Verse (franchise)":"Spider-Man: Into the Spider-Verse","A Prophet":"A Prophet (film)","Reality":"Reality (2023 film)","The Hunt":"The Hunt (2012 film)","The Witch":"The Witch (2015 film)","The Chorus":"The Chorus (2004 film)","The Coffee Table":"The Coffee Table (film)","The Butterfly":"The Butterfly (2002 film)","Downfall":"Downfall (2004 film)","Traffic":"Traffic (2000 film)","Maelström":"Maelström (film)"};const special={"Lord of the Rings (franchise)":"the-lord-of-the-rings-the-fellowship-of-the-ring","Christopher Nolan’s Batman (franchise)":"the-dark-knight","Kill Bill (franchise)":"kill-bill-vol-1","Dune (franchise)":"dune-part-one","Harry Potter (franchise)":"harry-potter-and-the-prisoner-of-azkaban","OSS 117 (franchise)":"oss-117-cairo-nest-of-spies","Avengers (franchise)":"the-avengers-2012","Pirates of the Caribbean (franchise)":"pirates-of-the-caribbean-the-curse-of-the-black-pearl","X-Men (franchise)":"x-men","Bourne (franchise)":"the-bourne-identity","Spider-Verse (franchise)":"spider-man-into-the-spider-verse"};const slug=s=>special[s]||s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,'and').replace(/[’']/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');const details={1:"8 personnes sur 9 l’ont placé dans leur Top 25. Nic l’a placé #1; Alex et Quentin ont chacun un film de la trilogie #4; Simon #6.",2:"Sept des neuf votants l’ont choisi. Alex le place #1.",8:"JB #3, Simon #5, Claude #15, Alex #25 et Max #25.",10:"La franchise Kill Bill atteint 51 points avec 4 votants.",28:"Quatre mentions plus basses: un film très respecté dans le groupe, mais moins souvent placé tout en haut.",52:"Deux votes suffisent à placer Once Upon a Time… in Hollywood au #52.",77:"Deux votes placent Django Unchained au #77."};function tile(f){return`<article class="tile posterFallback" data-rank="${f.rank}" data-title="${f.title.replace(/"/g,'&quot;')}"><img loading="lazy" alt="Affiche de ${f.title.replace(/"/g,'&quot;')}"><span class="rank">#${f.rank}</span><div class="name">${f.title}</div><div class="hover"><b>${f.points} pts</b><br>${f.votes} votants · Best rank #${f.best}</div></article>`}hero.innerHTML=films.slice(0,5).map(tile).join('');toprest.innerHTML=films.slice(5,25).map(tile).join('');full.innerHTML=films.slice(25).map(tile).join('');bottom.innerHTML=films.slice(-10).map(tile).join('');absents.innerHTML=abs.map(t=>`<div class="absent" data-abs="${t.replace(/"/g,'&quot;')}"><small>0 / 9 VOTE</small><b>${t}</b></div>`).join('');document.querySelectorAll('.toggle').forEach(b=>b.onclick=()=>{const s=b.closest('.sec'),was=s.classList.contains('open');document.querySelectorAll('.sec').forEach(x=>x.classList.remove('open'));if(!was)s.classList.add('open')});const dlg=document.querySelector('#dlg'),mimg=document.querySelector('#mimg'),mt=document.querySelector('#mt'),mk=document.querySelector('#mk'),ms=document.querySelector('#ms'),md=document.querySelector('#md'),ml=document.querySelector('#ml');function openFilm(f){mt.textContent=f.title;mk.textContent=`#${f.rank} · CLASSEMENT COLLECTIF`;ms.innerHTML=`<span class="stat">${f.points} points</span><span class="stat">${f.votes} votants</span><span class="stat">Best rank #${f.best}</span>`;md.textContent=details[f.rank]||'';ml.href=`https://letterboxd.com/film/${slug(f.title)}/`;const img=document.querySelector(`[data-rank="${f.rank}"] img`);mimg.src=img?.src||'';dlg.showModal()}document.addEventListener('click',e=>{const t=e.target.closest('[data-rank]');if(t)openFilm(films.find(f=>f.rank==t.dataset.rank));const a=e.target.closest('[data-abs]');if(a){mt.textContent=a.dataset.abs;mk.textContent='GRAND ABSENT · 0 / 9 VOTE';ms.innerHTML='<span class="stat">Aucun vote</span>';md.textContent='Un des grands absents relevés dans le bilan collectif.';ml.href=`https://letterboxd.com/film/${slug(a.dataset.abs)}/`;mimg.removeAttribute('src');dlg.showModal()}});document.querySelector('.close').onclick=()=>dlg.close();dlg.onclick=e=>{if(e.target===dlg)dlg.close()};async function posters(){const entries=films.map(f=>({f,q:wiki[f.title]||f.title}));for(let i=0;i<entries.length;i+=20){const batch=entries.slice(i,i+20),titles=batch.map(x=>x.q).join('|');try{const u='https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail&pithumbsize=500&titles='+encodeURIComponent(titles),j=await fetch(u).then(r=>r.json()),pages=Object.values(j.query?.pages||{});batch.forEach(x=>{const p=pages.find(p=>(p.title||'').toLowerCase()===x.q.toLowerCase())||pages.find(p=>p.thumbnail&&!document.querySelector(`[data-rank="${x.f.rank}"] img`).src);if(p?.thumbnail?.source){document.querySelectorAll(`[data-rank="${x.f.rank}"] img`).forEach(im=>im.src=p.thumbnail.source)}})}catch(e){}}}posters();</script></body></html>
