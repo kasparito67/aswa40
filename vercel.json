@@ -3,6 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/__original", "destination": "/index.html" },
     { "source": "/", "destination": "/shell.html" }
   ]
 }
