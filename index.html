@@ -27,7 +27,7 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 .site-sidebar .insight-card{
   width:100%;
 }
-.stack{display:grid;gap:12px;margin-top:0}.sec{border:1px solid var(--line);border-radius:18px;background:#0e1214;overflow:hidden}.toggle{width:100%;min-height:112px;border:0;background:transparent;color:inherit;text-align:left;padding:24px 22px;display:flex;justify-content:space-between;gap:18px;align-items:center;cursor:pointer}.toggle>div{display:grid;gap:8px}.toggle .k{font-size:11px;font-weight:800;letter-spacing:.13em;color:#aab4b8}.toggle strong{font:750 36px/.94 'Inter Tight',sans-serif;letter-spacing:-.035em}.arr{color:var(--a);font-size:24px;transition:transform .46s cubic-bezier(.16,1,.3,1)}.sec.open .arr{transform:rotate(180deg)}
+.stack{display:grid;gap:12px;margin-top:0}.sec{position:relative;border:1px solid var(--line);border-radius:18px;background:#0e1214;overflow:hidden}.sec:has(.cf-active){z-index:12}.toggle{width:100%;min-height:112px;border:0;background:transparent;color:inherit;text-align:left;padding:24px 22px;display:flex;justify-content:space-between;gap:18px;align-items:center;cursor:pointer}.toggle>div{display:grid;gap:8px}.toggle .k{font-size:11px;font-weight:800;letter-spacing:.13em;color:#aab4b8}.toggle strong{font:750 36px/.94 'Inter Tight',sans-serif;letter-spacing:-.035em}.arr{color:var(--a);font-size:24px;transition:transform .46s cubic-bezier(.16,1,.3,1)}.sec.open .arr{transform:rotate(180deg)}
 .content{
   height:0;
   overflow:hidden;
@@ -217,16 +217,19 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
   --gap:9px;
   height:calc(var(--row-h) * 4 + var(--gap) * 3);
   overflow-y:auto;
-  overflow-x:visible;
+  overflow-x:hidden;
   overscroll-behavior:contain;
   scroll-behavior:smooth;
-  padding:0 3px 72px 0;
+  padding:28px 24px 92px;
+  scroll-padding:28px 24px 92px;
   scrollbar-width:thin;
   scrollbar-color:#3b464c transparent;
 }
 .full-scroll .grid.compact{
   grid-template-columns:repeat(9,minmax(0,1fr));
 }
+#full .name{display:none}
+#full .tile:after{display:none}
 #full .poster-deferred{
   opacity:0;
   transition:opacity .28s ease;
@@ -458,13 +461,12 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 .hero-medallion img{display:block;width:clamp(44px,5.8vw,82px);aspect-ratio:1;border-radius:50%;object-fit:cover;border:2px solid rgba(245,243,239,.72);box-shadow:0 8px 22px rgba(0,0,0,.42);transition:transform .28s cubic-bezier(.16,1,.3,1),border-color .2s ease,box-shadow .28s ease;transform:scale(1)}
 .hero-medallion:hover{z-index:4}
 .hero-medallion:hover img{transform:scale(1.09);border-color:#fff;box-shadow:0 13px 32px rgba(0,0,0,.56)}
-.hero-title-cue{position:absolute;left:50%;bottom:0;display:grid;justify-items:center;gap:3px;color:rgba(245,243,239,.76);font-size:17px;line-height:1;transform:translateX(-50%);animation:hero-cue-in .55s cubic-bezier(.16,1,.3,1) .88s both}
-.hero-title-cue:before{content:"";display:block;width:1px;height:20px;background:linear-gradient(transparent,rgba(245,243,239,.72));transform-origin:top;animation:hero-cue-line .55s ease-out 1.02s both}
+.hero-title-cue{position:absolute;left:50%;bottom:0;color:rgba(245,243,239,.76);line-height:0;transform:translateX(-50%);animation:hero-cue-in .55s cubic-bezier(.16,1,.3,1) .88s both}
+.hero-title-cue svg{display:block;width:18px;height:34px;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 @keyframes hero-title-in{from{opacity:0;transform:translateY(24px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
 @keyframes hero-badges-in{from{opacity:0;transform:translate3d(18px,8px,0) scale(.88)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
 @keyframes hero-badge-float{0%,100%{transform:translate3d(0,0,0) rotate(-.6deg)}50%{transform:translate3d(0,-6px,0) rotate(.6deg)}}
 @keyframes hero-cue-in{from{opacity:0;transform:translate(-50%,-8px)}to{opacity:1;transform:translate(-50%,0)}}
-@keyframes hero-cue-line{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 .shell{max-width:1240px;margin-top:-34px}
 .site-layout{grid-template-columns:minmax(0,1fr) 280px}
 .pad{padding:32px;border-top:0}
@@ -492,10 +494,10 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 .insight-detail li+li{margin-top:7px}.insight-detail li::marker{color:var(--insight)}
 .insight-item.is-open .insight-detail{grid-template-rows:1fr;border-width:0 1px 1px}
 .insight-item.is-open .insight-detail p{padding:15px 16px 18px 61px;opacity:1}.insight-item.is-open .insight-detail ul{padding-top:15px;padding-bottom:18px;opacity:1}
-@media(prefers-reduced-motion:reduce){.hero-media{transform:scale(1.02)}.hero-title,.hero-nav{transform:none}.hero-title h1,.hero-top-three,.hero-medallion,.hero-title-cue,.hero-title-cue:before{animation:none}.insight-detail,.insight-detail p,.insight-detail ul,.insight-chevron{transition:none}}
+@media(prefers-reduced-motion:reduce){.hero-media{transform:scale(1.02)}.hero-title,.hero-nav{transform:none}.hero-title h1,.hero-top-three,.hero-medallion,.hero-title-cue{animation:none}.insight-detail,.insight-detail p,.insight-detail ul,.insight-chevron{transition:none}}
 @media(max-width:1000px){.site-layout{grid-template-columns:minmax(0,1fr) 250px}}
 @media(max-width:850px){.hero-header{min-height:450px}.hero-title h1{font-size:clamp(56px,12vw,88px);line-height:.92}.shell{margin-top:-28px}.site-layout{grid-template-columns:1fr}.pad{padding:26px}}
-@media(max-width:540px){.hero-header{min-height:410px}.hero-media{top:-6%;height:112%}.hero-title{inset:19% 14px 12%}.hero-title h1{font-size:clamp(45px,13.8vw,62px);line-height:.93;letter-spacing:-.045em}.hero-title-line{gap:7px}.hero-medallion img{width:42px;border-width:1.5px}.hero-medallion+.hero-medallion{margin-left:-10px}.hero-title-cue{bottom:-2px}.hero-title-cue:before{height:15px}.shell{margin-top:-22px}.pad{padding:22px}}
+@media(max-width:540px){.hero-header{min-height:410px}.hero-media{top:-6%;height:112%}.hero-title{inset:19% 14px 12%}.hero-title h1{font-size:clamp(45px,13.8vw,62px);line-height:.93;letter-spacing:-.045em}.hero-title-line{gap:7px}.hero-medallion img{width:42px;border-width:1.5px}.hero-medallion+.hero-medallion{margin-left:-10px}.hero-title-cue{bottom:-2px}.hero-title-cue svg{width:16px;height:28px}.shell{margin-top:-22px}.pad{padding:22px}.heroTop{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:176px}.heroTop .tile:nth-child(1){grid-row:span 2}.heroTop .tile:nth-child(2),.heroTop .tile:nth-child(3),.heroTop .tile:nth-child(4),.heroTop .tile:nth-child(5){min-height:176px}.heroTop .name{font-size:14px}.heroTop .tile:nth-child(1) .name{font-size:19px}#topRest{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}#topRest .name{font-size:10px;line-height:1.05}.full-scroll{padding-inline:18px}}
 
 /* #26–135: fixed-height accordion.
    No scrollHeight measurement, no auto-height handoff, no layout recalculation. */
@@ -524,7 +526,7 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
   .full-ranking-sec{--full-open-height:820px}
 }
 
-</style></head><body><header class="hero-header"><img class="hero-media" src="assets/cinema-hero.jpg" alt="" aria-hidden="true"><nav class="hero-nav" aria-label="Présentation"><span>Aimer Star Wars à 40 ans</span><span>Une communauté de 9 cinéphiles</span></nav><div class="hero-title"><h1><span class="hero-title-line"><span>Top films</span><span class="hero-top-three" id="heroTopThree" aria-label="Les trois premiers films du classement"></span></span><em>2000–2024</em></h1><span class="hero-title-cue" aria-hidden="true">↓</span></div></header><div class="shell">
+</style></head><body><header class="hero-header"><img class="hero-media" src="assets/cinema-hero.jpg" alt="" aria-hidden="true"><nav class="hero-nav" aria-label="Présentation"><span>Aimer Star Wars à 40 ans</span><span>Une communauté de 9 cinéphiles</span></nav><div class="hero-title"><h1><span class="hero-title-line"><span>Top films</span><span class="hero-top-three" id="heroTopThree" aria-label="Les trois premiers films du classement"></span></span><em>2000–2024</em></h1><span class="hero-title-cue" aria-hidden="true"><svg viewBox="0 0 24 36"><path d="M12 2v30m-6-6 6 6 6-6"/></svg></span></div></header><div class="shell">
 <div class="site-layout">
   <main>
 
@@ -636,6 +638,15 @@ function bindCoverFlow(){
   function resetTile(tile){
     tile.classList.remove('cf-active','cf-near1','cf-near2','cf-near3');
     tile.style.removeProperty('--cf-x');
+    tile.style.removeProperty('transform-origin');
+  }
+
+  function setSafeTransformOrigin(tile,viewport){
+    const r=tile.getBoundingClientRect();
+    const v=viewport.getBoundingClientRect();
+    const x=r.left-v.left<r.width*.42?'left':v.right-r.right<r.width*.42?'right':'center';
+    const y=r.top-v.top<r.height*.42?'top':v.bottom-r.bottom<r.height*.42?'bottom':'center';
+    tile.style.transformOrigin=`${x} ${y}`;
   }
 
   const clearTop=()=>{
@@ -689,6 +700,7 @@ function bindCoverFlow(){
     tileEl.addEventListener('pointerenter',()=>{
       topRest.classList.add('coverflow-active');
       applySameRowCoverFlow(tileEl,topRest,restTiles,'rest');
+      setSafeTransformOrigin(tileEl,topRest);
     });
   });
 
@@ -739,6 +751,7 @@ function bindCoverFlow(){
 
         if(d===0){
           item.el.classList.add('cf-active');
+          setSafeTransformOrigin(item.el,fullScroll);
         }else if(d===1){
           item.el.classList.add('cf-near1');
           item.el.style.setProperty('--cf-x',`${side*16}px`);
@@ -781,7 +794,10 @@ function bindCoverFlow(){
       sameRow.forEach((item,index)=>{
         const d=Math.abs(index-activeIndex);
         const side=index<activeIndex?-1:1;
-        if(d===0) item.el.classList.add('cf-active');
+        if(d===0){
+          item.el.classList.add('cf-active');
+          setSafeTransformOrigin(item.el,bottomGrid);
+        }
         else if(d===1){
           item.el.classList.add('cf-near1');
           item.el.style.setProperty('--cf-x',`${side*14}px`);
