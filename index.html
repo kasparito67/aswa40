@@ -513,39 +513,27 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 /* ASWA40_YEAR_ROMAN */
 .hero-title em{font-style:normal!important}
 
-/* ASWA40_YEAR_INSIGHT_V1 */
-.year-insight-card{
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:linear-gradient(145deg,#11171a 0%,#0e1214 72%);
-  padding:16px;
-  display:grid;
-  gap:13px;
-  overflow:hidden;
-  position:relative;
-}
-.year-insight-card:after{
-  content:"";
-  position:absolute;
-  inset:auto -34px -42px auto;
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(255,49,49,.14),transparent 68%);
-  pointer-events:none;
-}
-.year-insight-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.year-insight-kicker{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--a)}
-.year-insight-big{font:800 34px/.9 'Inter Tight',sans-serif;letter-spacing:-.045em;color:#fff;margin-top:5px}
-.year-insight-big span{font-size:13px;letter-spacing:-.02em;color:#aeb7bb;font-weight:700;margin-left:4px}
-.year-insight-badge{flex:none;border:1px solid #3a464c;border-radius:999px;padding:6px 8px;color:#c6ced1;font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;background:#0b0f11}
-.year-insight-line{height:1px;background:#283036}
-.year-insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}
-.year-insight-stat{display:grid;gap:2px}
-.year-insight-stat b{font-size:14px;color:#f7f5f1;line-height:1}
-.year-insight-stat span{font-size:9px;color:#899399;line-height:1.2;text-transform:uppercase;letter-spacing:.055em}
-.year-insight-note{font-size:10px;line-height:1.35;color:#9aa4a8}
-.year-insight-note strong{color:#d7dddf;font-weight:750}
+
+
+/* ASWA40_YEAR_INSIGHT_V2 */
+.year-insight-card{border:1px solid var(--line);border-radius:16px;background:#0f1416;overflow:hidden}
+.year-insight-card summary{list-style:none;cursor:pointer;padding:15px 16px;position:relative}
+.year-insight-card summary::-webkit-details-marker{display:none}
+.year-insight-card summary:after{content:'↓';position:absolute;right:15px;top:15px;color:var(--a);font-size:18px;transition:transform .28s cubic-bezier(.16,1,.3,1)}
+.year-insight-card[open] summary:after{transform:rotate(180deg)}
+.year-insight-kicker{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9da6aa;margin-bottom:7px}
+.year-insight-hero{display:flex;align-items:flex-end;gap:8px;padding-right:28px}
+.year-insight-year{font:800 34px/.82 'Inter Tight',sans-serif;letter-spacing:-.055em;color:#fff}
+.year-insight-label{font-size:10px;font-weight:850;letter-spacing:.09em;text-transform:uppercase;color:var(--a);padding-bottom:2px}
+.year-insight-maincount{font-size:11px;color:#c4cbce;margin-top:5px;font-weight:700}
+.year-insight-mini{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px;margin-top:11px;padding-right:26px}
+.year-insight-mini span{font-size:9px;line-height:1.25;color:#8f999e}.year-insight-mini b{color:#eef1f2;font-size:11px;margin-right:3px}
+.year-insight-detail{border-top:1px solid #293137;padding:14px 16px 16px;display:grid;gap:12px;background:#0b0f11}
+.year-insight-decade{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.year-insight-decade b{font-size:12px;color:#f3f3f1}.year-insight-decade strong{font:800 24px/.9 'Inter Tight',sans-serif;color:var(--a);letter-spacing:-.04em}
+.year-chart{height:88px;display:flex;align-items:flex-end;gap:2px;padding:8px 0 15px;border-bottom:1px solid #222b30;position:relative}
+.year-chart-bar{flex:1;min-width:2px;border-radius:2px 2px 0 0;background:#5e6a70;opacity:.72;height:calc(var(--v) * 4.1px);position:relative}
+.year-chart-bar.hot{background:var(--a);opacity:1}.year-chart-bar:after{content:attr(data-y);position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);font-size:6px;color:#687278;display:none}.year-chart-bar:nth-child(1):after,.year-chart-bar:nth-child(6):after,.year-chart-bar:nth-child(11):after,.year-chart-bar:nth-child(16):after,.year-chart-bar:nth-child(21):after,.year-chart-bar:nth-child(25):after{display:block}
+.year-insight-note{font-size:9.5px;line-height:1.38;color:#8f999e}.year-insight-note strong{color:#d9dfe1}
 
 </style></head><body><header class="hero-header"><img class="hero-media" src="assets/cinema-hero.jpg" alt="" aria-hidden="true"><nav class="hero-nav" aria-label="Présentation"><span>Aimer Star Wars à 40 ans</span><span>Une communauté de 9 cinéphiles</span></nav><div class="hero-title"><h1><span class="hero-title-line"><span>Top films</span><span class="hero-top-three" id="heroTopThree" aria-label="Les trois premiers films du classement"></span></span><em>2000–2024</em></h1><span class="hero-title-cue" aria-hidden="true"><svg viewBox="0 0 24 36"><path d="M12 2v30m-6-6 6 6 6-6"/></svg></span></div></header><div class="shell">
 <div class="site-layout">
@@ -585,23 +573,25 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 
     <div class="sidebar-title">Insights collectifs</div>
 
-<div class="year-insight-card" aria-label="Répartition du classement par année">
-  <div class="year-insight-top">
-    <div>
-      <div class="year-insight-kicker">Génération 2000</div>
-      <div class="year-insight-big">55% <span>du classement</span></div>
+<details class="year-insight-card" aria-label="Répartition du classement par année">
+  <summary>
+    <div class="year-insight-kicker">Génération 2000</div>
+    <div class="year-insight-hero"><span class="year-insight-year">2000</span><span class="year-insight-label">Année reine</span></div>
+    <div class="year-insight-maincount">13 films</div>
+    <div class="year-insight-mini">
+      <span><b>2007</b>11 films</span>
+      <span><b>2001–02</b>10 films chacune</span>
+      <span><b>2024</b>1 seul film</span>
     </div>
-    <div class="year-insight-badge">74 / 135</div>
+  </summary>
+  <div class="year-insight-detail">
+    <div class="year-insight-decade"><b>2000–2009</b><strong>55%</strong></div>
+    <div class="year-chart" aria-label="Nombre de films par année de 2000 à 2024"><span class="year-chart-bar hot" style="--v:13" data-y="2000"></span><span class="year-chart-bar hot" style="--v:10" data-y="2001"></span><span class="year-chart-bar hot" style="--v:10" data-y="2002"></span><span class="year-chart-bar" style="--v:6" data-y="2003"></span><span class="year-chart-bar" style="--v:6" data-y="2004"></span><span class="year-chart-bar" style="--v:6" data-y="2005"></span><span class="year-chart-bar" style="--v:6" data-y="2006"></span><span class="year-chart-bar hot" style="--v:11" data-y="2007"></span><span class="year-chart-bar" style="--v:2" data-y="2008"></span><span class="year-chart-bar" style="--v:4" data-y="2009"></span><span class="year-chart-bar" style="--v:5" data-y="2010"></span><span class="year-chart-bar" style="--v:5" data-y="2011"></span><span class="year-chart-bar" style="--v:4" data-y="2012"></span><span class="year-chart-bar" style="--v:6" data-y="2013"></span><span class="year-chart-bar" style="--v:8" data-y="2014"></span><span class="year-chart-bar" style="--v:6" data-y="2015"></span><span class="year-chart-bar" style="--v:4" data-y="2016"></span><span class="year-chart-bar" style="--v:5" data-y="2017"></span><span class="year-chart-bar" style="--v:2" data-y="2018"></span><span class="year-chart-bar" style="--v:3" data-y="2019"></span><span class="year-chart-bar" style="--v:2" data-y="2020"></span><span class="year-chart-bar" style="--v:3" data-y="2021"></span><span class="year-chart-bar" style="--v:4" data-y="2022"></span><span class="year-chart-bar" style="--v:3" data-y="2023"></span><span class="year-chart-bar" style="--v:1" data-y="2024"></span></div>
+    <div class="year-insight-note"><strong>Le creux :</strong> 2008, 2018 et 2020 n'ont que 2 films chacune. Aucune année 2000–2024 n'est complètement absente.</div>
   </div>
-  <div class="year-insight-line"></div>
-  <div class="year-insight-grid">
-    <div class="year-insight-stat"><b>2000</b><span>année reine · 13 films</span></div>
-    <div class="year-insight-stat"><b>2007</b><span>11 films</span></div>
-    <div class="year-insight-stat"><b>2001–02</b><span>10 films chacune</span></div>
-    <div class="year-insight-stat"><b>2024</b><span>1 seul film</span></div>
-  </div>
-  <div class="year-insight-note"><strong>Le creux :</strong> 2008, 2018 et 2020 n'ont que 2 films chacune. Aucune année 2000–2024 n'est complètement absente.</div>
-</div>
+</details>
+
+
 
 
     <div class="insight-item" data-insight="religion">
