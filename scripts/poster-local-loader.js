@@ -1,22 +1,22 @@
 (() => {
   const POSTERS = {
-    'american psycho': 'assets/posters/poster-american-psycho.jpg',
-    'boyhood': 'assets/posters/poster-boyhood.jpg',
-    'downfall': 'assets/posters/poster-downfall.jpg',
-    'der untergang': 'assets/posters/poster-downfall.jpg',
-    'dunkirk': 'assets/posters/poster-dunkirk.jpg',
-    'ex machina': 'assets/posters/poster-ex-machina.jpg',
-    'get out': 'assets/posters/poster-get-out.jpg',
-    'harry potter': 'assets/posters/poster-harry-potter.jpg',
-    'harry potter franchise': 'assets/posters/poster-harry-potter.jpg',
-    'interstellar': 'assets/posters/poster-interstellar.jpg',
-    'mad max': 'assets/posters/poster-mad-max-fury-road.jpg',
-    'mad max fury road': 'assets/posters/poster-mad-max-fury-road.jpg',
-    'mad max: fury road': 'assets/posters/poster-mad-max-fury-road.jpg',
-    'moonlight': 'assets/posters/poster-moonlight.jpg',
-    'parasite': 'assets/posters/poster-parasite.jpg',
-    'the revenant': 'assets/posters/poster-the-revenant.jpg',
-    'up': 'assets/posters/poster-up.jpg'
+    'american psycho': 'assets/posters/american-psycho.webp',
+    'boyhood': 'assets/posters/boyhood.webp',
+    'downfall': 'assets/posters/downfall.webp',
+    'der untergang': 'assets/posters/downfall.webp',
+    'dunkirk': 'assets/posters/dunkirk.webp',
+    'ex machina': 'assets/posters/ex-machina.webp',
+    'get out': 'assets/posters/get-out.webp',
+    'harry potter': 'assets/posters/harry-potter.webp',
+    'harry potter franchise': 'assets/posters/harry-potter.webp',
+    'interstellar': 'assets/posters/interstellar.webp',
+    'mad max': 'assets/posters/mad-max-fury-road.webp',
+    'mad max fury road': 'assets/posters/mad-max-fury-road.webp',
+    'mad max: fury road': 'assets/posters/mad-max-fury-road.webp',
+    'moonlight': 'assets/posters/moonlight.webp',
+    'parasite': 'assets/posters/parasite.webp',
+    'the revenant': 'assets/posters/the-revenant.webp',
+    'up': 'assets/posters/up.webp'
   };
 
   const normalize = (value = '') => value
