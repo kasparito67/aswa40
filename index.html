@@ -491,6 +491,7 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
    No scrollHeight measurement, no auto-height handoff, no layout recalculation. */
 .full-ranking-sec{
   --full-open-height:640px;
+  overflow-anchor:none;
 }
 .full-ranking-sec .content{
   height:0 !important;
@@ -498,7 +499,9 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
   overflow:hidden;
   transition:none !important;
   will-change:auto;
+  overflow-anchor:none;
 }
+.full-ranking-sec .full-scroll-shell,.full-ranking-sec .full-scroll,.full-ranking-sec #full{overflow-anchor:none}
 .full-ranking-sec.open .content{
   height:var(--full-open-height) !important;
   opacity:1;
@@ -1003,6 +1006,17 @@ function closeSection(section){
   });
 }
 
+function closeSectionImmediately(section){
+  if(!section.classList.contains('open')) return;
+  const content=section.querySelector('.content');
+  if(section.classList.contains('full-ranking-sec')) resetFullLoader();
+  content.style.transition='none';
+  section.classList.remove('open');
+  content.style.height='0px';
+  content.offsetHeight;
+  requestAnimationFrame(()=>content.style.removeProperty('transition'));
+}
+
 const heroHeader=document.querySelector('.hero-header');
 const heroMedia=document.querySelector('.hero-media');
 let parallaxQueued=false;
@@ -1033,8 +1047,23 @@ sections.forEach(section=>{
     content.style.height='0px';
   }
 
-  section.querySelector('.toggle').addEventListener('click',()=>{
+  const toggle=section.querySelector('.toggle');
+  toggle.addEventListener('click',()=>{
     const shouldOpen=!section.classList.contains('open');
+
+    if(shouldOpen&&section.classList.contains('full-ranking-sec')&&window.matchMedia('(max-width:540px)').matches){
+      const anchorTop=toggle.getBoundingClientRect().top;
+      sections.forEach(other=>{
+        if(other!==section) closeSectionImmediately(other);
+      });
+      openSection(section);
+      requestAnimationFrame(()=>{
+        const shift=toggle.getBoundingClientRect().top-anchorTop;
+        if(Math.abs(shift)>1) window.scrollBy({top:shift,left:0,behavior:'auto'});
+      });
+      return;
+    }
+
     sections.forEach(other=>{
       if(other!==section) closeSection(other);
     });
