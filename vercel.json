@@ -4,6 +4,6 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/__original", "destination": "/index.html" },
-    { "source": "/", "destination": "/shell.html" }
+    { "source": "/", "destination": "/shell-v4.html" }
   ]
 }
