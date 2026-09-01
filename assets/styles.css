@@ -1614,13 +1614,18 @@ body {
   border:1px solid var(--line);
   border-radius:16px;
   background:#0f1416;
-  overflow:hidden
+  overflow:hidden;
+  transition:transform .24s cubic-bezier(.16,1,.3,1),border-color .24s ease,background-color .24s ease,box-shadow .24s ease
 }
 
 .year-insight-card summary {
   list-style:none;
   cursor:pointer;
-  padding:15px 16px;
+  padding:20px;
+  min-height:132px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
   position:relative
 }
 
@@ -1631,8 +1636,8 @@ body {
 .year-insight-card summary:after {
   content:'↓';
   position:absolute;
-  right:15px;
-  top:15px;
+  right:20px;
+  top:20px;
   color:var(--a);
   font-size:18px;
   transition:transform .28s cubic-bezier(.16,1,.3,1)
@@ -1643,61 +1648,25 @@ body {
 }
 
 .year-insight-kicker {
-  font-size:9px;
+  font-size:10px;
   font-weight:800;
-  letter-spacing:.12em;
+  letter-spacing:.14em;
   text-transform:uppercase;
-  color:#9da6aa;
-  margin-bottom:7px
-}
-
-.year-insight-hero {
-  display:flex;
-  align-items:flex-end;
-  gap:8px;
-  padding-right:28px
+  color:var(--a);
+  margin-bottom:11px
 }
 
 .year-insight-year {
-  font:800 34px/.82 'Inter Tight',sans-serif;
+  font:850 46px/.82 'Inter Tight',sans-serif;
   letter-spacing:-.055em;
   color:#fff
 }
 
-.year-insight-label {
-  font-size:10px;
-  font-weight:850;
-  letter-spacing:.09em;
-  text-transform:uppercase;
-  color:var(--a);
-  padding-bottom:2px
-}
-
 .year-insight-maincount {
-  font-size:11px;
+  font-size:12px;
   color:#c4cbce;
-  margin-top:5px;
+  margin-top:9px;
   font-weight:700
-}
-
-.year-insight-mini {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:5px 10px;
-  margin-top:11px;
-  padding-right:26px
-}
-
-.year-insight-mini span {
-  font-size:9px;
-  line-height:1.25;
-  color:#8f999e
-}
-
-.year-insight-mini b {
-  color:#eef1f2;
-  font-size:11px;
-  margin-right:3px
 }
 
 .year-insight-detail {
@@ -1782,7 +1751,8 @@ body {
   border:1px solid var(--line);
   border-radius:16px;
   background:#0f1315;
-  overflow:hidden
+  overflow:hidden;
+  transition:transform .24s cubic-bezier(.16,1,.3,1),border-color .24s ease,background-color .24s ease,box-shadow .24s ease
 }
 
 .director-toggle {
@@ -1790,11 +1760,12 @@ body {
   border:0;
   background:transparent;
   color:inherit;
-  padding:15px;
+  padding:20px;
+  min-height:154px;
   display:grid;
-  grid-template-columns:1fr auto;
-  gap:12px;
-  align-items:center;
+  grid-template-columns:1fr;
+  gap:17px;
+  align-items:start;
   text-align:left;
   cursor:pointer
 }
@@ -1802,7 +1773,8 @@ body {
 .director-heading {
   display:flex;
   align-items:center;
-  gap:8px
+  justify-content:space-between;
+  gap:14px
 }
 
 .director-k {
@@ -1814,15 +1786,16 @@ body {
 }
 
 .director-title {
-  font:800 22px/.95 'Inter Tight',sans-serif;
+  font:850 28px/.95 'Inter Tight',sans-serif;
   letter-spacing:-.035em;
-  margin-top:4px
+  margin-top:8px
 }
 
 .director-sub {
-  font-size:10px;
+  font-size:11px;
+  line-height:1.35;
   color:#9ba5a9;
-  margin-top:4px
+  margin-top:7px
 }
 
 .director-faces {
@@ -1832,8 +1805,8 @@ body {
 }
 
 .director-faces img {
-  width:34px;
-  height:34px;
+  width:38px;
+  height:38px;
   border-radius:50%;
   object-fit:cover;
   border:2px solid #0f1315;
@@ -1845,6 +1818,37 @@ body {
   font-size:18px;
   color:#aeb7bb;
   transition:transform .25s ease
+}
+
+@media(hover:hover) and (pointer:fine) {
+  .year-insight-card:hover,.director-card:hover {
+    transform:translateY(-3px);
+    border-color:rgba(230,13,69,.72);
+    background:#151a1c;
+    box-shadow:0 12px 28px rgba(0,0,0,.3)
+  }
+
+  .year-insight-card:hover .year-insight-year,.director-card:hover .director-title {
+    color:#fff
+  }
+
+  .year-insight-card:hover summary:after,.director-card:hover .director-arrow {
+    color:var(--a);
+    transform:translateY(2px)
+  }
+
+  .year-insight-card[open]:hover summary:after,.director-card.open:hover .director-arrow {
+    transform:rotate(180deg) translateY(-2px)
+  }
+
+  .director-card:hover .director-faces img {
+    border-color:#151a1c
+  }
+}
+
+.year-insight-card summary:focus-visible,.director-toggle:focus-visible {
+  outline:2px solid var(--a);
+  outline-offset:-3px
 }
 
 .director-card.open .director-arrow {
@@ -1898,11 +1902,4 @@ body {
   font-size:10px;
   line-height:1.35;
   color:#9aa4a8
-}
-
-.director-credit {
-  font-size:8px;
-  line-height:1.35;
-  color:#667177;
-  padding:0 14px 14px
 }
