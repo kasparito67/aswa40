@@ -60,19 +60,11 @@ card=r'''
 '''
 
 h=h.replace('</style></head>',css+'\n</style></head>',1)
-start=h.find('<div class="year-insight-card"')
-if start<0: raise SystemExit('year card not found')
-pos=start; depth=0; end=None
-while pos < len(h):
-    no=h.find('<div',pos); nc=h.find('</div>',pos)
-    if nc<0: break
-    if no!=-1 and no<nc:
-        depth+=1; pos=no+4
-    else:
-        depth-=1; pos=nc+6
-        if depth==0:
-            end=pos; break
-if end is None: raise SystemExit('year card end not found')
+start=h.find('<details class="year-insight-card"')
+if start<0: raise SystemExit('year details card not found')
+end=h.find('</details>',start)
+if end<0: raise SystemExit('year details end not found')
+end += len('</details>')
 h=h[:end]+'\n'+card+h[end:]
 js=r'''<script>
 (()=>{const c=document.getElementById('directorQuartet');if(!c)return;const b=c.querySelector('.director-toggle');b.addEventListener('click',()=>{const o=c.classList.toggle('open');b.setAttribute('aria-expanded',String(o));});})();
