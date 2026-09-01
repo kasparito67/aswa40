@@ -447,9 +447,9 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 /* 2026 visual system: cinematic header, restrained palette and inline insights */
 :root{--a:#e60d45;--wine:#7d1638;--wine-bright:#b72b59;--orange:#f26a2e}
 .hero-header{min-height:clamp(390px,48vh,520px)}
-.hero-media{top:-9%;bottom:auto;height:118%;object-position:center 68%;filter:saturate(.72) contrast(1.08) brightness(.74);transform:translate3d(0,var(--parallax-y,0px),0) scale(1.02);will-change:transform}
-.hero-nav{color:#c7c8ca;font-weight:420;letter-spacing:.12em}.hero-nav span:last-child{color:#bfc1c4}
-.hero-title{inset:18% 28px 13%}
+.hero-media{top:-9%;bottom:auto;height:118%;object-position:center 68%;filter:saturate(.72) contrast(1.08) brightness(.74);transform:translate3d(0,var(--parallax-bg-y,0px),0) scale(1.02);will-change:transform}
+.hero-nav{color:#c7c8ca;font-weight:420;letter-spacing:.12em;transform:translate3d(0,var(--parallax-nav-y,0px),0);will-change:transform}.hero-nav span:last-child{color:#bfc1c4}
+.hero-title{inset:18% 28px 13%;transform:translate3d(0,var(--parallax-title-y,0px),0);will-change:transform}
 .hero-title h1{font-size:clamp(54px,7.3vw,108px);line-height:.91;letter-spacing:-.055em}
 .hero-title-line{display:flex;align-items:center;justify-content:center;gap:12px;white-space:nowrap}
 .hero-top-three{display:flex;align-items:center;margin-left:2px}
@@ -482,7 +482,7 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 .insight-detail li+li{margin-top:7px}.insight-detail li::marker{color:var(--insight)}
 .insight-item.is-open .insight-detail{grid-template-rows:1fr;border-width:0 1px 1px}
 .insight-item.is-open .insight-detail p{padding:15px 16px 18px 61px;opacity:1}.insight-item.is-open .insight-detail ul{padding-top:15px;padding-bottom:18px;opacity:1}
-@media(prefers-reduced-motion:reduce){.hero-media{transform:scale(1.02)}.insight-detail,.insight-detail p,.insight-detail ul,.insight-chevron{transition:none}}
+@media(prefers-reduced-motion:reduce){.hero-media{transform:scale(1.02)}.hero-title,.hero-nav{transform:none}.insight-detail,.insight-detail p,.insight-detail ul,.insight-chevron{transition:none}}
 @media(max-width:1000px){.site-layout{grid-template-columns:minmax(0,1fr) 250px}}
 @media(max-width:850px){.hero-header{min-height:450px}.hero-title h1{font-size:clamp(56px,12vw,88px);line-height:.92}.shell{margin-top:-28px}.site-layout{grid-template-columns:1fr}.pad{padding:26px}}
 @media(max-width:540px){.hero-header{min-height:410px}.hero-media{top:-6%;height:112%}.hero-title{inset:19% 14px 12%}.hero-title h1{font-size:clamp(45px,13.8vw,62px);line-height:.93;letter-spacing:-.045em}.hero-title-line{gap:7px}.hero-top-three img{width:42px;border-width:1.5px}.hero-top-three img+img{margin-left:-10px}.shell{margin-top:-22px}.pad{padding:22px}}
@@ -1019,11 +1019,15 @@ function closeSectionImmediately(section){
 
 const heroHeader=document.querySelector('.hero-header');
 const heroMedia=document.querySelector('.hero-media');
+const heroTitle=document.querySelector('.hero-title');
+const heroNav=document.querySelector('.hero-nav');
 let parallaxQueued=false;
 
 function updateHeroParallax(){
-  const shift=Math.min(window.scrollY*.18,heroHeader.offsetHeight*.16);
-  heroMedia.style.setProperty('--parallax-y',`${shift}px`);
+  const travel=Math.min(window.scrollY,heroHeader.offsetHeight*1.15);
+  heroMedia.style.setProperty('--parallax-bg-y',`${travel*.28}px`);
+  heroTitle.style.setProperty('--parallax-title-y',`${travel*.11}px`);
+  heroNav.style.setProperty('--parallax-nav-y',`${travel*.045}px`);
   parallaxQueued=false;
 }
 
