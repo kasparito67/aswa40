@@ -211,18 +211,20 @@
               </div>
             </div>
           </div>
-          <details class="year-insight-card" aria-label="Répartition du classement par année">
-            <summary>
+          <div class="year-insight-card" id="yearInsight">
+            <button class="year-toggle" type="button" aria-expanded="false">
               <div class="year-insight-kicker">Année reine</div>
               <div class="year-insight-year">2000</div>
               <div class="year-insight-maincount">13 films</div>
-            </summary>
+              <span class="year-arrow">↓</span>
+            </button>
             <div class="year-insight-detail">
-              <div class="year-insight-decade">
-                <b>2000–2009</b>
-                <strong>55%</strong>
-              </div>
-              <div class="year-chart" aria-label="Nombre de films par année de 2000 à 2024">
+              <div class="year-insight-detail-inner">
+                <div class="year-insight-decade">
+                  <b>2000–2009</b>
+                  <strong>55%</strong>
+                </div>
+                <div class="year-chart" aria-label="Nombre de films par année de 2000 à 2024">
                 <span class="year-chart-bar hot" style="--v:13" data-y="2000">
                 </span>
                 <span class="year-chart-bar hot" style="--v:10" data-y="2001">
@@ -273,11 +275,12 @@
                 </span>
                 <span class="year-chart-bar" style="--v:1" data-y="2024">
                 </span>
+                </div>
+                <div class="year-insight-note">
+                  <strong>Le creux :</strong> 2008, 2018 et 2020 n'ont que 2 films chacune.</div>
               </div>
-              <div class="year-insight-note">
-                <strong>Le creux :</strong> 2008, 2018 et 2020 n'ont que 2 films chacune.</div>
             </div>
-          </details>
+          </div>
           <div class="director-card" id="directorQuartet">
             <button class="director-toggle" type="button" aria-expanded="false">
               <div class="director-copy">

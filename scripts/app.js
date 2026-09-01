@@ -297,7 +297,15 @@ function render(){
   topRest.innerHTML=films.filter(f=>f.rank>=6 && f.rank<=25).map(f=>tile(f,{lazy:false})).join('');
   fullGrid.innerHTML='';
   bottomGrid.innerHTML=films.filter(f=>f.rank>=126).map(f=>tile(f,{lazy:true})).join('');
-  ghostsEl.innerHTML=ghosts.map((g,i)=>`<button class="card" data-g="${i}"><b>${g[0]}</b><span>${g[1]}</span></button>`).join('');
+  ghostsEl.innerHTML=ghosts.map((ghost,index)=>[
+    `<button class="card" data-g="${index}">`,
+    `<img src="${ghost[2]}" alt="Affiche de ${ghost[0]}" loading="lazy" decoding="async">`,
+    '<span class="ghost-copy">',
+    `<b>${ghost[0]}</b>`,
+    `<span>${ghost[1]}</span>`,
+    '</span>',
+    '</button>',
+  ].join('')).join('');
   bindCoverFlow();
 }
 const modalRank=document.getElementById('mr');
@@ -379,7 +387,7 @@ function toggleInsight(k,trigger){
 }
 function showGhost(i){
   let g=ghosts[i];
-  setModalThumb(null);
+  setModalThumb(g[2],g[0]);
   modalRank.textContent='Grand absent · 0/9';
   modalTitle.textContent=g[0];
   modalStats.innerHTML='<span><b>0/9</b> votes</span>';
@@ -599,12 +607,18 @@ mb.addEventListener('click',()=>mb.classList.remove('open'));
 document.querySelector('.close').addEventListener('click',()=>mb.classList.remove('open'));
 
 const directorQuartet=document.getElementById('directorQuartet');
-if(directorQuartet){
-  const directorToggle=directorQuartet.querySelector('.director-toggle');
-  directorToggle.addEventListener('click',()=>{
-    const isOpen=directorQuartet.classList.toggle('open');
-    directorToggle.setAttribute('aria-expanded',String(isOpen));
+const yearInsight=document.getElementById('yearInsight');
+
+function bindSidebarAccordion(card,toggleSelector){
+  if(!card) return;
+  const toggle=card.querySelector(toggleSelector);
+  toggle.addEventListener('click',()=>{
+    const isOpen=card.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded',String(isOpen));
   });
 }
+
+bindSidebarAccordion(directorQuartet,'.director-toggle');
+bindSidebarAccordion(yearInsight,'.year-toggle');
 
 render();

@@ -1353,62 +1353,77 @@ const details = {
 const ghosts = [
   [
     "Mulholland Drive",
-    "Un des films les plus canonisés du XXIe siècle."
+    "Un des films les plus canonisés du XXIe siècle.",
+    "assets/grands-oublies/poster-mullholland-drive.webp"
   ],
   [
     "In the Mood for Love",
-    "Autre sommet quasi universel des palmarès critiques; 0/9."
+    "Autre sommet quasi universel des palmarès critiques; 0/9.",
+    "assets/grands-oublies/poster-in-the-mood-for-love.webp"
   ],
   [
     "Eternal Sunshine of the Spotless Mind",
-    "Le film fantôme du palmarès : concept, émotion, culte cinéphile et grand public, mais 0 vote."
+    "Le film fantôme du palmarès : concept, émotion, culte cinéphile et grand public, mais 0 vote.",
+    "assets/grands-oublies/poster-eternal-sunshine-of-the-spotless-mind.webp"
   ],
   [
     "Yi Yi",
-    "Monument du cinéma taïwanais et pilier du canon critique."
+    "Monument du cinéma taïwanais et pilier du canon critique.",
+    "assets/grands-oublies/poster-yi-yi.webp"
   ],
   [
     "The Tree of Life",
-    "Très haut chez les critiques; son absence correspond davantage aux goûts narratifs du groupe."
+    "Très haut chez les critiques; son absence correspond davantage aux goûts narratifs du groupe.",
+    "assets/grands-oublies/poster-the-tree-of-life.webp"
   ],
   [
     "A Separation",
-    "Un des grands consensus internationaux des années 2010."
+    "Un des grands consensus internationaux des années 2010.",
+    "assets/grands-oublies/poster-a-separation.webp"
   ],
   [
     "Portrait of a Lady on Fire",
-    "Canon moderne majeur, absent des neuf listes."
+    "Canon moderne majeur, absent des neuf listes.",
+    "assets/grands-oublies/poster-portrait-of-a-lady-on-fire.webp"
   ],
   [
     "Oldboy",
-    "Absence étonnante pour une gang aussi réceptive au cinéma de genre."
+    "Absence étonnante pour une gang aussi réceptive au cinéma de genre.",
+    "assets/grands-oublies/poster-oldboy.webp"
   ],
   [
     "WALL-E",
-    "Très surprenant vu la place de l’animation dans les listes."
+    "Très surprenant vu la place de l’animation dans les listes.",
+    "assets/grands-oublies/poster-wall-e.webp"
   ],
   [
     "The Master",
-    "Paul Thomas Anderson est beaucoup moins présent ici que dans le canon critique."
+    "Paul Thomas Anderson est beaucoup moins présent ici que dans le canon critique.",
+    "assets/grands-oublies/poster-the-master.webp"
   ],
   [
     "Roma",
-    "Grand film de bilan de la décennie 2010."
+    "Grand film de bilan de la décennie 2010.",
+    "assets/grands-oublies/poster-roma.webp"
   ],
   [
     "Before Sunset",
-    "Un des grands films romantiques/conversationnels du siècle."
+    "Un des grands films romantiques/conversationnels du siècle.",
+    "assets/grands-oublies/poster-before-sunset.webp"
   ],
   [
     "Lady Bird",
-    "Très aimé autant par la critique que le public cinéphile."
+    "Très aimé autant par la critique que le public cinéphile.",
+    "assets/grands-oublies/poster-lady-bird.webp"
   ],
   [
     "La La Land",
-    "Son absence surprend davantage du côté populaire."
+    "Son absence surprend davantage du côté populaire.",
+    "assets/grands-oublies/poster-la-la-land.webp"
   ],
   [
     "Oppenheimer",
-    "Un blockbuster d’auteur qui semblerait compatible avec les goûts visibles."
+    "Un blockbuster d’auteur qui semblerait compatible avec les goûts visibles.",
+    "assets/grands-oublies/poster-oppenheimer.webp"
   ]
 ];

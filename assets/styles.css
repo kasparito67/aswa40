@@ -845,7 +845,7 @@ body {
 
 .ghosts {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:9px
 }
 
@@ -857,6 +857,49 @@ body {
   padding:14px;
   text-align:left;
   cursor:pointer
+}
+
+#ghosts .card {
+  position:relative;
+  aspect-ratio:2/3;
+  padding:0;
+  overflow:hidden;
+  background:#090c0e
+}
+
+#ghosts .card img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .42s cubic-bezier(.16,1,.3,1),filter .3s ease
+}
+
+#ghosts .ghost-copy {
+  position:absolute;
+  z-index:1;
+  inset:auto 0 0;
+  display:block;
+  padding:52px 14px 14px;
+  background:linear-gradient(180deg,transparent,rgba(5,7,8,.92) 62%);
+  color:#fff
+}
+
+#ghosts .ghost-copy b {
+  color:#fff;
+  font-size:15px;
+  line-height:1.05
+}
+
+#ghosts .ghost-copy span {
+  display:block;
+  color:#bdc4c7;
+  line-height:1.3
+}
+
+#ghosts .card.ghost-focus img {
+  transform:scale(1.045)
 }
 
 .card b {
@@ -1107,7 +1150,7 @@ body {
 }
 
 .hero-header {
-  min-height:clamp(390px,48vh,520px)
+  min-height:clamp(480px,60vh,650px)
 }
 
 .hero-media {
@@ -1133,7 +1176,7 @@ body {
 }
 
 .hero-title {
-  inset:18% 28px 13%;
+  inset:25% 28px 12%;
   transform:translate3d(0,var(--parallax-title-y,0px),0);
   will-change:transform
 }
@@ -1419,7 +1462,7 @@ body {
   .hero-title h1,.hero-top-three,.hero-medallion,.hero-title-cue {
     animation:none
   }
-  .insight-detail,.insight-detail p,.insight-detail ul,.insight-chevron {
+  .insight-detail,.insight-detail p,.insight-detail ul,.insight-chevron,.year-insight-detail,.year-insight-detail-inner,.year-arrow,.director-detail,.director-detail-inner,.director-list,.director-arrow {
     transition:none
   }
 }
@@ -1432,7 +1475,7 @@ body {
 
 @media(max-width:850px) {
   .hero-header {
-    min-height:450px
+    min-height:520px
   }
   .hero-title h1 {
     font-size:clamp(56px,12vw,88px);
@@ -1451,14 +1494,14 @@ body {
 
 @media(max-width:540px) {
   .hero-header {
-    min-height:410px
+    min-height:470px
   }
   .hero-media {
     top:-6%;
     height:112%
   }
   .hero-title {
-    inset:19% 14px 12%
+    inset:24% 14px 14%
   }
   .hero-title h1 {
     font-size:clamp(45px,13.8vw,62px);
@@ -1618,23 +1661,22 @@ body {
   transition:transform .24s cubic-bezier(.16,1,.3,1),border-color .24s ease,background-color .24s ease,box-shadow .24s ease
 }
 
-.year-insight-card summary {
-  list-style:none;
+.year-toggle {
+  width:100%;
+  border:0;
+  background:transparent;
+  color:inherit;
   cursor:pointer;
   padding:20px;
   min-height:132px;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  position:relative
+  position:relative;
+  text-align:left
 }
 
-.year-insight-card summary::-webkit-details-marker {
-  display:none
-}
-
-.year-insight-card summary:after {
-  content:'↓';
+.year-arrow {
   position:absolute;
   right:20px;
   top:20px;
@@ -1643,7 +1685,7 @@ body {
   transition:transform .28s cubic-bezier(.16,1,.3,1)
 }
 
-.year-insight-card[open] summary:after {
+.year-insight-card.is-open .year-arrow {
   transform:rotate(180deg)
 }
 
@@ -1670,11 +1712,30 @@ body {
 }
 
 .year-insight-detail {
-  border-top:1px solid #293137;
-  padding:14px 16px 16px;
   display:grid;
-  gap:12px;
-  background:#0b0f11
+  grid-template-rows:0fr;
+  border-top:0 solid #293137;
+  background:#0b0f11;
+  transition:grid-template-rows .32s cubic-bezier(.16,1,.3,1),border-width .05s linear
+}
+
+.year-insight-detail-inner {
+  min-height:0;
+  overflow:hidden;
+  padding:0 16px;
+  opacity:0;
+  transition:padding .32s cubic-bezier(.16,1,.3,1),opacity .2s ease
+}
+
+.year-insight-card.is-open .year-insight-detail {
+  grid-template-rows:1fr;
+  border-top-width:1px
+}
+
+.year-insight-card.is-open .year-insight-detail-inner {
+  padding-top:14px;
+  padding-bottom:16px;
+  opacity:1
 }
 
 .year-insight-decade {
@@ -1816,8 +1877,12 @@ body {
 
 .director-arrow {
   font-size:18px;
-  color:#aeb7bb;
+  color:var(--a);
   transition:transform .25s ease
+}
+
+.director-faces img {
+  transition:transform .24s cubic-bezier(.16,1,.3,1),border-color .24s ease,box-shadow .24s ease
 }
 
 @media(hover:hover) and (pointer:fine) {
@@ -1832,49 +1897,69 @@ body {
     color:#fff
   }
 
-  .year-insight-card:hover summary:after,.director-card:hover .director-arrow {
+  .year-insight-card:hover .year-arrow,.director-card:hover .director-arrow {
     color:var(--a);
     transform:translateY(2px)
   }
 
-  .year-insight-card[open]:hover summary:after,.director-card.open:hover .director-arrow {
+  .year-insight-card.is-open:hover .year-arrow,.director-card.is-open:hover .director-arrow {
     transform:rotate(180deg) translateY(-2px)
   }
 
   .director-card:hover .director-faces img {
     border-color:#151a1c
   }
+
+  .director-faces img:hover {
+    position:relative;
+    z-index:3;
+    transform:translateY(-3px) scale(1.22);
+    box-shadow:0 8px 18px rgba(0,0,0,.42)
+  }
 }
 
-.year-insight-card summary:focus-visible,.director-toggle:focus-visible {
+.year-toggle:focus-visible,.director-toggle:focus-visible {
   outline:2px solid var(--a);
   outline-offset:-3px
 }
 
-.director-card.open .director-arrow {
+.director-card.is-open .director-arrow {
   transform:rotate(180deg)
 }
 
 .director-detail {
   display:grid;
   grid-template-rows:0fr;
-  transition:grid-template-rows .34s cubic-bezier(.16,1,.3,1);
-  border-top:1px solid transparent
+  border-top:0 solid var(--line);
+  transition:grid-template-rows .32s cubic-bezier(.16,1,.3,1),border-width .05s linear
 }
 
-.director-card.open .director-detail {
+.director-card.is-open .director-detail {
   grid-template-rows:1fr;
-  border-top-color:var(--line)
+  border-top-width:1px
 }
 
 .director-detail-inner {
-  overflow:hidden
+  min-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:opacity .2s ease
+}
+
+.director-card.is-open .director-detail-inner {
+  opacity:1
 }
 
 .director-list {
-  padding:14px;
+  padding:0 14px;
   display:grid;
-  gap:12px
+  gap:12px;
+  transition:padding .32s cubic-bezier(.16,1,.3,1)
+}
+
+.director-card.is-open .director-list {
+  padding-top:14px;
+  padding-bottom:14px
 }
 
 .director-row {
