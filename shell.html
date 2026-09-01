@@ -14,7 +14,7 @@
   <script>
     (async function(){
       try{
-        const response=await fetch('/index',{cache:'no-cache'});
+        const response=await fetch('/__original',{cache:'no-cache'});
         if(!response.ok) throw new Error('HTTP '+response.status);
         let html=await response.text();
 
