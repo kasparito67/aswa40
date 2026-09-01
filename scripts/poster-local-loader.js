@@ -25,6 +25,7 @@
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/^[#]?\d+[.)]?\s*/, '')
     .replace(/[–—]/g, '-')
+    .replace(/[()]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 
@@ -67,7 +68,6 @@
     applyLocalPosters();
   }
 
-  // The #26–135 grid is progressively revealed/loaded, so retry after mutations.
   let queued = false;
   new MutationObserver(() => {
     if (queued) return;
