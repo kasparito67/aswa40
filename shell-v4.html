@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="aswa40-patch-version" content="2026-09-01-v4">
+  <title>Aimer Star Wars à 40 ans</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
+  <style>
+    html,body{margin:0;min-height:100%;background:#080a0b;color:#f5f3ef}
+    .boot{display:none}
+  </style>
+</head>
+<body>
+<div class="boot"></div>
+<script>
+(async function(){
+  const VERSION='2026-09-01-v4';
+  const HERO='https://imgix.bustle.com/rehost/2016/9/13/7b2511af-b586-4694-97cf-aca93849459b.jpg?crop=faces&fit=crop&fm=jpg&h=900&w=1800';
+  try{
+    const r=await fetch('/__original?v='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    let html=await r.text();
+
+    const css=`<style id="aswa40-v4-style">
+      body.aswa-preload{opacity:0!important}
+      body{transition:opacity .16s ease}
+      .hero-title h1{font-weight:700!important;line-height:.84!important;letter-spacing:-.068em!important}
+      .hero-title em{font-weight:700!important}
+      .hero-media{object-position:center 54%!important}
+
+      .sec:not(.open){transition:border-color .22s ease,background-color .22s ease,box-shadow .22s ease,transform .22s ease}
+      .sec:not(.open)>.toggle{transition:background-color .22s ease}
+      .sec:not(.open)>.toggle strong{transition:color .22s ease}
+      @media (hover:hover) and (pointer:fine){
+        .stack>.sec:not(.open):hover{border-color:#4b5960;background:#11171a;box-shadow:0 0 0 1px rgba(255,255,255,.025) inset,0 12px 34px rgba(0,0,0,.22);transform:translateY(-1px)}
+        .stack>.sec:not(.open):hover>.toggle{background:linear-gradient(90deg,color-mix(in srgb,var(--section-accent,var(--a)) 8%,transparent),transparent 50%)}
+        .stack>.sec:not(.open):hover>.toggle strong{color:#fff}
+      }
+
+      /* ~5% more scale on active poster tiles */
+      #topHero .tile.cf-active{transform:translate3d(0,-3px,0) scale(1.208)!important}
+      #topRest .tile.cf-active{transform:translate3d(0,-7px,56px) scale(1.344)!important}
+      #full .tile.cf-active{transform:translate3d(0,-8px,70px) scale(1.407)!important}
+      #bottom .tile.cf-active{transform:translate3d(0,-7px,58px) scale(1.334)!important}
+      #topHero .tile img,#topRest .tile img,#full .tile img,#bottom .tile img{transition:filter .28s ease,object-position .28s ease}
+      #topHero .tile.cf-active img,#topRest .tile.cf-active img,#full .tile.cf-active img,#bottom .tile.cf-active img{object-position:center 46%!important}
+
+      @keyframes aswaPanelIn{0%{opacity:0;transform:translateY(7px) scale(.994)}100%{opacity:1;transform:none}}
+      .aswa-pop-in{animation:aswaPanelIn .28s cubic-bezier(.16,1,.3,1) both}
+      @media (prefers-reduced-motion:reduce){body{transition:none}.aswa-pop-in{animation:none}}
+    </style>`;
+
+    const runtime=`<script id="aswa40-v4-runtime">
+    (function(){
+      window.__ASWA40_PATCH_VERSION__='${VERSION}';
+      const HERO=${JSON.stringify(HERO)};
+      const posters={
+        'american psycho':'https://atthemovies.uk/cdn/shop/products/AmericanPsycho2000us27x40in275.jpg?v=1621383112',
+        'boyhood':'https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/e3/e35d7a5768c4b85b4780384d55dc3620_original.jpg?t=1636102095',
+        'downfall':'https://www.prints4u.net/wp-content/uploads/2021/04/Downfall-002.jpg',
+        'der untergang':'https://www.prints4u.net/wp-content/uploads/2021/04/Downfall-002.jpg',
+        'dunkirk':'https://townsquare.media/site/442/files/2016/12/dunkirk-poster.jpg?q=75&w=1080',
+        'ex machina':'https://cdn1.lockerdome.com/uploads/377769d0cb987385cc42f973c934b6fbf8dfc790b9524b99466ef92490b96b11_%3Aoriginal',
+        'get out':'https://uauposters.com.br/media/catalog/product/cache/1/thumbnail/800x930/9df78eab33525d08d6e5fb8d27136e95/3/5/353720210407-uau-posters-corra-get-out-filmes-4.jpg',
+        'harry potter':'https://cinema10.com.br/upload/featuredImage.php?url=https%3A%2F%2Fcinema10.com.br%2Fupload%2Ffilmes%2Ffilmes_483_MV5BMTU3NDUwNjQyNF5BMl5BanBnXkFtZTYwMTY0NTk2._V1_.jpg',
+        'harry potter franchise':'https://cinema10.com.br/upload/featuredImage.php?url=https%3A%2F%2Fcinema10.com.br%2Fupload%2Ffilmes%2Ffilmes_483_MV5BMTU3NDUwNjQyNF5BMl5BanBnXkFtZTYwMTY0NTk2._V1_.jpg',
+        'interstellar':'https://m.media-amazon.com/images/S/pv-target-images/5e54c6be807509eb2f33d78df6cced73638c6a9eb037b413a3313e063cdcac21.jpg',
+        'mad max':'https://pics.filmaffinity.com/Mad_Max_Furia_en_el_camino-941035447-large.jpg',
+        'mad max fury road':'https://pics.filmaffinity.com/Mad_Max_Furia_en_el_camino-941035447-large.jpg',
+        'mad max: fury road':'https://pics.filmaffinity.com/Mad_Max_Furia_en_el_camino-941035447-large.jpg',
+        'moonlight':'https://artofthemovies.co.uk/cdn/shop/products/moonlight_3db2fc82-609882.jpg?v=1627611506&width=1946',
+        'parasite':'https://i0.wp.com/metagalaxia.com.br/wp-content/uploads/2020/04/parasita-filme-oscar-resenha-poster.jpg?resize=971%2C1500&ssl=1',
+        'the revenant':'https://iv1.lisimg.com/image/9483833/740full-the-revenant-poster.jpg',
+        'up':'https://www.posterhub.com.sg/images/detailed/5/up1.jpg'
+      };
+      const norm=s=>(s||'').toLowerCase().replace(/^[#]?\\d+\\.?\\s*/,'').replace(/\\s+/g,' ').trim();
+      const icons={
+        religion:'🙏', consensus:'🤝', duo:'💞', ovni:'👽'
+      };
+      function patchHero(){
+        const hero=document.querySelector('.hero-media');
+        if(hero&&hero.dataset.aswaHero!==VERSION){hero.src=HERO;hero.removeAttribute('srcset');hero.dataset.aswaHero=VERSION}
+      }
+      function patchIcons(){
+        document.querySelectorAll('.insight-card').forEach(card=>{
+          const text=norm(card.textContent); let glyph='';
+          if(text.includes('religion commune'))glyph=icons.religion;
+          else if(text.includes('monsieur consensus')||text.includes('consensus'))glyph=icons.consensus;
+          else if(text.includes('duo'))glyph=icons.duo;
+          else if(text.includes('ovni'))glyph=icons.ovni;
+          if(!glyph)return;
+          const icon=card.querySelector('.insight-icon');
+          if(icon&&icon.dataset.aswaIcon!==glyph){icon.innerHTML='<span aria-hidden="true" style="font-size:19px;line-height:1;filter:grayscale(.1)">'+glyph+'</span>';icon.dataset.aswaIcon=glyph}
+        });
+      }
+      function patchPosters(){
+        document.querySelectorAll('.tile').forEach(tile=>{
+          const name=tile.querySelector('.name'); if(!name)return;
+          const key=norm(name.textContent); const url=posters[key]; if(!url)return;
+          let img=tile.querySelector('img'); if(!img){img=document.createElement('img');tile.prepend(img)}
+          if(img.dataset.aswaPoster===VERSION)return;
+          img.src=url;img.alt=name.textContent.trim();img.removeAttribute('srcset');img.removeAttribute('data-src');img.loading='lazy';img.classList.remove('poster-deferred');img.classList.add('is-loaded');img.dataset.aswaPoster=VERSION;
+        });
+      }
+      function animatePanel(sec){
+        const target=sec.querySelector('.pad,.inner,.content'); if(!target)return;
+        target.classList.remove('aswa-pop-in'); void target.offsetWidth; target.classList.add('aswa-pop-in');
+        setTimeout(()=>target.classList.remove('aswa-pop-in'),360);
+      }
+      document.addEventListener('click',e=>{
+        const toggle=e.target.closest('.toggle'); if(toggle){const sec=toggle.closest('.sec');setTimeout(()=>{if(sec&&sec.classList.contains('open'))animatePanel(sec)},20)}
+      },true);
+      const mo=new MutationObserver(ms=>{
+        patchHero();patchIcons();patchPosters();
+        ms.forEach(m=>{if(m.type==='attributes'&&m.target.classList&&m.target.classList.contains('sec')&&m.target.classList.contains('open'))animatePanel(m.target)})
+      });
+      function reveal(){
+        const done=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.remove('aswa-preload')));
+        const hero=document.querySelector('.hero-media');
+        Promise.allSettled([document.fonts?document.fonts.ready:Promise.resolve(),hero&&hero.decode?hero.decode():Promise.resolve()]).then(done);
+        setTimeout(done,700);
+      }
+      function apply(){patchHero();patchIcons();patchPosters();reveal();mo.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class']})}
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
+    })();
+    <\/script>`;
+
+    html=html.replace('<body','<body class="aswa-preload"');
+    html=html.replace('</head>','<meta name="aswa40-patch-version" content="'+VERSION+'"><link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">'+css+'</head>');
+    html=html.replace('</body>',runtime+'</body>');
+    document.open();document.write(html);document.close();
+  }catch(err){document.body.innerHTML='<div style="min-height:100vh;display:grid;place-items:center;color:#9da1a4;font:12px system-ui">Impossible de charger le site</div>';console.error(err)}
+})();
+</script>
+</body>
+</html>
