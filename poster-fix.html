@@ -1,1 +1,32 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aimer Star Wars à 40 ans</title><style>html,body,iframe{margin:0;width:100%;height:100%;border:0;background:#080a0b}iframe{display:block}</style></head><body><iframe id="app" src="/index.html?v=20260901b"></iframe><script>const frame=document.getElementById('app');frame.addEventListener('load',()=>{const w=frame.contentWindow,d=frame.contentDocument;const s=d.createElement('script');s.src='/validated-posters.js?v=20260901b';s.onload=()=>{let busy=false;const enforce=()=>{if(busy)return;busy=true;requestAnimationFrame(()=>{const map=w.ASWA_POSTERS||{};d.querySelectorAll('[data-rank]').forEach(card=>{const r=Number(card.dataset.rank||card.dataset.r);if(r<26)return;const im=card.querySelector('img');if(!im)return;const wanted=map[String(r)];if(wanted){if(im.getAttribute('src')!==wanted)im.setAttribute('src',wanted)}else if(im.hasAttribute('src'))im.removeAttribute('src')});busy=false})};enforce();const mo=new MutationObserver(enforce);mo.observe(d.documentElement,{subtree:true,attributes:true,attributeFilter:['src'],childList:true});setTimeout(enforce,500);setTimeout(enforce,1500);setTimeout(enforce,4000)};d.head.appendChild(s)});</script></body></html>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aimer Star Wars à 40 ans</title><style>html,body,iframe{margin:0;width:100%;height:100%;border:0;background:#080a0b}iframe{display:block}</style></head><body><iframe id="app" src="/index.html?v=sprite-20260901"></iframe><script>
+const frame=document.getElementById('app');
+frame.addEventListener('load',()=>{
+ const d=frame.contentDocument;
+ const style=d.createElement('style');
+ style.textContent=`
+   [data-rank]{position:relative}
+   [data-rank] img{display:none!important}
+   .aswaSpritePoster{position:absolute;inset:0;background-image:url('/assets/poster-sprite.jpg?v=20260901');background-repeat:no-repeat;background-size:1000% 1400%;z-index:0;background-color:#151b1e}
+   #mimg{background-image:url('/assets/poster-sprite.jpg?v=20260901');background-repeat:no-repeat;background-size:1000% 1400%;background-color:#151b1e}
+ `;
+ d.head.appendChild(style);
+ const pos=r=>{const i=r-1,c=i%10,row=Math.floor(i/10);return `${c/9*100}% ${row/13*100}%`};
+ const apply=()=>d.querySelectorAll('[data-rank]').forEach(card=>{
+   const r=Number(card.dataset.rank); if(!r||r<1||r>135)return;
+   let p=card.querySelector(':scope > .aswaSpritePoster');
+   if(!p){p=d.createElement('span');p.className='aswaSpritePoster';card.prepend(p)}
+   p.style.backgroundPosition=pos(r);
+ });
+ apply();
+ new MutationObserver(apply).observe(d.body,{subtree:true,childList:true});
+ let lastRank=1;
+ d.addEventListener('click',e=>{
+   const card=e.target.closest('[data-rank]'); if(!card)return;
+   lastRank=Number(card.dataset.rank)||lastRank;
+   setTimeout(()=>{const m=d.getElementById('mimg');if(m){m.removeAttribute('src');m.style.backgroundPosition=pos(lastRank)}},0);
+   setTimeout(()=>{const m=d.getElementById('mimg');if(m){m.removeAttribute('src');m.style.backgroundPosition=pos(lastRank)}},100);
+ },true);
+ const modalObs=new MutationObserver(()=>{const m=d.getElementById('mimg');if(m&&m.hasAttribute('src')){m.removeAttribute('src');m.style.backgroundPosition=pos(lastRank)}});
+ const m=d.getElementById('mimg');if(m)modalObs.observe(m,{attributes:true,attributeFilter:['src']});
+});
+</script></body></html>
