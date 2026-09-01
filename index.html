@@ -1,5 +1,6 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aimer Star Wars à 40 ans</title>
 <!-- ASWA40_DIRECT_FIXES_V1 -->
+<link rel="preload" href="assets/cinema-hero.jpg" as="image">
 <link rel="preload" href="assets/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/inter-tight-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=direct1">
@@ -1108,4 +1109,6 @@ sections.forEach(section=>{
     else closeSection(section);
   });
 });document.addEventListener('click',e=>{let t=e.target.closest('.tile');if(t)showFilm(t.dataset.r);let i=e.target.closest('[data-i]');if(i)toggleInsight(i.dataset.i,i);let g=e.target.closest('[data-g]');if(g)showGhost(g.dataset.g)});modal.addEventListener('click',e=>e.stopPropagation());mb.addEventListener('click',()=>mb.classList.remove('open'));document.querySelector('.close').onclick=()=>mb.classList.remove('open');render();
-</script></body></html>
+</script><!-- ASWA40_LOCAL_POSTERS_V1 -->
+<script defer src="scripts/poster-local-loader.js?v=1"></script>
+</body></html>
