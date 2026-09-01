@@ -1,6 +1,11 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aimer Star Wars à 40 ans</title><style>
-@font-face{font-family:'Inter Tight';font-style:normal;font-weight:100 900;font-display:swap;src:url('assets/inter-tight-latin.woff2') format('woff2')}
-@font-face{font-family:'Inter Tight';font-style:italic;font-weight:100 900;font-display:swap;src:url('assets/inter-tight-italic-latin.woff2') format('woff2')}
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aimer Star Wars à 40 ans</title>
+<!-- ASWA40_DIRECT_FIXES_V1 -->
+<link rel="preload" href="assets/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/inter-tight-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=direct1">
+<style>
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:100 900;font-display:block;src:url('assets/inter-tight-latin.woff2') format('woff2')}
+@font-face{font-family:'Inter Tight';font-style:italic;font-weight:100 900;font-display:block;src:url('assets/inter-tight-italic-latin.woff2') format('woff2')}
 button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 :root{--bg:#080a0b;--p:#111517;--line:#2d3135;--t:#f5f3ef;--m:#9da1a4;--a:#ff3131}*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--t);font-family:'Inter Tight',Inter,system-ui,sans-serif}.hero-header{position:relative;min-height:clamp(590px,78vh,840px);overflow:hidden;background:#090a0b;isolation:isolate}.hero-media{position:absolute;z-index:-3;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 52%;filter:saturate(.78) contrast(1.1) brightness(.76);transform:scale(1.01)}.hero-header:before{content:"";position:absolute;z-index:-2;inset:0;background:linear-gradient(90deg,rgba(7,8,9,.54),transparent 34%,transparent 66%,rgba(7,8,9,.54)),linear-gradient(180deg,rgba(4,5,5,.62) 0,transparent 30%,rgba(8,10,11,.2) 54%,var(--bg) 100%)}.hero-header:after{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:42%;background:linear-gradient(transparent,var(--bg))}.hero-nav{width:min(1450px,100%);margin:auto;padding:27px 28px;display:flex;align-items:center;justify-content:space-between;gap:30px;color:#fff;font-size:11px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;text-shadow:0 1px 18px #000}.hero-nav span:last-child{color:#d5d3cf}.hero-title{position:absolute;inset:17% 28px 16%;display:grid;place-items:center;text-align:center}.hero-title h1{max-width:1320px;margin:0;font-size:clamp(72px,10.7vw,166px);font-weight:900;line-height:.79;letter-spacing:-.075em;text-wrap:balance;text-shadow:0 3px 35px rgba(0,0,0,.52)}.hero-title em{display:block;color:var(--a);font-style:italic;font-weight:900}.shell{position:relative;z-index:3;max-width:1450px;margin:-70px auto 0;padding:28px}.sub,.k,.meta{color:var(--m)}.k{font-size:10px;letter-spacing:.11em;text-transform:uppercase}.site-layout{
   display:grid;
@@ -477,6 +482,32 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 }
 .full-ranking-sec.open,.full-ranking-sec.open .inner{overflow:visible}
 
+
+/* ASWA40 direct polish */
+.hero-title h1{font-weight:700!important;line-height:.84!important;letter-spacing:-.07em!important}
+.hero-title em{font-weight:700!important}
+
+.sec:not(.open){transition:border-color .22s ease,background-color .22s ease,box-shadow .22s ease,transform .22s ease}
+.sec:not(.open)>.toggle{transition:background-color .22s ease}
+.sec:not(.open)>.toggle strong{transition:color .22s ease}
+@media (hover:hover) and (pointer:fine){
+  .stack>.sec:not(.open):hover{border-color:#4b5960;background:#11171a;box-shadow:0 12px 34px rgba(0,0,0,.22);transform:translateY(-1px)}
+  .stack>.sec:not(.open):hover>.toggle{background:linear-gradient(90deg,rgba(255,49,49,.07),transparent 52%)}
+  .stack>.sec:not(.open):hover>.toggle strong{color:#fff}
+  .stack>.sec:not(.open):hover>.toggle .arr{transform:translateY(3px)}
+}
+
+.sec.open .inner{animation:aswaWindowIn .34s cubic-bezier(.16,1,.3,1) both}
+@keyframes aswaWindowIn{from{opacity:.25;transform:translateY(7px) scale(.994)}to{opacity:1;transform:none}}
+
+#topHero .tile.cf-active{transform:translate3d(0,-4px,0) scale(1.20)!important}
+#topRest .tile.cf-active{transform:translate3d(0,-8px,62px) scale(1.34)!important}
+#full .tile.cf-active{transform:translate3d(0,-9px,76px) scale(1.41)!important}
+#bottom .tile.cf-active{transform:translate3d(0,-8px,62px) scale(1.33)!important}
+.tile.cf-active img{object-fit:contain!important;background:#090b0c}
+
+@media(prefers-reduced-motion:reduce){.sec.open .inner{animation:none!important}}
+
 </style></head><body><header class="hero-header"><img class="hero-media" src="assets/cinema-hero.jpg" alt="" aria-hidden="true"><nav class="hero-nav" aria-label="Présentation"><span>Aimer Star Wars à 40 ans</span><span>Une communauté de 9 cinéphiles</span></nav><div class="hero-title"><h1><span class="hero-title-line"><span>Top films</span><span class="hero-top-three" id="heroTopThree" aria-label="Les trois premiers films du classement"></span></span><em>2000–2024</em></h1><span class="hero-title-cue" aria-hidden="true"><svg viewBox="0 0 24 36"><path d="M12 2v30m-6-6 6 6 6-6"/></svg></span></div></header><div class="shell">
 <div class="site-layout">
   <main>
@@ -517,7 +548,7 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 
     <div class="insight-item" data-insight="religion">
       <button class="insight-card" data-i="religion" aria-expanded="false">
-        <span class="insight-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.7 20.2 6 18a3.5 3.5 0 0 1-1.3-2.7V9.4c0-.9.5-1.5 1.3-1.5.6 0 1 .4 1.2 1l1.1 4.2M15.3 20.2 18 18a3.5 3.5 0 0 0 1.3-2.7V9.4c0-.9-.5-1.5-1.3-1.5-.6 0-1 .4-1.2 1l-1.1 4.2M8.3 13.1l2.4-8.7c.2-.8.7-1.2 1.3-1.2s1.1.4 1.3 1.2l2.4 8.7M8.7 20.2 12 16l3.3 4.2" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="insight-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2v17.6M6.6 8.7h10.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
         <span><b>Religion commune</b><span>LOTR · 8/9 · JB est le seul absent</span></span><span class="insight-chevron">↓</span>
       </button>
       <div class="insight-detail"><div><ul></ul></div></div>
@@ -533,7 +564,7 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
 
     <div class="insight-item" data-insight="duo">
       <button class="insight-card" data-i="duo" aria-expanded="false">
-        <span class="insight-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.8 17.8c-2.4-1.7-5.6-4.5-5.6-7.6a3.4 3.4 0 0 1 6.3-1.8M14.2 17.8c2.4-1.7 5.6-4.5 5.6-7.6a3.4 3.4 0 0 0-6.3-1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 20s-6-3.8-6-8a3.3 3.3 0 0 1 6-1.9A3.3 3.3 0 0 1 18 12c0 4.2-6 8-6 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <span class="insight-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 18.4 4.7 15.1C2.5 13 3.6 9.5 6.4 9.5c1.1 0 2 .5 2.6 1.4.6-.9 1.5-1.4 2.6-1.4 2.8 0 3.9 3.5 1.7 5.6l-3.5 3.3c-.4.4-1.1.4-1.6 0Z" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"/><path d="M14.3 18.4 10.8 15.1c-2.2-2.1-1.1-5.6 1.7-5.6 1.1 0 2 .5 2.6 1.4.6-.9 1.5-1.4 2.6-1.4 2.8 0 3.9 3.5 1.7 5.6l-3.5 3.3c-.4.4-1.1.4-1.6 0Z" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linejoin="round"/></svg></span>
         <span><b>Duo cinéphile</b><span>Alex + Simon · 11 en commun</span></span><span class="insight-chevron">↓</span>
       </button>
       <div class="insight-detail"><div><ul></ul></div></div>
