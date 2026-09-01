@@ -24,7 +24,7 @@
 .site-sidebar .insight-card{
   width:100%;
 }
-.stack{display:grid;gap:10px;margin-top:0}.sec{border:1px solid var(--line);border-radius:18px;background:#0e1214;overflow:hidden}.toggle{width:100%;border:0;background:transparent;color:inherit;text-align:left;padding:17px 18px;display:flex;justify-content:space-between;gap:14px;align-items:center;cursor:pointer}.toggle strong{font:500 30px/1 Georgia,serif}.arr{color:var(--a);font-size:22px;transition:transform .46s cubic-bezier(.16,1,.3,1)}.sec.open .arr{transform:rotate(180deg)}
+.stack{display:grid;gap:12px;margin-top:0}.sec{border:1px solid var(--line);border-radius:18px;background:#0e1214;overflow:hidden}.toggle{width:100%;min-height:112px;border:0;background:transparent;color:inherit;text-align:left;padding:24px 22px;display:flex;justify-content:space-between;gap:18px;align-items:center;cursor:pointer}.toggle>div{display:grid;gap:8px}.toggle .k{font-size:11px;font-weight:800;letter-spacing:.13em;color:#aab4b8}.toggle strong{font:500 36px/.94 Georgia,serif}.arr{color:var(--a);font-size:24px;transition:transform .46s cubic-bezier(.16,1,.3,1)}.sec.open .arr{transform:rotate(180deg)}
 .content{
   height:0;
   overflow:hidden;
@@ -325,10 +325,10 @@
   border-radius:14px;
   background:#14191c;
   color:inherit;
-  padding:14px 15px;
+  padding:16px;
   display:grid;
-  grid-template-columns:28px minmax(0,1fr);
-  gap:12px;
+  grid-template-columns:32px minmax(0,1fr);
+  gap:13px;
   align-items:start;
   text-align:left;
   cursor:pointer;
@@ -345,8 +345,8 @@
 .insight-card[data-i="duo"]{--icon:#ff7ab6}
 .insight-card[data-i="ovni"]{--icon:#6fe7ff}
 .insight-icon{
-  width:28px;
-  height:28px;
+  width:32px;
+  height:32px;
   display:grid;
   place-items:center;
   color:var(--icon);
@@ -357,16 +357,19 @@
   box-shadow:none;
   margin-top:2px;
 }
-.insight-icon svg{width:22px;height:22px;display:block;filter:drop-shadow(0 0 10px color-mix(in srgb, var(--icon) 35%, transparent));}
+.insight-icon svg{width:25px;height:25px;display:block;filter:drop-shadow(0 0 10px color-mix(in srgb, var(--icon) 35%, transparent));}
 .insight-card b{
   display:block;
-  margin:1px 0 4px;
-  font-size:13px;
+  margin:1px 0 5px;
+  color:var(--icon);
+  font-size:16px;
+  line-height:1.08;
+  font-weight:800;
 }
 .insight-card span{
   display:block;
-  font-size:11px;
-  line-height:1.35;
+  font-size:11.5px;
+  line-height:1.4;
   color:var(--m);
 }
 
@@ -424,6 +427,8 @@
   .site-sidebar .sidebar-title{grid-column:1/-1}
 .grid{grid-template-columns:repeat(3,1fr)}.grid.compact{grid-template-columns:repeat(5,1fr)}.insights,.ghosts{grid-template-columns:1fr 1fr}}@media(max-width:540px){
   .site-sidebar{grid-template-columns:1fr}
+  .toggle{min-height:98px;padding:20px 18px}
+  .toggle strong{font-size:32px}
   .modal-layout{grid-template-columns:82px minmax(0,1fr);gap:12px}
   .modal-thumb{width:82px}
 .shell{padding:16px}.grid{grid-template-columns:repeat(2,1fr)}.grid.compact{grid-template-columns:repeat(3,1fr)}.insights,.ghosts{grid-template-columns:1fr}}
@@ -456,11 +461,11 @@
   <main>
 
 <div class="stack">
-<section class="sec open"><button class="toggle"><div><div class="k">01 · Classement collectif</div><strong>Top 25</strong><div class="meta">LOTR #1 · 164 pts · 8/9 votes</div></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad">
+<section class="sec open"><button class="toggle"><div><div class="k">Les gros scoreurs</div><strong>TOP 25</strong></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad">
   <div class="heroTop" id="topHero"></div>
   <div class="grid" id="topRest"></div>
 </div></div></div></section>
-<section class="sec full-ranking-sec"><button class="toggle"><div><div class="k">02 · Classement complet</div><strong>#26 — #135</strong><div class="meta">110 films / franchises</div></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad">
+<section class="sec full-ranking-sec"><button class="toggle"><div><div class="k">Le classement complet</div><strong>#25–135</strong></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad">
       <div class="full-scroll-shell" id="fullScrollShell">
         <div class="full-scroll" id="fullScroll">
           <div class="grid compact" id="full"></div>
@@ -476,8 +481,8 @@
       </div>
     </div></div></div></section>
 
-<section class="sec"><button class="toggle"><div><div class="k">03 · 0 vote sur 225 choix</div><strong>Les grands oublis</strong><div class="meta">Mulholland Drive · Eternal Sunshine · Oldboy…</div></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad"><div class="ghosts" id="ghosts"></div></div></div></div></section>
-<section class="sec"><button class="toggle"><div><div class="k">04 · Le bas du classement</div><strong>Les 10 derniers</strong><div class="meta">#126 — #135</div></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad"><div class="grid" id="bottom"></div></div></div></div></section>
+<section class="sec"><button class="toggle"><div><div class="k">Aucun vote</div><strong>Les grands oubliés</strong></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad"><div class="ghosts" id="ghosts"></div></div></div></div></section>
+<section class="sec"><button class="toggle"><div><div class="k">Les bons derniers</div><strong>Les OVNIS</strong></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad"><div class="grid" id="bottom"></div></div></div></div></section>
 </div>
   
   </main>
@@ -825,14 +830,28 @@ requestAnimationFrame(updateFullScrollCue);
 
 const sections=[...document.querySelectorAll('.sec')];
 let fullImagesStarted=false;
+let fullLoaderCycle=0;
 
-function startFullImages(){
-  if(fullImagesStarted) return;
+function resetFullLoader(){
+  fullLoaderCycle+=1;
+  fullLoader.classList.remove('is-hidden');
+  return fullLoaderCycle;
+}
+
+function hideFullLoader(cycle){
+  if(cycle===fullLoaderCycle) fullLoader.classList.add('is-hidden');
+}
+
+function startFullImages(cycle){
+  if(fullImagesStarted){
+    window.setTimeout(()=>hideFullLoader(cycle),650);
+    return;
+  }
   fullImagesStarted=true;
 
   const images=[...fullGrid.querySelectorAll('img[data-src]')];
   const tracked=new Set(images.slice(0,18));
-  const hideLoader=()=>fullLoader.classList.add('is-hidden');
+  const hideLoader=()=>hideFullLoader(cycle);
 
   function settle(image,loaded){
     if(loaded) image.classList.add('is-loaded');
@@ -865,7 +884,8 @@ function openSection(section){
   if(section.classList.contains('full-ranking-sec')){
     content.style.removeProperty('height');
     section.classList.add('open');
-    requestAnimationFrame(()=>requestAnimationFrame(startFullImages));
+    const cycle=resetFullLoader();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>startFullImages(cycle)));
     return;
   }
 
@@ -890,6 +910,7 @@ function closeSection(section){
   // Heavy section: no measuring, just remove the class.
   if(section.classList.contains('full-ranking-sec')){
     content.style.removeProperty('height');
+    resetFullLoader();
     section.classList.remove('open');
     return;
   }
