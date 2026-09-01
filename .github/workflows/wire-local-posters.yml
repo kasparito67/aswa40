@@ -1,0 +1,54 @@
+name: Wire local posters
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/poster-local-loader.js'
+      - '.github/workflows/wire-local-posters.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Wire poster loader and preload hero
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '<!-- ASWA40_LOCAL_POSTERS_V1 -->'
+          changed = False
+
+          if 'rel="preload" href="assets/cinema-hero.jpg" as="image"' not in s:
+              anchor = '<link rel="preload" href="assets/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>'
+              preload = '<link rel="preload" href="assets/cinema-hero.jpg" as="image">\n'
+              if anchor in s:
+                  s = s.replace(anchor, preload + anchor, 1)
+              else:
+                  s = s.replace('</title>', '</title>\n' + preload, 1)
+              changed = True
+
+          if 'scripts/poster-local-loader.js' not in s:
+              tag = marker + '\n<script defer src="scripts/poster-local-loader.js?v=1"></script>\n'
+              s = s.replace('</body>', tag + '</body>', 1)
+              changed = True
+
+          if changed:
+              p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit wiring
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Wire local posters into ASWA40 index'
+          git push
