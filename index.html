@@ -1051,7 +1051,7 @@ sections.forEach(section=>{
   toggle.addEventListener('click',()=>{
     const shouldOpen=!section.classList.contains('open');
 
-    if(shouldOpen&&section.classList.contains('full-ranking-sec')&&window.matchMedia('(max-width:540px)').matches){
+    if(shouldOpen&&section.classList.contains('full-ranking-sec')){
       const anchorTop=toggle.getBoundingClientRect().top;
       sections.forEach(other=>{
         if(other!==section) closeSectionImmediately(other);
