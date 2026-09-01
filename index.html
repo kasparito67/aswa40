@@ -435,12 +435,10 @@
 }
 .full-ranking-sec .content{
   height:0 !important;
-  opacity:.78;
+  opacity:0;
   overflow:hidden;
-  transition:
-    height .48s cubic-bezier(.16,1,.3,1),
-    opacity .26s ease !important;
-  will-change:height;
+  transition:none !important;
+  will-change:auto;
 }
 .full-ranking-sec.open .content{
   height:var(--full-open-height) !important;
@@ -862,20 +860,12 @@ function finishOpen(section){
 function openSection(section){
   const content=section.querySelector('.content');
 
-  // Heavy section: animate only the fixed-height shell. Poster requests begin
-  // after the reveal so image decoding cannot interrupt the descent.
+  // Heavy section: reveal the fixed-height shell instantly. Poster requests
+  // begin on the following paint so the loader and skeletons appear first.
   if(section.classList.contains('full-ranking-sec')){
     content.style.removeProperty('height');
     section.classList.add('open');
-    const beginImages=()=>{
-      content.removeEventListener('transitionend',onRevealEnd);
-      startFullImages();
-    };
-    const onRevealEnd=e=>{
-      if(e.propertyName==='height') beginImages();
-    };
-    content.addEventListener('transitionend',onRevealEnd);
-    window.setTimeout(beginImages,560);
+    requestAnimationFrame(()=>requestAnimationFrame(startFullImages));
     return;
   }
 
