@@ -502,6 +502,7 @@ button{font-family:'Inter Tight',Inter,system-ui,sans-serif}
   overflow-anchor:none;
 }
 .full-ranking-sec .full-scroll-shell,.full-ranking-sec .full-scroll,.full-ranking-sec #full{overflow-anchor:none}
+.stack,.sec,.content{overflow-anchor:none}
 .full-ranking-sec.open .content{
   height:var(--full-open-height) !important;
   opacity:1;
@@ -1056,15 +1057,10 @@ sections.forEach(section=>{
     const shouldOpen=!section.classList.contains('open');
 
     if(shouldOpen&&section.classList.contains('full-ranking-sec')){
-      const anchorTop=toggle.getBoundingClientRect().top;
       sections.forEach(other=>{
         if(other!==section) closeSectionImmediately(other);
       });
       openSection(section);
-      requestAnimationFrame(()=>{
-        const shift=toggle.getBoundingClientRect().top-anchorTop;
-        if(Math.abs(shift)>1) window.scrollBy({top:shift,left:0,behavior:'auto'});
-      });
       return;
     }
 
