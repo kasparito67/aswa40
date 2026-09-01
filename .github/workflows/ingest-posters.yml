@@ -1,0 +1,35 @@
+name: Ingest poster archive
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Archive.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Extract poster JPGs
+        run: |
+          test -f Archive.zip || exit 0
+          mkdir -p assets/posters
+          unzip -j -o Archive.zip 'poster-*.jpg' -d assets/posters
+          ls -la assets/posters
+      - name: Commit posters
+        run: |
+          test -f Archive.zip || exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/posters
+          git rm Archive.zip
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Add local ASWA40 posters'
+          git push
