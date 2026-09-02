@@ -1,0 +1,34 @@
+name: Fetch TMDB backdrops 2000-2024
+
+on:
+  push:
+    branches: [local/modal-backdrop-prototype]
+    paths:
+      - 'scripts/fetch-backdrops-2000-2024.mjs'
+      - '.github/workflows/fetch-backdrops-2000-2024.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: local/modal-backdrop-prototype
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch TMDB backdrops
+        env:
+          TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_ACCESS_TOKEN }}
+        run: node scripts/fetch-backdrops-2000-2024.mjs
+      - name: Commit optimized backdrop assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -rf assets/backdrops/prototype
+          git add -A assets/backdrops data/2000-2024/poster-manifest.json scripts/backdrops.js
+          git commit -m 'Fetch TMDB backdrops for all film cards [skip ci]'
+          git push origin HEAD:local/modal-backdrop-prototype
