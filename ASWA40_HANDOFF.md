@@ -7,16 +7,18 @@ This file is the shared source of truth for ChatGPT Chat, Work, and any future d
 ### Decision / coordination model
 
 - **Master chat** is the decision and visual-direction thread.
-- **Work** is an execution environment, not a separate source of truth.
-- Every new Chat or Work session must read this file and current GitHub `main` before editing.
+- **Local branch chat** is the default space for visual experiments and day-to-day implementation without Vercel redeploys.
+- **Work** is the targeted execution, debugging and consolidation environment, not a separate source of truth.
+- Every new Master, Local or Work session must read this file and the correct Git branch before editing.
 - Do not try to reconstruct state from another conversation if this file + `main` already answer the question.
-- After an important visual or architectural decision is validated in Master chat, update this section so Work can resume without reading the full conversation history.
+- While local work is in progress, the active local branch and its copy of this file are the source of truth for that unfinished batch.
+- After an important visual or architectural decision is validated, update this file in the same coherent commit so every space can resume without reading another conversation.
 
 ### Current code reference
 
 - Repository: `kasparito67/aswa40`
 - Branch: `main`
-- Latest known correction commit at the time of this update: `df1960b8901f82e550340e2146c61d0fe594841e`
+- Always resolve the current branch HEAD instead of relying on a commit hash copied into this document.
 - GitHub `main` is the code source of truth.
 
 ### Official public / visual reference
@@ -53,24 +55,32 @@ The following changes are already in `main` but may not yet be visible on the of
 
 Before assuming any of these failed technically, compare production with current `main` and check Vercel deployment status.
 
-### Immediate rule for Work
+### Immediate rule for every space
 
-When resuming in Work:
+When resuming in Master, Local or Work:
 
 1. Read this file.
-2. Read the current `main` versions of the files being edited.
-3. Treat the official URL above as the visual reference, while remembering it may lag behind `main`.
-4. Do not ask the user to re-explain recent decisions already recorded here.
-5. Batch related changes and prefer one coherent commit.
-6. Update this `Current state` section after any major validated direction change.
+2. Check whether **Active local work** below names a working branch.
+3. If it does, read that branch and its handoff before continuing unfinished work; otherwise read current `main`.
+4. Read only the source files relevant to the requested change. Do not begin with a full project audit.
+5. Treat the official URL above as the production reference, while remembering it may lag behind `main`.
+6. Do not ask the user to re-explain decisions already recorded here.
+7. Batch related changes and prefer one coherent commit.
+8. Update this `Current state` section after any major validated direction change.
+
+### Active local work
+
+- Status: none recorded at the time of this handoff update.
+- When local work begins, record the branch name, starting `main` commit, latest validated checkpoint, files touched and remaining work here.
+- If this block says `none`, do not guess an old local branch from conversation history.
 
 ## 1. Canonical repository
 
 - Repository: `kasparito67/aswa40`
 - Branch: `main`
-- Always read the current `main` before editing.
+- Always fetch current `main` before editing, then follow **Active local work** if an unfinished batch is recorded.
 - Do not restart from an old exported HTML, old artifact, preview snapshot, or previous chat attachment.
-- `main` is the code source of truth. Production must be verified separately because Vercel may lag behind `main`.
+- `main` is the stable code source of truth. A named local branch temporarily becomes the working source for its unfinished batch. Production must be verified separately because Vercel may lag behind `main`.
 
 ## 2. Current architecture
 
@@ -108,17 +118,86 @@ Before a manual deploy or when checking whether a change is live:
 
 Known issue: Vercel has recently rejected deployments with `build-rate-limit`. In that situation, GitHub can be ahead of production.
 
-## 4. Working method
+## 4. Three-space working method
 
-Prefer a Work-like development method even when operating from a normal chat:
+### Shared authority model
 
-- Read the current relevant source files first.
-- Batch related UI changes.
-- Edit the real source files directly.
-- Prefer one coherent commit per correction batch.
+| Concern | Source of truth |
+| --- | --- |
+| Product and visual decisions | Master chat, once recorded in this file |
+| Stable production code | GitHub `main` |
+| Unfinished visual/development batch | Named local working branch + its updated handoff |
+| Public visual verification | `https://aswa40-films.vercel.app/` |
+
+Conversation memory is never authoritative for code state. The relevant branch and this handoff are.
+
+### Procedure for Master chat
+
+Master chat must not spend several prompts rediscovering how to edit the site. For every change request:
+
+1. Fetch the repository and read `ASWA40_HANDOFF.md` first.
+2. Read **Active local work** before choosing a branch.
+3. If local work is active, inspect the targeted diff between `main` and that branch plus only the files relevant to the request. Do not audit the entire project.
+4. If no local work is active, start from current GitHub `main`.
+5. State the exact branch and files that will be edited before changing anything.
+6. Preserve unrelated validated work and existing UX invariants.
+7. Batch the requested changes into one coherent correction set.
+8. For visual exploration, work locally and do not push to `main` after every iteration.
+9. Once the user validates the direction, update this handoff in the same checkpoint commit.
+10. Promote to `main` only when the batch is approved, then verify the official production URL before saying it is live.
+
+Master chat should never rebuild from an exported HTML file, guess which version is current, or use `aswa40-films-live` as its reference.
+
+### Procedure for Local branch chat
+
+Local is the default iteration space and should avoid Vercel entirely:
+
+1. Fetch current GitHub `main`.
+2. Read this handoff; a full audit is unnecessary.
+3. Create or resume one clearly named working branch for the batch, for example `local/hero-type-pass`.
+4. At branch creation, record the branch name and starting `main` commit in **Active local work**.
+5. Run a local server and verify changes in the local browser preview.
+6. Make small local commits at meaningful validated checkpoints; do not push each micro-adjustment to `main`.
+7. After each validated checkpoint, update the branch copy of this handoff with:
+   - latest checkpoint commit
+   - decisions validated by the user
+   - files changed
+   - remaining work or known issues
+8. Before resuming after another space has changed `main`, fetch and compare the working branch with `main`; rebase or merge only after checking overlapping files.
+9. When the batch is ready for handoff, ensure the branch is accessible to Master/Work and that its handoff is current.
+
+Do not ask Local to “audit the latest handoff.” Ask it to **read the handoff, fetch the recorded branch and inspect only the diff and files relevant to the next request**.
+
+### Procedure for Work
+
+Work is used for targeted implementation, debugging, consolidation and final verification:
+
+1. Fetch the repository and read this handoff.
+2. If **Active local work** names a branch, fetch it and inspect `main...<branch>` plus relevant files only.
+3. Continue from that branch when the task belongs to the unfinished local batch; otherwise start from `main` without overwriting local work.
+4. Make the smallest coherent change and test locally.
+5. Update the handoff whenever Work changes a validated decision, branch status or remaining task.
+6. Prefer one final promotion commit or squash merge to `main` for the whole validated batch.
+7. Verify Vercel and the official URL separately; a successful GitHub push is not proof that production updated.
+
+### Promotion from Local to production
+
+1. User validates the local batch.
+2. Local branch handoff is current and **Active local work** identifies its final checkpoint.
+3. Master or Work reviews the targeted diff against current `main` and resolves only real overlaps.
+4. Merge or squash the validated batch into `main` once.
+5. In the merged handoff, move validated decisions into **Current state** and reset **Active local work** to `none`.
+6. Allow one production deployment on `aswa40-films`.
+7. Verify the public page visually and functionally before calling the batch live.
+
+### Deployment minimization
+
+- Keep only `aswa40-films` as the production project; the historical `aswa40-films-live` project is redundant.
+- Local iterations use a local server, not Vercel.
+- A documentation-only or checkpoint branch should not be treated as a production release.
+- Configure Vercel so the local working branch does not create preview builds, or keep it unpushed until another environment needs to resume it.
 - Avoid temporary GitHub Actions for simple CSS/JS edits.
-- Avoid chains of tiny commits that trigger unnecessary Vercel builds.
-- Verify the deployment after the commit before declaring success.
+- Avoid chains of tiny commits to `main`.
 - Never overwrite unrelated visual work while fixing a local bug.
 
 ## 5. UX / visual invariants
@@ -237,14 +316,15 @@ Closed-state director names are not printed beside the portraits; portrait names
 Use this checklist:
 
 1. Read `ASWA40_HANDOFF.md`, especially **Current state**.
-2. Read current `main` for the files relevant to the requested change.
-3. Check recent commits if another chat or Work session may have changed the repo.
-4. Do not rely on an old chat’s cached source code.
-5. Make the smallest coherent source change.
-6. Commit once when practical.
-7. Check Vercel status.
-8. Visually verify `https://aswa40-films.vercel.app/` before calling the change live.
-9. After a major validated direction change, update the **Current state** section of this file.
+2. Read **Active local work** and resolve the correct branch.
+3. Fetch current `main` and the recorded working branch, if any.
+4. Inspect only the relevant files and targeted branch diff.
+5. Do not rely on an old chat’s cached source code.
+6. Make the smallest coherent source change.
+7. Update this handoff in the same validated checkpoint.
+8. Commit once when practical and avoid pushing micro-iterations to `main`.
+9. Check Vercel status only for a production promotion.
+10. Visually verify `https://aswa40-films.vercel.app/` before calling the change live.
 
 ## 8. Continuity rule
 
