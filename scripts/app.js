@@ -599,18 +599,28 @@ bindSidebarAccordion(directorQuartet,'.director-toggle');
 bindSidebarAccordion(yearInsight,'.year-toggle');
 
 if(yearInsight){
+  const yearChart=yearInsight.querySelector('.year-chart');
   const yearBars=[...yearInsight.querySelectorAll('.year-chart-bar')];
   const highlightYears=trigger=>{
     const years=(trigger.dataset.years||'').split(',');
+    yearChart.classList.add('is-exploring');
     yearBars.forEach(bar=>bar.classList.toggle('is-highlighted',years.includes(bar.dataset.y)));
   };
-  const clearHighlightedYears=()=>yearBars.forEach(bar=>bar.classList.remove('is-highlighted'));
+  const clearHighlightedYears=()=>{
+    yearChart.classList.remove('is-exploring');
+    yearBars.forEach(bar=>bar.classList.remove('is-highlighted'));
+  };
 
-  yearInsight.querySelectorAll('.year-highlight').forEach(trigger=>{
+  yearInsight.querySelectorAll('.year-highlight,.year-insight-decade').forEach(trigger=>{
     trigger.addEventListener('pointerenter',()=>highlightYears(trigger));
     trigger.addEventListener('pointerleave',clearHighlightedYears);
     trigger.addEventListener('focus',()=>highlightYears(trigger));
     trigger.addEventListener('blur',clearHighlightedYears);
+  });
+
+  yearBars.forEach(bar=>{
+    bar.addEventListener('pointerenter',()=>highlightYears({dataset:{years:bar.dataset.y}}));
+    bar.addEventListener('pointerleave',clearHighlightedYears);
   });
 }
 
