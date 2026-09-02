@@ -61,6 +61,14 @@ The official URL and GitHub `main` were verified together after the `v0.9.2` vis
 
 Do not infer freshness from the version label alone: after any future change, compare production with current `main` and verify the official URL before declaring it live.
 
+### Phase status
+
+- **Status: complete and user-approved.**
+- Production version `v0.9.3` is the accepted final state for this ASWA40 2000–2024 pass.
+- The refresh behavior is validated: the hero title may replay its entrance animation, but sections already open must remain visually stable.
+- No pending visual or functional correction is recorded.
+- Future work should begin as a new, explicitly scoped batch rather than continuing an assumed unfinished pass.
+
 ### Immediate rule for every space
 
 When resuming in Master, Local or Work:
@@ -76,7 +84,7 @@ When resuming in Master, Local or Work:
 
 ### Active local work
 
-- Status: none recorded at the time of this handoff update.
+- Status: none. The `v0.9.3` production pass is complete and user-approved.
 - When local work begins, record the branch name, starting `main` commit, latest validated checkpoint, files touched and remaining work here.
 - If this block says `none`, do not guess an old local branch from conversation history.
 
