@@ -84,9 +84,21 @@ When resuming in Master, Local or Work:
 
 ### Active local work
 
-- Status: none. The `v0.9.3` production pass is complete and user-approved.
-- When local work begins, record the branch name, starting `main` commit, latest validated checkpoint, files touched and remaining work here.
-- If this block says `none`, do not guess an old local branch from conversation history.
+- Status: active asset-preparation batch for the new 1975–1999 Top.
+- Working branch: `local/top-1975-1999-assets`.
+- Starting `main` commit: `8d40712670438700fa8e64db83735b0cd792bfc6` (`Close validated ASWA40 v0.9.3`).
+- TMDB poster pipeline is configured with the GitHub Actions secret `TMDB_ACCESS_TOKEN`; never place the token in source, handoff, chat, logs or committed files.
+- Current asset checkpoint: 97/97 TMDB poster candidates fetched successfully (90 ranked films + 7 editorial grands oubliés) and stored locally on this branch.
+- This batch is preparation only. Do not merge to `main` or deploy until the user validates the new Top and the poster correspondences.
+
+### TMDB image / attribution policy — project-wide instruction
+
+- TMDB is now the standard source for film poster assets for ASWA40 Tops. Fetch posters through the automated TMDB pipeline, then keep local copies in the repository rather than hotlinking them at runtime.
+- **Pending migration for the existing 2000–2024 production site:** replace all current film-poster imagery used by that Top, including its relevant “grands oubliés” assets, with correctly matched local TMDB versions. This is an instruction / remaining task, not completed work.
+- Apply the same TMDB-first poster workflow to future Tops unless the user explicitly chooses another source for a specific asset.
+- Add a discreet common footer attribution anywhere TMDB-powered assets/data are used. Include the official TMDB logo and the required statement: `This product uses the TMDB API but is not endorsed or certified by TMDB.`
+- Keep the TMDB attribution visually subordinate to ASWA40 branding; one common footer / credits treatment is sufficient rather than repeating attribution under every poster.
+- TMDB attribution does not imply that TMDB owns or grants blanket copyright rights to the underlying movie artwork. Treat posters as third-party copyrighted promotional material.
 
 ## 1. Canonical repository
 
