@@ -1,0 +1,5 @@
+/* Keep Top 5 poster framing stable while the tile scales on rollover. */
+#topHero .tile.cf-active img {
+  object-fit:cover;
+  background:transparent;
+}
