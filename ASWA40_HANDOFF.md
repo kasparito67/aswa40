@@ -44,16 +44,22 @@ The current header direction is LOTR-inspired:
 - editorial/display titles are intended to use a visible serif treatment while utility/body text stays sans-serif
 - rollover outlines for Year and Director cards should use the gold/bronze palette, not red
 
-### Latest code changes not yet visually verified on production
+### Latest production-verified visual state
 
-The following changes are already in `main` but may not yet be visible on the official URL because Vercel has recently rejected deployments with `build-rate-limit`:
+The official URL and GitHub `main` were verified together after the `v0.9.2` visual batch.
 
-- smaller and higher LOTR title artwork
-- stronger diffuse CSS drop shadow behind the title artwork
-- more explicit serif display typography
-- gold/bronze hover outlines for Year and Director cards
+- LOTR title artwork is smaller and positioned 45 px higher using layout positioning that remains independent of its entrance animation.
+- The title has a stronger diffuse CSS drop shadow for contrast.
+- The hero image is approximately 10% brighter than the preceding version.
+- The logo and circular scroll cue use subtle, independent floating animations; both stop when reduced motion is requested.
+- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.2`.
+- The circular arrow is an accessible button that performs a short smooth scroll to the top of the first Top 25 section.
+- The redundant “Insights collectifs” heading has been removed so the sidebar cards align from the top.
+- “Année reine” has a crown icon; “Le quatuor” has a clapper icon.
+- Director portraits and director detail rows link to the corresponding IMDb pages.
+- Year and Director card rollover outlines use the gold/bronze palette.
 
-Before assuming any of these failed technically, compare production with current `main` and check Vercel deployment status.
+Do not infer freshness from the version label alone: after any future change, compare production with current `main` and verify the official URL before declaring it live.
 
 ### Immediate rule for every space
 
@@ -211,7 +217,11 @@ Work is used for targeted implementation, debugging, consolidation and final ver
 - Hero has subtle parallax.
 - Header spacing and title position have already been refined; do not casually reset them.
 - Current title artwork is `assets/header-title.png`; use CSS for scale, vertical position and shadow rather than editing the PNG unless the artwork itself changes.
+- Keep the 45 px upward title offset independent from the title entrance-animation transform so animation keyframes cannot cancel the positioning.
+- The image logo is intentionally retained because its textured LOTR treatment cannot be reproduced faithfully as ordinary HTML text. Preserve the semantic H1 behind it; consider a real vector SVG or responsive WebP/AVIF delivery only as a future asset-optimization pass.
 - Circular hero scroll cue and gold/bronze accents are intentional.
+- Logo and arrow floating motion must remain subtle and must respect `prefers-reduced-motion`.
+- The arrow click should smoothly reveal the first Top 25 section without replacing normal page navigation.
 
 ### Main sections
 
@@ -257,7 +267,7 @@ The latest Top 5 reveal refinement currently lives in `assets/top5-hover-fix.css
 
 ### Insights collectifs
 
-Sidebar contains four editorial insight accordions plus two special cards:
+Sidebar contains four editorial insight accordions plus two special cards. It intentionally has no visible “Insights collectifs” group heading:
 
 - Religion commune
 - Monsieur Consensus
@@ -299,7 +309,7 @@ The quartet is:
 
 Each has four ranking entries. Paul Thomas Anderson is intentionally excluded from this tile.
 
-Closed-state director names are not printed beside the portraits; portrait names appear on rollover. The detail dropdown lists the relevant films.
+Closed-state director names are not printed beside the portraits; portrait names appear on rollover. The detail dropdown lists the relevant films. Both each portrait and its corresponding detail row link to that director’s IMDb page.
 
 ## 6. Data / rendering details worth preserving
 
