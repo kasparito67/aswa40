@@ -16,14 +16,26 @@
   transform:scale(1);
 }
 
+/* LOTR-inspired accent palette. */
+:root {
+  --a:#d8b15a;
+  --wine:#725526;
+  --wine-bright:#b98a3d;
+  --orange:#c99a4a;
+}
+
 /* Hero title experiment: keep the semantic H1 but render the supplied
    LOTR-style title artwork visually. The existing hero-title parallax remains
    on the parent container. */
 .hero-title h1 {
-  width:min(100%,1180px);
-  max-width:none;
+  width:min(62vw,920px);
+  max-width:100%;
   aspect-ratio:2000/663;
   background:url('header-title.png') center/contain no-repeat;
+  filter:
+    drop-shadow(0 16px 26px rgba(0,0,0,.55))
+    drop-shadow(0 4px 8px rgba(70,43,8,.48))
+    drop-shadow(0 0 16px rgba(223,184,96,.12));
   text-shadow:none;
 }
 
@@ -39,15 +51,56 @@
   border:0;
 }
 
+/* Circular scroll cue, closer to the cinematic reference. */
+.hero-title-cue {
+  width:74px;
+  height:74px;
+  bottom:-8px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(225,194,122,.52);
+  border-radius:50%;
+  background:rgba(7,8,8,.22);
+  color:#e0bd6d;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.24),
+    inset 0 0 0 1px rgba(255,240,197,.04);
+  backdrop-filter:blur(2px);
+}
+
+.hero-title-cue svg {
+  width:16px;
+  height:26px;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .hero-title-cue {
+    transition:transform .22s cubic-bezier(.16,1,.3,1),border-color .2s ease,color .2s ease,background-color .2s ease;
+  }
+
+  .hero-title-cue:hover {
+    transform:translateX(-50%) scale(1.05);
+    border-color:rgba(242,210,135,.78);
+    color:#f0d38d;
+    background:rgba(34,24,8,.28);
+  }
+}
+
 @media (max-width:850px) {
   .hero-title h1 {
-    width:min(100%,920px);
+    width:min(76vw,720px);
   }
 }
 
 @media (max-width:540px) {
   .hero-title h1 {
-    width:100%;
+    width:88vw;
+  }
+
+  .hero-title-cue {
+    width:62px;
+    height:62px;
+    bottom:-3px;
   }
 }
 
