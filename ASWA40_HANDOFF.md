@@ -46,13 +46,13 @@ The current header direction is LOTR-inspired:
 
 ### Latest production-verified visual state
 
-The official URL and GitHub `main` were verified together after the `v0.9.2` visual batch.
+The official URL and GitHub `main` were verified together after the `v0.9.2` visual batch. Version `v0.9.3` removes the section-entry flash on page refresh while preserving click-triggered accordion entry animations.
 
 - LOTR title artwork is smaller and positioned 45 px higher using layout positioning that remains independent of its entrance animation.
 - The title has a stronger diffuse CSS drop shadow for contrast.
 - The hero image is approximately 10% brighter than the preceding version.
 - The logo and circular scroll cue use subtle, independent floating animations; both stop when reduced motion is requested.
-- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.2`.
+- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.3`.
 - The circular arrow is an accessible button that performs a short smooth scroll to the top of the first Top 25 section.
 - The redundant “Insights collectifs” heading has been removed so the sidebar cards align from the top.
 - “Année reine” has a crown icon; “Le quatuor” has a clapper icon.
@@ -233,6 +233,8 @@ Sections:
 4. `Les OVNIS`
 
 Opening one section must **not force-close the others**.
+
+Sections already open in the initial HTML must render in their final state on refresh. The section-entry animation is reserved for accordions opened by an explicit user click; the hero title may still replay its entrance animation on refresh.
 
 ### TOP 25
 

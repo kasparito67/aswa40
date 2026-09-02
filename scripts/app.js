@@ -478,6 +478,18 @@ function finishOpen(section){
   if(section.classList.contains('open')) content.style.height='auto';
 }
 
+function animateSectionEntry(section){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const inner=section.querySelector('.inner');
+  if(!inner) return;
+  section.classList.remove('is-opening');
+  void inner.offsetWidth;
+  section.classList.add('is-opening');
+  inner.addEventListener('animationend',()=>{
+    section.classList.remove('is-opening');
+  },{once:true});
+}
+
 function openSection(section){
   const content=section.querySelector('.content');
 
@@ -486,6 +498,7 @@ function openSection(section){
   if(section.classList.contains('full-ranking-sec')){
     content.style.removeProperty('height');
     section.classList.add('open');
+    animateSectionEntry(section);
     if(fullBatchLoading) fullLoader.classList.remove('is-hidden');
     else if(fullLoadedCount>0) updateFullReveal();
     if(fullLoadedCount===0) requestAnimationFrame(()=>appendFullBatch());
@@ -493,6 +506,7 @@ function openSection(section){
   }
 
   section.classList.add('open');
+  animateSectionEntry(section);
   content.style.height='0px';
   const targetHeight=content.scrollHeight;
   requestAnimationFrame(()=>{
