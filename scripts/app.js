@@ -328,14 +328,29 @@ function setModalThumb(src,title=''){
   }
 }
 
+let modalBackdropRequest=0;
+
 function setModalBackdrop(src,title=''){
+  const request=++modalBackdropRequest;
   modal.classList.toggle('has-backdrop',Boolean(src));
+  modalBackdrop.hidden=true;
+  modalBackdrop.onload=null;
+  modalBackdrop.onerror=null;
+
   if(src){
-    modalBackdrop.src=src;
     modalBackdrop.alt=`Image d’ambiance de ${title}`;
-    modalBackdrop.hidden=false;
+    const reveal=()=>{
+      if(request===modalBackdropRequest) modalBackdrop.hidden=false;
+    };
+    modalBackdrop.onload=reveal;
+    modalBackdrop.onerror=()=>{
+      if(request===modalBackdropRequest) modalBackdrop.hidden=true;
+    };
+    modalBackdrop.src=src;
+    if(modalBackdrop.complete&&modalBackdrop.naturalWidth>0){
+      requestAnimationFrame(reveal);
+    }
   }else{
-    modalBackdrop.hidden=true;
     modalBackdrop.removeAttribute('src');
     modalBackdrop.alt='';
   }
