@@ -379,3 +379,4 @@ Use this checklist:
 If a new Chat or Work thread disagrees with this file, current GitHub `main` wins for code state. If `main` and production disagree, treat `main` as the latest source and production as a potentially stale deployment until verified.
 
 For product/visual decisions, Master chat is the decision thread; once a decision is recorded in the **Current state** section, Work should follow it without requiring the user to restate the discussion.
+\n- `v0.9.7`: cinematic detail cards now use 150 local TMDB backdrops with a top-to-bottom transparency fade; outlined Letterboxd links align to poster bottoms.\n
