@@ -16,9 +16,8 @@
       <img class="hero-media" src="assets/cinema-hero.jpg" alt="" aria-hidden="true">
       <nav class="hero-nav" aria-label="Présentation">
         <span>Aimer Star Wars à 40 ans</span>
-        <span>Une communauté de 9 cinéphiles</span>
+        <span>Une communauté de 9 cinéphiles <small class="build-version" aria-label="Version 0.9.2">v0.9.2</small></span>
       </nav>
-      <span class="build-version" aria-label="Version 0.9.1">v0.9.1</span>
       <div class="hero-title">
         <h1>
           <span class="hero-title-line">
@@ -28,11 +27,11 @@
           </span>
           <em>2000–2024</em>
         </h1>
-        <span class="hero-title-cue" aria-hidden="true">
+        <button class="hero-title-cue" type="button" aria-label="Aller au Top 25">
           <svg viewBox="0 0 24 36">
             <path d="M12 2v30m-6-6 6 6 6-6"/>
           </svg>
-        </span>
+        </button>
       </div>
     </header>
     <div class="shell">
@@ -129,7 +128,6 @@
           </div>
         </main>
         <aside class="site-sidebar">
-          <div class="sidebar-title">Insights collectifs</div>
           <div class="insight-item" data-insight="religion">
             <button class="insight-card" data-i="religion" aria-expanded="false">
               <span class="insight-icon">
@@ -215,7 +213,13 @@
           </div>
           <div class="year-insight-card" id="yearInsight">
             <button class="year-toggle" type="button" aria-expanded="false">
-              <div class="year-insight-kicker">Année reine</div>
+              <div class="year-insight-kicker special-card-label">
+                <svg class="special-card-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m3.5 8.5 4.2 3.2L12 5l4.3 6.7 4.2-3.2-1.6 9H5.1l-1.6-9Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M5.6 20h12.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                <span>Année reine</span>
+              </div>
               <div class="year-insight-year">2000</div>
               <div class="year-insight-maincount">13 films</div>
               <span class="year-arrow">↓</span>
@@ -288,52 +292,59 @@
             </div>
           </div>
           <div class="director-card" id="directorQuartet">
-            <button class="director-toggle" type="button" aria-expanded="false">
+            <div class="director-toggle">
+              <button class="director-toggle-action" type="button" aria-expanded="false" aria-label="Afficher les films des réalisateurs"></button>
               <div class="director-copy">
-                <div class="director-k">Le quatuor</div>
+                <div class="director-k special-card-label">
+                  <svg class="special-card-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 8.5h16v11H4zM4 8.5l2.4-4h4l-2.4 4m5 0 2.4-4h4l-2.4 4" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M4 12h16" fill="none" stroke="currentColor" stroke-width="1.55"/>
+                  </svg>
+                  <span>Le quatuor</span>
+                </div>
                 <div class="director-title">4 films chacun</div>
               </div>
               <div class="director-heading">
-                <div class="director-faces" aria-hidden="true">
-                  <span class="director-face" data-name="Denis Villeneuve"><img src="assets/directors/denis-villeneuve.jpg" alt=""></span>
-                  <span class="director-face" data-name="Christopher Nolan"><img src="assets/directors/christopher-nolan.jpg" alt=""></span>
-                  <span class="director-face" data-name="Quentin Tarantino"><img src="assets/directors/quentin-tarantino.jpg" alt=""></span>
-                  <span class="director-face" data-name="Wes Anderson"><img src="assets/directors/wes-anderson.jpg" alt=""></span>
+                <div class="director-faces" aria-label="Réalisateurs sur IMDb">
+                  <a class="director-face" data-name="Denis Villeneuve" href="https://www.imdb.com/name/nm0898288/" target="_blank" rel="noopener noreferrer" aria-label="Denis Villeneuve sur IMDb"><img src="assets/directors/denis-villeneuve.jpg" alt=""></a>
+                  <a class="director-face" data-name="Christopher Nolan" href="https://www.imdb.com/name/nm0634240/" target="_blank" rel="noopener noreferrer" aria-label="Christopher Nolan sur IMDb"><img src="assets/directors/christopher-nolan.jpg" alt=""></a>
+                  <a class="director-face" data-name="Quentin Tarantino" href="https://www.imdb.com/name/nm0000233/" target="_blank" rel="noopener noreferrer" aria-label="Quentin Tarantino sur IMDb"><img src="assets/directors/quentin-tarantino.jpg" alt=""></a>
+                  <a class="director-face" data-name="Wes Anderson" href="https://www.imdb.com/name/nm0027572/" target="_blank" rel="noopener noreferrer" aria-label="Wes Anderson sur IMDb"><img src="assets/directors/wes-anderson.jpg" alt=""></a>
                 </div>
                 <span class="director-arrow">↓</span>
               </div>
-            </button>
+            </div>
             <div class="director-detail">
               <div class="director-detail-inner">
                 <div class="director-list">
-                  <div class="director-row">
+                  <a class="director-row" href="https://www.imdb.com/name/nm0898288/" target="_blank" rel="noopener noreferrer">
                     <img src="assets/directors/denis-villeneuve.jpg" alt="Denis Villeneuve">
                     <div>
                       <b>Denis Villeneuve</b>
                       <div class="director-films">Dune (franchise) · Incendies · Arrival · Blade Runner 2049</div>
                     </div>
-                  </div>
-                  <div class="director-row">
+                  </a>
+                  <a class="director-row" href="https://www.imdb.com/name/nm0634240/" target="_blank" rel="noopener noreferrer">
                     <img src="assets/directors/christopher-nolan.jpg" alt="Christopher Nolan">
                     <div>
                       <b>Christopher Nolan</b>
                       <div class="director-films">Christopher Nolan’s Batman (franchise) · Inception · Interstellar · Dunkirk</div>
                     </div>
-                  </div>
-                  <div class="director-row">
+                  </a>
+                  <a class="director-row" href="https://www.imdb.com/name/nm0000233/" target="_blank" rel="noopener noreferrer">
                     <img src="assets/directors/quentin-tarantino.jpg" alt="Quentin Tarantino">
                     <div>
                       <b>Quentin Tarantino</b>
                       <div class="director-films">Inglourious Basterds · Kill Bill (franchise) · Django Unchained · Once Upon a Time… in Hollywood</div>
                     </div>
-                  </div>
-                  <div class="director-row">
+                  </a>
+                  <a class="director-row" href="https://www.imdb.com/name/nm0027572/" target="_blank" rel="noopener noreferrer">
                     <img src="assets/directors/wes-anderson.jpg" alt="Wes Anderson">
                     <div>
                       <b>Wes Anderson</b>
                       <div class="director-films">The Royal Tenenbaums · The Darjeeling Limited · Fantastic Mr. Fox · The Grand Budapest Hotel</div>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>

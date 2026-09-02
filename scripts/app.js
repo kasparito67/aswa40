@@ -530,7 +530,17 @@ const heroHeader=document.querySelector('.hero-header');
 const heroMedia=document.querySelector('.hero-media');
 const heroTitle=document.querySelector('.hero-title');
 const heroNav=document.querySelector('.hero-nav');
+const heroCue=document.querySelector('.hero-title-cue');
 let parallaxQueued=false;
+
+if(heroCue){
+  heroCue.addEventListener('click',()=>{
+    const topSection=document.querySelector('.stack .sec');
+    if(!topSection) return;
+    const top=window.scrollY+topSection.getBoundingClientRect().top-28;
+    window.scrollTo({top,behavior:'smooth'});
+  });
+}
 
 function updateHeroParallax(){
   const travel=Math.min(window.scrollY,heroHeader.offsetHeight*1.15);
@@ -595,7 +605,7 @@ function bindSidebarAccordion(card,toggleSelector){
   });
 }
 
-bindSidebarAccordion(directorQuartet,'.director-toggle');
+bindSidebarAccordion(directorQuartet,'.director-toggle-action');
 bindSidebarAccordion(yearInsight,'.year-toggle');
 
 if(yearInsight){
