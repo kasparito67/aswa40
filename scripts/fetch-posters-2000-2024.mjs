@@ -16,17 +16,26 @@ const overrides={
   32:{query:"Harry Potter and the Philosopher's Stone",year:2001},
   39:{query:'Anora',year:2024},
   49:{query:'Reality',year:2023},
+  55:{query:'Read My Lips',year:2001},
+  68:{query:'Happily Ever After',year:2004},
   75:{query:'OSS 117: Cairo, Nest of Spies',year:2006},
   91:{query:'Ghost in the Shell',year:2017},
+  92:{query:'The Hunt',year:2012},
   93:{query:'The Avengers',year:2012},
   106:{query:'Pirates of the Caribbean: The Curse of the Black Pearl',year:2003},
   110:{query:'Sink or Swim',year:2018},
   112:{query:'The Butterfly',year:2002},
   118:{query:'The Coffee Table',year:2022},
-  120:{query:'X-Men',year:2000},
+  120:{tmdbId:36657},
   121:{query:'All Quiet on the Western Front',year:2022},
   123:{query:'The Bourne Identity',year:2002},
   128:{query:'Spider-Man: Into the Spider-Verse',year:2018},
+};
+
+const forgottenOverrides={
+  'WALL-E':{tmdbId:10681},
+  'The Master':{tmdbId:68722},
+  'Roma':{tmdbId:426426},
 };
 
 const token=process.env.TMDB_ACCESS_TOKEN;
@@ -44,7 +53,8 @@ async function tmdbFetch(url,attempt=1){
   return response;
 }
 
-async function findPoster(title,year){
+async function findPoster(title,year,tmdbId){
+  if(tmdbId) return (await (await tmdbFetch(`https://api.themoviedb.org/3/movie/${tmdbId}?language=en-US`)).json());
   const params=new URLSearchParams({query:title,include_adult:'false',language:'en-US'});
   if(year) params.set('year',String(year));
   let results=(await (await tmdbFetch(`https://api.themoviedb.org/3/search/movie?${params}`)).json()).results||[];
@@ -55,8 +65,8 @@ async function findPoster(title,year){
   return results.find(result=>result.poster_path)||results[0]||null;
 }
 
-async function downloadPoster({title,query=title,year,file}){
-  const hit=await findPoster(query,year);
+async function downloadPoster({title,query=title,year,tmdbId,file}){
+  const hit=await findPoster(query,year,tmdbId);
   if(!hit?.poster_path) return {title,query,year,status:'missing'};
   const response=await tmdbFetch(`https://image.tmdb.org/t/p/w500${hit.poster_path}`);
   await fs.mkdir(path.dirname(file),{recursive:true});
@@ -73,7 +83,7 @@ for(const film of films){
   const slug=slugify(film.title);
   const file=`assets/posters/2000-2024/${String(film.rank).padStart(3,'0')}-${slug}.jpg`;
   try{
-    const result=await downloadPoster({title:film.title,query:override.query||film.title,year:override.year,file});
+    const result=await downloadPoster({title:film.title,query:override.query||film.title,year:override.year,tmdbId:override.tmdbId,file});
     manifest.ranked.push({rank:film.rank,...result});
   }catch(error){
     manifest.ranked.push({rank:film.rank,title:film.title,status:'error',error:String(error)});
@@ -82,9 +92,10 @@ for(const film of films){
 
 for(const ghost of ghosts){
   const [title]=ghost;
+  const override=forgottenOverrides[title]||{};
   const file=`assets/grands-oublies/2000-2024/${slugify(title)}.jpg`;
   try{
-    manifest.forgotten.push(await downloadPoster({title,file}));
+    manifest.forgotten.push(await downloadPoster({title,query:override.query||title,year:override.year,tmdbId:override.tmdbId,file}));
   }catch(error){
     manifest.forgotten.push({title,status:'error',error:String(error)});
   }
