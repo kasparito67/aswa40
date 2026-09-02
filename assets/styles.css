@@ -705,6 +705,37 @@ body {
   background:linear-gradient(transparent,rgba(0,0,0,.92))
 }
 
+.winner-crown {
+  position:absolute;
+  z-index:3;
+  top:8px;
+  left:8px;
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(205,170,91,.88);
+  border-radius:9px;
+  color:#d8b567;
+  background:rgba(8,10,11,.84);
+  box-shadow:0 5px 18px rgba(0,0,0,.38);
+  pointer-events:none
+}
+
+.winner-crown svg {
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round
+}
+
+.heroTop .tile:nth-child(1) .rank {
+  top:49px
+}
+
 .rank {
   position:absolute;
   z-index:2;
@@ -1569,6 +1600,7 @@ body {
     grid-auto-rows:176px
   }
   .heroTop .tile:nth-child(1) {
+    grid-column:1 / -1;
     grid-row:span 2
   }
   .heroTop .tile:nth-child(2),.heroTop .tile:nth-child(3),.heroTop .tile:nth-child(4),.heroTop .tile:nth-child(5) {

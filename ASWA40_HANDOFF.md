@@ -381,3 +381,5 @@ If a new Chat or Work thread disagrees with this file, current GitHub `main` win
 For product/visual decisions, Master chat is the decision thread; once a decision is recorded in the **Current state** section, Work should follow it without requiring the user to restate the discussion.
 \n- `v0.9.7`: cinematic detail cards now use 150 local TMDB backdrops with a top-to-bottom transparency fade; outlined Letterboxd links align to poster bottoms.\n
 - `v0.9.8`: prevents the previously opened backdrop from flashing during a new film-card transition. Backdrops remain hidden until the newly requested image has loaded, with stale load events ignored during rapid clicks.
+
+- `v0.9.9`: on mobile, the #1 Top 25 tile spans the full grid width before #2–5; the winning tile carries a small crown overlay on both desktop and mobile while retaining its numeric rank badge.

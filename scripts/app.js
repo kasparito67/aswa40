@@ -39,6 +39,9 @@ function tile(film, options = {}) {
   return [
     `<button class="tile" data-r="${film.rank}">`,
     image,
+    film.rank===1
+      ? '<span class="winner-crown" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7l4.2 3.2L12 4l4.8 6.2L21 7l-1.5 11h-15L3 7zm2.5 13h13"/></svg></span>'
+      : '',
     `<span class="rank">${film.rank}</span>`,
     `<span class="name">${film.title}</span>`,
     `<span class="hover"><b>${film.pts} pts</b>`,
