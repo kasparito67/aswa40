@@ -59,6 +59,18 @@ const fullRevealLabel=document.getElementById('fullRevealLabel');
 const ghostsEl=document.getElementById('ghosts');
 const mb=document.getElementById('mb');
 const modal=document.getElementById('modal');
+const modalBackdrop=document.getElementById('modalBackdrop');
+
+const prototypeBackdrops={
+  1:'assets/backdrops/prototype/lotr.jpg',
+  3:'assets/backdrops/prototype/spirited-away.jpg',
+  5:'assets/backdrops/prototype/dark-knight.jpg',
+  28:'assets/backdrops/prototype/parasite.jpg',
+};
+
+const prototypeGhostBackdrops={
+  'WALL-E':'assets/backdrops/prototype/wall-e.jpg',
+};
 
 function bindCoverFlow(){
   if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
@@ -316,10 +328,24 @@ function setModalThumb(src,title=''){
   }
 }
 
+function setModalBackdrop(src,title=''){
+  modal.classList.toggle('has-backdrop',Boolean(src));
+  if(src){
+    modalBackdrop.src=src;
+    modalBackdrop.alt=`Image d’ambiance de ${title}`;
+    modalBackdrop.hidden=false;
+  }else{
+    modalBackdrop.hidden=true;
+    modalBackdrop.removeAttribute('src');
+    modalBackdrop.alt='';
+  }
+}
+
 const specificDetailRanks=new Set([1,2,8,10,28,52,77]);
 
 function showFilm(r){
   const f=films.find(x=>x.rank==r),d=details[String(r)];
+  setModalBackdrop(prototypeBackdrops[f.rank],f.title);
   modalRank.textContent='#'+f.rank+' · classement collectif';
   modalTitle.textContent=f.title;
   modalStats.innerHTML=`<span><b>${f.pts}</b> points</span><span><b>${f.votes}</b> votes</span><span>Best rank <b>${f.best}</b></span>`;
@@ -376,6 +402,7 @@ function toggleInsight(k,trigger){
 }
 function showGhost(i){
   let g=ghosts[i];
+  setModalBackdrop(prototypeGhostBackdrops[g[0]],g[0]);
   setModalThumb(g[2],g[0]);
   modalRank.textContent='Grand absent · 0/9';
   modalTitle.textContent=g[0];

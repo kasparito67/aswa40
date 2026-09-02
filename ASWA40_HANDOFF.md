@@ -91,6 +91,11 @@ When resuming in Master, Local or Work:
 
 ### Active local work
 
+- Secondary visual prototype: `local/modal-backdrop-prototype`, based on production `v0.9.6` commit `1f83693`.
+- Prototype scope only: cinematic detail cards for ranks #1, #3, #5, #28 and the “Grand oublié” WALL-E, using five local TMDB-sourced backdrops in `assets/backdrops/prototype/`.
+- Prototype version label: `v0.9.6.1`. Do not merge or deploy until the user validates the modal direction.
+- The existing 1975–1999 asset-preparation branch below remains separate and unchanged.
+
 - Status: active asset-preparation batch for the future 1975–1999 Top.
 - Working branch: `local/top-1975-1999-assets`.
 - Starting `main` commit: `8d40712670438700fa8e64db83735b0cd792bfc6` (`Close validated ASWA40 v0.9.3`).
