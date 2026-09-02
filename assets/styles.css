@@ -1672,6 +1672,12 @@ body {
   background:#090b0c
 }
 
+/* ASWA40_TOP5_HOVER_FIX */
+#topHero .tile.cf-active img {
+  object-fit:cover;
+  background:transparent
+}
+
 @media(prefers-reduced-motion:reduce) {
   .sec.open .inner {
     animation:none!important
