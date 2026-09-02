@@ -22,6 +22,31 @@
   --wine:#725526;
   --wine-bright:#b98a3d;
   --orange:#c99a4a;
+  --display-serif:Georgia,'Times New Roman',serif;
+}
+
+/* Serif display layer: keep Inter Tight for UI/body copy, while giving
+   editorial headings a more classical cinematic/fantasy voice. */
+.toggle strong,
+.insight-card b,
+.year-insight-year,
+.director-title,
+.modal h2,
+#ghosts .ghost-copy b,
+.tile .name {
+  font-family:var(--display-serif);
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+
+.toggle strong {
+  letter-spacing:-.035em;
+}
+
+.insight-card b,
+#ghosts .ghost-copy b,
+.tile .name {
+  letter-spacing:-.018em;
 }
 
 /* Hero title experiment: keep the semantic H1 but render the supplied
