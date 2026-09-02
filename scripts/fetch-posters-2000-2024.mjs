@@ -16,7 +16,6 @@ const overrides={
   32:{query:"Harry Potter and the Philosopher's Stone",year:2001},
   39:{query:'Anora',year:2024},
   49:{query:'Reality',year:2023},
-  68:{query:'Ils se marièrent et eurent beaucoup d’enfants',year:2004},
   75:{query:'OSS 117: Cairo, Nest of Spies',year:2006},
   91:{query:'Ghost in the Shell',year:2017},
   93:{query:'The Avengers',year:2012},
