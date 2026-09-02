@@ -16,6 +16,41 @@
   transform:scale(1);
 }
 
+/* Hero title experiment: keep the semantic H1 but render the supplied
+   LOTR-style title artwork visually. The existing hero-title parallax remains
+   on the parent container. */
+.hero-title h1 {
+  width:min(100%,1180px);
+  max-width:none;
+  aspect-ratio:2000/663;
+  background:url('header-title.png') center/contain no-repeat;
+  text-shadow:none;
+}
+
+.hero-title h1 > * {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+  border:0;
+}
+
+@media (max-width:850px) {
+  .hero-title h1 {
+    width:min(100%,920px);
+  }
+}
+
+@media (max-width:540px) {
+  .hero-title h1 {
+    width:100%;
+  }
+}
+
 @media (prefers-reduced-motion:reduce) {
   #topHero .tile img {
     transition:none;
