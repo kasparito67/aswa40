@@ -345,7 +345,7 @@ const specificDetailRanks=new Set([1,2,8,10,28,52,77]);
 
 function showFilm(r){
   const f=films.find(x=>x.rank==r),d=details[String(r)];
-  setModalBackdrop(prototypeBackdrops[f.rank],f.title);
+  setModalBackdrop(filmBackdrops[f.rank],f.title);
   modalRank.textContent='#'+f.rank+' · classement collectif';
   modalTitle.textContent=f.title;
   modalStats.innerHTML=`<span><b>${f.pts}</b> points</span><span><b>${f.votes}</b> votes</span><span>Best rank <b>${f.best}</b></span>`;
@@ -402,7 +402,7 @@ function toggleInsight(k,trigger){
 }
 function showGhost(i){
   let g=ghosts[i];
-  setModalBackdrop(prototypeGhostBackdrops[g[0]],g[0]);
+  setModalBackdrop(ghostBackdrops[g[0]],g[0]);
   setModalThumb(g[2],g[0]);
   modalRank.textContent='Grand absent · 0/9';
   modalTitle.textContent=g[0];
