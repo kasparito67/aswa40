@@ -526,17 +526,6 @@ function closeSection(section){
   });
 }
 
-function closeSectionImmediately(section){
-  if(!section.classList.contains('open')) return;
-  const content=section.querySelector('.content');
-  if(section.classList.contains('full-ranking-sec')) fullLoader.classList.add('is-hidden');
-  content.style.transition='none';
-  section.classList.remove('open');
-  content.style.height='0px';
-  content.offsetHeight;
-  requestAnimationFrame(()=>content.style.removeProperty('transition'));
-}
-
 const heroHeader=document.querySelector('.hero-header');
 const heroMedia=document.querySelector('.hero-media');
 const heroTitle=document.querySelector('.hero-title');
@@ -574,18 +563,6 @@ sections.forEach(section=>{
   const toggle=section.querySelector('.toggle');
   toggle.addEventListener('click',()=>{
     const shouldOpen=!section.classList.contains('open');
-
-    if(shouldOpen&&section.classList.contains('full-ranking-sec')){
-      sections.forEach(other=>{
-        if(other!==section) closeSectionImmediately(other);
-      });
-      openSection(section);
-      return;
-    }
-
-    sections.forEach(other=>{
-      if(other!==section) closeSection(other);
-    });
     if(shouldOpen) openSection(section);
     else closeSection(section);
   });

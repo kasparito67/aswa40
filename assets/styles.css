@@ -895,7 +895,19 @@ body {
 #ghosts .ghost-copy span {
   display:block;
   color:#bdc4c7;
-  line-height:1.3
+  line-height:1.3;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transform:translateY(7px);
+  transition:max-height .34s cubic-bezier(.16,1,.3,1),opacity .22s ease,transform .34s cubic-bezier(.16,1,.3,1),margin .34s ease
+}
+
+#ghosts .card.ghost-focus .ghost-copy span,#ghosts .card:focus-visible .ghost-copy span {
+  max-height:72px;
+  margin-top:7px;
+  opacity:1;
+  transform:none
 }
 
 #ghosts .card.ghost-focus img {
@@ -1150,7 +1162,7 @@ body {
 }
 
 .hero-header {
-  min-height:clamp(480px,60vh,650px)
+  min-height:clamp(540px,68vh,720px)
 }
 
 .hero-media {
@@ -1176,7 +1188,7 @@ body {
 }
 
 .hero-title {
-  inset:25% 28px 12%;
+  inset:29% 28px 10%;
   transform:translate3d(0,var(--parallax-title-y,0px),0);
   will-change:transform
 }
@@ -1329,6 +1341,14 @@ body {
   padding:18px
 }
 
+.full-ranking-sec .pad {
+  padding-top:4px
+}
+
+.full-ranking-sec .full-scroll {
+  padding-top:10px
+}
+
 .stack .sec {
   --section-accent:var(--a)
 }
@@ -1475,7 +1495,7 @@ body {
 
 @media(max-width:850px) {
   .hero-header {
-    min-height:520px
+    min-height:580px
   }
   .hero-title h1 {
     font-size:clamp(56px,12vw,88px);
@@ -1494,14 +1514,14 @@ body {
 
 @media(max-width:540px) {
   .hero-header {
-    min-height:470px
+    min-height:520px
   }
   .hero-media {
     top:-6%;
     height:112%
   }
   .hero-title {
-    inset:24% 14px 14%
+    inset:29% 14px 12%
   }
   .hero-title h1 {
     font-size:clamp(45px,13.8vw,62px);
@@ -1796,9 +1816,36 @@ body {
   display:block
 }
 
+.year-highlights {
+  display:grid;
+  gap:6px;
+  margin:13px 0 14px
+}
+
+.year-highlights div {
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  padding:7px 9px;
+  border-radius:8px;
+  background:#121719
+}
+
+.year-highlights b {
+  color:#eef1f2;
+  font-size:11.5px
+}
+
+.year-highlights span {
+  color:#949da1;
+  font-size:10.5px;
+  text-align:right
+}
+
 .year-insight-note {
-  font-size:9.5px;
-  line-height:1.38;
+  font-size:11.5px;
+  line-height:1.45;
   color:#8f999e
 }
 
@@ -1835,7 +1882,8 @@ body {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:14px
+  gap:14px;
+  padding-bottom:29px
 }
 
 .director-k {
@@ -1852,27 +1900,53 @@ body {
   margin-top:8px
 }
 
-.director-sub {
-  font-size:11px;
-  line-height:1.35;
-  color:#9ba5a9;
-  margin-top:7px
-}
-
 .director-faces {
   display:flex;
   align-items:center;
-  padding-left:10px
+  overflow:visible
 }
 
-.director-faces img {
-  width:38px;
-  height:38px;
+.director-face {
+  position:relative;
+  display:block;
+  width:50px;
+  height:50px
+}
+
+.director-face+.director-face {
+  margin-left:-12px
+}
+
+.director-face img {
+  display:block;
+  width:50px;
+  height:50px;
   border-radius:50%;
   object-fit:cover;
   border:2px solid #0f1315;
-  margin-left:-9px;
   background:#20272b
+}
+
+.director-face:after {
+  content:attr(data-name);
+  position:absolute;
+  z-index:5;
+  top:calc(100% + 7px);
+  left:50%;
+  width:max-content;
+  max-width:130px;
+  padding:4px 7px;
+  border-radius:999px;
+  background:#262d30;
+  color:#fff;
+  font-size:9px;
+  font-weight:750;
+  line-height:1;
+  white-space:nowrap;
+  opacity:0;
+  transform:translate(-50%,-4px);
+  pointer-events:none;
+  transition:opacity .18s ease,transform .22s cubic-bezier(.16,1,.3,1)
 }
 
 .director-arrow {
@@ -1881,7 +1955,7 @@ body {
   transition:transform .25s ease
 }
 
-.director-faces img {
+.director-face img {
   transition:transform .24s cubic-bezier(.16,1,.3,1),border-color .24s ease,box-shadow .24s ease
 }
 
@@ -1906,15 +1980,20 @@ body {
     transform:rotate(180deg) translateY(-2px)
   }
 
-  .director-card:hover .director-faces img {
+  .director-card:hover .director-face img {
     border-color:#151a1c
   }
 
-  .director-faces img:hover {
+  .director-face:hover img {
     position:relative;
     z-index:3;
-    transform:translateY(-3px) scale(1.22);
+    transform:translateY(-4px) scale(1.2);
     box-shadow:0 8px 18px rgba(0,0,0,.42)
+  }
+
+  .director-face:hover:after {
+    opacity:1;
+    transform:translate(-50%,0)
   }
 }
 
