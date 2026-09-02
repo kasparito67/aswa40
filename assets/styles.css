@@ -2139,3 +2139,39 @@ body {
   line-height:1.35;
   color:#9aa4a8
 }
+
+.site-credits {
+  width:min(1180px,calc(100% - 40px));
+  margin:40px auto 0;
+  padding:22px 0 28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  border-top:1px solid rgba(255,255,255,.07);
+  color:#747d81;
+}
+
+.site-credits img {
+  width:76px;
+  height:auto;
+  flex:none;
+}
+
+.site-credits p {
+  margin:0;
+  font:500 10px/1.35 'Inter Tight',Inter,system-ui,sans-serif;
+  letter-spacing:.015em;
+}
+
+@media(max-width:540px) {
+  .site-credits {
+    width:calc(100% - 30px);
+    align-items:flex-start;
+    gap:11px;
+  }
+
+  .site-credits img {
+    width:62px;
+  }
+}

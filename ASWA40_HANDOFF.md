@@ -46,13 +46,13 @@ The current header direction is LOTR-inspired:
 
 ### Latest production-verified visual state
 
-The official URL and GitHub `main` were verified together after the `v0.9.2` visual batch. Version `v0.9.3` removes the section-entry flash on page refresh while preserving click-triggered accordion entry animations.
+The official URL and GitHub `main` were verified together after the `v0.9.2` visual batch. Version `v0.9.3` removes the section-entry flash on page refresh while preserving click-triggered accordion entry animations. Version `v0.9.4` migrates all film posters to local TMDB-sourced files and adds the required common attribution footer.
 
 - LOTR title artwork is smaller and positioned 45 px higher using layout positioning that remains independent of its entrance animation.
 - The title has a stronger diffuse CSS drop shadow for contrast.
 - The hero image is approximately 10% brighter than the preceding version.
 - The logo and circular scroll cue use subtle, independent floating animations; both stop when reduced motion is requested.
-- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.3`.
+- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.4`.
 - The circular arrow is an accessible button that performs a short smooth scroll to the top of the first Top 25 section.
 - The redundant “Insights collectifs” heading has been removed so the sidebar cards align from the top.
 - “Année reine” has a crown icon; “Le quatuor” has a clapper icon.
@@ -64,9 +64,11 @@ Do not infer freshness from the version label alone: after any future change, co
 ### Phase status
 
 - **Status: complete and user-approved.**
-- Production version `v0.9.3` is the accepted final state for this ASWA40 2000–2024 pass.
+- Production version `v0.9.4` is the current state for this ASWA40 2000–2024 pass.
 - The refresh behavior is validated: the hero title may replay its entrance animation, but sections already open must remain visually stable.
-- No pending visual or functional correction is recorded.
+- All 135 ranked-film posters and 15 “Grands oubliés” posters are local TMDB-sourced assets; no runtime TMDB request or token is exposed to visitors.
+- A discreet footer carries the official TMDB logo and required attribution statement.
+- No pending visual or functional correction is recorded after this migration.
 - Future work should begin as a new, explicitly scoped batch rather than continuing an assumed unfinished pass.
 
 ### Immediate rule for every space
@@ -84,9 +86,21 @@ When resuming in Master, Local or Work:
 
 ### Active local work
 
-- Status: none. The `v0.9.3` production pass is complete and user-approved.
+- Status: active asset-preparation batch for the future 1975–1999 Top.
+- Working branch: `local/top-1975-1999-assets`.
+- Starting `main` commit: `8d40712670438700fa8e64db83735b0cd792bfc6` (`Close validated ASWA40 v0.9.3`).
+- TMDB poster pipeline is configured with the GitHub Actions secret `TMDB_ACCESS_TOKEN`; never place the token in source, handoff, chat, logs or committed files.
+- Current asset checkpoint: 97/97 TMDB poster candidates fetched successfully (90 ranked films + 7 editorial grands oubliés) and stored locally on this branch.
+- This 1975–1999 batch is preparation only. Do not merge to `main` or deploy until the user validates the new Top and the poster correspondences.
 - When local work begins, record the branch name, starting `main` commit, latest validated checkpoint, files touched and remaining work here.
 - If this block says `none`, do not guess an old local branch from conversation history.
+
+### TMDB image / attribution policy
+
+- TMDB is the standard source for film poster assets for ASWA40 Tops.
+- Fetch through an authenticated build/asset pipeline, then serve local repository copies; never hotlink posters or expose `TMDB_ACCESS_TOKEN` in browser code.
+- Every TMDB-powered Top uses one discreet shared footer with the official TMDB logo and the statement: `This product uses the TMDB API but is not endorsed or certified by TMDB.`
+- TMDB attribution does not imply that TMDB owns or grants blanket copyright rights to the underlying movie artwork. Treat posters as third-party copyrighted promotional material.
 
 ## 1. Canonical repository
 
@@ -105,8 +119,11 @@ The project is a static site with separated responsibilities:
 - `assets/top5-hover-fix.css` — small late-loading override layer currently also carrying recent hero/type/palette experiments; this should eventually be consolidated once the visual direction stabilizes
 - `scripts/data.js` — film ranking, poster references and editorial data
 - `scripts/app.js` — rendering, accordions, modals, cover-flow, progressive ranking loading, parallax and year-chart interactions
-- `assets/posters/` — local poster assets
-- `assets/grands-oublies/` — local posters for “Les grands oubliés”
+- `assets/posters/2000-2024/` — 135 local TMDB-sourced ranked-film posters
+- `assets/grands-oublies/2000-2024/` — 15 local TMDB-sourced posters for “Les grands oubliés”
+- `data/2000-2024/poster-manifest.json` — audited TMDB correspondence manifest
+- `scripts/fetch-posters-2000-2024.mjs` — authenticated poster-fetch/mapping utility; the token remains in GitHub Actions secrets
+- `assets/tmdb-logo.svg` — official TMDB attribution mark
 - `assets/directors/` — local director portraits
 - `assets/cinema-hero.jpg` — current hero image
 - `assets/header-title.png` — current LOTR-style hero title artwork
@@ -271,7 +288,7 @@ The latest Top 5 reveal refinement currently lives in `assets/top5-hover-fix.css
 
 ### Les grands oubliés
 
-- Local poster assets are used.
+- Local TMDB-sourced poster assets are used.
 - Descriptive copy stays hidden by default and appears on rollover/focus.
 - The card itself enlarges fluidly.
 
@@ -324,6 +341,7 @@ Closed-state director names are not printed beside the portraits; portrait names
 ## 6. Data / rendering details worth preserving
 
 - `scripts/app.js` renders film tiles from `scripts/data.js`.
+- All 150 current poster references in `scripts/data.js` point to local files; no base64 or third-party runtime image URLs remain.
 - Letterboxd URLs include manual slug exceptions for franchises.
 - Some modal editorial detail exists only for selected ranks.
 - Full-ranking poster images use deferred `data-src` loading.
