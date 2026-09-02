@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Aimer Star Wars à 40 ans</title>
+    <script>
+      document.documentElement.classList.add('js-loading');
+      window.setTimeout(() => document.documentElement.classList.remove('js-loading'), 1500);
+    </script>
     <link rel="preload" href="assets/cinema-hero.jpg" as="image">
     <link rel="preload" href="assets/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/inter-tight-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -16,7 +20,7 @@
       <img class="hero-media" src="assets/cinema-hero.jpg" alt="" aria-hidden="true">
       <nav class="hero-nav" aria-label="Présentation">
         <span>Aimer Star Wars à 40 ans</span>
-        <span>Une communauté de 9 cinéphiles <small class="build-version" aria-label="Version 0.9.4">v0.9.4</small></span>
+        <span>Une communauté de 9 cinéphiles <small class="build-version" aria-label="Version 0.9.5">v0.9.5</small></span>
       </nav>
       <div class="hero-title">
         <h1>

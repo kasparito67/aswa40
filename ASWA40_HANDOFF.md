@@ -46,13 +46,13 @@ The current header direction is LOTR-inspired:
 
 ### Latest production-verified visual state
 
-The official URL and GitHub `main` were verified together after the `v0.9.2` visual batch. Version `v0.9.3` removes the section-entry flash on page refresh while preserving click-triggered accordion entry animations. Version `v0.9.4` migrates all film posters to local TMDB-sourced files and adds the required common attribution footer.
+The official URL and GitHub `main` were verified together after the `v0.9.2` visual batch. Version `v0.9.3` removes the section-entry flash on page refresh while preserving click-triggered accordion entry animations. Version `v0.9.4` migrates all film posters to local TMDB-sourced files and adds the required common attribution footer. Version `v0.9.5` standardizes film-row rollover motion, corrects the full-ranking poster ratio, releases the sidebar from sticky positioning when expanded and gates the initial section paint until priority posters are decoded.
 
 - LOTR title artwork is smaller and positioned 45 px higher using layout positioning that remains independent of its entrance animation.
 - The title has a stronger diffuse CSS drop shadow for contrast.
 - The hero image is approximately 10% brighter than the preceding version.
 - The logo and circular scroll cue use subtle, independent floating animations; both stop when reduced motion is requested.
-- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.4`.
+- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.5`.
 - The circular arrow is an accessible button that performs a short smooth scroll to the top of the first Top 25 section.
 - The redundant “Insights collectifs” heading has been removed so the sidebar cards align from the top.
 - “Année reine” has a crown icon; “Le quatuor” has a clapper icon.
@@ -64,10 +64,14 @@ Do not infer freshness from the version label alone: after any future change, co
 ### Phase status
 
 - **Status: complete and user-approved.**
-- Production version `v0.9.4` is the current state for this ASWA40 2000–2024 pass.
+- Production version `v0.9.5` is the current state for this ASWA40 2000–2024 pass.
 - The refresh behavior is validated: the hero title may replay its entrance animation, but sections already open must remain visually stable.
 - All 135 ranked-film posters and 15 “Grands oubliés” posters are local TMDB-sourced assets; no runtime TMDB request or token is exposed to visitors.
 - A discreet footer carries the official TMDB logo and required attribution statement.
+- Top 25, full-ranking and OVNI film rows share centered, restrained rollover transforms; edge rows must not jump differently from middle rows.
+- The full ranking uses ten `2:3` poster columns on desktop and keeps `object-fit:cover` during rollover, with no letterbox bands.
+- The desktop sidebar is sticky only while its cards are collapsed; opening a sidebar card lets it move naturally with the page.
+- The initial section layout stays geometrically stable and is revealed after priority poster decoding, preventing a transient black section frame on refresh.
 - No pending visual or functional correction is recorded after this migration.
 - Future work should begin as a new, explicitly scoped batch rather than continuing an assumed unfinished pass.
 
@@ -134,7 +138,7 @@ Important: do **not** return to the old monolithic `aswa40_prod_deploy.html` wor
 
 ## 3. Deployment / production guardrail
 
-There have historically been two Vercel projects connected to this repository (`aswa40-films` and `aswa40-films-live`). The official public URL currently used by the user is:
+There was historically a redundant second Vercel project named `aswa40-films-live`. It was deleted on 2026-09-02. The sole production project is now `aswa40-films`, whose official public URL is:
 
 `https://aswa40-films.vercel.app/`
 
@@ -147,7 +151,7 @@ Before a manual deploy or when checking whether a change is live:
 3. Verify the actual public page after deployment.
 4. Never say “live” only because a GitHub commit succeeded.
 
-Known issue: Vercel has recently rejected deployments with `build-rate-limit`. In that situation, GitHub can be ahead of production.
+Historical issue: when both projects were connected, each commit triggered two builds and contributed to Vercel `build-rate-limit` failures. With `aswa40-films-live` deleted, each production commit should now trigger only the sole `aswa40-films` project. GitHub can still be ahead of production if a build fails.
 
 ## 4. Three-space working method
 

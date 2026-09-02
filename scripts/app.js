@@ -71,14 +71,6 @@ function bindCoverFlow(){
     tile.style.removeProperty('transform-origin');
   }
 
-  function setSafeTransformOrigin(tile,viewport){
-    const r=tile.getBoundingClientRect();
-    const v=viewport.getBoundingClientRect();
-    const x=r.left-v.left<r.width*.42?'left':v.right-r.right<r.width*.42?'right':'center';
-    const y=r.top-v.top<r.height*.42?'top':v.bottom-r.bottom<r.height*.42?'bottom':'center';
-    tile.style.transformOrigin=`${x} ${y}`;
-  }
-
   const clearTop=()=>{
     topHero.classList.remove('coverflow-active');
     topRest.classList.remove('coverflow-active');
@@ -130,7 +122,6 @@ function bindCoverFlow(){
     tileEl.addEventListener('pointerenter',()=>{
       topRest.classList.add('coverflow-active');
       applySameRowCoverFlow(tileEl,topRest,restTiles,'rest');
-      setSafeTransformOrigin(tileEl,topRest);
     });
   });
 
@@ -183,7 +174,6 @@ function bindCoverFlow(){
 
         if(d===0){
           item.el.classList.add('cf-active');
-          setSafeTransformOrigin(item.el,fullScroll);
         }else if(d===1){
           item.el.classList.add('cf-near1');
           item.el.style.setProperty('--cf-x',`${side*16}px`);
@@ -227,7 +217,6 @@ function bindCoverFlow(){
         const side=index<activeIndex?-1:1;
         if(d===0){
           item.el.classList.add('cf-active');
-          setSafeTransformOrigin(item.el,bottomGrid);
         }
         else if(d===1){
           item.el.classList.add('cf-near1');
@@ -649,3 +638,16 @@ if(yearInsight){
 }
 
 render();
+
+const initialSectionImages=[...document.querySelectorAll('#topHero img,#topRest img')];
+const initialDecode=Promise.all(initialSectionImages.map(image=>{
+  if(typeof image.decode!=='function') return Promise.resolve();
+  return image.decode().catch(()=>{});
+}));
+
+Promise.race([
+  initialDecode,
+  new Promise(resolve=>setTimeout(resolve,900)),
+]).then(()=>requestAnimationFrame(()=>{
+  document.documentElement.classList.remove('js-loading');
+}));

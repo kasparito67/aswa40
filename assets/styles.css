@@ -42,6 +42,12 @@ body {
   font-family:'Inter Tight',Inter,system-ui,sans-serif
 }
 
+/* Keep the section shells out of the first paint until their eager posters
+   are decoded. Visibility preserves the document geometry and scroll restore. */
+.js-loading .site-layout {
+  visibility:hidden
+}
+
 .hero-header {
   position:relative;
   min-height:clamp(590px,78vh,840px);
@@ -681,7 +687,7 @@ body {
 }
 
 .compact .tile {
-  aspect-ratio:3/4;
+  aspect-ratio:2/3;
   content-visibility:auto;
   contain-intrinsic-size:120px 160px
 }
@@ -2162,6 +2168,63 @@ body {
   margin:0;
   font:500 10px/1.35 'Inter Tight',Inter,system-ui,sans-serif;
   letter-spacing:.015em;
+}
+
+/* Rollover consistency pass: all regular film rows use the same centered,
+   restrained motion as the approved Top 5 / Grands oubliés interactions. */
+#topRest .tile.cf-active,
+#bottom .tile.cf-active {
+  transform:translate3d(0,-5px,0) scale(1.18)
+}
+
+#topRest .tile.cf-near1,
+#bottom .tile.cf-near1 {
+  transform:translate3d(var(--cf-x,0),-1px,0) scale(1.07)
+}
+
+#topRest .tile.cf-near2,
+#bottom .tile.cf-near2 {
+  transform:translate3d(var(--cf-x,0),0,0) scale(1.03)
+}
+
+#full .tile.cf-active {
+  transform:translate3d(0,-4px,0) scale(1.16)
+}
+
+#full .tile.cf-near1 {
+  transform:translate3d(var(--cf-x,0),-1px,0) scale(1.06)
+}
+
+#full .tile.cf-near2 {
+  transform:translate3d(var(--cf-x,0),0,0) scale(1.025)
+}
+
+#full .tile.cf-near3 {
+  transform:translate3d(var(--cf-x,0),0,0) scale(1.01)
+}
+
+#topRest .tile,
+#full .tile,
+#bottom .tile {
+  transform-origin:center center!important
+}
+
+.tile.cf-active img {
+  object-fit:cover;
+  background:transparent
+}
+
+@media(min-width:1001px) {
+  .full-scroll .grid.compact {
+    grid-template-columns:repeat(10,minmax(0,1fr))
+  }
+
+  /* An expanded sidebar can exceed the viewport. Let it leave naturally
+     with the document instead of trapping content below the fold. */
+  .site-sidebar:has(.is-open) {
+    position:relative;
+    top:auto
+  }
 }
 
 @media(max-width:540px) {
