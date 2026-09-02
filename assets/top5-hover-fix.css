@@ -52,11 +52,11 @@
 /* Hero title artwork. Keep the semantic H1 in the DOM, but render the
    supplied LOTR-style artwork visually. The parallax remains on .hero-title. */
 .hero-title h1 {
-  width:min(55.8vw,828px);
+  width:min(50.22vw,745px);
   max-width:100%;
   aspect-ratio:2000/663;
   background:url('header-title.png') center/contain no-repeat;
-  transform:translateY(-38px);
+  transform:translateY(-62px);
   filter:
     drop-shadow(0 18px 34px rgba(0,0,0,.58))
     drop-shadow(0 8px 24px rgba(0,0,0,.42))
@@ -120,15 +120,15 @@
 
 @media (max-width:850px) {
   .hero-title h1 {
-    width:min(68vw,648px);
-    transform:translateY(-28px);
+    width:min(61.2vw,583px);
+    transform:translateY(-48px);
   }
 }
 
 @media (max-width:540px) {
   .hero-title h1 {
-    width:79vw;
-    transform:translateY(-20px);
+    width:71.1vw;
+    transform:translateY(-36px);
   }
 
   .hero-title-cue {
