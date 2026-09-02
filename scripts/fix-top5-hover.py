@@ -13,3 +13,5 @@ if needle not in h:
 override="""\n/* ASWA40_TOP5_HOVER_FIX */\n#topHero .tile.cf-active img {\n  object-fit:cover;\n  background:transparent\n}\n"""
 h=h.replace(needle, needle+override, 1)
 p.write_text(h, encoding='utf-8')
+
+# Triggered as a one-off maintenance patch.
