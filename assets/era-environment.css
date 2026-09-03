@@ -1,0 +1,39 @@
+/* Shared 1975–1999 / 2000–2024 environment */
+@view-transition{navigation:auto}
+html{--era-shift:0px;--era-opacity:1;background:#080a0b}
+body{transition:none}
+body.era-gesture{transform:translate3d(var(--era-shift),0,0);opacity:var(--era-opacity);will-change:transform,opacity}
+body.era-snapback{transition:transform .36s cubic-bezier(.2,.8,.2,1),opacity .28s ease}
+body.era-committing{pointer-events:none;transition:transform .28s cubic-bezier(.32,.72,0,1),opacity .22s ease}
+html[data-era-dir="next"]::view-transition-old(root){animation:era-old-next .24s cubic-bezier(.32,.72,0,1) both}
+html[data-era-dir="next"]::view-transition-new(root){animation:era-new-next .36s cubic-bezier(.16,1,.3,1) both}
+html[data-era-dir="prev"]::view-transition-old(root){animation:era-old-prev .24s cubic-bezier(.32,.72,0,1) both}
+html[data-era-dir="prev"]::view-transition-new(root){animation:era-new-prev .36s cubic-bezier(.16,1,.3,1) both}
+@keyframes era-old-next{to{opacity:.72;transform:translate3d(-12%,0,0) scale(.992)}}
+@keyframes era-new-next{from{opacity:.76;transform:translate3d(12%,0,0) scale(.992)}to{opacity:1;transform:none}}
+@keyframes era-old-prev{to{opacity:.72;transform:translate3d(12%,0,0) scale(.992)}}
+@keyframes era-new-prev{from{opacity:.76;transform:translate3d(-12%,0,0) scale(.992)}to{opacity:1;transform:none}}
+
+/* One navigation language on both eras */
+.era-nav,.era-nav-2000{position:absolute!important;inset:0!important;z-index:30!important;pointer-events:none!important}
+.era-nav a,.era-nav-2000 a,.era-arrow{position:absolute!important;top:50%!important;transform:translateY(-50%)!important;width:58px!important;height:82px!important;display:grid!important;place-items:center!important;pointer-events:auto!important;color:rgba(255,255,255,.82)!important;text-decoration:none!important;font:300 32px/1 'Inter Tight',Inter,Arial,sans-serif!important;-webkit-tap-highlight-color:transparent}
+.era-nav .left,.era-nav-2000 .left,.era-arrow.left{left:16px!important}.era-nav .right,.era-nav-2000 .right,.era-arrow.right{right:16px!important}
+.era-nav a:hover,.era-nav-2000 a:hover,.era-arrow:hover{color:#fff!important}
+
+/* 1975 section geometry: exact match to the 2000 master */
+body[data-era="1975"] .shell{max-width:1450px!important;margin:-70px auto 0!important;padding:28px!important}
+body[data-era="1975"] .layout{grid-template-columns:minmax(0,1fr) 300px!important;gap:20px!important;align-items:start!important;margin-top:25px!important}
+body[data-era="1975"] .stack{gap:12px!important;margin-top:0!important}
+body[data-era="1975"] .section{border-radius:18px!important}
+body[data-era="1975"] .section-head{min-height:112px!important;padding:24px 22px!important;gap:18px!important;align-items:center!important}
+body[data-era="1975"] .section-head>div{display:grid!important;gap:8px!important}
+body[data-era="1975"] .section-head small{margin:0!important;color:#aab4b8!important;font-size:11px!important;font-weight:800!important;letter-spacing:.13em!important;text-transform:uppercase!important}
+body[data-era="1975"] .section-head strong{font:750 36px/.94 'Inter Tight',InterTight,sans-serif!important;letter-spacing:-.035em!important}
+body[data-era="1975"] .section-head i{color:#e60d45!important;font-size:24px!important;transition:transform .46s cubic-bezier(.16,1,.3,1)!important}
+
+/* Preserve the original 1920x1080 SVG but remove its transparent-canvas feel. */
+body[data-era="1975"] .hero-title h1{background-image:url('../assets/header-title-1975-1999.svg')!important;background-repeat:no-repeat!important;background-position:center 51%!important;background-size:149% auto!important;aspect-ratio:1320/580!important;width:min(54.6vw,728px)!important;top:-18px!important}
+
+@media(max-width:1000px){body[data-era="1975"] .layout{grid-template-columns:1fr!important}}
+@media(max-width:700px){.era-nav a,.era-nav-2000 a,.era-arrow{width:44px!important}.era-nav .left,.era-nav-2000 .left,.era-arrow.left{left:5px!important}.era-nav .right,.era-nav-2000 .right,.era-arrow.right{right:5px!important}body[data-era="1975"] .shell{padding:14px!important;margin-top:-70px!important}body[data-era="1975"] .layout{margin-top:25px!important}}
+@media(prefers-reduced-motion:reduce){body.era-gesture,body.era-snapback,body.era-committing{transition:none!important;transform:none!important;opacity:1!important}::view-transition-old(root),::view-transition-new(root){animation:none!important}}
