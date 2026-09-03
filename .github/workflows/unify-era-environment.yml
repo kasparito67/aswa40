@@ -1,0 +1,84 @@
+name: Unify ASWA40 era environment
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/unify-era-environment.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  unify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Wire shared geometry and navigation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          # 2000–2024
+          root = Path('index.html')
+          html = root.read_text(encoding='utf-8')
+          html = html.replace('<body>', '<body data-era="2000">', 1)
+          if 'assets/era-environment.css' not in html:
+              html = html.replace(
+                  '<link rel="stylesheet" href="assets/top5-hover-fix.css">',
+                  '<link rel="stylesheet" href="assets/top5-hover-fix.css">\n    <link rel="stylesheet" href="assets/era-environment.css">',
+                  1,
+              )
+          if 'scripts/era-environment.js' not in html:
+              html = html.replace(
+                  '</body>',
+                  '    <script src="scripts/era-environment.js"></script>\n  </body>',
+                  1,
+              )
+          root.write_text(html, encoding='utf-8')
+
+          # 1975–1999
+          page = Path('1975-1999/index.html')
+          html = page.read_text(encoding='utf-8')
+          html = html.replace('<body>', '<body data-era="1975">', 1)
+          if '../assets/era-environment.css' not in html:
+              html = html.replace('</head>', '<link rel="stylesheet" href="../assets/era-environment.css">\n</head>', 1)
+          if '../scripts/era-environment.js' not in html:
+              html = html.replace('</body>', '<script src="../scripts/era-environment.js"></script>\n</body>', 1)
+          page.write_text(html, encoding='utf-8')
+
+          # Remove the old page-era gesture implementation from the 2000 film-nav script.
+          detail = Path('scripts/detail-nav.js')
+          js = detail.read_text(encoding='utf-8')
+          js, n = re.subn(
+              r"\n  const hero = document\.querySelector\('\.hero-header'\);.*?\n\}\)\(\);\s*$",
+              '\n})();\n',
+              js,
+              count=1,
+              flags=re.S,
+          )
+          if n != 1:
+              raise SystemExit(f'Expected to remove one legacy era-nav block, found {n}')
+          detail.write_text(js, encoding='utf-8')
+
+          # Shared gesture wins capture before any legacy 1975 hero listener.
+          env = Path('scripts/era-environment.js')
+          js = env.read_text(encoding='utf-8')
+          needle = "if (navigating || event.pointerType === 'mouse' || event.button !== 0 || event.target.closest('a,button')) return;\n      pointer ="
+          repl = "if (navigating || event.pointerType === 'mouse' || event.button !== 0 || event.target.closest('a,button')) return;\n      event.stopImmediatePropagation();\n      pointer ="
+          if needle not in js:
+              raise SystemExit('Shared pointerdown insertion point missing')
+          js = js.replace(needle, repl, 1)
+          env.write_text(js, encoding='utf-8')
+          PY
+      - name: Commit unified environment
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html 1975-1999/index.html scripts/detail-nav.js scripts/era-environment.js
+          git commit -m 'Unify section geometry and seamless era navigation [skip ci]'
+          git push origin main
