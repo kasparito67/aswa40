@@ -9,22 +9,40 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const preloaded = new Set();
   let current = null;
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let trackingTouch = false;
   let navigating = false;
+  let drag = null;
 
-  modal.insertAdjacentHTML('beforeend', [
-    '<button class="modal-nav modal-nav-prev" type="button" aria-label="Film précédent">',
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>',
-    '</button>',
-    '<button class="modal-nav modal-nav-next" type="button" aria-label="Film suivant">',
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>',
-    '</button>',
-  ].join(''));
+  if (!modal.querySelector('.modal-nav-prev')) {
+    modal.insertAdjacentHTML('beforeend', [
+      '<button class="modal-nav modal-nav-prev" type="button" aria-label="Film précédent">',
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>',
+      '</button>',
+      '<button class="modal-nav modal-nav-next" type="button" aria-label="Film suivant">',
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>',
+      '</button>',
+    ].join(''));
+  }
 
   const previousButton = modal.querySelector('.modal-nav-prev');
   const nextButton = modal.querySelector('.modal-nav-next');
+
+  const style = document.createElement('style');
+  style.textContent = `
+    #modal{touch-action:pan-y;will-change:transform,opacity}
+    #modal.is-film-dragging{transition:none!important}
+    @view-transition{navigation:auto}
+    .era-nav-2000{position:absolute;inset:0;z-index:12;pointer-events:none}
+    .era-nav-2000 a{position:absolute;top:50%;transform:translateY(-50%);width:58px;height:82px;display:grid;place-items:center;pointer-events:auto;color:rgba(255,255,255,.78);text-decoration:none;font:300 32px/1 Inter,Arial,sans-serif}
+    .era-nav-2000 .left{left:16px}.era-nav-2000 .right{right:16px}
+    .era-nav-2000 a:after{content:attr(data-tip);position:absolute;top:50%;padding:8px 10px;border:1px solid rgba(255,255,255,.13);background:rgba(8,10,11,.94);color:#fff;font:750 11px/1.1 Inter,Arial,sans-serif;white-space:nowrap;opacity:0;visibility:hidden;transform:translateY(-50%);transition:opacity .16s ease .7s,visibility 0s linear .86s}
+    .era-nav-2000 .left:after{left:calc(100% + 7px)}.era-nav-2000 .right:after{right:calc(100% + 7px)}
+    .era-nav-2000 a:hover{color:#fff}.era-nav-2000 a:hover:after,.era-nav-2000 a:focus-visible:after{opacity:1;visibility:visible;transition-delay:.7s}
+    .hero-header{touch-action:pan-y;will-change:transform}
+    .hero-header.is-era-dragging{transition:none!important}
+    .hero-header.is-era-settling{transition:transform .22s cubic-bezier(.2,.75,.25,1)!important}
+    @media(max-width:700px){.era-nav-2000 a{width:44px}.era-nav-2000 .left{left:5px}.era-nav-2000 .right{right:5px}.era-nav-2000 a:after{display:none}}
+  `;
+  document.head.appendChild(style);
 
   function updateLabels() {
     if (!current) return;
@@ -80,22 +98,41 @@
   function setCurrent(type, key) { current = { type, key: Number(key) }; updateLabels(); requestAnimationFrame(warmNeighbours); }
   function showTarget(target) { setCurrent(target.type, target.key); if (target.type === 'film') showFilm(target.key); else showGhost(target.key); }
 
-  async function navigate(step) {
+  function clearModalTransform() {
+    modal.classList.remove('is-film-dragging');
+    modal.style.removeProperty('transform');
+    modal.style.removeProperty('opacity');
+  }
+
+  async function animateToTarget(step, fromX = 0) {
     if (!current || navigating) return;
     const target = targetForStep(step);
     if (!target) return;
     navigating = true;
     try {
-      await Promise.race([preloadTarget(target), new Promise(resolve => setTimeout(resolve, 500))]);
-      if (reducedMotion.matches || typeof modal.animate !== 'function') { showTarget(target); return; }
-      const distance = window.matchMedia('(max-width: 700px)').matches ? 42 : 34;
-      const exitX = step > 0 ? -distance : distance;
-      const enterX = step > 0 ? distance : -distance;
-      await modal.animate([{ transform: 'translate3d(0,0,0)', opacity: 1 },{ transform: `translate3d(${exitX}px,0,0)`, opacity: .92 }],{ duration: 105, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' }).finished;
+      await Promise.race([preloadTarget(target), new Promise(resolve => setTimeout(resolve, 360))]);
+      if (reducedMotion.matches || typeof modal.animate !== 'function') {
+        showTarget(target);
+        clearModalTransform();
+        return;
+      }
+      const width = Math.max(300, modal.getBoundingClientRect().width);
+      const exitX = step > 0 ? -width : width;
+      const enterX = step > 0 ? width * .34 : -width * .34;
+      await modal.animate([
+        { transform: `translate3d(${fromX}px,0,0)`, opacity: 1 - Math.min(.16, Math.abs(fromX) / width * .16) },
+        { transform: `translate3d(${exitX}px,0,0)`, opacity: .7 }
+      ], { duration: fromX ? 125 : 150, easing: 'cubic-bezier(.32,.72,0,1)', fill: 'forwards' }).finished;
       showTarget(target);
       await new Promise(resolve => requestAnimationFrame(resolve));
-      await modal.animate([{ transform: `translate3d(${enterX}px,0,0)`, opacity: .92 },{ transform: 'translate3d(0,0,0)', opacity: 1 }],{ duration: 175, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' }).finished;
-    } finally { navigating = false; }
+      await modal.animate([
+        { transform: `translate3d(${enterX}px,0,0)`, opacity: .82 },
+        { transform: 'translate3d(0,0,0)', opacity: 1 }
+      ], { duration: 190, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' }).finished;
+    } finally {
+      clearModalTransform();
+      navigating = false;
+    }
   }
 
   document.addEventListener('click', event => {
@@ -103,50 +140,106 @@
     if (tile) { setCurrent('film', tile.dataset.r); return; }
     const ghost = event.target.closest('[data-g]');
     if (ghost) setCurrent('ghost', ghost.dataset.g);
-  });
-  previousButton.addEventListener('click', () => navigate(-1));
-  nextButton.addEventListener('click', () => navigate(1));
+  }, true);
+
+  previousButton.addEventListener('click', event => { event.stopPropagation(); animateToTarget(-1); });
+  nextButton.addEventListener('click', event => { event.stopPropagation(); animateToTarget(1); });
+
   document.addEventListener('keydown', event => {
     if (!modalBg.classList.contains('open')) return;
-    if (event.key === 'ArrowLeft') { event.preventDefault(); navigate(-1); }
-    else if (event.key === 'ArrowRight') { event.preventDefault(); navigate(1); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); animateToTarget(-1); }
+    else if (event.key === 'ArrowRight') { event.preventDefault(); animateToTarget(1); }
   });
-  modal.addEventListener('touchstart', event => {
-    if (!modalBg.classList.contains('open') || event.touches.length !== 1 || navigating) return;
-    const touch = event.touches[0]; touchStartX = touch.clientX; touchStartY = touch.clientY; trackingTouch = true;
-  }, { passive: true });
-  modal.addEventListener('touchend', event => {
-    if (!trackingTouch || event.changedTouches.length !== 1 || navigating) return;
-    trackingTouch = false;
-    const touch = event.changedTouches[0];
-    const deltaX = touch.clientX - touchStartX;
-    const deltaY = touch.clientY - touchStartY;
-    const horizontalDistance = Math.abs(deltaX);
-    const verticalDistance = Math.abs(deltaY);
-    if (horizontalDistance < 52 || horizontalDistance < verticalDistance * 1.25) return;
-    navigate(deltaX < 0 ? 1 : -1);
-  }, { passive: true });
-})();
 
-// Cross-era navigation for the 2000–2024 landing page.
-(() => {
+  modal.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'mouse' || event.button !== 0 || !modalBg.classList.contains('open') || navigating || event.target.closest('a,button')) return;
+    drag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, dx: 0, startTime: performance.now(), locked: false };
+    modal.setPointerCapture?.(event.pointerId);
+  });
+  modal.addEventListener('pointermove', event => {
+    if (!drag || drag.id !== event.pointerId) return;
+    drag.dx = event.clientX - drag.startX;
+    const dy = event.clientY - drag.startY;
+    if (!drag.locked) {
+      if (Math.abs(drag.dx) < 8 && Math.abs(dy) < 8) return;
+      if (Math.abs(dy) > Math.abs(drag.dx) * 1.08) { drag = null; return; }
+      drag.locked = true;
+      modal.classList.add('is-film-dragging');
+    }
+    const width = Math.max(300, modal.getBoundingClientRect().width);
+    modal.style.transform = `translate3d(${drag.dx}px,0,0)`;
+    modal.style.opacity = String(1 - Math.min(.16, Math.abs(drag.dx) / width * .16));
+    event.preventDefault();
+  }, { passive: false });
+
+  function finishFilmDrag() {
+    if (!drag) return;
+    const state = drag;
+    drag = null;
+    if (!state.locked) { clearModalTransform(); return; }
+    modal.classList.remove('is-film-dragging');
+    const width = Math.max(300, modal.getBoundingClientRect().width);
+    const elapsed = Math.max(16, performance.now() - state.startTime);
+    const velocity = state.dx / elapsed;
+    const commit = Math.abs(state.dx) > width * .18 || Math.abs(velocity) > .55;
+    if (commit) { animateToTarget(state.dx < 0 ? 1 : -1, state.dx); return; }
+    if (reducedMotion.matches || typeof modal.animate !== 'function') { clearModalTransform(); return; }
+    modal.animate([
+      { transform: `translate3d(${state.dx}px,0,0)`, opacity: modal.style.opacity || 1 },
+      { transform: 'translate3d(0,0,0)', opacity: 1 }
+    ], { duration: 180, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' }).finished.finally(clearModalTransform);
+  }
+  modal.addEventListener('pointerup', finishFilmDrag);
+  modal.addEventListener('pointercancel', finishFilmDrag);
+
   const hero = document.querySelector('.hero-header');
-  if (!hero || hero.querySelector('.era-nav-2000')) return;
-  const style = document.createElement('style');
-  style.textContent = `
-    @view-transition{navigation:auto}
-    .era-nav-2000{position:absolute;inset:0;z-index:12;pointer-events:none}
-    .era-nav-2000 a{position:absolute;top:50%;transform:translateY(-50%);width:58px;height:82px;display:grid;place-items:center;pointer-events:auto;color:rgba(255,255,255,.78);text-decoration:none;font:300 32px/1 Inter,Arial,sans-serif}
-    .era-nav-2000 .left{left:16px}.era-nav-2000 .right{right:16px}
-    .era-nav-2000 a:after{content:attr(data-tip);position:absolute;top:50%;padding:8px 10px;border:1px solid rgba(255,255,255,.13);background:rgba(8,10,11,.94);color:#fff;font:750 11px/1.1 Inter,Arial,sans-serif;white-space:nowrap;opacity:0;visibility:hidden;transform:translateY(-50%);transition:opacity .16s ease .7s,visibility 0s linear .86s}
-    .era-nav-2000 .left:after{left:calc(100% + 7px)}.era-nav-2000 .right:after{right:calc(100% + 7px)}
-    .era-nav-2000 a:hover{color:#fff}.era-nav-2000 a:hover:after,.era-nav-2000 a:focus-visible:after{opacity:1;visibility:visible;transition-delay:.7s}
-    @media(max-width:700px){.era-nav-2000 a{width:44px}.era-nav-2000 .left{left:5px}.era-nav-2000 .right{right:5px}.era-nav-2000 a:after{display:none}}
-  `;
-  document.head.appendChild(style);
-  const nav = document.createElement('nav');
-  nav.className = 'era-nav-2000';
-  nav.setAttribute('aria-label','Navigation entre les classements');
-  nav.innerHTML = '<a class="left" href="/1975-1999/" data-tip="Top films 1975–1999" aria-label="Top films 1975–1999">←</a><a class="right" href="/1975-1999/" data-tip="Top films 1975–1999" aria-label="Top films 1975–1999">→</a>';
-  hero.appendChild(nav);
+  if (hero && !hero.querySelector('.era-nav-2000')) {
+    const nav = document.createElement('nav');
+    nav.className = 'era-nav-2000';
+    nav.setAttribute('aria-label', 'Navigation entre les classements');
+    nav.innerHTML = '<a class="left" href="/1975-1999/" data-tip="Top films 1975–1999" aria-label="Top films 1975–1999">←</a><a class="right" href="/1975-1999/" data-tip="Top films 1975–1999" aria-label="Top films 1975–1999">→</a>';
+    hero.appendChild(nav);
+
+    let eraDrag = null;
+    hero.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' || event.button !== 0 || event.target.closest('a,button')) return;
+      eraDrag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, dx: 0, startTime: performance.now(), locked: false };
+      hero.setPointerCapture?.(event.pointerId);
+    });
+    hero.addEventListener('pointermove', event => {
+      if (!eraDrag || eraDrag.id !== event.pointerId) return;
+      eraDrag.dx = event.clientX - eraDrag.startX;
+      const dy = event.clientY - eraDrag.startY;
+      if (!eraDrag.locked) {
+        if (Math.abs(eraDrag.dx) < 9 && Math.abs(dy) < 9) return;
+        if (Math.abs(dy) > Math.abs(eraDrag.dx) * 1.05) { eraDrag = null; return; }
+        eraDrag.locked = true;
+        hero.classList.add('is-era-dragging');
+      }
+      hero.style.transform = `translate3d(${eraDrag.dx}px,0,0)`;
+      event.preventDefault();
+    }, { passive: false });
+    const finishEraDrag = () => {
+      if (!eraDrag) return;
+      const state = eraDrag;
+      eraDrag = null;
+      if (!state.locked) { hero.style.removeProperty('transform'); return; }
+      hero.classList.remove('is-era-dragging');
+      const velocity = state.dx / Math.max(16, performance.now() - state.startTime);
+      const commit = Math.abs(state.dx) > innerWidth * .16 || Math.abs(velocity) > .55;
+      if (!commit) {
+        hero.classList.add('is-era-settling');
+        hero.style.transform = 'translate3d(0,0,0)';
+        setTimeout(() => { hero.classList.remove('is-era-settling'); hero.style.removeProperty('transform'); }, 240);
+        return;
+      }
+      if (reducedMotion.matches) { location.href = '/1975-1999/'; return; }
+      const sign = state.dx < 0 ? -1 : 1;
+      hero.classList.add('is-era-settling');
+      hero.style.transform = `translate3d(${sign * innerWidth}px,0,0)`;
+      setTimeout(() => { location.href = '/1975-1999/'; }, 175);
+    };
+    hero.addEventListener('pointerup', finishEraDrag);
+    hero.addEventListener('pointercancel', finishEraDrag);
+  }
 })();
