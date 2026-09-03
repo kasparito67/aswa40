@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>ASWA40 · Platform rebuild</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <main class="stage" id="stage" aria-live="polite"></main>
+    <button class="era-arrow era-prev" id="eraPrev" type="button" aria-label="Top précédent">←</button>
+    <button class="era-arrow era-next" id="eraNext" type="button" aria-label="Top suivant">→</button>
+    <div class="era-hud" id="eraHud"></div>
+  </div>
+
+  <div class="modal-bg" id="modalBg" aria-hidden="true">
+    <article class="film-modal" id="filmModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Fermer">×</button>
+      <button class="modal-nav modal-prev" id="modalPrev" type="button" aria-label="Film précédent">‹</button>
+      <button class="modal-nav modal-next" id="modalNext" type="button" aria-label="Film suivant">›</button>
+      <div class="modal-backdrop"><img id="modalBackdrop" alt=""></div>
+      <div class="modal-content">
+        <img class="modal-poster" id="modalPoster" alt="">
+        <div>
+          <div class="modal-rank" id="modalRank"></div>
+          <h2 id="modalTitle"></h2>
+          <div class="modal-stats" id="modalStats"></div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
