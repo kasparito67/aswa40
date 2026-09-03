@@ -7,6 +7,7 @@
 
   const rankedFilms = [...films].sort((a, b) => Number(a.rank) - Number(b.rank));
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const preloaded = new Set();
   let current = null;
   let touchStartX = 0;
   let touchStartY = 0;
@@ -44,11 +45,6 @@
     nextButton.setAttribute('aria-label', `Film suivant : ${ghosts[nextIndex][0]}`);
   }
 
-  function setCurrent(type, key) {
-    current = { type, key: Number(key) };
-    updateLabels();
-  }
-
   function targetForStep(step) {
     if (!current) return null;
 
@@ -65,6 +61,49 @@
     };
   }
 
+  function targetAssets(target) {
+    if (!target) return [];
+    if (target.type === 'film') {
+      const film = films.find(item => Number(item.rank) === target.key);
+      return film ? [film.img, filmBackdrops[film.rank]].filter(Boolean) : [];
+    }
+
+    const ghost = ghosts[target.key];
+    return ghost ? [ghost[2], ghostBackdrops[ghost[0]]].filter(Boolean) : [];
+  }
+
+  function preloadAsset(src) {
+    if (!src || preloaded.has(src)) return Promise.resolve();
+    return new Promise(resolve => {
+      const image = new Image();
+      const done = () => {
+        preloaded.add(src);
+        resolve();
+      };
+      image.onload = done;
+      image.onerror = done;
+      image.src = src;
+      if (image.complete) done();
+    });
+  }
+
+  function preloadTarget(target) {
+    return Promise.all(targetAssets(target).map(preloadAsset));
+  }
+
+  function warmNeighbours() {
+    if (!current) return;
+    [targetForStep(-1), targetForStep(1)].forEach(target => {
+      preloadTarget(target);
+    });
+  }
+
+  function setCurrent(type, key) {
+    current = { type, key: Number(key) };
+    updateLabels();
+    requestAnimationFrame(warmNeighbours);
+  }
+
   function showTarget(target) {
     setCurrent(target.type, target.key);
     if (target.type === 'film') showFilm(target.key);
@@ -76,33 +115,43 @@
     const target = targetForStep(step);
     if (!target) return;
 
-    if (reducedMotion.matches || typeof modal.animate !== 'function') {
-      showTarget(target);
-      return;
-    }
-
     navigating = true;
-    const distance = window.matchMedia('(max-width: 700px)').matches ? 64 : 46;
-    const exitX = step > 0 ? -distance : distance;
-    const enterX = step > 0 ? distance : -distance;
 
     try {
+      // Keep the current card completely stable while the next poster/backdrop
+      // is loading. This avoids the brief blank/hidden image state seen on swipe.
+      await Promise.race([
+        preloadTarget(target),
+        new Promise(resolve => setTimeout(resolve, 500)),
+      ]);
+
+      if (reducedMotion.matches || typeof modal.animate !== 'function') {
+        showTarget(target);
+        return;
+      }
+
+      const distance = window.matchMedia('(max-width: 700px)').matches ? 42 : 34;
+      const exitX = step > 0 ? -distance : distance;
+      const enterX = step > 0 ? distance : -distance;
+
       await modal.animate([
-        { transform: 'translateX(0) scale(1)', opacity: 1 },
-        { transform: `translateX(${exitX}px) scale(.992)`, opacity: .36 },
+        { transform: 'translate3d(0,0,0)', opacity: 1 },
+        { transform: `translate3d(${exitX}px,0,0)`, opacity: .92 },
       ], {
-        duration: 130,
+        duration: 105,
         easing: 'cubic-bezier(.4,0,1,1)',
         fill: 'forwards',
       }).finished;
 
       showTarget(target);
 
+      await new Promise(resolve => requestAnimationFrame(resolve));
+
       await modal.animate([
-        { transform: `translateX(${enterX}px) scale(.992)`, opacity: .36 },
-        { transform: 'translateX(0) scale(1)', opacity: 1 },
+        { transform: `translate3d(${enterX}px,0,0)`, opacity: .92 },
+        { transform: 'translate3d(0,0,0)', opacity: 1 },
       ], {
-        duration: 230,
+        duration: 175,
         easing: 'cubic-bezier(.16,1,.3,1)',
         fill: 'both',
       }).finished;
@@ -138,7 +187,7 @@
   });
 
   modal.addEventListener('touchstart', event => {
-    if (!modalBg.classList.contains('open') || event.touches.length !== 1) return;
+    if (!modalBg.classList.contains('open') || event.touches.length !== 1 || navigating) return;
     const touch = event.touches[0];
     touchStartX = touch.clientX;
     touchStartY = touch.clientY;
@@ -146,7 +195,7 @@
   }, { passive: true });
 
   modal.addEventListener('touchend', event => {
-    if (!trackingTouch || event.changedTouches.length !== 1) return;
+    if (!trackingTouch || event.changedTouches.length !== 1 || navigating) return;
     trackingTouch = false;
 
     const touch = event.changedTouches[0];
