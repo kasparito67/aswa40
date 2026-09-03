@@ -6,14 +6,15 @@
   <title>ASWA40 · Platform rebuild</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/inter-tight-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles/app.css">
 </head>
 <body>
   <div class="app" id="app">
-    <main class="stage" id="stage" aria-live="polite"></main>
+    <main class="stage" id="stage"></main>
     <button class="era-arrow era-prev" id="eraPrev" type="button" aria-label="Top précédent">←</button>
     <button class="era-arrow era-next" id="eraNext" type="button" aria-label="Top suivant">→</button>
-    <div class="era-hud" id="eraHud"></div>
+    <div class="era-hud" id="eraHud" aria-label="Navigation entre les tops"></div>
   </div>
 
   <div class="modal-bg" id="modalBg" aria-hidden="true">
@@ -24,15 +25,18 @@
       <div class="modal-backdrop"><img id="modalBackdrop" alt=""></div>
       <div class="modal-content">
         <img class="modal-poster" id="modalPoster" alt="">
-        <div>
+        <div class="modal-copy">
           <div class="modal-rank" id="modalRank"></div>
           <h2 id="modalTitle"></h2>
           <div class="modal-stats" id="modalStats"></div>
+          <div class="modal-body" id="modalBody"></div>
         </div>
       </div>
     </article>
   </div>
 
+  <!-- Canonical 2000–2024 content remains the source of truth during the rebuild. -->
+  <script src="../scripts/data.js"></script>
   <script src="scripts/data.js"></script>
   <script src="scripts/app.js"></script>
 </body>
