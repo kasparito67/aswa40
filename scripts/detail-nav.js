@@ -6,10 +6,13 @@
   if (!modalBg || !modal || typeof showFilm !== 'function' || typeof showGhost !== 'function') return;
 
   const rankedFilms = [...films].sort((a, b) => Number(a.rank) - Number(b.rank));
+  const modalLayout = modal.querySelector('.modal-layout');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let current = null;
   let touchStartX = 0;
   let touchStartY = 0;
   let trackingTouch = false;
+  let navigating = false;
 
   modal.insertAdjacentHTML('beforeend', [
     '<button class="modal-nav modal-nav-prev" type="button" aria-label="Film précédent">',
@@ -47,21 +50,67 @@
     updateLabels();
   }
 
-  function navigate(step) {
-    if (!current) return;
+  function targetForStep(step) {
+    if (!current) return null;
 
     if (current.type === 'film') {
       const index = rankedFilms.findIndex(film => Number(film.rank) === current.key);
-      if (index < 0) return;
+      if (index < 0) return null;
       const target = rankedFilms[(index + step + rankedFilms.length) % rankedFilms.length];
-      setCurrent('film', target.rank);
-      showFilm(target.rank);
+      return { type: 'film', key: Number(target.rank) };
+    }
+
+    return {
+      type: 'ghost',
+      key: (current.key + step + ghosts.length) % ghosts.length,
+    };
+  }
+
+  function showTarget(target) {
+    setCurrent(target.type, target.key);
+    if (target.type === 'film') showFilm(target.key);
+    else showGhost(target.key);
+  }
+
+  async function navigate(step) {
+    if (!current || navigating) return;
+    const target = targetForStep(step);
+    if (!target) return;
+
+    if (reducedMotion.matches || !modalLayout || typeof modalLayout.animate !== 'function') {
+      showTarget(target);
       return;
     }
 
-    const targetIndex = (current.key + step + ghosts.length) % ghosts.length;
-    setCurrent('ghost', targetIndex);
-    showGhost(targetIndex);
+    navigating = true;
+    const exitX = step > 0 ? -28 : 28;
+    const enterX = step > 0 ? 28 : -28;
+
+    try {
+      await modalLayout.animate([
+        { transform: 'translateX(0)', opacity: 1 },
+        { transform: `translateX(${exitX}px)`, opacity: .48 },
+      ], {
+        duration: 115,
+        easing: 'cubic-bezier(.4,0,1,1)',
+        fill: 'forwards',
+      }).finished;
+
+      showTarget(target);
+
+      await modalLayout.animate([
+        { transform: `translateX(${enterX}px)`, opacity: .48 },
+        { transform: 'translateX(0)', opacity: 1 },
+      ], {
+        duration: 210,
+        easing: 'cubic-bezier(.16,1,.3,1)',
+        fill: 'both',
+      }).finished;
+    } finally {
+      navigating = false;
+      modalLayout.style.removeProperty('transform');
+      modalLayout.style.removeProperty('opacity');
+    }
   }
 
   document.addEventListener('click', event => {
