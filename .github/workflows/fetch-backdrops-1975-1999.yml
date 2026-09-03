@@ -9,7 +9,9 @@ on:
       - scripts/apply-1975-production.mjs
       - scripts/fix-1975-v034.mjs
       - scripts/fix-1975-v035.mjs
+      - scripts/fix-1975-v036.mjs
       - assets/1975-mobile-v095.css
+      - assets/1975-unified-v096.css
       - data/1975-1999/poster-manifest.json
       - .github/workflows/fetch-backdrops-1975-1999.yml
 
@@ -34,10 +36,12 @@ jobs:
         run: node scripts/fix-1975-v034.mjs
       - name: Apply mobile cinematic fix
         run: node scripts/fix-1975-v035.mjs
+      - name: Unify 1975 UI with 2000 components
+        run: node scripts/fix-1975-v036.mjs
       - name: Commit generated assets and page
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/cinema-hero-1975-1999.jpg assets/backdrops/1975-1999 assets/backdrops/grands-oublies-1975-1999 scripts/backdrops-1975-1999.js 1975-1999/index.html
-          git diff --cached --quiet || git commit -m "Apply 1975-1999 v0.9.35 mobile cinematic fix [skip ci]"
+          git add assets/cinema-hero-1975-1999.jpg assets/header-title-1975-1999.svg assets/backdrops/1975-1999 assets/backdrops/grands-oublies-1975-1999 scripts/backdrops-1975-1999.js 1975-1999/index.html
+          git diff --cached --quiet || git commit -m "Apply 1975-1999 v0.9.36 unified film UI [skip ci]"
           git push
