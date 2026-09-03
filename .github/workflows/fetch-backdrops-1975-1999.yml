@@ -7,6 +7,7 @@ on:
     paths:
       - scripts/fetch-backdrops-1975-1999.mjs
       - scripts/apply-1975-production.mjs
+      - scripts/fix-1975-v034.mjs
       - data/1975-1999/poster-manifest.json
       - .github/workflows/fetch-backdrops-1975-1999.yml
 
@@ -27,10 +28,12 @@ jobs:
         run: node scripts/fetch-backdrops-1975-1999.mjs
       - name: Apply production treatment
         run: node scripts/apply-1975-production.mjs
+      - name: Apply visible SVG title fix
+        run: node scripts/fix-1975-v034.mjs
       - name: Commit generated assets and page
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/cinema-hero-1975-1999.jpg assets/backdrops/1975-1999 assets/backdrops/grands-oublies-1975-1999 scripts/backdrops-1975-1999.js 1975-1999/index.html
-          git diff --cached --quiet || git commit -m "Apply 1975-1999 v0.9.33 production treatment [skip ci]"
+          git diff --cached --quiet || git commit -m "Apply 1975-1999 v0.9.34 production treatment [skip ci]"
           git push
