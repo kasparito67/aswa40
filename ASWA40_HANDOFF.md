@@ -46,13 +46,13 @@ The current header direction is LOTR-inspired:
 
 ### Latest production-verified visual state
 
-The official URL and GitHub `main` were verified together after the `v0.9.2` visual batch. Version `v0.9.3` removes the section-entry flash on page refresh while preserving click-triggered accordion entry animations. Version `v0.9.4` migrates all film posters to local TMDB-sourced files and adds the required common attribution footer. Version `v0.9.5` standardizes film-row rollover motion, corrects the full-ranking poster ratio, releases the sidebar from sticky positioning when expanded and gates the initial section paint until priority posters are decoded. Version `v0.9.6` adds a smooth film-detail panel transition and enlarges its poster treatment.
+The official URL and GitHub `main` are aligned on `v0.9.9`. Versions `v0.9.3–0.9.6` stabilized refresh, migrated posters to local TMDB assets, standardized rollover motion and introduced smooth enlarged film-detail panels. Version `v0.9.7` expanded those panels into the current cinematic treatment. Versions `v0.9.8–0.9.9` fixed stale backdrop flashes and finalized the mobile Top 5 hierarchy.
 
 - LOTR title artwork is smaller and positioned 45 px higher using layout positioning that remains independent of its entrance animation.
 - The title has a stronger diffuse CSS drop shadow for contrast.
 - The hero image is approximately 10% brighter than the preceding version.
 - The logo and circular scroll cue use subtle, independent floating animations; both stop when reduced motion is requested.
-- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.6`.
+- The version label is aligned with the utility text at the upper-right of the hero and currently reads `v0.9.9`.
 - The circular arrow is an accessible button that performs a short smooth scroll to the top of the first Top 25 section.
 - The redundant “Insights collectifs” heading has been removed so the sidebar cards align from the top.
 - “Année reine” has a crown icon; “Le quatuor” has a clapper icon.
@@ -64,7 +64,7 @@ Do not infer freshness from the version label alone: after any future change, co
 ### Phase status
 
 - **Status: complete and user-approved.**
-- Production version `v0.9.6` is the current state for this ASWA40 2000–2024 pass.
+- Production version `v0.9.9` is the current and user-approved state for the ASWA40 2000–2024 site.
 - The refresh behavior is validated: the hero title may replay its entrance animation, but sections already open must remain visually stable.
 - All 135 ranked-film posters and 15 “Grands oubliés” posters are local TMDB-sourced assets; no runtime TMDB request or token is exposed to visitors.
 - A discreet footer carries the official TMDB logo and required attribution statement.
@@ -72,7 +72,9 @@ Do not infer freshness from the version label alone: after any future change, co
 - The full ranking uses ten `2:3` poster columns on desktop and keeps `object-fit:cover` during rollover, with no letterbox bands.
 - The desktop sidebar is sticky only while its cards are collapsed; opening a sidebar card lets it move naturally with the page.
 - The initial section layout stays geometrically stable and is revealed after priority poster decoding, preventing a transient black section frame on refresh.
-- Film and “Grand oublié” detail panels open and close with a restrained fade/scale transition and use a larger poster (160 px desktop, 104 px mobile).
+- Film and “Grand oublié” detail panels use 150 local TMDB backdrops with a vertical top-to-bottom transparency fade, a larger poster and an outlined Letterboxd link aligned with the poster bottom.
+- Opening a different film never flashes the previously opened backdrop: each background stays hidden until its newly requested image has loaded, and stale load events are ignored.
+- On mobile, the #1 Top 25 tile spans the full grid width; ranks #2–5 follow in two columns. A crown overlays the winning tile on desktop and mobile while its numeric rank remains visible.
 - No pending visual or functional correction is recorded after this migration.
 - Future work should begin as a new, explicitly scoped batch rather than continuing an assumed unfinished pass.
 
@@ -91,19 +93,7 @@ When resuming in Master, Local or Work:
 
 ### Active local work
 
-- Secondary visual prototype: `local/modal-backdrop-prototype`, based on production `v0.9.6` commit `1f83693`.
-- Prototype scope only: cinematic detail cards for ranks #1, #3, #5, #28 and the “Grand oublié” WALL-E, using five local TMDB-sourced backdrops in `assets/backdrops/prototype/`.
-- Prototype version label: `v0.9.6.1`. Do not merge or deploy until the user validates the modal direction.
-- The existing 1975–1999 asset-preparation branch below remains separate and unchanged.
-
-- Status: active asset-preparation batch for the future 1975–1999 Top.
-- Working branch: `local/top-1975-1999-assets`.
-- Starting `main` commit: `8d40712670438700fa8e64db83735b0cd792bfc6` (`Close validated ASWA40 v0.9.3`).
-- TMDB poster pipeline is configured with the GitHub Actions secret `TMDB_ACCESS_TOKEN`; never place the token in source, handoff, chat, logs or committed files.
-- Current asset checkpoint: 97/97 TMDB poster candidates fetched successfully (90 ranked films + 7 editorial grands oubliés) and stored locally on this branch.
-- This 1975–1999 batch is preparation only. Do not merge to `main` or deploy until the user validates the new Top and the poster correspondences.
-- When local work begins, record the branch name, starting `main` commit, latest validated checkpoint, files touched and remaining work here.
-- If this block says `none`, do not guess an old local branch from conversation history.
+- None for the 2000–2024 site. Treat `main` / `v0.9.9` as the complete baseline for any future 2000–2024 change.
 
 ### TMDB image / attribution policy
 
@@ -379,7 +369,3 @@ Use this checklist:
 If a new Chat or Work thread disagrees with this file, current GitHub `main` wins for code state. If `main` and production disagree, treat `main` as the latest source and production as a potentially stale deployment until verified.
 
 For product/visual decisions, Master chat is the decision thread; once a decision is recorded in the **Current state** section, Work should follow it without requiring the user to restate the discussion.
-\n- `v0.9.7`: cinematic detail cards now use 150 local TMDB backdrops with a top-to-bottom transparency fade; outlined Letterboxd links align to poster bottoms.\n
-- `v0.9.8`: prevents the previously opened backdrop from flashing during a new film-card transition. Backdrops remain hidden until the newly requested image has loaded, with stale load events ignored during rapid clicks.
-
-- `v0.9.9`: on mobile, the #1 Top 25 tile spans the full grid width before #2–5; the winning tile carries a small crown overlay on both desktop and mobile while retaining its numeric rank badge.
