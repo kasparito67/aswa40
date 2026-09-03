@@ -6,6 +6,7 @@
 
   const era = body.dataset.era || (location.pathname.includes('1975-1999') ? '1975' : '2000');
   const target = era === '1975' ? '/' : '/1975-1999/';
+  const targetLabel = era === '1975' ? 'Top films 2000–2024' : 'Top films 1975–1999';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const root = document.documentElement;
   let navigating = false;
@@ -32,6 +33,14 @@
     root.style.removeProperty('--era-opacity');
   }
 
+  function snapBack() {
+    if (navigating || !body.classList.contains('era-gesture')) return;
+    body.classList.add('era-snapback');
+    root.style.setProperty('--era-shift','0px');
+    root.style.setProperty('--era-opacity','1');
+    setTimeout(clearProgress, 380);
+  }
+
   function navigate(direction) {
     if (navigating) return;
     navigating = true;
@@ -52,6 +61,15 @@
     setTimeout(() => { location.href = target; }, 210);
   }
 
+  const hero = document.querySelector('.hero-header,.hero');
+  if (hero && !hero.querySelector('.era-nav,.era-nav-2000')) {
+    const nav = document.createElement('nav');
+    nav.className = 'era-nav-2000';
+    nav.setAttribute('aria-label','Navigation entre les classements');
+    nav.innerHTML = `<a class="left" href="${target}" data-tip="${targetLabel}" aria-label="${targetLabel}">←</a><a class="right" href="${target}" data-tip="${targetLabel}" aria-label="${targetLabel}">→</a>`;
+    hero.appendChild(nav);
+  }
+
   document.addEventListener('click', event => {
     const link = event.target.closest('.era-nav a,.era-nav-2000 a,.era-arrow');
     if (!link) return;
@@ -68,13 +86,17 @@
 
     wheelSum += event.deltaX;
     clearTimeout(wheelTimer);
-    wheelTimer = setTimeout(() => { wheelSum = 0; }, 260);
+    wheelTimer = setTimeout(() => {
+      wheelSum = 0;
+      snapBack();
+    }, 220);
 
     const preview = Math.max(-150, Math.min(150, -wheelSum * .32));
     setProgress(preview);
 
     if (Math.abs(wheelSum) >= 145) {
       event.preventDefault();
+      clearTimeout(wheelTimer);
       navigate(wheelSum > 0 ? 'next' : 'prev');
       wheelSum = 0;
       return;
@@ -84,7 +106,6 @@
   }, { passive:false });
 
   // Touch / pen drag on the hero, matching iOS interactive navigation.
-  const hero = document.querySelector('.hero-header,.hero');
   if (hero) {
     hero.addEventListener('pointerdown', event => {
       if (navigating || event.pointerType === 'mouse' || event.button !== 0 || event.target.closest('a,button')) return;
@@ -106,8 +127,9 @@
       if (event.cancelable) event.preventDefault();
     }, { passive:false, capture:true });
 
-    function finishPointer() {
+    function finishPointer(event) {
       if (!pointer || navigating) return;
+      event?.stopImmediatePropagation?.();
       const state = pointer;
       pointer = null;
       if (!state.locked) { clearProgress(); return; }
@@ -117,10 +139,7 @@
         navigate(state.dx < 0 ? 'next' : 'prev');
         return;
       }
-      body.classList.add('era-snapback');
-      root.style.setProperty('--era-shift','0px');
-      root.style.setProperty('--era-opacity','1');
-      setTimeout(clearProgress, 380);
+      snapBack();
     }
 
     hero.addEventListener('pointerup', finishPointer, true);
