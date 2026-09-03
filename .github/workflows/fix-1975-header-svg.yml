@@ -28,9 +28,16 @@ jobs:
           svg = Path('assets/header-title-1975-1999.svg')
           html = page.read_text(encoding='utf-8')
           encoded = base64.b64encode(svg.read_bytes()).decode('ascii')
-          replacement = "background-image:url('data:image/svg+xml;base64," + encoded + "');"
-          pattern = r"background-image:url\('data:image/svg\+xml;base64,[^']+'\);"
-          updated, count = re.subn(pattern, replacement, html, count=1)
+
+          # Current build uses background:url(...), older builds used
+          # background-image:url(...). Preserve whichever declaration exists.
+          pattern = r"(background(?:-image)?:url\('data:image/svg\+xml;base64,)[^']+('\))"
+          updated, count = re.subn(
+              pattern,
+              lambda m: m.group(1) + encoded + m.group(2),
+              html,
+              count=1,
+          )
           if count != 1:
               raise SystemExit(f'Expected one header SVG data URI, found {count}')
           page.write_text(updated, encoding='utf-8')
