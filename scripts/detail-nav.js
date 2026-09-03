@@ -6,7 +6,6 @@
   if (!modalBg || !modal || typeof showFilm !== 'function' || typeof showGhost !== 'function') return;
 
   const rankedFilms = [...films].sort((a, b) => Number(a.rank) - Number(b.rank));
-  const modalLayout = modal.querySelector('.modal-layout');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let current = null;
   let touchStartX = 0;
@@ -77,39 +76,38 @@
     const target = targetForStep(step);
     if (!target) return;
 
-    if (reducedMotion.matches || !modalLayout || typeof modalLayout.animate !== 'function') {
+    if (reducedMotion.matches || typeof modal.animate !== 'function') {
       showTarget(target);
       return;
     }
 
     navigating = true;
-    const exitX = step > 0 ? -28 : 28;
-    const enterX = step > 0 ? 28 : -28;
+    const distance = window.matchMedia('(max-width: 700px)').matches ? 64 : 46;
+    const exitX = step > 0 ? -distance : distance;
+    const enterX = step > 0 ? distance : -distance;
 
     try {
-      await modalLayout.animate([
-        { transform: 'translateX(0)', opacity: 1 },
-        { transform: `translateX(${exitX}px)`, opacity: .48 },
+      await modal.animate([
+        { transform: 'translateX(0) scale(1)', opacity: 1 },
+        { transform: `translateX(${exitX}px) scale(.992)`, opacity: .36 },
       ], {
-        duration: 115,
+        duration: 130,
         easing: 'cubic-bezier(.4,0,1,1)',
         fill: 'forwards',
       }).finished;
 
       showTarget(target);
 
-      await modalLayout.animate([
-        { transform: `translateX(${enterX}px)`, opacity: .48 },
-        { transform: 'translateX(0)', opacity: 1 },
+      await modal.animate([
+        { transform: `translateX(${enterX}px) scale(.992)`, opacity: .36 },
+        { transform: 'translateX(0) scale(1)', opacity: 1 },
       ], {
-        duration: 210,
+        duration: 230,
         easing: 'cubic-bezier(.16,1,.3,1)',
         fill: 'both',
       }).finished;
     } finally {
       navigating = false;
-      modalLayout.style.removeProperty('transform');
-      modalLayout.style.removeProperty('opacity');
     }
   }
 
