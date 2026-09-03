@@ -130,8 +130,9 @@ button,a{font:inherit}
 
 </style>
 <link rel="stylesheet" href="../assets/1975-mobile-v095.css?v=0.9.35">
+<link rel="stylesheet" href="../assets/era-environment.css">
 </head>
-<body>
+<body data-era="1975">
 <header class="hero" id="eraHero">
   <img class="hero-bg" src="../assets/cinema-hero-1975-1999.jpg" alt="" aria-hidden="true">
   <div class="hero-nav"><span>Aimer Star Wars à 40 ans</span><span>Une communauté de 7 cinéphiles · <small>v0.9.36</small></span></div>
@@ -189,4 +190,5 @@ hero.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'||e.button!==0
 hero.addEventListener('pointermove',e=>{if(!eraDrag||eraDrag.id!==e.pointerId)return;eraDrag.dx=e.clientX-eraDrag.x;const dy=e.clientY-eraDrag.y;if(!eraDrag.locked){if(Math.abs(eraDrag.dx)<9&&Math.abs(dy)<9)return;if(Math.abs(dy)>Math.abs(eraDrag.dx)*1.05){eraDrag=null;return}eraDrag.locked=true;hero.classList.add('is-era-dragging')}hero.style.transform=`translate3d(${eraDrag.dx}px,0,0)`;e.preventDefault()},{passive:false});
 function finishEra(){if(!eraDrag)return;const d=eraDrag;eraDrag=null;if(!d.locked){hero.style.removeProperty('transform');return}hero.classList.remove('is-era-dragging');const v=d.dx/Math.max(16,performance.now()-d.t),commit=Math.abs(d.dx)>innerWidth*.16||Math.abs(v)>.55;if(!commit){hero.classList.add('is-era-settling');hero.style.transform='translate3d(0,0,0)';setTimeout(()=>{hero.classList.remove('is-era-settling');hero.style.removeProperty('transform')},240);return}if(reduced.matches){location.href='../';return}const sign=d.dx<0?-1:1;hero.classList.add('is-era-settling');hero.style.transform=`translate3d(${sign*innerWidth}px,0,0)`;setTimeout(()=>location.href='../',175)}hero.addEventListener('pointerup',finishEra);hero.addEventListener('pointercancel',finishEra);
 </script>
+<script src="../scripts/era-environment.js"></script>
 </body></html>

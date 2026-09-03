@@ -88,6 +88,7 @@
   if (hero) {
     hero.addEventListener('pointerdown', event => {
       if (navigating || event.pointerType === 'mouse' || event.button !== 0 || event.target.closest('a,button')) return;
+      event.stopImmediatePropagation();
       pointer = { id:event.pointerId, x:event.clientX, y:event.clientY, dx:0, t:performance.now(), locked:false };
       hero.setPointerCapture?.(event.pointerId);
     }, true);
