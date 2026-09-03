@@ -31,4 +31,11 @@ for(const item of manifest.forgotten) await fetchBackdrop(item,'forgotten');
 
 const output=`'use strict';\n\n// Generated local TMDB backdrop mappings. Do not edit by hand.\nconst filmBackdrops=${JSON.stringify(filmBackdrops,null,2)};\n\nconst ghostBackdrops=${JSON.stringify(ghostBackdrops,null,2)};\n`;
 await fs.writeFile('scripts/backdrops-1975-1999.js',output);
-console.log(`Generated ${Object.keys(filmBackdrops).length} ranked and ${Object.keys(ghostBackdrops).length} forgotten backdrops.`);
+
+// Exact approved hero frame from the 1975–1999 v0.9.31 mockup.
+const heroUrl='https://getwallpapers.com/wallpaper/full/c/c/3/690058-star-wars-empire-strikes-back-wallpaper-1920x1080-for-hd-1080p.jpg';
+const hero=await fetch(heroUrl,{headers:{'user-agent':'Mozilla/5.0'}});
+if(!hero.ok) throw new Error(`Hero image ${hero.status}`);
+await fs.writeFile('assets/cinema-hero-1975-1999.jpg',Buffer.from(await hero.arrayBuffer()));
+
+console.log(`Generated ${Object.keys(filmBackdrops).length} ranked and ${Object.keys(ghostBackdrops).length} forgotten backdrops + hero.`);
