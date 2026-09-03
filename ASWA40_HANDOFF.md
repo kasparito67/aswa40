@@ -36,7 +36,12 @@ This is the public production reference. The historical `aswa40-films-live` proj
 - keyboard **Left / Right Arrow** performs the same navigation while a detail panel is open;
 - mobile supports **swipe left = next** and **swipe right = previous**;
 - swipe recognition uses a horizontal threshold and dominance check so ordinary vertical scrolling does not trigger navigation accidentally;
-- accessible labels identify the previous/next title.
+- accessible labels identify the previous/next title;
+- navigation now animates the **entire detail card**, not only its inner content: the current card slides slightly out in the navigation direction and the next card enters from the opposite side;
+- the directional slide applies consistently to arrow buttons, keyboard navigation and mobile swipe;
+- motion is intentionally restrained on desktop and slightly more pronounced on mobile so the interaction reads naturally as a swipe/carousel gesture;
+- rapid repeated navigation is temporarily locked while the transition is running to prevent visual glitches;
+- `prefers-reduced-motion` bypasses the slide animation and switches cards directly.
 
 The cinematic detail-card treatment from `v0.9.7–0.9.9` remains intact: local TMDB backdrops, vertical transparency fade, larger poster, Letterboxd link, and stale-backdrop protection.
 
@@ -74,11 +79,13 @@ This has **not yet been applied**. When implementing it, follow the existing TMD
 - All current film / forgotten-film detail panels use local TMDB backdrops.
 - Opening a different film never flashes the previous backdrop; stale image load events are ignored.
 - On mobile, #1 spans the Top 5 grid width; #2–5 follow in two columns. The winner keeps both crown and rank visible.
+- Detail-card previous/next navigation uses a full-card directional slide so backdrop, poster, text and controls move together as one object.
 
 ### Phase status
 
 - **Status: active finalization batch on top of accepted `v0.9.9`.**
 - Detail-panel arrow / keyboard / swipe navigation is implemented and deployed.
+- Full-card directional transition for detail navigation is implemented and deployed.
 - The requested replacement header backdrop is still pending.
 - Do not bump or infer a new visible version number unless the user explicitly validates / names the next release.
 
@@ -110,7 +117,7 @@ The site is static with separated responsibilities:
 - `scripts/data.js` — film ranking, poster references and editorial data
 - `scripts/backdrops.js` — generated local TMDB backdrop mappings
 - `scripts/app.js` — rendering, accordions, modal content, cover-flow, progressive ranking loading, parallax and year interactions
-- `scripts/detail-nav.js` — film-detail previous/next navigation, keyboard navigation and mobile swipe handling
+- `scripts/detail-nav.js` — film-detail previous/next navigation, keyboard navigation, mobile swipe handling and full-card directional transition
 - `assets/posters/2000-2024/` — 135 local ranked-film posters
 - `assets/grands-oublies/2000-2024/` — 15 local “Grands oubliés” posters
 - `assets/backdrops/2000-2024/` — ranked-film local backdrops
@@ -204,6 +211,12 @@ Opening one section must not force-close the others. Sections already open in in
 - “Grands oubliés” arrows navigate only within the forgotten-film set.
 - Keyboard Left / Right navigates when the modal is open.
 - Mobile swipe left / right navigates next / previous, with enough horizontal threshold to preserve vertical scrolling.
+- **The entire modal card moves as one unit during navigation**: backdrop, poster, text, Letterboxd link, close control and nav controls stay visually attached.
+- Navigating forward sends the current card slightly left and brings the next card in from the right; navigating backward mirrors that direction.
+- Desktop movement stays restrained; mobile gets a slightly larger translation so the gesture feels naturally connected to swiping.
+- Buttons, keyboard and swipe all use the same directional animation language.
+- Repeated inputs are ignored while a transition is running to avoid double-navigation glitches.
+- `prefers-reduced-motion` switches directly without the directional slide.
 
 ### Sidebar
 
