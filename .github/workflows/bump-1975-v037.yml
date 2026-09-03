@@ -1,0 +1,36 @@
+name: Bump 1975 to v0.9.37
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bump-1975-v037.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Bump visible build version
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('1975-1999/index.html')
+          s=p.read_text(encoding='utf-8')
+          if 'v0.9.36' not in s:
+              raise SystemExit('v0.9.36 not found')
+          s=s.replace('v0.9.36','v0.9.37')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit v0.9.37
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 1975-1999/index.html
+          git commit -m 'Bump 1975 environment to v0.9.37 [skip ci]'
+          git push origin main
