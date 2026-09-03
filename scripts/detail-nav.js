@@ -7,6 +7,9 @@
 
   const rankedFilms = [...films].sort((a, b) => Number(a.rank) - Number(b.rank));
   let current = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let trackingTouch = false;
 
   modal.insertAdjacentHTML('beforeend', [
     '<button class="modal-nav modal-nav-prev" type="button" aria-label="Film précédent">',
@@ -86,4 +89,29 @@
       navigate(1);
     }
   });
+
+  modal.addEventListener('touchstart', event => {
+    if (!modalBg.classList.contains('open') || event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    trackingTouch = true;
+  }, { passive: true });
+
+  modal.addEventListener('touchend', event => {
+    if (!trackingTouch || event.changedTouches.length !== 1) return;
+    trackingTouch = false;
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+    const horizontalDistance = Math.abs(deltaX);
+    const verticalDistance = Math.abs(deltaY);
+
+    if (horizontalDistance < 52) return;
+    if (horizontalDistance < verticalDistance * 1.25) return;
+
+    if (deltaX < 0) navigate(1);
+    else navigate(-1);
+  }, { passive: true });
 })();
