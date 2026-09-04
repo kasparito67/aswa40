@@ -20,3 +20,5 @@ Objectif: reconstruire ASWA40 comme une plateforme data-driven capable d'accueil
 4. Aucun changement de navigation requis: le rail s'adapte automatiquement à N tops.
 
 Le site actuel reste intact sur `main` pendant tout le rebuild.
+
+Preview retrigger: 2026-09-04.
