@@ -12,9 +12,10 @@
 
   const animation=byId('animation');
   if(animation){
-    animation.hero.fit='contain';
-    animation.hero.scale=.86;
-    animation.hero.position='center center';
+    animation.hero.image='https://image.tmdb.org/t/p/original/jkwVCMIkN3j284EPIDIGnskTd69.jpg';
+    animation.hero.fit='cover';
+    animation.hero.scale=1;
+    animation.hero.position='center 42%';
     animation.hero.titleArt='../assets/header-animation-01.svg';
     delete animation.hero.line;
     delete animation.hero.em;
@@ -22,17 +23,19 @@
 
   const biopics=byId('biopics');
   if(biopics){
-    biopics.hero.fit='contain';
-    biopics.hero.scale=.86;
-    biopics.hero.position='center center';
+    biopics.hero.image='https://image.tmdb.org/t/p/original/7TF4p86ZafnxFuNqWdhpHXFO244.jpg';
+    biopics.hero.fit='cover';
+    biopics.hero.scale=1;
+    biopics.hero.position='center 40%';
     biopics.hero.titleArt='../assets/header-Biopics.svg';
     delete biopics.hero.line;
     delete biopics.hero.em;
   }
 
-  // 2000–2024 keeps the original LOTR title artwork for typography only.
   const era2000=byId('2000-2024');
   if(era2000){
-    era2000.hero.titleArt='../assets/header-title.png';
+    era2000.hero.titleArt='../assets/header2000.webp';
+    delete era2000.hero.line;
+    delete era2000.hero.em;
   }
 })();
