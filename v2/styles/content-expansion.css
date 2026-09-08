@@ -51,17 +51,49 @@
   visibility:visible;
   transform:translateX(-50%) translateY(0);
 }
+.year-note-trigger{
+  cursor:pointer;
+  border-radius:8px;
+  transition:color .18s ease,background .18s ease,transform .18s ease;
+  outline:none;
+}
+.year-note-trigger:hover,
+.year-note-trigger:focus-visible{
+  color:#fff;
+  background:color-mix(in srgb,var(--accent,var(--active-accent,#e60d45)) 13%,transparent);
+  transform:translateX(2px);
+}
 
-/* 1975–1999: Spielberg is the visible lead; other names live in the disclosure. */
-.era-screen[data-top-id="1975-1999"] .directors-card .faces span:not(:first-child){display:none}
-.era-screen[data-top-id="1975-1999"] .directors-card .faces{justify-content:flex-start}
+/* Non-master tops: lead director outside; supporting list only inside disclosure. */
+.era-screen[data-top-id="1975-1999"] .directors-card .faces span:not(:first-child),
+.era-screen[data-top-id="sci-fi-realiste"] .directors-card .faces span:not(:first-child),
+.era-screen[data-top-id="animation"] .directors-card .faces span:not(:first-child),
+.era-screen[data-top-id="biopics"] .directors-card .faces span:not(:first-child){display:none!important}
 
-/* Temporary skeleton heroes: use the #1 film image as a graphic field until bespoke art arrives. */
-.era-screen[data-top-id="sci-fi-realiste"] .hero-media,
+.era-screen[data-top-id="1975-1999"] .directors-card .faces,
+.era-screen[data-top-id="sci-fi-realiste"] .directors-card .faces,
+.era-screen[data-top-id="animation"] .directors-card .faces,
+.era-screen[data-top-id="biopics"] .directors-card .faces{justify-content:flex-start}
+
+.era-screen[data-top-id="1975-1999"] .directors-card:not(.open) [data-role="director-disclosure"],
+.era-screen[data-top-id="sci-fi-realiste"] .directors-card:not(.open) [data-role="director-disclosure"],
+.era-screen[data-top-id="animation"] .directors-card:not(.open) [data-role="director-disclosure"],
+.era-screen[data-top-id="biopics"] .directors-card:not(.open) [data-role="director-disclosure"]{
+  pointer-events:none;
+}
+
+/* Expanded-top hero treatments. */
+.era-screen[data-top-id="sci-fi-realiste"] .hero-media{
+  filter:saturate(.82) contrast(1.08) brightness(.66);
+  transform:scale(1.015);
+  object-fit:cover;
+}
 .era-screen[data-top-id="animation"] .hero-media,
 .era-screen[data-top-id="biopics"] .hero-media{
-  filter:saturate(.72) contrast(1.08) brightness(.62) blur(.2px);
-  transform:scale(1.12);
+  filter:saturate(.76) contrast(1.06) brightness(.64);
+  object-fit:contain!important;
+  transform:scale(.88)!important;
+  background:#07090a;
 }
 .era-screen[data-top-id="sci-fi-realiste"] .hero-header:before,
 .era-screen[data-top-id="animation"] .hero-header:before,
@@ -72,4 +104,6 @@
 @media(max-width:700px){
   .era-screen[data-top-id="2000-2024"] .hero-title-art{width:min(92vw,760px)}
   .year-bar[data-tip]:after{display:none}
+  .era-screen[data-top-id="animation"] .hero-media,
+  .era-screen[data-top-id="biopics"] .hero-media{transform:scale(.96)!important}
 }
