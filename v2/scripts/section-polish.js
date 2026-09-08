@@ -1,17 +1,6 @@
 (()=>{
   const byId=id=>TOPS.find(t=>t.id===id);
 
-  // 1975–1999: The Godfather is outside the voting window and was not in the choices.
-  // Keep it as the first / most glaring omission in the editorial forgotten-film section.
-  const era1975=byId('1975-1999');
-  if(era1975 && !era1975.ghosts.some(g=>/godfather|parrain/i.test(g.title))){
-    era1975.ghosts.unshift({
-      title:'The Godfather',
-      copy:'Le grand absent · hors fenêtre 1975–1999.',
-      img:'https://image.tmdb.org/t/p/w780/3bhkrj58Vtu7enYsRolD1fZdja1.jpg'
-    });
-  }
-
   const ovnis={
     '1975-1999':{ranks:[86,87,88,89,90,33,34,49],note:'Les 5 derniers + Jesus of Nazareth · The Sacrifice · The Cook, the Thief, His Wife & Her Lover'},
     '2000-2024':{ranks:[131,132,133,134,135,41,42,47,54],note:'Les 5 derniers + Maelström · The Taste of Others · Bobby Jones: Stroke of Genius · My Wife Is an Actress'},
