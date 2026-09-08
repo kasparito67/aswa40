@@ -91,8 +91,8 @@
 .era-screen[data-top-id="animation"] .hero-media,
 .era-screen[data-top-id="biopics"] .hero-media{
   filter:saturate(.76) contrast(1.06) brightness(.64);
-  object-fit:contain!important;
-  transform:scale(.88)!important;
+  object-fit:cover!important;
+  transform:scale(1)!important;
   background:#07090a;
 }
 .era-screen[data-top-id="sci-fi-realiste"] .hero-header:before,
@@ -105,5 +105,5 @@
   .era-screen[data-top-id="2000-2024"] .hero-title-art{width:min(92vw,760px)}
   .year-bar[data-tip]:after{display:none}
   .era-screen[data-top-id="animation"] .hero-media,
-  .era-screen[data-top-id="biopics"] .hero-media{transform:scale(.96)!important}
+  .era-screen[data-top-id="biopics"] .hero-media{transform:scale(1)!important}
 }
