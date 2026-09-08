@@ -82,12 +82,18 @@
   pointer-events:none;
 }
 
-/* Temporary skeleton heroes: use the #1 film image as a graphic field until bespoke art arrives. */
-.era-screen[data-top-id="sci-fi-realiste"] .hero-media,
+/* Expanded-top hero treatments. */
+.era-screen[data-top-id="sci-fi-realiste"] .hero-media{
+  filter:saturate(.82) contrast(1.08) brightness(.66);
+  transform:scale(1.015);
+  object-fit:cover;
+}
 .era-screen[data-top-id="animation"] .hero-media,
 .era-screen[data-top-id="biopics"] .hero-media{
-  filter:saturate(.72) contrast(1.08) brightness(.62) blur(.2px);
-  transform:scale(1.12);
+  filter:saturate(.76) contrast(1.06) brightness(.64);
+  object-fit:contain!important;
+  transform:scale(.88)!important;
+  background:#07090a;
 }
 .era-screen[data-top-id="sci-fi-realiste"] .hero-header:before,
 .era-screen[data-top-id="animation"] .hero-header:before,
@@ -98,4 +104,6 @@
 @media(max-width:700px){
   .era-screen[data-top-id="2000-2024"] .hero-title-art{width:min(92vw,760px)}
   .year-bar[data-tip]:after{display:none}
+  .era-screen[data-top-id="animation"] .hero-media,
+  .era-screen[data-top-id="biopics"] .hero-media{transform:scale(.96)!important}
 }
