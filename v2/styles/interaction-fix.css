@@ -1,0 +1,102 @@
+/* ASWA40 final interaction parity pass */
+
+/* Film detail: restore a stable old-model composition. */
+.film-modal{
+  width:min(1180px,94vw)!important;
+  height:min(720px,88vh)!important;
+  min-height:0!important;
+  max-height:88vh!important;
+  overflow:hidden!important;
+}
+.modal-backdrop{position:absolute!important;inset:0!important;overflow:hidden!important}
+.modal-backdrop img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  transform:scale(1.025)!important;
+  filter:saturate(.78) contrast(1.05) brightness(.54)!important;
+}
+.film-modal:after{
+  background:
+    linear-gradient(90deg,rgba(5,8,10,.08) 0%,rgba(8,12,14,.28) 28%,rgba(12,17,20,.78) 48%,rgba(18,24,28,.96) 78%),
+    linear-gradient(180deg,rgba(4,6,7,.12),rgba(7,10,12,.34) 52%,rgba(10,14,17,.88))!important;
+}
+.modal-content{
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:46px 72px 46px 48px!important;
+  display:grid!important;
+  grid-template-columns:minmax(250px,330px) minmax(0,1fr)!important;
+  gap:48px!important;
+  align-items:end!important;
+}
+.modal-poster{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:calc(88vh - 92px)!important;
+  aspect-ratio:2/3!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  align-self:end!important;
+  justify-self:start!important;
+  border:6px solid rgba(255,255,255,.95)!important;
+  box-shadow:0 28px 70px rgba(0,0,0,.48)!important;
+}
+.modal-copy{
+  align-self:end!important;
+  min-width:0!important;
+  padding:0 0 34px!important;
+}
+.film-modal h2{
+  margin:14px 70px 18px 0!important;
+  max-width:720px!important;
+  font-size:clamp(42px,5vw,70px)!important;
+}
+.modal-stats{margin-bottom:clamp(48px,7vh,82px)!important}
+.modal-body{max-width:640px!important}
+
+/* Make film-to-film movement legible without making the whole dialog jump. */
+.modal-content,.modal-backdrop img{will-change:transform,opacity}
+
+/* Non-master sidebars: closed state must show only the primary information. */
+.era-screen:not([data-top-id="2000-2024"]) .parity-year-card:not(.is-open) .year-insight-detail,
+.era-screen:not([data-top-id="2000-2024"]) .parity-director-card:not(.is-open) .director-detail{
+  grid-template-rows:0fr!important;
+  border-top-width:0!important;
+}
+.era-screen:not([data-top-id="2000-2024"]) .parity-year-card:not(.is-open) .year-insight-detail-inner,
+.era-screen:not([data-top-id="2000-2024"]) .parity-director-card:not(.is-open) .director-detail-inner{
+  padding-top:0!important;
+  padding-bottom:0!important;
+  opacity:0!important;
+}
+.era-screen:not([data-top-id="2000-2024"]) .parity-director-card .director-faces{display:none!important}
+.era-screen:not([data-top-id="2000-2024"]) .parity-director-card .director-toggle{
+  min-height:116px!important;
+  grid-template-columns:minmax(0,1fr) 24px!important;
+}
+.era-screen:not([data-top-id="2000-2024"]) .parity-year-card .year-toggle{
+  min-height:132px!important;
+}
+
+@media(max-width:850px){
+  .film-modal{height:min(650px,90vh)!important}
+  .modal-content{grid-template-columns:190px minmax(0,1fr)!important;gap:26px!important;padding:34px 32px!important}
+  .modal-copy{padding-bottom:20px!important}
+  .modal-stats{margin-bottom:32px!important}
+}
+@media(max-width:560px){
+  .film-modal{height:auto!important;max-height:94vh!important;overflow:auto!important}
+  .modal-content{display:block!important;height:auto!important;padding:54px 20px 28px!important}
+  .modal-poster{width:118px!important;max-height:none!important;float:left;margin:0 18px 12px 0!important;border-width:4px!important}
+  .modal-copy{padding:0!important}
+  .modal-body{clear:both;padding-top:12px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .modal-content,.modal-backdrop img{will-change:auto}
+}
