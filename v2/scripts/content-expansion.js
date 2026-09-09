@@ -104,7 +104,44 @@
     });
   }
 
+  // Phase 3B interaction cleanup, consolidated from interaction-qc-sept9.js.
+  // Wheel navigation is deliberately NOT duplicated here; app.js owns the two canonical wheel handlers.
+  function hydrateDeferredPosters(){
+    document.querySelectorAll('.poster-deferred[data-src]').forEach(img=>{
+      img.src=img.dataset.src;
+      img.addEventListener('load',()=>img.classList.add('is-loaded'),{once:true});
+      delete img.dataset.src;
+    });
+  }
+
+  function normalizeRewatchedTop50(){
+    const re=document.querySelector('.era-screen[data-top-id="rewatched"]');
+    if(!re)return;
+    const first=re.querySelector('.sec[data-kind="full"]');
+    const grid=first?.querySelector('.full-grid');
+    if(!grid)return;
+
+    const tiles=[...grid.querySelectorAll('.tile')];
+    const hero=document.createElement('div');
+    hero.className='heroTop coverflow';
+    hero.dataset.flow='hero';
+    tiles.slice(0,5).forEach(t=>hero.appendChild(t));
+
+    const rest=document.createElement('div');
+    rest.className='grid coverflow';
+    rest.dataset.flow='rest';
+    tiles.slice(5,50).forEach(t=>rest.appendChild(t));
+
+    const pad=first.querySelector('.pad');
+    if(pad){
+      pad.innerHTML='';
+      pad.append(hero,rest);
+    }
+  }
+
   requestAnimationFrame(()=>{
+    hydrateDeferredPosters();
+    normalizeRewatchedTop50();
     bindYearRollovers();
     improveDirectorDisclosure();
   });
