@@ -49,9 +49,9 @@ jobs:
             if(count)rows.push({file,count});
           }
           const app=fs.readFileSync('v2/scripts/app.js','utf8');
-          const modal=(app.match(/modal\.addEventListener\s*\(\s*['"]wheel['"]/g)||[]).length;
-          const tops=(app.match(/app\.addEventListener\s*\(\s*['"]wheel['"]/g)||[]).length;
-          console.log(JSON.stringify({activeWheelRegistrations:rows,modalNavigationHandlers:modal,topNavigationHandlers:tops},null,2));
+          const modal=(app.match(/mb\.addEventListener\s*\(\s*['"]wheel['"]/g)||[]).length;
+          const tops=(app.match(/(?:^|\n)\s*addEventListener\s*\(\s*['"]wheel['"]/g)||[]).length;
+          console.log(JSON.stringify({activeWheelRegistrations:rows,modalNavigationHandlers:modal,topNavigationHandlers:tops,note:'parallax.js owns one passive visual wheel observer; it does not navigate'},null,2));
           if(modal!==1||tops!==1)process.exit(1);
           NODE
           cat wheel-handler-audit.txt
@@ -98,7 +98,7 @@ jobs:
               const keyboardNav=!!initialTitle&&!!keyboardTitle&&initialTitle!==keyboardTitle;
 
               const beforeWheel=(await page.locator('#modalTitle').textContent())?.trim();
-              await page.locator('#filmModal').dispatchEvent('wheel',{deltaY:140,deltaX:0,bubbles:true,cancelable:true});
+              await page.locator('#filmModal').dispatchEvent('wheel',{deltaX:140,deltaY:0,bubbles:true,cancelable:true});
               await page.waitForTimeout(900);
               const afterWheel=(await page.locator('#modalTitle').textContent())?.trim();
               const modalWheelNav=!!beforeWheel&&!!afterWheel&&beforeWheel!==afterWheel;
@@ -114,7 +114,6 @@ jobs:
               const topWheelNav=beforeTransform!==afterTransform;
 
               if(isMobile){
-                // Return to first Top and verify a vertical gesture scrolls the screen instead of changing Top.
                 await page.locator('#eraPrev').click().catch(()=>{});
                 await page.waitForTimeout(700);
                 const screen=page.locator('.era-screen').first();
