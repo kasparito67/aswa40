@@ -1,0 +1,148 @@
+{
+  "generatedAt": "2026-09-09T21:37:55.537Z",
+  "source": "TMDB + established ASWA40 assets",
+  "films": [
+    {
+      "rank": 1,
+      "title": "Bowling for Columbine",
+      "img": "../assets/posters/documentaires/001-bowling-for-columbine.jpg",
+      "status": "ok",
+      "tmdbId": 1430,
+      "posterPath": "/4XsiTsZcNCRSkee1o0fdr5OqYRT.jpg",
+      "backdropPath": "/70uUnpfe7en9x011UjpZoub101l.jpg",
+      "year": "2002"
+    },
+    {
+      "rank": 2,
+      "title": "Searching for Sugar Man",
+      "img": "../assets/posters/documentaires/002-searching-for-sugar-man.jpg",
+      "status": "ok",
+      "tmdbId": 84334,
+      "posterPath": "/ucM98HuBHSWmn44oiE83hIDc6VB.jpg",
+      "backdropPath": "/8RafTGqYqAN9FJzvC75USKmJCso.jpg",
+      "year": "2012"
+    },
+    {
+      "rank": 3,
+      "title": "My Octopus Teacher",
+      "img": "../assets/posters/2000-2024/127-my-octopus-teacher.jpg",
+      "status": "ok",
+      "tmdbId": 682110,
+      "posterPath": "/hvTVZb7hBC8tZAGoEhH5eiMJu2B.jpg",
+      "backdropPath": "/sW7VOrkHKYIeV9PaYc5IqGU2XK8.jpg",
+      "year": "2020"
+    },
+    {
+      "rank": 4,
+      "title": "Free Solo",
+      "img": "../assets/posters/documentaires/004-free-solo.jpg",
+      "status": "ok",
+      "tmdbId": 515042,
+      "posterPath": "/v4QfYZMACODlWul9doN9RxE99ag.jpg",
+      "backdropPath": "/z2uuQasY4gQJ8VDAFki746JWeQJ.jpg",
+      "year": "2018"
+    },
+    {
+      "rank": 5,
+      "title": "Man on Wire",
+      "img": "../assets/posters/documentaires/005-man-on-wire.jpg",
+      "status": "ok",
+      "tmdbId": 14048,
+      "posterPath": "/1mS4rhIgHZcHIvf1beP9Av0Ui33.jpg",
+      "backdropPath": "/yKEe2nFu4fRYcmVdeAwZxTZvP3g.jpg",
+      "year": "2008"
+    },
+    {
+      "rank": 6,
+      "title": "When We Were Kings",
+      "img": "../assets/posters/documentaires/006-when-we-were-kings.jpg",
+      "status": "ok",
+      "tmdbId": 10548,
+      "posterPath": "/yBkZK1JZOOJ3q5Jj1H9UP9T8YuV.jpg",
+      "backdropPath": "/3n3Wo9hPpipFqUXCNiftVyXSw13.jpg",
+      "year": "1996"
+    },
+    {
+      "rank": 7,
+      "title": "Icarus",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EIcarus%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 8,
+      "title": "Senna",
+      "img": "../assets/posters/documentaires/008-senna.jpg",
+      "status": "ok",
+      "tmdbId": 58496,
+      "posterPath": "/nZbLCbRoP6iJq5sr8daHQzjnzFh.jpg",
+      "backdropPath": "/sS3jaC2SXoeYmjAuqPeoeelPZqP.jpg",
+      "year": "2010"
+    },
+    {
+      "rank": 9,
+      "title": "Grizzly Man",
+      "img": "../assets/posters/documentaires/009-grizzly-man.jpg",
+      "status": "ok",
+      "tmdbId": 501,
+      "posterPath": "/zuZWpcuye25rpsiZ4XzsAvmLDHG.jpg",
+      "backdropPath": "/hAlB9MaamrP1eDhGA4AkjSAPxAf.jpg",
+      "year": "2005"
+    },
+    {
+      "rank": 10,
+      "title": "Jiro Dreams of Sushi",
+      "img": "../assets/posters/documentaires/010-jiro-dreams-of-sushi.jpg",
+      "status": "ok",
+      "tmdbId": 80767,
+      "posterPath": "/iVrkM4jSJw1IsOpW5jTtY5QxVqj.jpg",
+      "backdropPath": "/1h815ydN8AvrRmNU48eXu4EanO.jpg",
+      "year": "2011"
+    },
+    {
+      "rank": 11,
+      "title": "Hoop Dreams",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EHoop%20Dreams%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 12,
+      "title": "March of the Penguins",
+      "img": "../assets/posters/documentaires/012-march-of-the-penguins.jpg",
+      "status": "ok",
+      "tmdbId": 1667,
+      "posterPath": "/o9xJ1xG1WKlHkl8ACqq0LShOuMu.jpg",
+      "backdropPath": "/lPsKI7VR1FJY3w8iEOBZEhWAESc.jpg",
+      "year": "2005"
+    },
+    {
+      "rank": 13,
+      "title": "Exit Through the Gift Shop",
+      "img": "../assets/posters/documentaires/013-exit-through-the-gift-shop.jpg",
+      "status": "ok",
+      "tmdbId": 39452,
+      "posterPath": "/ruM5ehUQlHC1Kx3SF18d6klfrAx.jpg",
+      "backdropPath": "/yGtoR1fi3e2xU7N91cb2DKJjtyL.jpg",
+      "year": "2010"
+    },
+    {
+      "rank": 14,
+      "title": "Blackfish",
+      "img": "../assets/posters/documentaires/014-blackfish.jpg",
+      "status": "ok",
+      "tmdbId": 158999,
+      "posterPath": "/kCk4mDFE96Mn1AYfEcbxkIiw7ND.jpg",
+      "backdropPath": "/tCW0uGWwfZzRkupNFdI0yUo4A0w.jpg",
+      "year": "2013"
+    },
+    {
+      "rank": 15,
+      "title": "Metallica: Some Kind of Monster",
+      "img": "../assets/posters/documentaires/015-metallica-some-kind-of-monster.jpg",
+      "status": "ok",
+      "tmdbId": 11401,
+      "posterPath": "/pnsRHqjrYbVUJXsPIDNsKV7gRmc.jpg",
+      "backdropPath": "/kVlnObukrKh1vyAuLyHGdsCxJNH.jpg",
+      "year": "2004"
+    }
+  ]
+}
