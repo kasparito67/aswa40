@@ -1,0 +1,23 @@
+/* Sept 9 QC normalization */
+.era-prev{left:100px!important}
+.era-next{right:100px!important}
+
+.site-layout{align-items:start}
+.site-sidebar{top:18px!important;gap:10px!important;margin-top:0!important}
+.site-sidebar .sidebar-title{display:none!important}
+.site-sidebar>.insight-item:first-child,
+.site-sidebar>.year-insight-card:first-child,
+.site-sidebar>.director-card:first-child{margin-top:0!important}
+
+.stack{gap:12px!important}
+.sec>.toggle{min-height:112px!important;height:112px!important;padding-top:24px!important;padding-bottom:24px!important}
+.sec>.toggle>div{align-content:center}
+
+/* Re.Watched Top 50 uses the same visual hierarchy as the normal ranking section. */
+.era-screen[data-top-id="rewatched"] .sec:first-child .heroTop{margin-bottom:10px}
+.era-screen[data-top-id="rewatched"] .sec:first-child .grid[data-flow="rest"]{grid-template-columns:repeat(5,minmax(0,1fr))}
+
+@media(max-width:900px){
+  .era-prev{left:18px!important}.era-next{right:18px!important}
+  .sec>.toggle{height:auto!important;min-height:100px!important}
+}
