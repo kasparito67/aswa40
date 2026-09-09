@@ -1,0 +1,40 @@
+name: Audit ASWA40 posters
+
+on:
+  push:
+    branches: [work-cleanup-sept9]
+    paths:
+      - 'scripts/audit-posters-all-tops.mjs'
+      - 'v2/scripts/poster-aliases.js'
+      - 'v2/index.html'
+      - '.github/workflows/audit-posters-all-tops.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Audit posters and TMDB candidates
+        continue-on-error: true
+        env:
+          TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_ACCESS_TOKEN }}
+        run: node scripts/audit-posters-all-tops.mjs
+      - name: Show audit summary
+        if: always()
+        run: |
+          cat poster-audit.md || true
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: poster-audit
+          path: |
+            poster-audit.json
+            poster-audit.md
