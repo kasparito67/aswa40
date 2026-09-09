@@ -8,7 +8,7 @@
       titleFit:'contain'
     },
     '2000-2024':{
-      titleArt:'../assets/header2000.webp',
+      titleArt:'../assets/header-title.png',
       titleAlt:'Top films 2000–2024',
       titleMaxWidth:'1060px',
       titleOffsetY:'-2px',
