@@ -22,10 +22,10 @@
   object-position:center;
 }
 
-/* 2000 artwork is a trimmed PNG. Keep it optically centered and 20% larger than the previous normalized placement. */
+/* 2000 artwork is a trimmed PNG. Keep it 20% larger, with a slight optical correction to the left. */
 .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{
   inset:auto;
-  left:26.924%;
+  left:24.84%;
   top:26.681%;
   width:46.152%;
   height:27.348%;
@@ -69,8 +69,9 @@
 .era-screen[data-top-id="2000-2024"] .hero-art-medallions{left:50%;top:54.2%}
 .era-screen[data-top-id="1975-1999"] .hero-art-medallions{left:49%;top:50.3%}
 .era-screen[data-top-id="sci-fi-realiste"] .hero-art-medallions{left:49%;top:50.3%}
-.era-screen[data-top-id="animation"] .hero-art-medallions{left:54.6%;top:29.5%}
-/* Biopics: title stays centered in its normalized artboard; medals sit below the wordmark instead of above/right. */
+/* Animation: medals now sit below the title, centered like the other Tops. */
+.era-screen[data-top-id="animation"] .hero-art-medallions{left:50%;top:55.5%}
+/* Biopics: title stays centered in its normalized artboard; medals sit below the wordmark. */
 .era-screen[data-top-id="biopics"] .hero-art-medallions{left:50%;top:55.5%}
 
 @media(max-width:700px){
