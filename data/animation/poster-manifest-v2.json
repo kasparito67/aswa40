@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T21:37:52.600Z",
+  "generatedAt": "2026-09-09T21:41:15.891Z",
   "source": "TMDB + established ASWA40 assets",
   "films": [
     {
@@ -400,14 +400,18 @@
     },
     {
       "rank": 41,
-      "title": "LE...K",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ELE...K%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "title": "Memories",
+      "img": "../assets/posters/animation/041-memories.jpg",
+      "status": "ok",
+      "tmdbId": 42994,
+      "posterPath": "/e0HIBRiKS5dWmXkxWvEh6JQZcc2.jpg",
+      "backdropPath": "/hNf6J498veQVdq5FhHmL08ardwf.jpg",
+      "year": "1995"
     },
     {
       "rank": 42,
-      "title": "Memories",
-      "img": "../assets/posters/animation/042-memories.jpg",
+      "title": "Perfect Blue",
+      "img": "../assets/posters/animation/042-perfect-blue.jpg",
       "status": "ok",
       "tmdbId": 42994,
       "posterPath": "/e0HIBRiKS5dWmXkxWvEh6JQZcc2.jpg",
@@ -416,16 +420,6 @@
     },
     {
       "rank": 43,
-      "title": "Perfect Blue",
-      "img": "../assets/posters/animation/043-perfect-blue.jpg",
-      "status": "ok",
-      "tmdbId": 10494,
-      "posterPath": "/6WTiOCfDPP8XV4jqfloiVWf7KHq.jpg",
-      "backdropPath": "/mHG7dpLb0ZScSY3LpP443IHRmjy.jpg",
-      "year": "1998"
-    },
-    {
-      "rank": 44,
       "title": "Ponyo",
       "img": "../assets/posters/2000-2024/076-ponyo.jpg",
       "status": "ok",
@@ -435,9 +429,15 @@
       "year": "2008"
     },
     {
-      "rank": 45,
+      "rank": 44,
       "title": "Astérix chez les Bretons",
-      "img": "../assets/posters/animation/045-asterix-chez-les-bretons.jpg",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EAst%C3%A9rix%20chez%20les%20Bretons%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 45,
+      "title": "Coraline",
+      "img": "../assets/posters/animation/045-coraline.jpg",
       "status": "ok",
       "tmdbId": 9318,
       "posterPath": "/10L5R1l03MqDx36e0LJ99NKLGD3.jpg",
@@ -446,18 +446,18 @@
     },
     {
       "rank": 46,
-      "title": "Coraline",
-      "img": "../assets/posters/animation/046-coraline.jpg",
+      "title": "Isle of Dogs",
+      "img": "../assets/posters/animation/046-isle-of-dogs.jpg",
       "status": "ok",
-      "tmdbId": 14836,
-      "posterPath": "/4jeFXQYytChdZYE9JYO7Un87IlW.jpg",
-      "backdropPath": "/hofnlIyF6bePkgQOpcuRWLvzf15.jpg",
-      "year": "2009"
+      "tmdbId": 399174,
+      "posterPath": "/c0nUX6Q1ZB0P2t1Jo6EeFSVnOGQ.jpg",
+      "backdropPath": "/goMGTcitprGu7YD6VZS4lUUwzRA.jpg",
+      "year": "2018"
     },
     {
       "rank": 47,
-      "title": "Isle of Dogs",
-      "img": "../assets/posters/animation/047-isle-of-dogs.jpg",
+      "title": "The Adventures of Tintin",
+      "img": "../assets/posters/animation/047-the-adventures-of-tintin.jpg",
       "status": "ok",
       "tmdbId": 399174,
       "posterPath": "/c0nUX6Q1ZB0P2t1Jo6EeFSVnOGQ.jpg",
@@ -466,16 +466,6 @@
     },
     {
       "rank": 48,
-      "title": "The Adventures of Tintin",
-      "img": "../assets/posters/animation/048-the-adventures-of-tintin.jpg",
-      "status": "ok",
-      "tmdbId": 17578,
-      "posterPath": "/fQZ3sLR1Fi63NMsNRbjm9q5qODJ.jpg",
-      "backdropPath": "/6mqgl2szMLRYj4lhlXOjju5Tpeo.jpg",
-      "year": "2011"
-    },
-    {
-      "rank": 49,
       "title": "The Boy and the Beast",
       "img": "../assets/posters/2000-2024/111-the-boy-and-the-beast.jpg",
       "status": "ok",
@@ -485,9 +475,9 @@
       "year": "2015"
     },
     {
-      "rank": 50,
+      "rank": 49,
       "title": "The Lord of the Rings",
-      "img": "../assets/posters/animation/050-the-lord-of-the-rings.jpg",
+      "img": "../assets/posters/animation/049-the-lord-of-the-rings.jpg",
       "status": "ok",
       "tmdbId": 123,
       "posterPath": "/liW0mjvTyLs7UCumaHhx3PpU4VT.jpg",
@@ -495,9 +485,9 @@
       "year": "1978"
     },
     {
-      "rank": 51,
+      "rank": 50,
       "title": "Dragon Ball Z: Broly - Second Coming",
-      "img": "../assets/posters/animation/051-dragon-ball-z-broly-second-coming.jpg",
+      "img": "../assets/posters/animation/050-dragon-ball-z-broly-second-coming.jpg",
       "status": "ok",
       "tmdbId": 44251,
       "posterPath": "/Apnw8FWoPOIsu14d5dvaNZzFSJE.jpg",
@@ -505,9 +495,19 @@
       "year": "1994"
     },
     {
-      "rank": 52,
+      "rank": 51,
       "title": "Metropolis",
-      "img": "../assets/posters/animation/052-metropolis.jpg",
+      "img": "../assets/posters/animation/051-metropolis.jpg",
+      "status": "ok",
+      "tmdbId": 19,
+      "posterPath": "/kr9wXRN23zLuWJIelahas1mtnYj.jpg",
+      "backdropPath": "/eeMoFKxjjiCi6iep2GEZtSAMYIr.jpg",
+      "year": "1927"
+    },
+    {
+      "rank": 52,
+      "title": "Kung Fu Panda",
+      "img": "../assets/posters/animation/052-kung-fu-panda.jpg",
       "status": "ok",
       "tmdbId": 9606,
       "posterPath": "/41WtqvaObaYE3RuqgBfQFPV3aV1.jpg",
@@ -516,18 +516,8 @@
     },
     {
       "rank": 53,
-      "title": "Kung Fu Panda",
-      "img": "../assets/posters/animation/053-kung-fu-panda.jpg",
-      "status": "ok",
-      "tmdbId": 9502,
-      "posterPath": "/wWt4JYXTg5Wr3xBW2phBrMKgp3x.jpg",
-      "backdropPath": "/qdthf9WrRDSaIkGVQGhhJ9pz1hn.jpg",
-      "year": "2008"
-    },
-    {
-      "rank": 54,
       "title": "The Great Mouse Detective",
-      "img": "../assets/posters/animation/054-the-great-mouse-detective.jpg",
+      "img": "../assets/posters/animation/053-the-great-mouse-detective.jpg",
       "status": "ok",
       "tmdbId": 9994,
       "posterPath": "/9uDr7vfjCFr39KGCcqrk44Cg7fQ.jpg",
@@ -535,9 +525,19 @@
       "year": "1986"
     },
     {
-      "rank": 55,
+      "rank": 54,
       "title": "Persepolis",
-      "img": "../assets/posters/animation/055-persepolis.jpg",
+      "img": "../assets/posters/animation/054-persepolis.jpg",
+      "status": "ok",
+      "tmdbId": 2011,
+      "posterPath": "/aU8i2QAdTyRR1nYb36Gq51xXP8p.jpg",
+      "backdropPath": "/4pfb85bv0rKkmslTp2hzAqA7RT4.jpg",
+      "year": "2007"
+    },
+    {
+      "rank": 55,
+      "title": "The Lego Movie",
+      "img": "../assets/posters/animation/055-the-lego-movie.jpg",
       "status": "ok",
       "tmdbId": 2011,
       "posterPath": "/aU8i2QAdTyRR1nYb36Gq51xXP8p.jpg",
@@ -546,18 +546,8 @@
     },
     {
       "rank": 56,
-      "title": "The Lego Movie",
-      "img": "../assets/posters/animation/056-the-lego-movie.jpg",
-      "status": "ok",
-      "tmdbId": 137106,
-      "posterPath": "/lbctonEnewCYZ4FYoTZhs8cidAl.jpg",
-      "backdropPath": "/6gI1dAkOaUQ6659OdRPsTLlsem5.jpg",
-      "year": "2014"
-    },
-    {
-      "rank": 57,
       "title": "Cowboy Bebop: The Movie",
-      "img": "../assets/posters/animation/057-cowboy-bebop-the-movie.jpg",
+      "img": "../assets/posters/animation/056-cowboy-bebop-the-movie.jpg",
       "status": "ok",
       "tmdbId": 11299,
       "posterPath": "/34H5bsNc0EPILVr49TfOYXj50qV.jpg",
@@ -565,9 +555,19 @@
       "year": "2001"
     },
     {
-      "rank": 58,
+      "rank": 57,
       "title": "Flow",
-      "img": "../assets/posters/animation/058-flow.jpg",
+      "img": "../assets/posters/animation/057-flow.jpg",
+      "status": "ok",
+      "tmdbId": 823219,
+      "posterPath": "/z2sG41PxfL1hnL1mHbxzSREUtOf.jpg",
+      "backdropPath": "/pZfpUMEJzw9BZHtXuZzzOrRxtMa.jpg",
+      "year": "2024"
+    },
+    {
+      "rank": 58,
+      "title": "How to Train Your Dragon 2",
+      "img": "../assets/posters/animation/058-how-to-train-your-dragon-2.jpg",
       "status": "ok",
       "tmdbId": 823219,
       "posterPath": "/z2sG41PxfL1hnL1mHbxzSREUtOf.jpg",
@@ -576,8 +576,8 @@
     },
     {
       "rank": 59,
-      "title": "How to Train Your Dragon 2",
-      "img": "../assets/posters/animation/059-how-to-train-your-dragon-2.jpg",
+      "title": "Klaus",
+      "img": "../assets/posters/animation/059-klaus.jpg",
       "status": "ok",
       "tmdbId": 82702,
       "posterPath": "/d13Uj86LdbDLrfDoHR5aDOFYyJC.jpg",
@@ -586,8 +586,8 @@
     },
     {
       "rank": 60,
-      "title": "Klaus",
-      "img": "../assets/posters/animation/060-klaus.jpg",
+      "title": "Nausicaä of the Valley of the Wind",
+      "img": "../assets/posters/animation/060-nausicaa-of-the-valley-of-the-wind.jpg",
       "status": "ok",
       "tmdbId": 508965,
       "posterPath": "/q125RHUDgR4gjwh1QkfYuJLYkL.jpg",
@@ -596,16 +596,6 @@
     },
     {
       "rank": 61,
-      "title": "Nausicaä of the Valley of the Wind",
-      "img": "../assets/posters/animation/061-nausicaa-of-the-valley-of-the-wind.jpg",
-      "status": "ok",
-      "tmdbId": 81,
-      "posterPath": "/tcrkfB8SRPQCgwI88hQScua6nxh.jpg",
-      "backdropPath": "/ulVUa2MvnJAjAeRt7h23FFJVRKH.jpg",
-      "year": "1984"
-    },
-    {
-      "rank": 62,
       "title": "Up",
       "img": "../assets/posters/2000-2024/060-up.jpg",
       "status": "ok",
@@ -615,9 +605,19 @@
       "year": "2009"
     },
     {
-      "rank": 63,
+      "rank": 62,
       "title": "Chicken Run",
-      "img": "../assets/posters/animation/063-chicken-run.jpg",
+      "img": "../assets/posters/animation/062-chicken-run.jpg",
+      "status": "ok",
+      "tmdbId": 7443,
+      "posterPath": "/8XgmIsbpVamdhwcNVsYzohFZTtT.jpg",
+      "backdropPath": "/3eYkMSjWbvTaZso7ow5ub9ikNNq.jpg",
+      "year": "2000"
+    },
+    {
+      "rank": 63,
+      "title": "The Simpsons Movie",
+      "img": "../assets/posters/animation/063-the-simpsons-movie.jpg",
       "status": "ok",
       "tmdbId": 7443,
       "posterPath": "/8XgmIsbpVamdhwcNVsYzohFZTtT.jpg",
@@ -626,18 +626,14 @@
     },
     {
       "rank": 64,
-      "title": "The Simpsons Movie",
-      "img": "../assets/posters/animation/064-the-simpsons-movie.jpg",
-      "status": "ok",
-      "tmdbId": 35,
-      "posterPath": "/s3b8TZWwmkYc2KoJ5zk77qB6PzY.jpg",
-      "backdropPath": "/8ln5VUVk7gnNGIb2VNgw8nICDVt.jpg",
-      "year": "2007"
+      "title": "La Planète sauvage",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ELa%20Plan%C3%A8te%20sauvage%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
     },
     {
       "rank": 65,
-      "title": "La Planète sauvage",
-      "img": "../assets/posters/animation/065-la-planete-sauvage.jpg",
+      "title": "The Snowman",
+      "img": "../assets/posters/animation/065-the-snowman.jpg",
       "status": "ok",
       "tmdbId": 16306,
       "posterPath": "/prq0j1S0K07UjwLZLF6oMGflRUI.jpg",
@@ -646,8 +642,8 @@
     },
     {
       "rank": 66,
-      "title": "The Snowman",
-      "img": "../assets/posters/animation/066-the-snowman.jpg",
+      "title": "Shrek",
+      "img": "../assets/posters/animation/066-shrek.jpg",
       "status": "ok",
       "tmdbId": 13396,
       "posterPath": "/b3CMolkeXrPaVvd5vTsssMKfZZo.jpg",
@@ -656,18 +652,8 @@
     },
     {
       "rank": 67,
-      "title": "Shrek",
-      "img": "../assets/posters/animation/067-shrek.jpg",
-      "status": "ok",
-      "tmdbId": 808,
-      "posterPath": "/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg",
-      "backdropPath": "/w0eKUOEog2ImtktCHAMUZws8qif.jpg",
-      "year": "2001"
-    },
-    {
-      "rank": 68,
       "title": "Monsters, Inc.",
-      "img": "../assets/posters/animation/068-monsters-inc.jpg",
+      "img": "../assets/posters/animation/067-monsters-inc.jpg",
       "status": "ok",
       "tmdbId": 585,
       "posterPath": "/wFSpyMsp7H0ttERbxY7Trlv8xry.jpg",
@@ -675,9 +661,9 @@
       "year": "2001"
     },
     {
-      "rank": 69,
+      "rank": 68,
       "title": "Waltz with Bashir",
-      "img": "../assets/posters/animation/069-waltz-with-bashir.jpg",
+      "img": "../assets/posters/animation/068-waltz-with-bashir.jpg",
       "status": "ok",
       "tmdbId": 8885,
       "posterPath": "/zQaCv7lKwHsh0YSHkt1QNjIOZ1c.jpg",
@@ -685,9 +671,9 @@
       "year": "2008"
     },
     {
-      "rank": 70,
+      "rank": 69,
       "title": "Kubo and the Two Strings",
-      "img": "../assets/posters/animation/070-kubo-and-the-two-strings.jpg",
+      "img": "../assets/posters/animation/069-kubo-and-the-two-strings.jpg",
       "status": "ok",
       "tmdbId": 313297,
       "posterPath": "/ewcOCkuuKAKULGUnbBVaO1htt0D.jpg",
@@ -695,9 +681,15 @@
       "year": "2016"
     },
     {
-      "rank": 71,
+      "rank": 70,
       "title": "Lascars",
-      "img": "../assets/posters/animation/071-lascars.jpg",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ELascars%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 71,
+      "title": "A Close Shave",
+      "img": "../assets/posters/animation/071-a-close-shave.jpg",
       "status": "ok",
       "tmdbId": 19106,
       "posterPath": "/myw0jbvci1Z84dMKMtQkCLBaY5u.jpg",
@@ -706,8 +698,8 @@
     },
     {
       "rank": 72,
-      "title": "A Close Shave",
-      "img": "../assets/posters/animation/072-a-close-shave.jpg",
+      "title": "Astérix et Cléopâtre",
+      "img": "../assets/posters/animation/072-asterix-et-cleopatre.jpg",
       "status": "ok",
       "tmdbId": 532,
       "posterPath": "/qdIR27trLyrlJ5nmkbcG3Bomah6.jpg",
@@ -716,8 +708,8 @@
     },
     {
       "rank": 73,
-      "title": "Astérix et Cléopâtre",
-      "img": "../assets/posters/animation/073-asterix-et-cleopatre.jpg",
+      "title": "Shrek 2",
+      "img": "../assets/posters/animation/073-shrek-2.jpg",
       "status": "ok",
       "tmdbId": 9929,
       "posterPath": "/gNpKAmWFsCiWKKx39Ap8pF7EWQg.jpg",
@@ -726,18 +718,18 @@
     },
     {
       "rank": 74,
-      "title": "Shrek 2",
-      "img": "../assets/posters/animation/074-shrek-2.jpg",
+      "title": "Sleeping Beauty",
+      "img": "../assets/posters/animation/074-sleeping-beauty.jpg",
       "status": "ok",
-      "tmdbId": 809,
-      "posterPath": "/2yYP0PQjG8zVqturh1BAqu2Tixl.jpg",
-      "backdropPath": "/8ohobj5lAIbl5XWw11FywS3IRrS.jpg",
-      "year": "2004"
+      "tmdbId": 10882,
+      "posterPath": "/pO9YMLSmj3essVSWSGygjGxX6Kw.jpg",
+      "backdropPath": "/me67dwJnUBt3O9NqZaBdEQ6i4vM.jpg",
+      "year": "1959"
     },
     {
       "rank": 75,
-      "title": "Sleeping Beauty",
-      "img": "../assets/posters/animation/075-sleeping-beauty.jpg",
+      "title": "South Park: Bigger, Longer & Uncut",
+      "img": "../assets/posters/animation/075-south-park-bigger-longer-uncut.jpg",
       "status": "ok",
       "tmdbId": 10882,
       "posterPath": "/pO9YMLSmj3essVSWSGygjGxX6Kw.jpg",
@@ -746,18 +738,8 @@
     },
     {
       "rank": 76,
-      "title": "South Park: Bigger, Longer & Uncut",
-      "img": "../assets/posters/animation/076-south-park-bigger-longer-uncut.jpg",
-      "status": "ok",
-      "tmdbId": 9473,
-      "posterPath": "/tS0PedvA2mFO9VCHYwQpaU1K36U.jpg",
-      "backdropPath": "/2q3B90h2hZ6xJTvna9CIFDNaIr4.jpg",
-      "year": "1999"
-    },
-    {
-      "rank": 77,
       "title": "The Mitchells vs. the Machines",
-      "img": "../assets/posters/animation/077-the-mitchells-vs-the-machines.jpg",
+      "img": "../assets/posters/animation/076-the-mitchells-vs-the-machines.jpg",
       "status": "ok",
       "tmdbId": 501929,
       "posterPath": "/mI2Di7HmskQQ34kz0iau6J1vr70.jpg",
@@ -765,9 +747,9 @@
       "year": "2021"
     },
     {
-      "rank": 78,
+      "rank": 77,
       "title": "Yellow Submarine",
-      "img": "../assets/posters/animation/078-yellow-submarine.jpg",
+      "img": "../assets/posters/animation/077-yellow-submarine.jpg",
       "status": "ok",
       "tmdbId": 12105,
       "posterPath": "/1pmeLKaLFNggcsAk5FiouIvo3ST.jpg",
@@ -775,9 +757,9 @@
       "year": "1968"
     },
     {
-      "rank": 79,
+      "rank": 78,
       "title": "The Emperor’s New Groove",
-      "img": "../assets/posters/animation/079-the-emperor-s-new-groove.jpg",
+      "img": "../assets/posters/animation/078-the-emperor-s-new-groove.jpg",
       "status": "ok",
       "tmdbId": 11688,
       "posterPath": "/wwbgkXQBEKtnyIJapk6gUgWkVw8.jpg",
@@ -785,9 +767,9 @@
       "year": "2000"
     },
     {
-      "rank": 80,
+      "rank": 79,
       "title": "The Swan Princess",
-      "img": "../assets/posters/animation/080-the-swan-princess.jpg",
+      "img": "../assets/posters/animation/079-the-swan-princess.jpg",
       "status": "ok",
       "tmdbId": 22586,
       "posterPath": "/f5YvIPrkJ9HCsNbgzWJJyxXVNhj.jpg",
@@ -795,9 +777,19 @@
       "year": "1994"
     },
     {
-      "rank": 81,
+      "rank": 80,
       "title": "Aladdin and the Wonderful Lamp",
-      "img": "../assets/posters/animation/081-aladdin-and-the-wonderful-lamp.jpg",
+      "img": "../assets/posters/animation/080-aladdin-and-the-wonderful-lamp.jpg",
+      "status": "ok",
+      "tmdbId": 174295,
+      "posterPath": "/axZQ2evnbAjNxXQxSheNAdBht18.jpg",
+      "backdropPath": "/ogC1yPAnnabNSxyYaHjELEsWANZ.jpg",
+      "year": "1934"
+    },
+    {
+      "rank": 81,
+      "title": "Robot Carnival",
+      "img": "../assets/posters/animation/081-robot-carnival.jpg",
       "status": "ok",
       "tmdbId": 310576,
       "posterPath": "/dC2EDGSuoUvo2za7VXv91iZTuo3.jpg",
@@ -806,18 +798,8 @@
     },
     {
       "rank": 82,
-      "title": "Robot Carnival",
-      "img": "../assets/posters/animation/082-robot-carnival.jpg",
-      "status": "ok",
-      "tmdbId": 33441,
-      "posterPath": "/2DTREQNErBYtZd1isRqdqNbbXA8.jpg",
-      "backdropPath": "/iV6G3qnnEsZ1CsHXjxoXNBeKMw6.jpg",
-      "year": "1987"
-    },
-    {
-      "rank": 83,
       "title": "Zootopia",
-      "img": "../assets/posters/animation/083-zootopia.jpg",
+      "img": "../assets/posters/animation/082-zootopia.jpg",
       "status": "ok",
       "tmdbId": 269149,
       "posterPath": "/hlK0e0wAQ3VLuJcsfIYPvb4JVud.jpg",
@@ -825,9 +807,9 @@
       "year": "2016"
     },
     {
-      "rank": 84,
+      "rank": 83,
       "title": "Mary and Max",
-      "img": "../assets/posters/animation/084-mary-and-max.jpg",
+      "img": "../assets/posters/animation/083-mary-and-max.jpg",
       "status": "ok",
       "tmdbId": 24238,
       "posterPath": "/ebmsM382m9IClLUzKYY2U5biFwM.jpg",
@@ -835,9 +817,19 @@
       "year": "2009"
     },
     {
-      "rank": 85,
+      "rank": 84,
       "title": "Robin Hood",
-      "img": "../assets/posters/animation/085-robin-hood.jpg",
+      "img": "../assets/posters/animation/084-robin-hood.jpg",
+      "status": "ok",
+      "tmdbId": 11886,
+      "posterPath": "/x9AvkYek0bGdxQSZ8W3lAjGrREm.jpg",
+      "backdropPath": "/3WeFPoPVIGgMumjgLn0EPIfq53A.jpg",
+      "year": "1973"
+    },
+    {
+      "rank": 85,
+      "title": "Steamboy",
+      "img": "../assets/posters/animation/085-steamboy.jpg",
       "status": "ok",
       "tmdbId": 11886,
       "posterPath": "/x9AvkYek0bGdxQSZ8W3lAjGrREm.jpg",
@@ -846,18 +838,8 @@
     },
     {
       "rank": 86,
-      "title": "Steamboy",
-      "img": "../assets/posters/animation/086-steamboy.jpg",
-      "status": "ok",
-      "tmdbId": 8953,
-      "posterPath": "/he3fyAy1OUruuwhiv2xvup8H3pc.jpg",
-      "backdropPath": "/c31SAQjVMeVGv7mZsrw5BKGXj2P.jpg",
-      "year": "2004"
-    },
-    {
-      "rank": 87,
       "title": "Team America: World Police",
-      "img": "../assets/posters/animation/087-team-america-world-police.jpg",
+      "img": "../assets/posters/animation/086-team-america-world-police.jpg",
       "status": "ok",
       "tmdbId": 3989,
       "posterPath": "/m1Q2VFe1DVVbjfu1LDZe7tlp9yb.jpg",
@@ -865,9 +847,15 @@
       "year": "2004"
     },
     {
-      "rank": 88,
+      "rank": 87,
       "title": "L’Illusionniste",
-      "img": "../assets/posters/animation/088-l-illusionniste.jpg",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EL%E2%80%99Illusionniste%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 88,
+      "title": "A Magnificent Life",
+      "img": "https://image.tmdb.org/t/p/w500/8RDzFr9kGPJU2D5pOOzk0W1ATJq.jpg",
       "status": "ok",
       "tmdbId": 41201,
       "posterPath": "/Ac2tNYW9sRaOhmtMJQuhf2mvo00.jpg",
@@ -876,19 +864,9 @@
     },
     {
       "rank": 89,
-      "title": "Magnificent Life",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EMagnificent%20Life%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
-    },
-    {
-      "rank": 90,
       "title": "The Story of Jean Valjean",
-      "img": "../assets/posters/animation/090-the-story-of-jean-valjean.jpg",
-      "status": "ok",
-      "tmdbId": 546201,
-      "posterPath": "/qyCVFQn4egsjbGh3gJhOCiOOEsP.jpg",
-      "backdropPath": "/wleCBsSRCI8vFwuJijHbdDr4BTF.jpg",
-      "year": "1979"
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Story%20of%20Jean%20Valjean%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
     }
   ]
 }

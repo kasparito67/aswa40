@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T21:38:07.662Z",
+  "generatedAt": "2026-09-09T21:41:38.207Z",
   "source": "TMDB + established ASWA40 assets",
   "films": [
     {
@@ -45,8 +45,12 @@
     {
       "rank": 5,
       "title": "Home Alone",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EHome%20Alone%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/005-home-alone.jpg",
+      "status": "ok",
+      "tmdbId": 771,
+      "posterPath": "/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg",
+      "backdropPath": "/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg",
+      "year": "1990"
     },
     {
       "rank": 6,
@@ -101,8 +105,12 @@
     {
       "rank": 11,
       "title": "Willow",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EWillow%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/011-willow.jpg",
+      "status": "ok",
+      "tmdbId": 847,
+      "posterPath": "/pAIRGMIdN7ZdZhflazdV2ezuJ9f.jpg",
+      "backdropPath": "/3sF6AibdbTTkswfSRxXEGCt5w6s.jpg",
+      "year": "1988"
     },
     {
       "rank": 12,
@@ -137,8 +145,12 @@
     {
       "rank": 15,
       "title": "Aliens",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EAliens%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/015-aliens.jpg",
+      "status": "ok",
+      "tmdbId": 679,
+      "posterPath": "/r1x5JGpyqZU8PYhbs4UcrO1Xb6x.jpg",
+      "backdropPath": "/4kix6fAblJIH6eMs0Ku2loyZJXK.jpg",
+      "year": "1986"
     },
     {
       "rank": 16,
@@ -183,14 +195,22 @@
     {
       "rank": 20,
       "title": "Commando",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ECommando%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/020-commando.jpg",
+      "status": "ok",
+      "tmdbId": 10999,
+      "posterPath": "/ollPAAAgZ7euU8VisfqU3cuXhZ6.jpg",
+      "backdropPath": "/gvao0WZchzudp2oMF5sjgzwHY0q.jpg",
+      "year": "1985"
     },
     {
       "rank": 21,
       "title": "The Lion King",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Lion%20King%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/021-the-lion-king.jpg",
+      "status": "ok",
+      "tmdbId": 8587,
+      "posterPath": "/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg",
+      "backdropPath": "/q00H8EqULYSK74lgevMkhmGGLHn.jpg",
+      "year": "1994"
     },
     {
       "rank": 22,
@@ -205,8 +225,12 @@
     {
       "rank": 23,
       "title": "The Karate Kid",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Karate%20Kid%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/023-the-karate-kid.jpg",
+      "status": "ok",
+      "tmdbId": 38575,
+      "posterPath": "/b1RBy3l297N0c7PHjlz35cClWju.jpg",
+      "backdropPath": "/v8DepuF6gizphLzIyNZeQiB0hij.jpg",
+      "year": "2010"
     },
     {
       "rank": 24,
@@ -271,8 +295,12 @@
     {
       "rank": 30,
       "title": "The Godfather",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Godfather%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/030-the-godfather.jpg",
+      "status": "ok",
+      "tmdbId": 238,
+      "posterPath": "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+      "backdropPath": "/tSPT36ZKlP2WVHJLM4cQPLSzv3b.jpg",
+      "year": "1972"
     },
     {
       "rank": 31,
@@ -377,8 +405,12 @@
     {
       "rank": 41,
       "title": "Raiders of the Lost Ark",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ERaiders%20of%20the%20Lost%20Ark%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/041-raiders-of-the-lost-ark.jpg",
+      "status": "ok",
+      "tmdbId": 85,
+      "posterPath": "/ceG9VzoRAVGwivFU403Wc3AHRys.jpg",
+      "backdropPath": "/zPACwR32amTNvzId9qyapCWXYDJ.jpg",
+      "year": "1981"
     },
     {
       "rank": 42,
@@ -539,14 +571,22 @@
     {
       "rank": 58,
       "title": "Braveheart",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EBraveheart%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/058-braveheart.jpg",
+      "status": "ok",
+      "tmdbId": 197,
+      "posterPath": "/or1gBugydmjToAEq7OZY0owwFk.jpg",
+      "backdropPath": "/1m1c5gIWWkb1FEC9lzsoXHhhs7b.jpg",
+      "year": "1995"
     },
     {
       "rank": 59,
       "title": "Top Secret!",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ETop%20Secret!%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/059-top-secret.jpg",
+      "status": "ok",
+      "tmdbId": 8764,
+      "posterPath": "/hRTbfR27xghnVMs3ZJ3EhK3zzud.jpg",
+      "backdropPath": "/yI0xd7X8UktQ6cb8TdWKNTOWxhm.jpg",
+      "year": "1984"
     },
     {
       "rank": 60,
@@ -571,8 +611,12 @@
     {
       "rank": 62,
       "title": "The Boys",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Boys%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/062-the-boys.jpg",
+      "status": "ok",
+      "tmdbId": 13821,
+      "posterPath": "/jLyfVrwm5028RPhx5oXmJv01uSr.jpg",
+      "backdropPath": "/dIi3u1qnCMvRJRxLAa230UXgOfX.jpg",
+      "year": "1998"
     },
     {
       "rank": 63,
@@ -587,14 +631,22 @@
     {
       "rank": 64,
       "title": "Scary Movie",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EScary%20Movie%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/064-scary-movie.jpg",
+      "status": "ok",
+      "tmdbId": 1273221,
+      "posterPath": "/znHT8peERZRWG1ME3r0Db0EV8k8.jpg",
+      "backdropPath": "/xWBiXclrRmTggQHMRsIn84YHavs.jpg",
+      "year": "2026"
     },
     {
       "rank": 65,
       "title": "Airbag",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EAirbag%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/065-airbag.jpg",
+      "status": "ok",
+      "tmdbId": 21700,
+      "posterPath": "/sjvz7mxHsygeO4K09GoSgWR4dfy.jpg",
+      "backdropPath": "/uI7Wxl9RMthNtSPOCfTNvPW6oWs.jpg",
+      "year": "1997"
     },
     {
       "rank": 66,
@@ -649,8 +701,12 @@
     {
       "rank": 71,
       "title": "Sahara",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ESahara%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/071-sahara.jpg",
+      "status": "ok",
+      "tmdbId": 7364,
+      "posterPath": "/kyY1onYxkKBDlJsheRsVbMaoQEM.jpg",
+      "backdropPath": "/CXQ9wYj4n9MBwy2TQ92YaRygWj.jpg",
+      "year": "2005"
     },
     {
       "rank": 72,
@@ -675,8 +731,12 @@
     {
       "rank": 74,
       "title": "Rudy",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ERudy%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/074-rudy.jpg",
+      "status": "ok",
+      "tmdbId": 14534,
+      "posterPath": "/fAbfTCRpjHe2rprXBly55KL1dL9.jpg",
+      "backdropPath": "/flzoI6jEw7J0X5x2rwOMZCwZ57I.jpg",
+      "year": "1993"
     },
     {
       "rank": 75,
@@ -711,14 +771,22 @@
     {
       "rank": 78,
       "title": "Swingers",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ESwingers%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/078-swingers.jpg",
+      "status": "ok",
+      "tmdbId": 93685,
+      "posterPath": "/cEIVkvx6mGSjnkOxlXh6eHd1Y4K.jpg",
+      "backdropPath": "/mysDkqI25jW2qpbm44IB8qQyfYv.jpg",
+      "year": "2002"
     },
     {
       "rank": 79,
       "title": "Grind",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EGrind%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/079-grind.jpg",
+      "status": "ok",
+      "tmdbId": 20210,
+      "posterPath": "/3ijvfbWQYLaFQ2PaX6hywnMW3Hv.jpg",
+      "backdropPath": "/5DSsPOA54cb5ffIqJX9Dp5IKgtb.jpg",
+      "year": "2003"
     },
     {
       "rank": 80,
@@ -783,8 +851,12 @@
     {
       "rank": 86,
       "title": "Bird",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EBird%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/086-bird.jpg",
+      "status": "ok",
+      "tmdbId": 1128752,
+      "posterPath": "/wKshd6n8EKrwbE2fLOUqC4TSG6O.jpg",
+      "backdropPath": "/wwtZN9fy6BaFguj6wGPV0ZtCLHD.jpg",
+      "year": "2024"
     },
     {
       "rank": 87,
@@ -829,32 +901,52 @@
     {
       "rank": 91,
       "title": "Batman",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EBatman%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/091-batman.jpg",
+      "status": "ok",
+      "tmdbId": 268,
+      "posterPath": "/cij4dd21v2Rk2YtUQbV5kW69WB2.jpg",
+      "backdropPath": "/rBN6GPKUDZ6ZKAQiEZegZ0DZb6V.jpg",
+      "year": "1989"
     },
     {
       "rank": 92,
       "title": "Spider-Man",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ESpider-Man%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/092-spider-man.jpg",
+      "status": "ok",
+      "tmdbId": 557,
+      "posterPath": "/or6XJBVpcEbIkma0V9zshnbEtx4.jpg",
+      "backdropPath": "/zQ8AxTPiCiS5nnwXpwTBPBHSaa5.jpg",
+      "year": "2002"
     },
     {
       "rank": 93,
       "title": "The Secret of My Success",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Secret%20of%20My%20Success%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/093-the-secret-of-my-success.jpg",
+      "status": "ok",
+      "tmdbId": 10021,
+      "posterPath": "/yT4vQVUI4DoQar4elkqbHB1pjf0.jpg",
+      "backdropPath": "/tqm00kwclq6nibl7u9De8u3cq0X.jpg",
+      "year": "1987"
     },
     {
       "rank": 94,
       "title": "The Sound of Music",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Sound%20of%20Music%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/094-the-sound-of-music.jpg",
+      "status": "ok",
+      "tmdbId": 15121,
+      "posterPath": "/c6CrUZypAsBCaRWX0M3RVRDbhNS.jpg",
+      "backdropPath": "/ioQYjcRnU54ir5ltgyS7k53zw5x.jpg",
+      "year": "1965"
     },
     {
       "rank": 95,
       "title": "Ben-Hur",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EBen-Hur%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/095-ben-hur.jpg",
+      "status": "ok",
+      "tmdbId": 665,
+      "posterPath": "/m4WQ1dBIrEIHZNCoAjdpxwSKWyH.jpg",
+      "backdropPath": "/nk5gq5rNLBJiHvNGMRT6I9VRQX7.jpg",
+      "year": "1959"
     },
     {
       "rank": 96,
@@ -969,8 +1061,12 @@
     {
       "rank": 107,
       "title": "The NeverEnding Story",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20NeverEnding%20Story%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/107-the-neverending-story.jpg",
+      "status": "ok",
+      "tmdbId": 34584,
+      "posterPath": "/ddYCa91iDXfJCxaqSYzwi2fjfnl.jpg",
+      "backdropPath": "/rKmOe5pb5a6P1HmQAzpRw20gORp.jpg",
+      "year": "1984"
     },
     {
       "rank": 108,
@@ -1005,8 +1101,12 @@
     {
       "rank": 111,
       "title": "The Day of the Beast",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Day%20of%20the%20Beast%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/111-the-day-of-the-beast.jpg",
+      "status": "ok",
+      "tmdbId": 10722,
+      "posterPath": "/yEXhgACPIV4PmTgHT2HS3Ko2oS3.jpg",
+      "backdropPath": "/ijBx6WyNU94rKKmt1iTkD9N1ujn.jpg",
+      "year": "1995"
     },
     {
       "rank": 112,
@@ -1061,14 +1161,22 @@
     {
       "rank": 117,
       "title": "Sicario",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ESicario%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/117-sicario.jpg",
+      "status": "ok",
+      "tmdbId": 273481,
+      "posterPath": "/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg",
+      "backdropPath": "/fKPgObonYgPgCdu88yjV7Hpn7Dp.jpg",
+      "year": "2015"
     },
     {
       "rank": 118,
       "title": "Troy",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ETroy%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/118-troy.jpg",
+      "status": "ok",
+      "tmdbId": 652,
+      "posterPath": "/a07wLy4ONfpsjnBqMwhlWTJTcm.jpg",
+      "backdropPath": "/ZPcC5hJh21QiW0jmhMQhZeSoGu.jpg",
+      "year": "2004"
     },
     {
       "rank": 119,
@@ -1083,14 +1191,22 @@
     {
       "rank": 120,
       "title": "First Blood",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EFirst%20Blood%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/120-first-blood.jpg",
+      "status": "ok",
+      "tmdbId": 1368,
+      "posterPath": "/a9sa6ERZCpplbPEO7OMWE763CLD.jpg",
+      "backdropPath": "/hCxxOJojCUFyuahDx167glJgp7E.jpg",
+      "year": "1982"
     },
     {
       "rank": 121,
       "title": "Little White Lies",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ELittle%20White%20Lies%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/121-little-white-lies.jpg",
+      "status": "ok",
+      "tmdbId": 48034,
+      "posterPath": "/djypJtQfUxeEMh6kc0aRzIoN9UR.jpg",
+      "backdropPath": "/aDKuDfEAYa2VENKd155D4ZoAl7c.jpg",
+      "year": "2010"
     },
     {
       "rank": 122,
@@ -1125,8 +1241,12 @@
     {
       "rank": 125,
       "title": "Short Circuit",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EShort%20Circuit%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/125-short-circuit.jpg",
+      "status": "ok",
+      "tmdbId": 2605,
+      "posterPath": "/e3eimdUK6lLe0iaSlLrYVQF3yeL.jpg",
+      "backdropPath": "/fytpsMuKVm8GynH0n3DCzIBp092.jpg",
+      "year": "1986"
     },
     {
       "rank": 126,
@@ -1141,14 +1261,22 @@
     {
       "rank": 127,
       "title": "The Hangover",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Hangover%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/127-the-hangover.jpg",
+      "status": "ok",
+      "tmdbId": 18785,
+      "posterPath": "/A0uS9rHR56FeBtpjVki16M5xxSW.jpg",
+      "backdropPath": "/iuRVt8tFiXDPGgzavhuSa3QHRxD.jpg",
+      "year": "2009"
     },
     {
       "rank": 128,
       "title": "The Running Man",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Running%20Man%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/128-the-running-man.jpg",
+      "status": "ok",
+      "tmdbId": 798645,
+      "posterPath": "/dKL78O9zxczVgjtNcQ9UkbYLzqX.jpg",
+      "backdropPath": "/aHj7d7wSLqrg5cjAcgHhiGr97Ih.jpg",
+      "year": "2025"
     },
     {
       "rank": 129,
@@ -1303,8 +1431,12 @@
     {
       "rank": 144,
       "title": "Top Gun",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ETop%20Gun%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/144-top-gun.jpg",
+      "status": "ok",
+      "tmdbId": 744,
+      "posterPath": "/xUuHj3CgmZQ9P2cMaqQs4J0d4Zc.jpg",
+      "backdropPath": "/dBgxEkWe17R0AJDAvAhpeVELQx2.jpg",
+      "year": "1986"
     },
     {
       "rank": 145,
@@ -1329,14 +1461,22 @@
     {
       "rank": 147,
       "title": "The Good, the Bad and the Ugly",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Good%2C%20the%20Bad%20and%20the%20Ugly%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/147-the-good-the-bad-and-the-ugly.jpg",
+      "status": "ok",
+      "tmdbId": 429,
+      "posterPath": "/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg",
+      "backdropPath": "/x4biAVdPVCghBlsVIzB6NmbghIz.jpg",
+      "year": "1966"
     },
     {
       "rank": 148,
       "title": "Young Guns",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EYoung%20Guns%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/148-young-guns.jpg",
+      "status": "ok",
+      "tmdbId": 11967,
+      "posterPath": "/3AgCq7xY1rHRAAn0iVcnNr2OWL.jpg",
+      "backdropPath": "/AoFo9HeJU7jiHAUNawpwhs3zQbd.jpg",
+      "year": "1988"
     },
     {
       "rank": 149,
@@ -1391,8 +1531,12 @@
     {
       "rank": 154,
       "title": "Pump Up the Volume",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EPump%20Up%20the%20Volume%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/154-pump-up-the-volume.jpg",
+      "status": "ok",
+      "tmdbId": 8428,
+      "posterPath": "/s1SyKrARJG2R7FyS4zkNdaekLAW.jpg",
+      "backdropPath": "/j1Q9PSiRxpUZPtzislzEsyDgRCy.jpg",
+      "year": "1990"
     },
     {
       "rank": 155,
@@ -1417,14 +1561,22 @@
     {
       "rank": 157,
       "title": "Mr. & Mrs. Smith",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EMr.%20%20Mrs.%20Smith%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/157-mr-mrs-smith.jpg",
+      "status": "ok",
+      "tmdbId": 787,
+      "posterPath": "/kjD700RtyhveN3ZbOnSvUSne0Qj.jpg",
+      "backdropPath": "/tgDSUwWMgypgmcBhRs9u30RLPNC.jpg",
+      "year": "2005"
     },
     {
       "rank": 158,
       "title": "Out of Sight",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EOut%20of%20Sight%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/158-out-of-sight.jpg",
+      "status": "ok",
+      "tmdbId": 1389,
+      "posterPath": "/v49q7AMR3pB4M762woWB1NYMCLF.jpg",
+      "backdropPath": "/rOvXN8m3l4qNKCdNscLUjxK6I9I.jpg",
+      "year": "1998"
     },
     {
       "rank": 159,
@@ -1469,8 +1621,12 @@
     {
       "rank": 163,
       "title": "GoldenEye",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EGoldenEye%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/163-goldeneye.jpg",
+      "status": "ok",
+      "tmdbId": 710,
+      "posterPath": "/z0ljRnNxIO7CRBhLEO0DvLgAFPR.jpg",
+      "backdropPath": "/fIWsCpYR9iGDMSbMTSAzy8L7Kg5.jpg",
+      "year": "1995"
     },
     {
       "rank": 164,
@@ -1505,8 +1661,12 @@
     {
       "rank": 167,
       "title": "The Host",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Host%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/167-the-host.jpg",
+      "status": "ok",
+      "tmdbId": 72710,
+      "posterPath": "/1mfIZw6WgkCX310eoe0Ys14c3Fi.jpg",
+      "backdropPath": "/1bDa2d9VqqBQlk42Gduu37Rz1ob.jpg",
+      "year": "2013"
     },
     {
       "rank": 168,
@@ -1621,8 +1781,12 @@
     {
       "rank": 179,
       "title": "The Sixth Sense",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Sixth%20Sense%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/179-the-sixth-sense.jpg",
+      "status": "ok",
+      "tmdbId": 745,
+      "posterPath": "/vOyfUXNFSnaTk7Vk5AjpsKTUWsu.jpg",
+      "backdropPath": "/6TjllWT3cGrPFyqDXurVZ3L8bBi.jpg",
+      "year": "1999"
     },
     {
       "rank": 180,
@@ -1657,8 +1821,12 @@
     {
       "rank": 183,
       "title": "The Doors",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Doors%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/183-the-doors.jpg",
+      "status": "ok",
+      "tmdbId": 10537,
+      "posterPath": "/x1LM3dzGuG6xOz0aT2e71o11vhu.jpg",
+      "backdropPath": "/p4XrrXZqxeqXKH7zBeP6wRkDbhc.jpg",
+      "year": "1991"
     },
     {
       "rank": 184,
@@ -1683,8 +1851,12 @@
     {
       "rank": 186,
       "title": "The Longest Day",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Longest%20Day%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/186-the-longest-day.jpg",
+      "status": "ok",
+      "tmdbId": 9289,
+      "posterPath": "/5zmvEofdIlgXrQl9A7e5IOzlnFU.jpg",
+      "backdropPath": "/yt9FIS2Osm97M7w4dLFkBu7YxW8.jpg",
+      "year": "1962"
     },
     {
       "rank": 187,
@@ -1699,8 +1871,12 @@
     {
       "rank": 188,
       "title": "Magnolia",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EMagnolia%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/188-magnolia.jpg",
+      "status": "ok",
+      "tmdbId": 334,
+      "posterPath": "/tpfC325Jk6S38VTe5dDWjWtoyxr.jpg",
+      "backdropPath": "/mFfyE5DPFDqoes4HIcElHc2a15y.jpg",
+      "year": "1999"
     },
     {
       "rank": 189,
@@ -1745,8 +1921,12 @@
     {
       "rank": 193,
       "title": "Point Break",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EPoint%20Break%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/193-point-break.jpg",
+      "status": "ok",
+      "tmdbId": 1089,
+      "posterPath": "/tlbERIghrQ4oofqlbF7H0K0EYnx.jpg",
+      "backdropPath": "/yGOHbICOQwlJ20UjK8F2ChGJjvl.jpg",
+      "year": "1991"
     },
     {
       "rank": 194,
@@ -1791,14 +1971,22 @@
     {
       "rank": 198,
       "title": "The Fugitive",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Fugitive%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/198-the-fugitive.jpg",
+      "status": "ok",
+      "tmdbId": 5503,
+      "posterPath": "/b3rEtLKyOnF89mcK75GXDXdmOEf.jpg",
+      "backdropPath": "/7WVRxZ7KZmzoHnUkAjnEFT4o6Dw.jpg",
+      "year": "1993"
     },
     {
       "rank": 199,
       "title": "How to Train Your Dragon 2",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EHow%20to%20Train%20Your%20Dragon%202%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/199-how-to-train-your-dragon-2.jpg",
+      "status": "ok",
+      "tmdbId": 82702,
+      "posterPath": "/d13Uj86LdbDLrfDoHR5aDOFYyJC.jpg",
+      "backdropPath": "/8AAuJtCzaibYkbE0QVHc8EBsELB.jpg",
+      "year": "2014"
     },
     {
       "rank": 200,
@@ -1863,8 +2051,12 @@
     {
       "rank": 206,
       "title": "The Party",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Party%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/206-the-party.jpg",
+      "status": "ok",
+      "tmdbId": 10794,
+      "posterPath": "/nWZ9rrbMoHHgsvYNdng2EhbjeLf.jpg",
+      "backdropPath": "/jqw9t9nshz9mV79C66PV2giHVw6.jpg",
+      "year": "1968"
     },
     {
       "rank": 207,
@@ -1879,8 +2071,12 @@
     {
       "rank": 208,
       "title": "Santa Claus Is a Stinker",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ESanta%20Claus%20Is%20a%20Stinker%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/208-santa-claus-is-a-stinker.jpg",
+      "status": "ok",
+      "tmdbId": 14645,
+      "posterPath": "/z86yqhtqmNxQN214OK4PUDbpBOq.jpg",
+      "backdropPath": "/wqDy23S6NJaPbUyVecv1WyCuMmy.jpg",
+      "year": "1982"
     },
     {
       "rank": 209,
@@ -1895,14 +2091,22 @@
     {
       "rank": 210,
       "title": "The Hunted",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Hunted%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/210-the-hunted.jpg",
+      "status": "ok",
+      "tmdbId": 10632,
+      "posterPath": "/AvdBPe2XSKm3cGyTKFgbquC2jCo.jpg",
+      "backdropPath": "/2T3k09YnrM03CQd1yK3ZQLEHEZH.jpg",
+      "year": "2003"
     },
     {
       "rank": 211,
       "title": "The Pink Panther",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Pink%20Panther%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/211-the-pink-panther.jpg",
+      "status": "ok",
+      "tmdbId": 12096,
+      "posterPath": "/57ViRkdsddHLK32W8Nf3ZPLSAu4.jpg",
+      "backdropPath": "/3jiNJ4lyAmdSidvbFTFIL2GQGBu.jpg",
+      "year": "2006"
     },
     {
       "rank": 212,
@@ -1997,8 +2201,12 @@
     {
       "rank": 221,
       "title": "Wall Street",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EWall%20Street%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/221-wall-street.jpg",
+      "status": "ok",
+      "tmdbId": 10673,
+      "posterPath": "/2tQYq9ntzn2dEwDIGLBSipYPenv.jpg",
+      "backdropPath": "/v46Uq29FXcl4huvu1Nh7tJ5qAjZ.jpg",
+      "year": "1987"
     },
     {
       "rank": 222,
@@ -2023,8 +2231,12 @@
     {
       "rank": 224,
       "title": "Independence Day",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EIndependence%20Day%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/224-independence-day.jpg",
+      "status": "ok",
+      "tmdbId": 602,
+      "posterPath": "/p0BPQGSPoSa8Ml0DAf2mB2kCU0R.jpg",
+      "backdropPath": "/kFI1oF6KVnLEbUT7yLIbKXeyvu.jpg",
+      "year": "1996"
     },
     {
       "rank": 225,
@@ -2049,8 +2261,12 @@
     {
       "rank": 227,
       "title": "The Great Outdoors",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Great%20Outdoors%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/227-the-great-outdoors.jpg",
+      "status": "ok",
+      "tmdbId": 2617,
+      "posterPath": "/zxIoPZiqKOxrWvieumpxA6bOgkt.jpg",
+      "backdropPath": "/lLvTqn3P1MFiCSAWEjSoR3MxRsX.jpg",
+      "year": "1988"
     },
     {
       "rank": 228,
@@ -2075,8 +2291,12 @@
     {
       "rank": 230,
       "title": "Teenage Mutant Ninja Turtles",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ETeenage%20Mutant%20Ninja%20Turtles%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/230-teenage-mutant-ninja-turtles.jpg",
+      "status": "ok",
+      "tmdbId": 98566,
+      "posterPath": "/azL2ThbJMIkts3ZMt3j1YgBUeDB.jpg",
+      "backdropPath": "/eezsbzYPbYKjjh6E1XHDBNlLynh.jpg",
+      "year": "2014"
     },
     {
       "rank": 231,
@@ -2101,20 +2321,32 @@
     {
       "rank": 233,
       "title": "The Last Samurai",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Last%20Samurai%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/233-the-last-samurai.jpg",
+      "status": "ok",
+      "tmdbId": 616,
+      "posterPath": "/a8jmJPs5eZBARmnuEEvZwbjwyz4.jpg",
+      "backdropPath": "/z354BaTVzKj7E60WLzDoSmUuO4u.jpg",
+      "year": "2003"
     },
     {
       "rank": 234,
       "title": "Deep Impact",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EDeep%20Impact%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/234-deep-impact.jpg",
+      "status": "ok",
+      "tmdbId": 8656,
+      "posterPath": "/a3vQS7JKqlOb3MdVJHuTCP9s7Mg.jpg",
+      "backdropPath": "/pWmJBkdb0EMb3PSd2f9wjza0krb.jpg",
+      "year": "1998"
     },
     {
       "rank": 235,
       "title": "The Black Hole",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Black%20Hole%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/235-the-black-hole.jpg",
+      "status": "ok",
+      "tmdbId": 9570,
+      "posterPath": "/gCqOJWvOK5UPospyrLANKfwRBlG.jpg",
+      "backdropPath": "/dfNNSNVdbaFgDt4DLJf55CZsB5L.jpg",
+      "year": "1979"
     },
     {
       "rank": 236,
@@ -2149,8 +2381,12 @@
     {
       "rank": 239,
       "title": "Stand by Me",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EStand%20by%20Me%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/239-stand-by-me.jpg",
+      "status": "ok",
+      "tmdbId": 235,
+      "posterPath": "/vz0w9BSehcqjDcJOjRaCk7fgJe7.jpg",
+      "backdropPath": "/yjGllQUm28R4X9xD9T5xMszirgw.jpg",
+      "year": "1986"
     },
     {
       "rank": 240,
@@ -2185,8 +2421,12 @@
     {
       "rank": 243,
       "title": "The Skulls",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Skulls%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/243-the-skulls.jpg",
+      "status": "ok",
+      "tmdbId": 11478,
+      "posterPath": "/pYuggibfzm8LWgjnUKMMtii2430.jpg",
+      "backdropPath": "/4kWVUyJAF9AUrcBlNBOxs4ikcQf.jpg",
+      "year": "2000"
     },
     {
       "rank": 244,
@@ -2201,8 +2441,12 @@
     {
       "rank": 245,
       "title": "Funny Farm",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EFunny%20Farm%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/245-funny-farm.jpg",
+      "status": "ok",
+      "tmdbId": 14170,
+      "posterPath": "/i4ExIbPuAe0rAjpYcteiFx4QEfY.jpg",
+      "backdropPath": "/amug5GrzqF3Xgz0zgaddVHNUFP6.jpg",
+      "year": "1988"
     },
     {
       "rank": 246,
@@ -2217,8 +2461,12 @@
     {
       "rank": 247,
       "title": "Talk to Her",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ETalk%20to%20Her%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/247-talk-to-her.jpg",
+      "status": "ok",
+      "tmdbId": 64,
+      "posterPath": "/fWDbQlOWOqjR5jZm98KjGyYmUOw.jpg",
+      "backdropPath": "/rknvDtxOe1uqLX0EFWLHIQxRXcJ.jpg",
+      "year": "2002"
     },
     {
       "rank": 248,
@@ -2243,8 +2491,12 @@
     {
       "rank": 250,
       "title": "Trading Places",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ETrading%20Places%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/250-trading-places.jpg",
+      "status": "ok",
+      "tmdbId": 1621,
+      "posterPath": "/8mBuLCOcpWnmYtZc4aqtvDXslv6.jpg",
+      "backdropPath": "/3FO1kbQmRlU1H6Kmn7sTfmd7mw9.jpg",
+      "year": "1983"
     },
     {
       "rank": 251,
@@ -2259,8 +2511,12 @@
     {
       "rank": 252,
       "title": "Predator",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EPredator%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/252-predator.jpg",
+      "status": "ok",
+      "tmdbId": 106,
+      "posterPath": "/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg",
+      "backdropPath": "/YL3GPOiDcNraIJOVDCZsoOBoDy.jpg",
+      "year": "1987"
     },
     {
       "rank": 253,
@@ -2291,8 +2547,12 @@
     {
       "rank": 256,
       "title": "Meet the Parents",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EMeet%20the%20Parents%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/256-meet-the-parents.jpg",
+      "status": "ok",
+      "tmdbId": 1597,
+      "posterPath": "/5tXJ9ctuyEOMUFLaeqRisbXowWs.jpg",
+      "backdropPath": "/qcVrlyPFlPgCsmzorvELvpJN9Be.jpg",
+      "year": "2000"
     },
     {
       "rank": 257,
@@ -2337,8 +2597,12 @@
     {
       "rank": 261,
       "title": "Cars",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ECars%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/261-cars.jpg",
+      "status": "ok",
+      "tmdbId": 920,
+      "posterPath": "/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
+      "backdropPath": "/sOLgkBKf1gjMRc4yXxM5aciXdfr.jpg",
+      "year": "2006"
     },
     {
       "rank": 262,
