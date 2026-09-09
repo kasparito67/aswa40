@@ -1,0 +1,650 @@
+{
+  "generatedAt": "2026-09-09T20:50:18.569Z",
+  "source": "TMDB + established ASWA40 assets",
+  "films": [
+    {
+      "rank": 1,
+      "title": "Children of Men",
+      "img": "../assets/posters/2000-2024/023-children-of-men.jpg",
+      "status": "ok",
+      "tmdbId": 9693,
+      "posterPath": "/k9IAS4TehZFcKi4HVByxZNPfqex.jpg",
+      "backdropPath": "/www52jvhbB0ppe9s0zxbf9EYox.jpg",
+      "year": "2006"
+    },
+    {
+      "rank": 2,
+      "title": "Gattaca",
+      "img": "../assets/posters/1975-1999/gattaca.jpg",
+      "status": "ok",
+      "tmdbId": 782,
+      "posterPath": "/eSKr5Fl1MEC7zpAXaLWBWSBjgJq.jpg",
+      "backdropPath": null,
+      "year": "1997"
+    },
+    {
+      "rank": 3,
+      "title": "Blade Runner",
+      "img": "../assets/posters/1975-1999/blade-runner.jpg",
+      "status": "ok",
+      "tmdbId": 78,
+      "posterPath": "/63N9uy8nd9j7Eog2axPQ8lbr3Wj.jpg",
+      "backdropPath": null,
+      "year": "1982"
+    },
+    {
+      "rank": 4,
+      "title": "A Clockwork Orange",
+      "img": "../assets/posters/sci-fi-realiste/004-a-clockwork-orange.jpg",
+      "status": "ok",
+      "tmdbId": 185,
+      "posterPath": "/4sHeTAp65WrSSuc05nRBKddhBxO.jpg",
+      "backdropPath": "/nLFxvLokHe3bQmrmAfljIfax2jQ.jpg",
+      "year": "1971"
+    },
+    {
+      "rank": 5,
+      "title": "The Matrix",
+      "img": "../assets/posters/1975-1999/the-matrix.jpg",
+      "status": "ok",
+      "tmdbId": 603,
+      "posterPath": "/dXNAPwY7VrqMAo51EKhhCJfaGb5.jpg",
+      "backdropPath": null,
+      "year": "1999"
+    },
+    {
+      "rank": 6,
+      "title": "Blade Runner 2049",
+      "img": "../assets/posters/2000-2024/080-blade-runner-2049.jpg",
+      "status": "ok",
+      "tmdbId": 335984,
+      "posterPath": "/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
+      "backdropPath": "/gNdLJU9TxrpGx4dkZidjys3fyy0.jpg",
+      "year": "2017"
+    },
+    {
+      "rank": 7,
+      "title": "Her",
+      "img": "../assets/posters/2000-2024/099-her.jpg",
+      "status": "ok",
+      "tmdbId": 152601,
+      "posterPath": "/eCOtqtfvn7mxGl6nfmq4b1exJRc.jpg",
+      "backdropPath": "/1YnZchmaGc8dchgRPDpR1KGrixA.jpg",
+      "year": "2013"
+    },
+    {
+      "rank": 8,
+      "title": "Ex Machina",
+      "img": "../assets/posters/2000-2024/027-ex-machina.jpg",
+      "status": "ok",
+      "tmdbId": 264660,
+      "posterPath": "/dmJW8IAKHKxFNiUnoDR7JfsK7Rp.jpg",
+      "backdropPath": "/uqOuJ50EtTj7kkDIXP8LCg7G45D.jpg",
+      "year": "2015"
+    },
+    {
+      "rank": 9,
+      "title": "Minority Report",
+      "img": "../assets/posters/sci-fi-realiste/009-minority-report.jpg",
+      "status": "ok",
+      "tmdbId": 180,
+      "posterPath": "/ccqpHq5tk5W4ymbSbuoy4uYOxFI.jpg",
+      "backdropPath": "/PrMb3oeEluauy0q9ZO5xL33A6C.jpg",
+      "year": "2002"
+    },
+    {
+      "rank": 10,
+      "title": "The Martian",
+      "img": "../assets/posters/sci-fi-realiste/010-the-martian.jpg",
+      "status": "ok",
+      "tmdbId": 286217,
+      "posterPath": "/fASz8A0yFE3QB6LgGoOfwvFSseV.jpg",
+      "backdropPath": "/lzMS0CI3FLQYC5EgJoWeIaEt0lm.jpg",
+      "year": "2015"
+    },
+    {
+      "rank": 11,
+      "title": "28 Days Later",
+      "img": "../assets/posters/2000-2024/057-28-days-later.jpg",
+      "status": "ok",
+      "tmdbId": 170,
+      "posterPath": "/sQckQRt17VaWbo39GIu0TMOiszq.jpg",
+      "backdropPath": "/aJFwk1clMal1prxAvKAgHxKPAf.jpg",
+      "year": "2002"
+    },
+    {
+      "rank": 12,
+      "title": "2001: A Space Odyssey",
+      "img": "../assets/posters/sci-fi-realiste/012-2001-a-space-odyssey.jpg",
+      "status": "ok",
+      "tmdbId": 62,
+      "posterPath": "/ve72VxNqjGM69Uky4WTo2bK6rfq.jpg",
+      "backdropPath": "/w5IDXtifKntw0ajv2co7jFlTQDM.jpg",
+      "year": "1968"
+    },
+    {
+      "rank": 13,
+      "title": "Jurassic Park",
+      "img": "../assets/posters/1975-1999/jurassic-park.jpg",
+      "status": "ok",
+      "tmdbId": 329,
+      "posterPath": "/63viWuPfYQjRYLSZSZNq7dglJP5.jpg",
+      "backdropPath": null,
+      "year": "1993"
+    },
+    {
+      "rank": 14,
+      "title": "Ghost in the Shell",
+      "img": "../assets/posters/2000-2024/091-ghost-in-the-shell.jpg",
+      "status": "ok",
+      "tmdbId": 315837,
+      "posterPath": "/zCtL3UBgCoZzd7XTVGhvl6XY75E.jpg",
+      "backdropPath": "/dDVqfmCzSy3TKSmiS2pJ9QB5E3P.jpg",
+      "year": "2017"
+    },
+    {
+      "rank": 15,
+      "title": "The Truman Show",
+      "img": "../assets/posters/1975-1999/the-truman-show.jpg",
+      "status": "ok",
+      "tmdbId": 37165,
+      "posterPath": "/vuza0WqY239yBXOadKlGwJsZJFE.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 16,
+      "title": "WALL-E",
+      "img": "../assets/grands-oublies/2000-2024/wall-e.jpg",
+      "status": "ok",
+      "tmdbId": 10681,
+      "posterPath": "/hbhFnRzzg6ZDmm8YAmxBnQpQIPh.jpg",
+      "backdropPath": "/nYs4ZwnJBK4AgljhvzwNz7fpr3E.jpg",
+      "year": "2008"
+    },
+    {
+      "rank": 17,
+      "title": "Akira",
+      "img": "../assets/posters/1975-1999/akira.jpg",
+      "status": "ok",
+      "tmdbId": 149,
+      "posterPath": "/neZ0ykEsPqxamsX6o5QNUFILQrz.jpg",
+      "backdropPath": null,
+      "year": "1988"
+    },
+    {
+      "rank": 18,
+      "title": "Moon",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EMoon%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 19,
+      "title": "RoboCop",
+      "img": "../assets/posters/sci-fi-realiste/019-robocop.jpg",
+      "status": "ok",
+      "tmdbId": 5548,
+      "posterPath": "/hHtOgGb3NihlyRATHlKPaFApbrd.jpg",
+      "backdropPath": "/xcaX6BZ1JUPSVMH2gBkWIckLLaA.jpg",
+      "year": "1987"
+    },
+    {
+      "rank": 20,
+      "title": "Mad Max: Fury Road",
+      "img": "../assets/posters/2000-2024/029-mad-max-fury-road.jpg",
+      "status": "ok",
+      "tmdbId": 76341,
+      "posterPath": "/ulcAi4dKpAjHwYGS08vNyx9H6I9.jpg",
+      "backdropPath": "/uT895WNwm0aIJRtGizcQhrejWUo.jpg",
+      "year": "2015"
+    },
+    {
+      "rank": 21,
+      "title": "Eternal Sunshine of the Spotless Mind",
+      "img": "../assets/grands-oublies/2000-2024/eternal-sunshine-of-the-spotless-mind.jpg",
+      "status": "ok",
+      "tmdbId": 38,
+      "posterPath": "/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg",
+      "backdropPath": "/W1ffLQGHoxfAOq0ZYdPtJlvAdb.jpg",
+      "year": "2004"
+    },
+    {
+      "rank": 22,
+      "title": "Gravity",
+      "img": "../assets/posters/sci-fi-realiste/022-gravity.jpg",
+      "status": "ok",
+      "tmdbId": 49047,
+      "posterPath": "/kZ2nZw8D681aphje8NJi8EfbL1U.jpg",
+      "backdropPath": "/a2n6bKD7qhCPCAEALgsAhWOAQcc.jpg",
+      "year": "2013"
+    },
+    {
+      "rank": 23,
+      "title": "Never Let Me Go",
+      "img": "../assets/posters/sci-fi-realiste/023-never-let-me-go.jpg",
+      "status": "ok",
+      "tmdbId": 42188,
+      "posterPath": "/8F0r5ng9Fp60OhzQfR5v33fppq.jpg",
+      "backdropPath": "/ppf18IfACeWmkObqyjrhmNiL6G4.jpg",
+      "year": "2010"
+    },
+    {
+      "rank": 24,
+      "title": "Snowpiercer",
+      "img": "../assets/posters/sci-fi-realiste/024-snowpiercer.jpg",
+      "status": "ok",
+      "tmdbId": 110415,
+      "posterPath": "/kw6YQudA0TMcNmGUGy5XIw7zbnV.jpg",
+      "backdropPath": "/tBIRtMCELcA5PxO7z7OiuCHJdFO.jpg",
+      "year": "2013"
+    },
+    {
+      "rank": 25,
+      "title": "A.I. Artificial Intelligence",
+      "img": "../assets/posters/sci-fi-realiste/025-a-i-artificial-intelligence.jpg",
+      "status": "ok",
+      "tmdbId": 644,
+      "posterPath": "/wnUAcUrMRGPPZUDroLeZhSjLkuu.jpg",
+      "backdropPath": "/n7p6UTAZtkeoHkwCO42BEQaMFJY.jpg",
+      "year": "2001"
+    },
+    {
+      "rank": 26,
+      "title": "Brazil",
+      "img": "../assets/grands-oublies/1975-1999/brazil.jpg",
+      "status": "ok",
+      "tmdbId": 68,
+      "posterPath": "/aewan59WcFThBimkTVVoNf2o5Vb.jpg",
+      "backdropPath": null,
+      "year": "1985"
+    },
+    {
+      "rank": 27,
+      "title": "Inception",
+      "img": "../assets/posters/2000-2024/024-inception.jpg",
+      "status": "ok",
+      "tmdbId": 27205,
+      "posterPath": "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg",
+      "backdropPath": "/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
+      "year": "2010"
+    },
+    {
+      "rank": 28,
+      "title": "12 Monkeys",
+      "img": "../assets/posters/sci-fi-realiste/028-12-monkeys.jpg",
+      "status": "ok",
+      "tmdbId": 63,
+      "posterPath": "/gt3iyguaCIw8DpQZI1LIN5TohM2.jpg",
+      "backdropPath": "/mKIkGoyuR71qz6FdiEiOjxvBQcS.jpg",
+      "year": "1995"
+    },
+    {
+      "rank": 29,
+      "title": "Contact",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EContact%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 30,
+      "title": "Terminator 2: Judgment Day",
+      "img": "../assets/posters/1975-1999/terminator-2.jpg",
+      "status": "ok",
+      "tmdbId": 280,
+      "posterPath": "/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg",
+      "backdropPath": null,
+      "year": "1991"
+    },
+    {
+      "rank": 31,
+      "title": "Interstellar",
+      "img": "../assets/posters/2000-2024/100-interstellar.jpg",
+      "status": "ok",
+      "tmdbId": 157336,
+      "posterPath": "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
+      "backdropPath": "/5XNQBqnBwPA9yT0jZ0p3s8bbLh0.jpg",
+      "year": "2014"
+    },
+    {
+      "rank": 32,
+      "title": "Signs",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ESigns%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 33,
+      "title": "Strange Days",
+      "img": "../assets/posters/sci-fi-realiste/033-strange-days.jpg",
+      "status": "ok",
+      "tmdbId": 281,
+      "posterPath": "/rY5BrDRcYAKE0BYmmT66YG6Uy5Q.jpg",
+      "backdropPath": "/zSFuvi6fIPT8CHpH1KMG25T2Iub.jpg",
+      "year": "1995"
+    },
+    {
+      "rank": 34,
+      "title": "Dune",
+      "img": "../assets/posters/2000-2024/019-dune.jpg",
+      "status": "ok",
+      "tmdbId": 438631,
+      "posterPath": "/v1tRXZ4JtD2Iv6fjkPvT4GiwslV.jpg",
+      "backdropPath": "/qVgZu5BTx6pu4owCvVOm4zjTfOi.jpg",
+      "year": "2021"
+    },
+    {
+      "rank": 35,
+      "title": "Dune: Part Two",
+      "img": "../assets/posters/sci-fi-realiste/035-dune-part-two.jpg",
+      "status": "ok",
+      "tmdbId": 693134,
+      "posterPath": "/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg",
+      "backdropPath": "/eZ239CUp1d6OryZEBPnO2n87gMG.jpg",
+      "year": "2024"
+    },
+    {
+      "rank": 36,
+      "title": "Rise of the Planet of the Apes",
+      "img": "../assets/posters/sci-fi-realiste/036-rise-of-the-planet-of-the-apes.jpg",
+      "status": "ok",
+      "tmdbId": 61791,
+      "posterPath": "/oqA45qMyyo1TtrnVEBKxqmTPhbN.jpg",
+      "backdropPath": "/6cCF0KMUO2QmrVsQFujkQduREXX.jpg",
+      "year": "2011"
+    },
+    {
+      "rank": 37,
+      "title": "E.T. the Extra-Terrestrial",
+      "img": "../assets/posters/1975-1999/et-the-extra-terrestrial.jpg",
+      "status": "ok",
+      "tmdbId": 601,
+      "posterPath": "/an0nD6uq6byfxXCfk6lQBzdL2J1.jpg",
+      "backdropPath": null,
+      "year": "1982"
+    },
+    {
+      "rank": 38,
+      "title": "Mars Express",
+      "img": "../assets/posters/sci-fi-realiste/038-mars-express.jpg",
+      "status": "ok",
+      "tmdbId": 586810,
+      "posterPath": "/g8rUn0khoYB3G4gPPGTF1Xv9Olu.jpg",
+      "backdropPath": "/yIOw17XdfsoCaydtrkzlZBCcHk6.jpg",
+      "year": "2023"
+    },
+    {
+      "rank": 39,
+      "title": "The Running Man",
+      "img": "../assets/posters/sci-fi-realiste/039-the-running-man.jpg",
+      "status": "ok",
+      "tmdbId": 865,
+      "posterPath": "/GTAUOhO4BN0peJVvxGEQydJvUO.jpg",
+      "backdropPath": "/ssQ7IcGmgUJdFLv8cHY3vC3OR4f.jpg",
+      "year": "1987"
+    },
+    {
+      "rank": 40,
+      "title": "Total Recall",
+      "img": "../assets/posters/sci-fi-realiste/040-total-recall.jpg",
+      "status": "ok",
+      "tmdbId": 861,
+      "posterPath": "/wVbeL6fkbTKSmNfalj4VoAUUqJv.jpg",
+      "backdropPath": "/x2wOlXuK4NzPDQ0OBZiJjNNOp6Y.jpg",
+      "year": "1990"
+    },
+    {
+      "rank": 41,
+      "title": "1984",
+      "img": "../assets/posters/sci-fi-realiste/041-1984.jpg",
+      "status": "ok",
+      "tmdbId": 9314,
+      "posterPath": "/hrdQlicxuyTg3zyVqq78EsA4Z6J.jpg",
+      "backdropPath": "/alxkhwiANOXV1MOysWnDoUqIw8O.jpg",
+      "year": "1984"
+    },
+    {
+      "rank": 42,
+      "title": "Weird Science",
+      "img": "../assets/posters/sci-fi-realiste/042-weird-science.jpg",
+      "status": "ok",
+      "tmdbId": 11814,
+      "posterPath": "/AsFxOHwUlK7mTOkC5p6SySsdEjz.jpg",
+      "backdropPath": "/2oaTLhpbnX8kfrlJTostT27uL5j.jpg",
+      "year": "1985"
+    },
+    {
+      "rank": 43,
+      "title": "Event Horizon",
+      "img": "../assets/posters/sci-fi-realiste/043-event-horizon.jpg",
+      "status": "ok",
+      "tmdbId": 8413,
+      "posterPath": "/qfluaDXv0cIdLwgQWzNB2piHL2q.jpg",
+      "backdropPath": "/nByMcYBhChTs2TF9fEFcTSsjme5.jpg",
+      "year": "1997"
+    },
+    {
+      "rank": 44,
+      "title": "Dredd",
+      "img": "../assets/posters/sci-fi-realiste/044-dredd.jpg",
+      "status": "ok",
+      "tmdbId": 49049,
+      "posterPath": "/wLx65gtGVnUFCxceHWGszcruCZj.jpg",
+      "backdropPath": "/jUqDBi02CDjqrroC3Zl8hroBbSr.jpg",
+      "year": "2012"
+    },
+    {
+      "rank": 45,
+      "title": "V for Vendetta",
+      "img": "../assets/posters/2000-2024/072-v-for-vendetta.jpg",
+      "status": "ok",
+      "tmdbId": 752,
+      "posterPath": "/1avD1JeaRiJX5M4ahPdZPypGoGN.jpg",
+      "backdropPath": "/sFEYsEfzTx7hhjetlNrme8B5OUo.jpg",
+      "year": "2006"
+    },
+    {
+      "rank": 46,
+      "title": "Super 8",
+      "img": "../assets/posters/sci-fi-realiste/046-super-8.jpg",
+      "status": "ok",
+      "tmdbId": 37686,
+      "posterPath": "/pUWIjaMMYJjeBm5bJyE3mIXdQ62.jpg",
+      "backdropPath": "/x6Dr9i6vhWICxs7hnX2BakcMtPd.jpg",
+      "year": "2011"
+    },
+    {
+      "rank": 47,
+      "title": "Upgrade",
+      "img": "../assets/posters/sci-fi-realiste/047-upgrade.jpg",
+      "status": "ok",
+      "tmdbId": 500664,
+      "posterPath": "/woLGROUdPWdBnLVFKYdGD3kFkPY.jpg",
+      "backdropPath": "/oiPUcD1IIZrYGTSIpvTmd3dRmPo.jpg",
+      "year": "2018"
+    },
+    {
+      "rank": 48,
+      "title": "Contagion",
+      "img": "../assets/posters/sci-fi-realiste/048-contagion.jpg",
+      "status": "ok",
+      "tmdbId": 39538,
+      "posterPath": "/qL0IooP0bjXy0KXl9KEyPo22ll0.jpg",
+      "backdropPath": "/bdmyvEdrmnj7J3RWaKXEOwYggRv.jpg",
+      "year": "2011"
+    },
+    {
+      "rank": 49,
+      "title": "Metropolis",
+      "img": "../assets/posters/sci-fi-realiste/049-metropolis.jpg",
+      "status": "ok",
+      "tmdbId": 19,
+      "posterPath": "/kr9wXRN23zLuWJIelahas1mtnYj.jpg",
+      "backdropPath": "/eeMoFKxjjiCi6iep2GEZtSAMYIr.jpg",
+      "year": "1927"
+    },
+    {
+      "rank": 50,
+      "title": "Idiocracy",
+      "img": "../assets/posters/sci-fi-realiste/050-idiocracy.jpg",
+      "status": "ok",
+      "tmdbId": 7512,
+      "posterPath": "/6cTHBq49ApwsJaRr3ojlY1cmiXk.jpg",
+      "backdropPath": "/9Z4msMhKvNp63sOB1ZvxPMPvqz3.jpg",
+      "year": "2006"
+    },
+    {
+      "rank": 51,
+      "title": "The Road",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Road%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 52,
+      "title": "Escape from New York",
+      "img": "../assets/posters/sci-fi-realiste/052-escape-from-new-york.jpg",
+      "status": "ok",
+      "tmdbId": 1103,
+      "posterPath": "/vH9llaphjAssRGi0k7e75tD40Ce.jpg",
+      "backdropPath": "/aXPCXYFzFzdveVVk1HjVf9fHUcn.jpg",
+      "year": "1981"
+    },
+    {
+      "rank": 53,
+      "title": "Armageddon",
+      "img": "../assets/posters/sci-fi-realiste/053-armageddon.jpg",
+      "status": "ok",
+      "tmdbId": 95,
+      "posterPath": "/eTM3qtGhDU8cvjpoa6KEt5E2auU.jpg",
+      "backdropPath": "/1cO6OQJxz7YhTZ4V1OlkYfebeJa.jpg",
+      "year": "1998"
+    },
+    {
+      "rank": 54,
+      "title": "The Mitchells vs. the Machines",
+      "img": "../assets/posters/sci-fi-realiste/054-the-mitchells-vs-the-machines.jpg",
+      "status": "ok",
+      "tmdbId": 501929,
+      "posterPath": "/mI2Di7HmskQQ34kz0iau6J1vr70.jpg",
+      "backdropPath": "/vsZLf5uog08pAnfsMuDWrsLWUUF.jpg",
+      "year": "2021"
+    },
+    {
+      "rank": 55,
+      "title": "Possessor",
+      "img": "../assets/posters/sci-fi-realiste/055-possessor.jpg",
+      "status": "ok",
+      "tmdbId": 435615,
+      "posterPath": "/xC9GZeJZ3NagdkGg9nLQx0aPG6J.jpg",
+      "backdropPath": "/owTL741kAuvJDKYnXKJCgTRGRud.jpg",
+      "year": "2020"
+    },
+    {
+      "rank": 56,
+      "title": "Ready Player One",
+      "img": "../assets/posters/sci-fi-realiste/056-ready-player-one.jpg",
+      "status": "ok",
+      "tmdbId": 333339,
+      "posterPath": "/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg",
+      "backdropPath": "/5a7lMDn3nAj2ByO0X1fg6BhUphR.jpg",
+      "year": "2018"
+    },
+    {
+      "rank": 57,
+      "title": "Ad Astra",
+      "img": "../assets/posters/sci-fi-realiste/057-ad-astra.jpg",
+      "status": "ok",
+      "tmdbId": 419704,
+      "posterPath": "/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg",
+      "backdropPath": "/AeDS2MKGFy6QcjgWbJBde0Ga6Hd.jpg",
+      "year": "2019"
+    },
+    {
+      "rank": 58,
+      "title": "Invasion of the Body Snatchers",
+      "img": "../assets/posters/sci-fi-realiste/058-invasion-of-the-body-snatchers.jpg",
+      "status": "ok",
+      "tmdbId": 11850,
+      "posterPath": "/skS02wdeH2C0nrbCQP3qKwJdZtZ.jpg",
+      "backdropPath": "/lyHnFsWafILUlizalpCSikJT7Ui.jpg",
+      "year": "1978"
+    },
+    {
+      "rank": 59,
+      "title": "Soylent Green",
+      "img": "../assets/posters/sci-fi-realiste/059-soylent-green.jpg",
+      "status": "ok",
+      "tmdbId": 12101,
+      "posterPath": "/5nbkShkOEXUoKVhaX0XG41wyBkq.jpg",
+      "backdropPath": "/m8NHyJklrrg4DxvgSQRLdZQQZNZ.jpg",
+      "year": "1973"
+    },
+    {
+      "rank": 60,
+      "title": "Sunshine",
+      "img": "../assets/posters/sci-fi-realiste/060-sunshine.jpg",
+      "status": "ok",
+      "tmdbId": 1272,
+      "posterPath": "/oKGGeJ8qvm0UmClz43VJ31fzPP7.jpg",
+      "backdropPath": "/5AIAnucJKZ3sHpm7r1ykFVIoUHK.jpg",
+      "year": "2007"
+    },
+    {
+      "rank": 61,
+      "title": "Don't Look Up",
+      "img": "../assets/posters/sci-fi-realiste/061-don-t-look-up.jpg",
+      "status": "ok",
+      "tmdbId": 646380,
+      "posterPath": "/th4E1yqsE8DGpAseLiUrI60Hf8V.jpg",
+      "backdropPath": "/nvxrQQspxmSblCYDtvDAbVFX8Jt.jpg",
+      "year": "2021"
+    },
+    {
+      "rank": 62,
+      "title": "THX 1138",
+      "img": "../assets/posters/sci-fi-realiste/062-thx-1138.jpg",
+      "status": "ok",
+      "tmdbId": 636,
+      "posterPath": "/pPyEXW7h2SJRjTsHZqrIlXxOgW9.jpg",
+      "backdropPath": "/fM9ODwfR7m8fI2g99M9WyhvqXtI.jpg",
+      "year": "1971"
+    },
+    {
+      "rank": 63,
+      "title": "Mad Max 2: The Road Warrior",
+      "img": "../assets/posters/sci-fi-realiste/063-mad-max-2-the-road-warrior.jpg",
+      "status": "ok",
+      "tmdbId": 8810,
+      "posterPath": "/l1KVEhkGDpWRzQ0VqIhZqDDuOim.jpg",
+      "backdropPath": "/MMSI9WzRmOdqXarevQ3Kqnytrx.jpg",
+      "year": "1981"
+    },
+    {
+      "rank": 64,
+      "title": "I Am Mother",
+      "img": "../assets/posters/sci-fi-realiste/064-i-am-mother.jpg",
+      "status": "ok",
+      "tmdbId": 505948,
+      "posterPath": "/ayPSqlpYIbeq1RiDekx6W9WUqrL.jpg",
+      "backdropPath": "/iJjdemZDyHGa2BJgfoyv5m1sCiw.jpg",
+      "year": "2019"
+    },
+    {
+      "rank": 65,
+      "title": "Rollerball",
+      "img": "../assets/posters/sci-fi-realiste/065-rollerball.jpg",
+      "status": "ok",
+      "tmdbId": 11484,
+      "posterPath": "/cmcipEfexlhVLYQXqeSWp1YcsPY.jpg",
+      "backdropPath": "/qV4zzpe4mfXnmFIOL6uugnUcM9R.jpg",
+      "year": "1975"
+    },
+    {
+      "rank": 66,
+      "title": "The Fly",
+      "img": "../assets/posters/sci-fi-realiste/066-the-fly.jpg",
+      "status": "ok",
+      "tmdbId": 9426,
+      "posterPath": "/8gZWMhJHRvaXdXsNhERtqNHYpH3.jpg",
+      "backdropPath": "/g1FzhbtWYKk9WMJYi1X26kf2Q4Q.jpg",
+      "year": "1986"
+    }
+  ]
+}

@@ -1,0 +1,902 @@
+{
+  "generatedAt": "2026-09-09T20:50:14.121Z",
+  "source": "TMDB + established ASWA40 assets",
+  "films": [
+    {
+      "rank": 1,
+      "title": "Star Wars",
+      "img": "../assets/posters/1975-1999/star-wars.jpg",
+      "status": "ok",
+      "tmdbId": 11,
+      "posterPath": "/fai0rspsNeJCS69wHNjOdWxcI7P.jpg",
+      "backdropPath": "/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
+      "year": "1977"
+    },
+    {
+      "rank": 2,
+      "title": "Apocalypse Now",
+      "img": "../assets/posters/1975-1999/apocalypse-now.jpg",
+      "status": "ok",
+      "tmdbId": 28,
+      "posterPath": "/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+      "backdropPath": null,
+      "year": "1979"
+    },
+    {
+      "rank": 3,
+      "title": "Indiana Jones",
+      "img": "../assets/posters/1975-1999/indiana-jones.jpg",
+      "status": "ok"
+    },
+    {
+      "rank": 4,
+      "title": "Pulp Fiction",
+      "img": "../assets/posters/1975-1999/pulp-fiction.jpg",
+      "status": "ok",
+      "tmdbId": 680,
+      "posterPath": "/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg",
+      "backdropPath": null,
+      "year": "1994"
+    },
+    {
+      "rank": 5,
+      "title": "Fargo",
+      "img": "../assets/posters/1975-1999/fargo.jpg",
+      "status": "ok",
+      "tmdbId": 275,
+      "posterPath": "/rt7cpEr1uP6RTZykBFhBTcRaKvG.jpg",
+      "backdropPath": null,
+      "year": "1996"
+    },
+    {
+      "rank": 6,
+      "title": "Blade Runner",
+      "img": "../assets/posters/1975-1999/blade-runner.jpg",
+      "status": "ok",
+      "tmdbId": 78,
+      "posterPath": "/63N9uy8nd9j7Eog2axPQ8lbr3Wj.jpg",
+      "backdropPath": null,
+      "year": "1982"
+    },
+    {
+      "rank": 7,
+      "title": "GoodFellas",
+      "img": "../assets/posters/1975-1999/goodfellas.jpg",
+      "status": "ok",
+      "tmdbId": 769,
+      "posterPath": "/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg",
+      "backdropPath": null,
+      "year": "1990"
+    },
+    {
+      "rank": 8,
+      "title": "Back to the Future",
+      "img": "../assets/posters/1975-1999/back-to-the-future.jpg",
+      "status": "ok",
+      "tmdbId": 105,
+      "posterPath": "/vN5B5WgYscRGcQpVhHl6p9DDTP0.jpg",
+      "backdropPath": null,
+      "year": "1985"
+    },
+    {
+      "rank": 9,
+      "title": "Fight Club",
+      "img": "../assets/posters/1975-1999/fight-club.jpg",
+      "status": "ok",
+      "tmdbId": 550,
+      "posterPath": "/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg",
+      "backdropPath": null,
+      "year": "1999"
+    },
+    {
+      "rank": 10,
+      "title": "The Matrix",
+      "img": "../assets/posters/1975-1999/the-matrix.jpg",
+      "status": "ok",
+      "tmdbId": 603,
+      "posterPath": "/dXNAPwY7VrqMAo51EKhhCJfaGb5.jpg",
+      "backdropPath": null,
+      "year": "1999"
+    },
+    {
+      "rank": 11,
+      "title": "The Shining",
+      "img": "../assets/posters/1975-1999/the-shining.jpg",
+      "status": "ok",
+      "tmdbId": 694,
+      "posterPath": "/uAR0AWqhQL1hQa69UDEbb2rE5Wx.jpg",
+      "backdropPath": null,
+      "year": "1980"
+    },
+    {
+      "rank": 12,
+      "title": "The Shawshank Redemption",
+      "img": "../assets/posters/1975-1999/the-shawshank-redemption.jpg",
+      "status": "ok",
+      "tmdbId": 278,
+      "posterPath": "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+      "backdropPath": null,
+      "year": "1994"
+    },
+    {
+      "rank": 13,
+      "title": "Schindler's List",
+      "img": "../assets/posters/1975-1999/schindlers-list.jpg",
+      "status": "ok",
+      "tmdbId": 424,
+      "posterPath": "/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+      "backdropPath": null,
+      "year": "1993"
+    },
+    {
+      "rank": 14,
+      "title": "The Big Lebowski",
+      "img": "../assets/posters/1975-1999/the-big-lebowski.jpg",
+      "status": "ok",
+      "tmdbId": 115,
+      "posterPath": "/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 15,
+      "title": "Taxi Driver",
+      "img": "../assets/posters/1975-1999/taxi-driver.jpg",
+      "status": "ok",
+      "tmdbId": 103,
+      "posterPath": "/ekstpH614fwDX8DUln1a2Opz0N8.jpg",
+      "backdropPath": null,
+      "year": "1976"
+    },
+    {
+      "rank": 16,
+      "title": "Se7en",
+      "img": "../assets/posters/1975-1999/se7en.jpg",
+      "status": "ok",
+      "tmdbId": 807,
+      "posterPath": "/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg",
+      "backdropPath": null,
+      "year": "1995"
+    },
+    {
+      "rank": 17,
+      "title": "The Dinner Game",
+      "img": "../assets/posters/1975-1999/the-dinner-game.jpg",
+      "status": "ok",
+      "tmdbId": 9421,
+      "posterPath": "/cv6neov6SMLjHytjiU0rgeugoPI.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 18,
+      "title": "Alien",
+      "img": "../assets/posters/1975-1999/alien.jpg",
+      "status": "ok",
+      "tmdbId": 348,
+      "posterPath": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
+      "backdropPath": null,
+      "year": "1979"
+    },
+    {
+      "rank": 19,
+      "title": "Jaws",
+      "img": "../assets/posters/1975-1999/jaws.jpg",
+      "status": "ok",
+      "tmdbId": 578,
+      "posterPath": "/lxM6kqilAdpdhqUl2biYp5frUxE.jpg",
+      "backdropPath": null,
+      "year": "1975"
+    },
+    {
+      "rank": 20,
+      "title": "Toy Story",
+      "img": "../assets/posters/1975-1999/toy-story.jpg",
+      "status": "ok",
+      "tmdbId": 862,
+      "posterPath": "/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+      "backdropPath": "/3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg",
+      "year": "1995"
+    },
+    {
+      "rank": 21,
+      "title": "Terminator 2: Judgment Day",
+      "img": "../assets/posters/1975-1999/terminator-2.jpg",
+      "status": "ok",
+      "tmdbId": 280,
+      "posterPath": "/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg",
+      "backdropPath": null,
+      "year": "1991"
+    },
+    {
+      "rank": 22,
+      "title": "Full Metal Jacket",
+      "img": "../assets/posters/1975-1999/full-metal-jacket.jpg",
+      "status": "ok",
+      "tmdbId": 600,
+      "posterPath": "/kMKyx1k8hWWscYFnPbnxxN4Eqo4.jpg",
+      "backdropPath": null,
+      "year": "1987"
+    },
+    {
+      "rank": 23,
+      "title": "Groundhog Day",
+      "img": "../assets/posters/1975-1999/groundhog-day.jpg",
+      "status": "ok",
+      "tmdbId": 137,
+      "posterPath": "/gCgt1WARPZaXnq523ySQEUKinCs.jpg",
+      "backdropPath": null,
+      "year": "1993"
+    },
+    {
+      "rank": 24,
+      "title": "Jurassic Park",
+      "img": "../assets/posters/1975-1999/jurassic-park.jpg",
+      "status": "ok",
+      "tmdbId": 329,
+      "posterPath": "/63viWuPfYQjRYLSZSZNq7dglJP5.jpg",
+      "backdropPath": null,
+      "year": "1993"
+    },
+    {
+      "rank": 25,
+      "title": "All the President's Men",
+      "img": "../assets/posters/1975-1999/all-the-presidents-men.jpg",
+      "status": "ok",
+      "tmdbId": 891,
+      "posterPath": "/pCe6lfLxt1B58zPD4lgQrlnDS2j.jpg",
+      "backdropPath": null,
+      "year": "1976"
+    },
+    {
+      "rank": 26,
+      "title": "Heat",
+      "img": "../assets/posters/1975-1999/heat.jpg",
+      "status": "ok",
+      "tmdbId": 949,
+      "posterPath": "/gKaePbkEkaqvMtw74EyhhkfCKKh.jpg",
+      "backdropPath": null,
+      "year": "1995"
+    },
+    {
+      "rank": 27,
+      "title": "Princess Mononoke",
+      "img": "../assets/posters/1975-1999/princess-mononoke.jpg",
+      "status": "ok",
+      "tmdbId": 128,
+      "posterPath": "/cMYCDADoLKLbB83g4WnJegaZimC.jpg",
+      "backdropPath": null,
+      "year": "1997"
+    },
+    {
+      "rank": 28,
+      "title": "Léon: The Professional",
+      "img": "../assets/posters/1975-1999/leon-the-professional.jpg",
+      "status": "ok",
+      "tmdbId": 101,
+      "posterPath": "/bxB2q91nKYp8JNzqE7t7TWBVupB.jpg",
+      "backdropPath": null,
+      "year": "1994"
+    },
+    {
+      "rank": 29,
+      "title": "Beverly Hills Cop",
+      "img": "../assets/posters/1975-1999/beverly-hills-cop.jpg",
+      "status": "ok",
+      "tmdbId": 90,
+      "posterPath": "/eBJEvKkhQ0tUt1dBAcTEYW6kCle.jpg",
+      "backdropPath": null,
+      "year": "1984"
+    },
+    {
+      "rank": 30,
+      "title": "One Flew Over the Cuckoo's Nest",
+      "img": "../assets/posters/1975-1999/one-flew-over-the-cuckoos-nest.jpg",
+      "status": "ok",
+      "tmdbId": 510,
+      "posterPath": "/kjWsMh72V6d8KRLV4EOoSJLT1H7.jpg",
+      "backdropPath": null,
+      "year": "1975"
+    },
+    {
+      "rank": 31,
+      "title": "Trainspotting",
+      "img": "../assets/posters/1975-1999/trainspotting.jpg",
+      "status": "ok",
+      "tmdbId": 627,
+      "posterPath": "/1jUC02qsqS2NxBMFarbIhcQtazV.jpg",
+      "backdropPath": null,
+      "year": "1996"
+    },
+    {
+      "rank": 32,
+      "title": "E.T. the Extra-Terrestrial",
+      "img": "../assets/posters/1975-1999/et-the-extra-terrestrial.jpg",
+      "status": "ok",
+      "tmdbId": 601,
+      "posterPath": "/an0nD6uq6byfxXCfk6lQBzdL2J1.jpg",
+      "backdropPath": null,
+      "year": "1982"
+    },
+    {
+      "rank": 33,
+      "title": "Jesus of Nazareth",
+      "img": "../assets/posters/1975-1999/jesus-of-nazareth.jpg",
+      "status": "ok",
+      "tmdbId": 19649,
+      "posterPath": "/dlGmVpZ2rpGRDZsSa64nzyu90xk.jpg",
+      "backdropPath": null,
+      "year": "1977"
+    },
+    {
+      "rank": 34,
+      "title": "The Sacrifice",
+      "img": "../assets/posters/1975-1999/the-sacrifice.jpg",
+      "status": "ok",
+      "tmdbId": 24657,
+      "posterPath": "/8JMh27z075ZHbFE85XYkdXF2QkK.jpg",
+      "backdropPath": null,
+      "year": "1986"
+    },
+    {
+      "rank": 35,
+      "title": "Forrest Gump",
+      "img": "../assets/posters/1975-1999/forrest-gump.jpg",
+      "status": "ok",
+      "tmdbId": 13,
+      "posterPath": "/Cw4hIUIAmSYfK9QfaUW5igp9La.jpg",
+      "backdropPath": null,
+      "year": "1994"
+    },
+    {
+      "rank": 36,
+      "title": "In the Mood for Love",
+      "img": "../assets/posters/1975-1999/in-the-mood-for-love.jpg",
+      "status": "ok",
+      "tmdbId": 843,
+      "posterPath": "/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg",
+      "backdropPath": "/ffQFnAUm2Uu4RU0nijpjPRf9TBT.jpg",
+      "year": "2000"
+    },
+    {
+      "rank": 37,
+      "title": "La Haine",
+      "img": "../assets/posters/1975-1999/la-haine.jpg",
+      "status": "ok",
+      "tmdbId": 406,
+      "posterPath": "/hY4exng4s29RzDbtQInjx9MA3PZ.jpg",
+      "backdropPath": null,
+      "year": "1995"
+    },
+    {
+      "rank": 38,
+      "title": "Manhattan",
+      "img": "../assets/posters/1975-1999/manhattan.jpg",
+      "status": "ok",
+      "tmdbId": 696,
+      "posterPath": "/k4eT3EvfxW1L9Wmt04UqJqCvCR6.jpg",
+      "backdropPath": null,
+      "year": "1979"
+    },
+    {
+      "rank": 39,
+      "title": "Ran",
+      "img": "../assets/posters/1975-1999/ran.jpg",
+      "status": "ok",
+      "tmdbId": 11645,
+      "posterPath": "/dGgiXMWDcS5aJTBEFu7bmaQPNox.jpg",
+      "backdropPath": null,
+      "year": "1985"
+    },
+    {
+      "rank": 40,
+      "title": "Akira",
+      "img": "../assets/posters/1975-1999/akira.jpg",
+      "status": "ok",
+      "tmdbId": 149,
+      "posterPath": "/neZ0ykEsPqxamsX6o5QNUFILQrz.jpg",
+      "backdropPath": null,
+      "year": "1988"
+    },
+    {
+      "rank": 41,
+      "title": "The Silence of the Lambs",
+      "img": "../assets/posters/1975-1999/the-silence-of-the-lambs.jpg",
+      "status": "ok",
+      "tmdbId": 274,
+      "posterPath": "/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
+      "backdropPath": null,
+      "year": "1991"
+    },
+    {
+      "rank": 42,
+      "title": "Dead Poets Society",
+      "img": "../assets/posters/1975-1999/dead-poets-society.jpg",
+      "status": "ok",
+      "tmdbId": 207,
+      "posterPath": "/tNvKkSnnn4Z6RCBThyK1gfCSSvv.jpg",
+      "backdropPath": null,
+      "year": "1989"
+    },
+    {
+      "rank": 43,
+      "title": "Kagemusha",
+      "img": "../assets/posters/1975-1999/kagemusha.jpg",
+      "status": "ok",
+      "tmdbId": 11953,
+      "posterPath": "/fJgqj9s8HNZz9zwX6femVJn8HEB.jpg",
+      "backdropPath": null,
+      "year": "1980"
+    },
+    {
+      "rank": 44,
+      "title": "The Thin Red Line",
+      "img": "../assets/posters/1975-1999/the-thin-red-line.jpg",
+      "status": "ok",
+      "tmdbId": 8741,
+      "posterPath": "/seMydAaoxQP6F0xbE1jOcTmn5Jr.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 45,
+      "title": "Titanic",
+      "img": "../assets/posters/1975-1999/titanic.jpg",
+      "status": "ok",
+      "tmdbId": 597,
+      "posterPath": "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+      "backdropPath": null,
+      "year": "1997"
+    },
+    {
+      "rank": 46,
+      "title": "Das Boot",
+      "img": "../assets/posters/1975-1999/das-boot.jpg",
+      "status": "ok",
+      "tmdbId": 387,
+      "posterPath": "/u8FhQPncOAkwcei2OI9orPWhV6K.jpg",
+      "backdropPath": null,
+      "year": "1981"
+    },
+    {
+      "rank": 47,
+      "title": "Scarface",
+      "img": "../assets/posters/1975-1999/scarface.jpg",
+      "status": "ok",
+      "tmdbId": 111,
+      "posterPath": "/iQ5ztdjvteGeboxtmRdXEChJOHh.jpg",
+      "backdropPath": null,
+      "year": "1983"
+    },
+    {
+      "rank": 48,
+      "title": "Barry Lyndon",
+      "img": "../assets/posters/1975-1999/barry-lyndon.jpg",
+      "status": "ok",
+      "tmdbId": 3175,
+      "posterPath": "/znfLskGQnXYB2xcOGM9eInRHPAV.jpg",
+      "backdropPath": null,
+      "year": "1975"
+    },
+    {
+      "rank": 49,
+      "title": "The Cook, the Thief, His Wife & Her Lover",
+      "img": "../assets/posters/1975-1999/the-cook-the-thief-his-wife-and-her-lover.jpg",
+      "status": "ok",
+      "tmdbId": 7452,
+      "posterPath": "/15xMqAnFsROopAT66zdRyu2Dtek.jpg",
+      "backdropPath": null,
+      "year": "1989"
+    },
+    {
+      "rank": 50,
+      "title": "Tombstone",
+      "img": "../assets/posters/1975-1999/tombstone.jpg",
+      "status": "ok",
+      "tmdbId": 11969,
+      "posterPath": "/wGFCvylul8iEQhJOKfwZGGvXMzA.jpg",
+      "backdropPath": null,
+      "year": "1993"
+    },
+    {
+      "rank": 51,
+      "title": "The Big Chill",
+      "img": "../assets/posters/1975-1999/the-big-chill.jpg",
+      "status": "ok",
+      "tmdbId": 12560,
+      "posterPath": "/rU8kjMEL5Mn0EWm3gOShPHBEZ4l.jpg",
+      "backdropPath": null,
+      "year": "1983"
+    },
+    {
+      "rank": 52,
+      "title": "The Usual Suspects",
+      "img": "../assets/posters/1975-1999/the-usual-suspects.jpg",
+      "status": "ok",
+      "tmdbId": 629,
+      "posterPath": "/99X2SgyFunJFXGAYnDv3sb9pnUD.jpg",
+      "backdropPath": null,
+      "year": "1995"
+    },
+    {
+      "rank": 53,
+      "title": "The Nightmare Before Christmas",
+      "img": "../assets/posters/1975-1999/the-nightmare-before-christmas.jpg",
+      "status": "ok",
+      "tmdbId": 9479,
+      "posterPath": "/oQffRNjK8e19rF7xVYEN8ew0j7b.jpg",
+      "backdropPath": null,
+      "year": "1993"
+    },
+    {
+      "rank": 54,
+      "title": "Misery",
+      "img": "../assets/posters/1975-1999/misery.jpg",
+      "status": "ok",
+      "tmdbId": 1700,
+      "posterPath": "/klPO5oh1LOxiPpdDXZo1ADgpKcw.jpg",
+      "backdropPath": null,
+      "year": "1990"
+    },
+    {
+      "rank": 55,
+      "title": "Raging Bull",
+      "img": "../assets/posters/1975-1999/raging-bull.jpg",
+      "status": "ok",
+      "tmdbId": 1578,
+      "posterPath": "/1WV7WlTS8LI1L5NkCgjWT9GSW3O.jpg",
+      "backdropPath": null,
+      "year": "1980"
+    },
+    {
+      "rank": 56,
+      "title": "The Breakfast Club",
+      "img": "../assets/posters/1975-1999/the-breakfast-club.jpg",
+      "status": "ok",
+      "tmdbId": 2108,
+      "posterPath": "/gp4zlj7wgbiofLMNsTPndMuO3PN.jpg",
+      "backdropPath": null,
+      "year": "1985"
+    },
+    {
+      "rank": 57,
+      "title": "Eyes Wide Shut",
+      "img": "../assets/posters/1975-1999/eyes-wide-shut.jpg",
+      "status": "ok",
+      "tmdbId": 345,
+      "posterPath": "/knEIz1eNGl5MQDbrEAVWA7iRqF9.jpg",
+      "backdropPath": null,
+      "year": "1999"
+    },
+    {
+      "rank": 58,
+      "title": "Planes, Trains and Automobiles",
+      "img": "../assets/posters/1975-1999/planes-trains-and-automobiles.jpg",
+      "status": "ok",
+      "tmdbId": 2609,
+      "posterPath": "/fwi2cET87xArJCb8MdbWq2BZO3n.jpg",
+      "backdropPath": null,
+      "year": "1987"
+    },
+    {
+      "rank": 59,
+      "title": "The Killer",
+      "img": "../assets/posters/1975-1999/the-killer.jpg",
+      "status": "ok",
+      "tmdbId": 10835,
+      "posterPath": "/8hTxlSqMAHBXAh1eB69ir0BXhzE.jpg",
+      "backdropPath": null,
+      "year": "1989"
+    },
+    {
+      "rank": 60,
+      "title": "Saving Private Ryan",
+      "img": "../assets/posters/1975-1999/saving-private-ryan.jpg",
+      "status": "ok",
+      "tmdbId": 857,
+      "posterPath": "/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 61,
+      "title": "Die Hard",
+      "img": "../assets/posters/1975-1999/die-hard.jpg",
+      "status": "ok",
+      "tmdbId": 562,
+      "posterPath": "/7Bjd8kfmDSOzpmhySpEhkUyK2oH.jpg",
+      "backdropPath": null,
+      "year": "1988"
+    },
+    {
+      "rank": 62,
+      "title": "Cinema Paradiso",
+      "img": "../assets/posters/1975-1999/cinema-paradiso.jpg",
+      "status": "ok",
+      "tmdbId": 11216,
+      "posterPath": "/9JhfVOveaY00o8njQu2Xrp4YWud.jpg",
+      "backdropPath": null,
+      "year": "1988"
+    },
+    {
+      "rank": 63,
+      "title": "The Fifth Element",
+      "img": "../assets/posters/1975-1999/the-fifth-element.jpg",
+      "status": "ok",
+      "tmdbId": 18,
+      "posterPath": "/fPtlCO1yQtnoLHOwKtWz7db6RGU.jpg",
+      "backdropPath": null,
+      "year": "1997"
+    },
+    {
+      "rank": 64,
+      "title": "Man Bites Dog",
+      "img": "../assets/posters/1975-1999/man-bites-dog.jpg",
+      "status": "ok",
+      "tmdbId": 10086,
+      "posterPath": "/uRVI98a6MxdLkpsXM8LqIM9W7XZ.jpg",
+      "backdropPath": null,
+      "year": "1992"
+    },
+    {
+      "rank": 65,
+      "title": "Amadeus",
+      "img": "../assets/posters/1975-1999/amadeus.jpg",
+      "status": "ok",
+      "tmdbId": 279,
+      "posterPath": "/gQRfiyfGvr1az0quaYyMram3Aqt.jpg",
+      "backdropPath": null,
+      "year": "1984"
+    },
+    {
+      "rank": 66,
+      "title": "Delicatessen",
+      "img": "../assets/posters/1975-1999/delicatessen.jpg",
+      "status": "ok",
+      "tmdbId": 892,
+      "posterPath": "/gNtOgQHxE5B8e08zuNRAdDpmK5Z.jpg",
+      "backdropPath": null,
+      "year": "1991"
+    },
+    {
+      "rank": 67,
+      "title": "Europa",
+      "img": "../assets/posters/1975-1999/europa.jpg",
+      "status": "ok",
+      "tmdbId": 9065,
+      "posterPath": "/pyFtuYQReoSmhNs55kRJedA5wEJ.jpg",
+      "backdropPath": null,
+      "year": "1991"
+    },
+    {
+      "rank": 68,
+      "title": "Good Morning, Vietnam",
+      "img": "../assets/posters/1975-1999/good-morning-vietnam.jpg",
+      "status": "ok",
+      "tmdbId": 801,
+      "posterPath": "/sreISlFUn5TyR41QNjlfAdX5SEW.jpg",
+      "backdropPath": null,
+      "year": "1987"
+    },
+    {
+      "rank": 69,
+      "title": "My Neighbor Totoro",
+      "img": "../assets/posters/1975-1999/my-neighbor-totoro.jpg",
+      "status": "ok",
+      "tmdbId": 8392,
+      "posterPath": "/rtGDOeG9LzoerkDGZF9dnVeLppL.jpg",
+      "backdropPath": null,
+      "year": "1988"
+    },
+    {
+      "rank": 70,
+      "title": "Good Will Hunting",
+      "img": "../assets/posters/1975-1999/good-will-hunting.jpg",
+      "status": "ok",
+      "tmdbId": 489,
+      "posterPath": "/z2FnLKpFi1HPO7BEJxdkv6hpJSU.jpg",
+      "backdropPath": null,
+      "year": "1997"
+    },
+    {
+      "rank": 71,
+      "title": "Casino",
+      "img": "../assets/posters/1975-1999/casino.jpg",
+      "status": "ok",
+      "tmdbId": 524,
+      "posterPath": "/gziIkUSnYuj9ChCi8qOu2ZunpSC.jpg",
+      "backdropPath": null,
+      "year": "1995"
+    },
+    {
+      "rank": 72,
+      "title": "Reservoir Dogs",
+      "img": "../assets/posters/1975-1999/reservoir-dogs.jpg",
+      "status": "ok",
+      "tmdbId": 500,
+      "posterPath": "/xi8Iu6qyTfyZVDVy60raIOYJJmk.jpg",
+      "backdropPath": null,
+      "year": "1992"
+    },
+    {
+      "rank": 73,
+      "title": "Being John Malkovich",
+      "img": "../assets/posters/1975-1999/being-john-malkovich.jpg",
+      "status": "ok",
+      "tmdbId": 492,
+      "posterPath": "/31FGQu3OnwdmS4COquENe0vMZc0.jpg",
+      "backdropPath": null,
+      "year": "1999"
+    },
+    {
+      "rank": 74,
+      "title": "Gattaca",
+      "img": "../assets/posters/1975-1999/gattaca.jpg",
+      "status": "ok",
+      "tmdbId": 782,
+      "posterPath": "/eSKr5Fl1MEC7zpAXaLWBWSBjgJq.jpg",
+      "backdropPath": null,
+      "year": "1997"
+    },
+    {
+      "rank": 75,
+      "title": "Ghost in the Shell",
+      "img": "../assets/posters/1975-1999/ghost-in-the-shell.jpg",
+      "status": "ok",
+      "tmdbId": 315837,
+      "posterPath": "/zCtL3UBgCoZzd7XTVGhvl6XY75E.jpg",
+      "backdropPath": "/dDVqfmCzSy3TKSmiS2pJ9QB5E3P.jpg",
+      "year": "2017"
+    },
+    {
+      "rank": 76,
+      "title": "Unforgiven",
+      "img": "../assets/posters/1975-1999/unforgiven.jpg",
+      "status": "ok",
+      "tmdbId": 33,
+      "posterPath": "/54roTwbX9fltg85zjsmrooXAs12.jpg",
+      "backdropPath": null,
+      "year": "1992"
+    },
+    {
+      "rank": 77,
+      "title": "Once Upon a Time in America",
+      "img": "../assets/posters/1975-1999/once-upon-a-time-in-america.jpg",
+      "status": "ok",
+      "tmdbId": 311,
+      "posterPath": "/i0enkzsL5dPeneWnjl1fCWm6L7k.jpg",
+      "backdropPath": null,
+      "year": "1984"
+    },
+    {
+      "rank": 78,
+      "title": "Rushmore",
+      "img": "../assets/posters/1975-1999/rushmore.jpg",
+      "status": "ok",
+      "tmdbId": 11545,
+      "posterPath": "/hSJ6swahAuZ8wM96lHDTwQPXUvZ.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 79,
+      "title": "The Blair Witch Project",
+      "img": "../assets/posters/1975-1999/the-blair-witch-project.jpg",
+      "status": "ok",
+      "tmdbId": 2667,
+      "posterPath": "/9050VGrYjYrEjpOvDZVAngLbg1f.jpg",
+      "backdropPath": null,
+      "year": "1999"
+    },
+    {
+      "rank": 80,
+      "title": "Ferris Bueller's Day Off",
+      "img": "../assets/posters/1975-1999/ferris-buellers-day-off.jpg",
+      "status": "ok",
+      "tmdbId": 9377,
+      "posterPath": "/9LTQNCvoLsKXP0LtaKAaYVtRaQL.jpg",
+      "backdropPath": null,
+      "year": "1986"
+    },
+    {
+      "rank": 81,
+      "title": "Hook",
+      "img": "../assets/posters/1975-1999/hook.jpg",
+      "status": "ok",
+      "tmdbId": 879,
+      "posterPath": "/a6rB1lGXoGms7gWxRfJneQmAjNV.jpg",
+      "backdropPath": null,
+      "year": "1991"
+    },
+    {
+      "rank": 82,
+      "title": "Taxi",
+      "img": "../assets/posters/1975-1999/taxi-1998.jpg",
+      "status": "ok",
+      "tmdbId": 2330,
+      "posterPath": "/egBxj3ude84theXc3cLbBHrWOkQ.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 83,
+      "title": "Thelma & Louise",
+      "img": "../assets/posters/1975-1999/thelma-and-louise.jpg",
+      "status": "ok",
+      "tmdbId": 1541,
+      "posterPath": "/7D2DqmIKpPlkCU0RLVdlKLKR7XZ.jpg",
+      "backdropPath": null,
+      "year": "1991"
+    },
+    {
+      "rank": 84,
+      "title": "Boogie Nights",
+      "img": "../assets/posters/1975-1999/boogie-nights.jpg",
+      "status": "ok",
+      "tmdbId": 4995,
+      "posterPath": "/2hVSN9yOfoI8EUTqcVW6zCIyQ1G.jpg",
+      "backdropPath": null,
+      "year": "1997"
+    },
+    {
+      "rank": 85,
+      "title": "The Truman Show",
+      "img": "../assets/posters/1975-1999/the-truman-show.jpg",
+      "status": "ok",
+      "tmdbId": 37165,
+      "posterPath": "/vuza0WqY239yBXOadKlGwJsZJFE.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 86,
+      "title": "Ghostbusters",
+      "img": "../assets/posters/1975-1999/ghostbusters.jpg",
+      "status": "ok",
+      "tmdbId": 620,
+      "posterPath": "/7E8nLijS9AwwUEPu2oFYOVKhdFA.jpg",
+      "backdropPath": null,
+      "year": "1984"
+    },
+    {
+      "rank": 87,
+      "title": "Run Lola Run",
+      "img": "../assets/posters/1975-1999/run-lola-run.jpg",
+      "status": "ok",
+      "tmdbId": 104,
+      "posterPath": "/v0giIi4bTILVhNhJajet3WWY3FA.jpg",
+      "backdropPath": null,
+      "year": "1998"
+    },
+    {
+      "rank": 88,
+      "title": "Dances with Wolves",
+      "img": "../assets/posters/1975-1999/dances-with-wolves.jpg",
+      "status": "ok",
+      "tmdbId": 581,
+      "posterPath": "/hw0ZEHAaTqTxSXGVwUFX7uvanSA.jpg",
+      "backdropPath": null,
+      "year": "1990"
+    },
+    {
+      "rank": 89,
+      "title": "The Game",
+      "img": "../assets/posters/1975-1999/the-game.jpg",
+      "status": "ok",
+      "tmdbId": 2649,
+      "posterPath": "/4UOa079915QjiTA2u5hT2yKVgUu.jpg",
+      "backdropPath": null,
+      "year": "1997"
+    },
+    {
+      "rank": 90,
+      "title": "Underground",
+      "img": "../assets/posters/1975-1999/underground.jpg",
+      "status": "ok",
+      "tmdbId": 11902,
+      "posterPath": "/h8N6y13t4VusrDdH5PzTkwvBvgN.jpg",
+      "backdropPath": null,
+      "year": "1995"
+    }
+  ]
+}

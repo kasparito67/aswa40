@@ -1,0 +1,668 @@
+{
+  "generatedAt": "2026-09-09T20:50:30.418Z",
+  "source": "TMDB + established ASWA40 assets",
+  "films": [
+    {
+      "rank": 1,
+      "title": "GoodFellas",
+      "img": "../assets/posters/1975-1999/goodfellas.jpg",
+      "status": "ok",
+      "tmdbId": 769,
+      "posterPath": "/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg",
+      "backdropPath": null,
+      "year": "1990"
+    },
+    {
+      "rank": 2,
+      "title": "Schindler's List",
+      "img": "../assets/posters/1975-1999/schindlers-list.jpg",
+      "status": "ok",
+      "tmdbId": 424,
+      "posterPath": "/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+      "backdropPath": null,
+      "year": "1993"
+    },
+    {
+      "rank": 3,
+      "title": "The Social Network",
+      "img": "../assets/posters/2000-2024/004-the-social-network.jpg",
+      "status": "ok",
+      "tmdbId": 37799,
+      "posterPath": "/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg",
+      "backdropPath": "/1PXwh3nJzgRkkYnqfWInJNypeL4.jpg",
+      "year": "2010"
+    },
+    {
+      "rank": 4,
+      "title": "Catch Me If You Can",
+      "img": "../assets/posters/2000-2024/013-catch-me-if-you-can.jpg",
+      "status": "ok",
+      "tmdbId": 640,
+      "posterPath": "/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg",
+      "backdropPath": "/sfW8gtA6Bz2F4zK1FoCKbMqTF8Z.jpg",
+      "year": "2002"
+    },
+    {
+      "rank": 5,
+      "title": "Moneyball",
+      "img": "../assets/posters/2000-2024/086-moneyball.jpg",
+      "status": "ok",
+      "tmdbId": 60308,
+      "posterPath": "/4yIQq1e6iOcaZ5rLDG3lZBP3j7a.jpg",
+      "backdropPath": "/kYlBNDkB5qFdpTDpnlQdH0CdK3T.jpg",
+      "year": "2011"
+    },
+    {
+      "rank": 6,
+      "title": "Amadeus",
+      "img": "../assets/posters/1975-1999/amadeus.jpg",
+      "status": "ok",
+      "tmdbId": 279,
+      "posterPath": "/gQRfiyfGvr1az0quaYyMram3Aqt.jpg",
+      "backdropPath": null,
+      "year": "1984"
+    },
+    {
+      "rank": 7,
+      "title": "Lawrence of Arabia",
+      "img": "../assets/posters/biopics/007-lawrence-of-arabia.jpg",
+      "status": "ok",
+      "tmdbId": 947,
+      "posterPath": "/AiAm0EtDvyGqNpVoieRw4u65vD1.jpg",
+      "backdropPath": "/z30x999Uku15xcFbe5s3hLvQPDl.jpg",
+      "year": "1962"
+    },
+    {
+      "rank": 8,
+      "title": "Raging Bull",
+      "img": "../assets/posters/1975-1999/raging-bull.jpg",
+      "status": "ok",
+      "tmdbId": 1578,
+      "posterPath": "/1WV7WlTS8LI1L5NkCgjWT9GSW3O.jpg",
+      "backdropPath": null,
+      "year": "1980"
+    },
+    {
+      "rank": 9,
+      "title": "The Wolf of Wall Street",
+      "img": "../assets/posters/2000-2024/021-the-wolf-of-wall-street.jpg",
+      "status": "ok",
+      "tmdbId": 106646,
+      "posterPath": "/kW9LmvYHAaS9iA0tHmZVq8hQYoq.jpg",
+      "backdropPath": "/7Nwnmyzrtd0FkcRyPqmdzTPppQa.jpg",
+      "year": "2013"
+    },
+    {
+      "rank": 10,
+      "title": "Oppenheimer",
+      "img": "../assets/grands-oublies/2000-2024/oppenheimer.jpg",
+      "status": "ok",
+      "tmdbId": 872585,
+      "posterPath": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+      "backdropPath": "/neeNHeXjMF5fXoCJRsOmkNGC7q.jpg",
+      "year": "2023"
+    },
+    {
+      "rank": 11,
+      "title": "The Insider",
+      "img": "../assets/posters/biopics/011-the-insider.jpg",
+      "status": "ok",
+      "tmdbId": 9008,
+      "posterPath": "/3BYhikNhkWALAbpAdoL0rcBrl5A.jpg",
+      "backdropPath": "/2GIr0LArTvO33HQVPEdp49FLdNV.jpg",
+      "year": "1999"
+    },
+    {
+      "rank": 12,
+      "title": "Erin Brockovich",
+      "img": "../assets/posters/biopics/012-erin-brockovich.jpg",
+      "status": "ok",
+      "tmdbId": 462,
+      "posterPath": "/eMs20iUQyZVs05Ck7Q0LNnRsstr.jpg",
+      "backdropPath": "/3HmLKhahTxX2ALTWlagr92pZrU7.jpg",
+      "year": "2000"
+    },
+    {
+      "rank": 13,
+      "title": "Donnie Brasco",
+      "img": "../assets/posters/biopics/013-donnie-brasco.jpg",
+      "status": "ok",
+      "tmdbId": 9366,
+      "posterPath": "/xtKLvpOfARi1XVm8u2FTdhY5Piq.jpg",
+      "backdropPath": "/gXWzBnxUfLCT0w0WzAmJ5wF37hC.jpg",
+      "year": "1997"
+    },
+    {
+      "rank": 14,
+      "title": "Lion",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ELion%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 15,
+      "title": "Malcolm X",
+      "img": "../assets/posters/biopics/015-malcolm-x.jpg",
+      "status": "ok",
+      "tmdbId": 1883,
+      "posterPath": "/o2s9ow0uRRm1BcF3teznk5twd90.jpg",
+      "backdropPath": "/yj9VAqzlA0kasae8rK1VG3NvDZk.jpg",
+      "year": "1992"
+    },
+    {
+      "rank": 16,
+      "title": "Man on the Moon",
+      "img": "../assets/posters/biopics/016-man-on-the-moon.jpg",
+      "status": "ok",
+      "tmdbId": 1850,
+      "posterPath": "/msOZS07xRIFnapwp3fprGbKEAfT.jpg",
+      "backdropPath": "/c6jFpztvihsXraV51up2nxXfm5t.jpg",
+      "year": "1999"
+    },
+    {
+      "rank": 17,
+      "title": "The Assassination of Jesse James by the Coward Robert Ford",
+      "img": "../assets/posters/2000-2024/063-the-assassination-of-jesse-james-by-the-coward-robert-ford.jpg",
+      "status": "ok",
+      "tmdbId": 4512,
+      "posterPath": "/xMKn6EQS7eR5ubhPJbw5pQSBZMw.jpg",
+      "backdropPath": "/3HvQ5PaxwQJEiRSZD5AyVuqEiNn.jpg",
+      "year": "2007"
+    },
+    {
+      "rank": 18,
+      "title": "Vice",
+      "img": "../assets/posters/biopics/018-vice.jpg",
+      "status": "ok",
+      "tmdbId": 429197,
+      "posterPath": "/1gCab6rNv1r6V64cwsU4oEr649Y.jpg",
+      "backdropPath": "/aHcNu3tYihvkL45CrXTFY4YfrfF.jpg",
+      "year": "2018"
+    },
+    {
+      "rank": 19,
+      "title": "Blow",
+      "img": "../assets/posters/biopics/019-blow.jpg",
+      "status": "ok",
+      "tmdbId": 4133,
+      "posterPath": "/yYZFVfk8aeMP4GxBSU9MTvqs9mJ.jpg",
+      "backdropPath": "/b5GNqEW951qS1sJKmWUQD1uI7UU.jpg",
+      "year": "2001"
+    },
+    {
+      "rank": 20,
+      "title": "Intouchables",
+      "img": "../assets/posters/2000-2024/087-the-intouchables.jpg",
+      "status": "ok",
+      "tmdbId": 77338,
+      "posterPath": "/1QU7HKgsQbGpzsJbJK4pAVQV9F5.jpg",
+      "backdropPath": "/q6OGlZ1KMEb14AC8KbPCxyNOal6.jpg",
+      "year": "2011"
+    },
+    {
+      "rank": 21,
+      "title": "Downfall",
+      "img": "../assets/posters/2000-2024/081-downfall.jpg",
+      "status": "ok",
+      "tmdbId": 613,
+      "posterPath": "/cP1ElGjBhbZAAqmueXjHDKlSwiP.jpg",
+      "backdropPath": "/hvINcZ57JNLHylfjTVB6hd0Uefz.jpg",
+      "year": "2004"
+    },
+    {
+      "rank": 22,
+      "title": "12 Years a Slave",
+      "img": "../assets/posters/2000-2024/085-12-years-a-slave.jpg",
+      "status": "ok",
+      "tmdbId": 76203,
+      "posterPath": "/xdANQijuNrJaw1HA61rDccME4Tm.jpg",
+      "backdropPath": "/4Bb1kMIfrT2tYRZ9M6Jhqy6gkeF.jpg",
+      "year": "2013"
+    },
+    {
+      "rank": 23,
+      "title": "All the President's Men",
+      "img": "../assets/posters/1975-1999/all-the-presidents-men.jpg",
+      "status": "ok",
+      "tmdbId": 891,
+      "posterPath": "/pCe6lfLxt1B58zPD4lgQrlnDS2j.jpg",
+      "backdropPath": null,
+      "year": "1976"
+    },
+    {
+      "rank": 24,
+      "title": "Milk",
+      "img": "../assets/posters/biopics/024-milk.jpg",
+      "status": "ok",
+      "tmdbId": 10139,
+      "posterPath": "/ot4ImF4b7QbS6XsTdMH3pWxNmX2.jpg",
+      "backdropPath": "/8rBBojmT5vwkuVh2hFWBkbWtlBX.jpg",
+      "year": "2008"
+    },
+    {
+      "rank": 25,
+      "title": "Mishima: A Life in Four Chapters",
+      "img": "../assets/posters/biopics/025-mishima-a-life-in-four-chapters.jpg",
+      "status": "ok",
+      "tmdbId": 27064,
+      "posterPath": "/4kIXsE4SwUjO0eUqpolsHNO5GLH.jpg",
+      "backdropPath": "/PnwQJeWhmx9wh9wWM0a0YhLmE.jpg",
+      "year": "1985"
+    },
+    {
+      "rank": 26,
+      "title": "The Iceman",
+      "img": "../assets/posters/biopics/026-the-iceman.jpg",
+      "status": "ok",
+      "tmdbId": 68812,
+      "posterPath": "/3edygPSm9XdISHza8zqHUVAQHAD.jpg",
+      "backdropPath": "/kqsMRKkwJssTcp9chZzY161KNRO.jpg",
+      "year": "2012"
+    },
+    {
+      "rank": 27,
+      "title": "The Aviator",
+      "img": "../assets/posters/biopics/027-the-aviator.jpg",
+      "status": "ok",
+      "tmdbId": 2567,
+      "posterPath": "/lx4kWcZc3o9PaNxlQpEJZM17XUI.jpg",
+      "backdropPath": "/6KLKdhk9wZvJ6OcTzDCoxup0Kmh.jpg",
+      "year": "2004"
+    },
+    {
+      "rank": 28,
+      "title": "Serpico",
+      "img": "../assets/posters/biopics/028-serpico.jpg",
+      "status": "ok",
+      "tmdbId": 9040,
+      "posterPath": "/pRagfd10PPWryFRSzLPIivfAXHJ.jpg",
+      "backdropPath": "/dXlO2Ri2RvVYWRtBsr6GsIVkleX.jpg",
+      "year": "1973"
+    },
+    {
+      "rank": 29,
+      "title": "Daaaaaalí!",
+      "img": "../assets/posters/biopics/029-daaaaaali.jpg",
+      "status": "ok",
+      "tmdbId": 1045770,
+      "posterPath": "/cKMiUOT5rSWt7AJOhStuBpVeIUQ.jpg",
+      "backdropPath": "/aNycfeUgXk9g6NjwwHzg01YloHa.jpg",
+      "year": "2024"
+    },
+    {
+      "rank": 30,
+      "title": "In the Name of the Father",
+      "img": "../assets/posters/biopics/030-in-the-name-of-the-father.jpg",
+      "status": "ok",
+      "tmdbId": 7984,
+      "posterPath": "/3NcIkKxaO2SmRVsG1v50XhtmL0f.jpg",
+      "backdropPath": "/gUIVD0rFWVB8Okk8wU8dQxjOYnZ.jpg",
+      "year": "1993"
+    },
+    {
+      "rank": 31,
+      "title": "The Killing Fields",
+      "img": "../assets/posters/biopics/031-the-killing-fields.jpg",
+      "status": "ok",
+      "tmdbId": 625,
+      "posterPath": "/cX6Bv7natnZwQjsV9bLL8mmWjkS.jpg",
+      "backdropPath": "/c7OeJd34rc9bI1DXqd4ucb1wVrf.jpg",
+      "year": "1984"
+    },
+    {
+      "rank": 32,
+      "title": "Walk the Line",
+      "img": "../assets/posters/biopics/032-walk-the-line.jpg",
+      "status": "ok",
+      "tmdbId": 69,
+      "posterPath": "/zMkD6FVikyPNnigoupO7vD5ti9p.jpg",
+      "backdropPath": "/pMBKzEotLUzk3NuQiyVjZEDlH70.jpg",
+      "year": "2005"
+    },
+    {
+      "rank": 33,
+      "title": "The King's Speech",
+      "img": "../assets/posters/2000-2024/025-the-king-s-speech.jpg",
+      "status": "ok",
+      "tmdbId": 45269,
+      "posterPath": "/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg",
+      "backdropPath": "/m4MGxxEgAMqIX9x8MCg5pYeyYjU.jpg",
+      "year": "2010"
+    },
+    {
+      "rank": 34,
+      "title": "The Elephant Man",
+      "img": "../assets/posters/biopics/034-the-elephant-man.jpg",
+      "status": "ok",
+      "tmdbId": 1955,
+      "posterPath": "/u0wpPYjuSt8DIe1Y3Vapnh8jcKE.jpg",
+      "backdropPath": "/6huSptAsqYg3wbsi1jbMognSgmp.jpg",
+      "year": "1980"
+    },
+    {
+      "rank": 35,
+      "title": "The Theory of Everything",
+      "img": "../assets/posters/biopics/035-the-theory-of-everything.jpg",
+      "status": "ok",
+      "tmdbId": 266856,
+      "posterPath": "/7kwcLFNt887saoQAL7EY0XnW7VI.jpg",
+      "backdropPath": "/dh2QT3TPtAQf057yeLpNMuaJlmp.jpg",
+      "year": "2014"
+    },
+    {
+      "rank": 36,
+      "title": "The Pianist",
+      "img": "../assets/posters/2000-2024/065-the-pianist.jpg",
+      "status": "ok",
+      "tmdbId": 423,
+      "posterPath": "/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg",
+      "backdropPath": "/c0fB9xk7D1aVb3Bg2rk2SVJcGn.jpg",
+      "year": "2002"
+    },
+    {
+      "rank": 37,
+      "title": "I'm Not There",
+      "img": "../assets/posters/biopics/037-i-m-not-there.jpg",
+      "status": "ok",
+      "tmdbId": 3902,
+      "posterPath": "/bucgvB7gQqcl1m71efHkenfIMTj.jpg",
+      "backdropPath": "/hXGZv8TAFP52jxIZLdIDCVmPJBQ.jpg",
+      "year": "2007"
+    },
+    {
+      "rank": 38,
+      "title": "Cinderella Man",
+      "img": "../assets/posters/biopics/038-cinderella-man.jpg",
+      "status": "ok",
+      "tmdbId": 921,
+      "posterPath": "/wkeOjIcpuqLMW4GnVowlM9VI0JE.jpg",
+      "backdropPath": "/oO5sMDETneOPCneX3jfXMFfPh9E.jpg",
+      "year": "2005"
+    },
+    {
+      "rank": 39,
+      "title": "The Diving Bell and the Butterfly",
+      "img": "../assets/posters/biopics/039-the-diving-bell-and-the-butterfly.jpg",
+      "status": "ok",
+      "tmdbId": 2013,
+      "posterPath": "/6NkJ4gnLrvLj0PZDW6sNM85JMbj.jpg",
+      "backdropPath": "/8v9UL4hL4WDC58IrKb9bkBz0kIQ.jpg",
+      "year": "2007"
+    },
+    {
+      "rank": 40,
+      "title": "8 Mile",
+      "img": "../assets/posters/biopics/040-8-mile.jpg",
+      "status": "ok",
+      "tmdbId": 65,
+      "posterPath": "/7BmQj8qE1FLuLTf7Xjf9sdIHzoa.jpg",
+      "backdropPath": "/jNG7pl0DkN1nzxnbZj4MCGf2VEG.jpg",
+      "year": "2002"
+    },
+    {
+      "rank": 41,
+      "title": "A Beautiful Mind",
+      "img": "../assets/posters/biopics/041-a-beautiful-mind.jpg",
+      "status": "ok",
+      "tmdbId": 453,
+      "posterPath": "/rEIg5yJdNOt9fmX4P8gU9LeNoTQ.jpg",
+      "backdropPath": "/hCJFWTPghXCwwSpvPpAoIB8318Q.jpg",
+      "year": "2001"
+    },
+    {
+      "rank": 42,
+      "title": "The Last Emperor",
+      "img": "../assets/posters/biopics/042-the-last-emperor.jpg",
+      "status": "ok",
+      "tmdbId": 746,
+      "posterPath": "/7TILJhdeJAaEyDiwvJZMo9SQBoe.jpg",
+      "backdropPath": "/k29qVmwWwR0i5A1UMIws1Vmv6hV.jpg",
+      "year": "1987"
+    },
+    {
+      "rank": 43,
+      "title": "Control",
+      "img": "../assets/posters/biopics/043-control.jpg",
+      "status": "ok",
+      "tmdbId": 5708,
+      "posterPath": "/jOJiaOhwrDdwqTRZvZOhbndqHGp.jpg",
+      "backdropPath": "/dwxdn3ppDAn7QtaLlhGDEErWfg9.jpg",
+      "year": "2007"
+    },
+    {
+      "rank": 44,
+      "title": "Born on the Fourth of July",
+      "img": "../assets/posters/biopics/044-born-on-the-fourth-of-july.jpg",
+      "status": "ok",
+      "tmdbId": 2604,
+      "posterPath": "/c5gSie6ZA90iBs62yNM5MV4y9R7.jpg",
+      "backdropPath": "/y9QjSsIH4vBIIqGmAFT1zJzsqPh.jpg",
+      "year": "1989"
+    },
+    {
+      "rank": 45,
+      "title": "Mesrine: Public Enemy No. 1",
+      "img": "../assets/posters/biopics/045-mesrine-public-enemy-no-1.jpg",
+      "status": "ok",
+      "tmdbId": 15362,
+      "posterPath": "/k9lhZ0PhY78nzwG034rNpsLXlpW.jpg",
+      "backdropPath": "/czLjLCZTie8Oaf9Bz9ANhsD705i.jpg",
+      "year": "2008"
+    },
+    {
+      "rank": 46,
+      "title": "The Doors",
+      "img": "../assets/posters/biopics/046-the-doors.jpg",
+      "status": "ok",
+      "tmdbId": 10537,
+      "posterPath": "/x1LM3dzGuG6xOz0aT2e71o11vhu.jpg",
+      "backdropPath": "/p4XrrXZqxeqXKH7zBeP6wRkDbhc.jpg",
+      "year": "1991"
+    },
+    {
+      "rank": 47,
+      "title": "The Imitation Game",
+      "img": "../assets/posters/biopics/047-the-imitation-game.jpg",
+      "status": "ok",
+      "tmdbId": 205596,
+      "posterPath": "/zSqJ1qFq8NXFfi7JeIYMlzyR0dx.jpg",
+      "backdropPath": "/usuRn9DUKQQr4nBWnrQzlOuZ1Q4.jpg",
+      "year": "2014"
+    },
+    {
+      "rank": 48,
+      "title": "The Revenant",
+      "img": "../assets/posters/2000-2024/114-the-revenant.jpg",
+      "status": "ok",
+      "tmdbId": 281957,
+      "posterPath": "/ji3ecJphATlVgWNY0B0RVXZizdf.jpg",
+      "backdropPath": "/hEQYZq2CDB2LSJVxxlazdBOKeyW.jpg",
+      "year": "2015"
+    },
+    {
+      "rank": 49,
+      "title": "Braveheart",
+      "img": "../assets/posters/biopics/049-braveheart.jpg",
+      "status": "ok",
+      "tmdbId": 197,
+      "posterPath": "/or1gBugydmjToAEq7OZY0owwFk.jpg",
+      "backdropPath": "/1m1c5gIWWkb1FEC9lzsoXHhhs7b.jpg",
+      "year": "1995"
+    },
+    {
+      "rank": 50,
+      "title": "Behind the Candelabra",
+      "img": "../assets/posters/biopics/050-behind-the-candelabra.jpg",
+      "status": "ok",
+      "tmdbId": 119675,
+      "posterPath": "/iodt6hrewVXxR415PIjBeuZg3Qs.jpg",
+      "backdropPath": "/47hvNE7yCYoc2NObbjl7bS9jnIA.jpg",
+      "year": "2013"
+    },
+    {
+      "rank": 51,
+      "title": "Dead Man Walking",
+      "img": "../assets/posters/biopics/051-dead-man-walking.jpg",
+      "status": "ok",
+      "tmdbId": 687,
+      "posterPath": "/eShxyjhWoFl3BwsuEmVsr4nLaMZ.jpg",
+      "backdropPath": "/gwRWQeHfPuA8mg73kydQsM8rdXq.jpg",
+      "year": "1995"
+    },
+    {
+      "rank": 52,
+      "title": "The Motorcycle Diaries",
+      "img": "../assets/posters/biopics/052-the-motorcycle-diaries.jpg",
+      "status": "ok",
+      "tmdbId": 1653,
+      "posterPath": "/qz2aBYT8CAiJYvX4fRZpJ5G0Oz1.jpg",
+      "backdropPath": "/o6Ln9kTC4ZrHZNUhWLOwBfUvqXU.jpg",
+      "year": "2004"
+    },
+    {
+      "rank": 53,
+      "title": "American Splendor",
+      "img": "../assets/posters/biopics/053-american-splendor.jpg",
+      "status": "ok",
+      "tmdbId": 2771,
+      "posterPath": "/rPLMxuk82AiqDiwEUVJ6E7WpjYs.jpg",
+      "backdropPath": "/51Q6Wyadho2zmOe8yCOdAWDpdGm.jpg",
+      "year": "2003"
+    },
+    {
+      "rank": 54,
+      "title": "Hunger",
+      "img": "../assets/posters/biopics/054-hunger.jpg",
+      "status": "ok",
+      "tmdbId": 10360,
+      "posterPath": "/84HdTM39G2MzyTl8N9R0wVU9I5b.jpg",
+      "backdropPath": "/34N9iKlR8FdXiu8r8pSpKcyFUVh.jpg",
+      "year": "2008"
+    },
+    {
+      "rank": 55,
+      "title": "Into the Wild",
+      "img": "../assets/posters/2000-2024/045-into-the-wild.jpg",
+      "status": "ok",
+      "tmdbId": 5915,
+      "posterPath": "/jnLnLYP5pGDfri04gxtAqAvkHMw.jpg",
+      "backdropPath": "/87tmTU1NSR5EUGTKsF5rhLwZtZc.jpg",
+      "year": "2007"
+    },
+    {
+      "rank": 56,
+      "title": "JFK",
+      "img": "../assets/posters/biopics/056-jfk.jpg",
+      "status": "ok",
+      "tmdbId": 820,
+      "posterPath": "/r0VWVTYlqdRCK5ZoOdNnHdqM2gt.jpg",
+      "backdropPath": "/77gjiDyD94aJfqZq6AJAcMLxZhd.jpg",
+      "year": "1991"
+    },
+    {
+      "rank": 57,
+      "title": "Midnight Express",
+      "img": "../assets/posters/biopics/057-midnight-express.jpg",
+      "status": "ok",
+      "tmdbId": 11327,
+      "posterPath": "/6GXioArQEdxcYqOcEfMdpyJPlwx.jpg",
+      "backdropPath": "/f4dcx5U9X3w27e8iithmsaohF5t.jpg",
+      "year": "1978"
+    },
+    {
+      "rank": 58,
+      "title": "The Disaster Artist",
+      "img": "../assets/posters/biopics/058-the-disaster-artist.jpg",
+      "status": "ok",
+      "tmdbId": 371638,
+      "posterPath": "/2HuLGiyH0TPYxnCvYHAxc8K738o.jpg",
+      "backdropPath": "/1hdorswm5HPxb81xq84H9gqveUq.jpg",
+      "year": "2017"
+    },
+    {
+      "rank": 59,
+      "title": "Ed Wood",
+      "img": "../assets/posters/biopics/059-ed-wood.jpg",
+      "status": "ok",
+      "tmdbId": 522,
+      "posterPath": "/n8SrO3WbyuY2b6KazogqbQF348C.jpg",
+      "backdropPath": "/3jrwJiMCe7VZP0DNcywHYOKg0Zu.jpg",
+      "year": "1994"
+    },
+    {
+      "rank": 60,
+      "title": "Gainsbourg: A Heroic Life",
+      "img": "../assets/posters/biopics/060-gainsbourg-a-heroic-life.jpg",
+      "status": "ok",
+      "tmdbId": 31900,
+      "posterPath": "/e1zGOGjIVxzRudOq0SQteQQKfmr.jpg",
+      "backdropPath": "/aFGFVXvqOzrK07jnRaSrzIJYp95.jpg",
+      "year": "2010"
+    },
+    {
+      "rank": 61,
+      "title": "Ray",
+      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23171c20%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080a0b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ERay%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "status": "unresolved"
+    },
+    {
+      "rank": 62,
+      "title": "Sully",
+      "img": "../assets/posters/biopics/062-sully.jpg",
+      "status": "ok",
+      "tmdbId": 363676,
+      "posterPath": "/4vs83YcJ8TsabADDtaeCJ6ZTjYY.jpg",
+      "backdropPath": "/oQ024BtJgArg8WI4zfuc2vkCJno.jpg",
+      "year": "2016"
+    },
+    {
+      "rank": 63,
+      "title": "Dallas Buyers Club",
+      "img": "../assets/posters/2000-2024/079-dallas-buyers-club.jpg",
+      "status": "ok",
+      "tmdbId": 152532,
+      "posterPath": "/7Fdh7gUq3plvQqxRbNYhWvDABXA.jpg",
+      "backdropPath": "/sbVKj98cq0FztCukzu47bu0H8o7.jpg",
+      "year": "2013"
+    },
+    {
+      "rank": 64,
+      "title": "Nouvelle Vague",
+      "img": "../assets/posters/biopics/064-nouvelle-vague.jpg",
+      "status": "ok",
+      "tmdbId": 1254808,
+      "posterPath": "/yZUZAMsw31KfIg66eB00eJrYN8n.jpg",
+      "backdropPath": "/c15Fg4jvclF5VjxCi1mtjUg4a6H.jpg",
+      "year": "2025"
+    },
+    {
+      "rank": 65,
+      "title": "The Big Short",
+      "img": "../assets/posters/2000-2024/102-the-big-short.jpg",
+      "status": "ok",
+      "tmdbId": 318846,
+      "posterPath": "/scVEaJEwP8zUix8vgmMoJJ9Nq0w.jpg",
+      "backdropPath": "/l2Lqkfjq1k5pG2gZXD4qSiyrJ0.jpg",
+      "year": "2015"
+    },
+    {
+      "rank": 66,
+      "title": "Violeta Went to Heaven",
+      "img": "../assets/posters/biopics/066-violeta-went-to-heaven.jpg",
+      "status": "ok",
+      "tmdbId": 80717,
+      "posterPath": "/lE3N29dnqqiIcKKdvAZpVcQZ9b.jpg",
+      "backdropPath": "/5nE5XAkyH7bLQzgC4rcilQVOHvP.jpg",
+      "year": "2011"
+    },
+    {
+      "rank": 67,
+      "title": "Wyatt Earp",
+      "img": "../assets/posters/biopics/067-wyatt-earp.jpg",
+      "status": "ok",
+      "tmdbId": 12160,
+      "posterPath": "/51LItgyecu2KMAtIchYogEykCIu.jpg",
+      "backdropPath": "/8Nhn88ZaR8txXSLptWMBgWm3QnJ.jpg",
+      "year": "1994"
+    }
+  ]
+}
