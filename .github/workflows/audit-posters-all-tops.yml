@@ -5,7 +5,10 @@ on:
     branches: [work-cleanup-sept9]
     paths:
       - 'scripts/audit-posters-all-tops.mjs'
+      - 'v2/scripts/poster-metadata.js'
       - 'v2/scripts/poster-aliases.js'
+      - 'data/**/poster-manifest*.json'
+      - 'assets/posters/**'
       - 'v2/index.html'
       - '.github/workflows/audit-posters-all-tops.yml'
   workflow_dispatch:
