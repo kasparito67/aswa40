@@ -1,0 +1,36 @@
+/* ASWA40 parallax layer — vertical hero depth + horizontal side-swipe depth */
+.era-screen{
+  --px-bg-x:0px;
+  --px-bg-y:0px;
+  --px-title-x:0px;
+  --px-title-y:0px;
+  --px-content-x:0px;
+}
+
+.hero-header .hero-media{
+  inset:-3%;
+  width:106%;
+  height:106%;
+  transform:translate3d(var(--px-bg-x),var(--px-bg-y),0) scale(var(--hero-media-scale,1));
+  transform-origin:center center;
+  will-change:transform;
+}
+
+.hero-title{
+  transform:translate3d(var(--px-title-x),var(--px-title-y),0);
+  will-change:transform;
+}
+
+.shell{
+  transform:translate3d(var(--px-content-x),0,0);
+  will-change:transform;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-header .hero-media,
+  .hero-title,
+  .shell{
+    transform:none!important;
+    will-change:auto;
+  }
+}
