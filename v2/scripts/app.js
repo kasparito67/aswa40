@@ -52,10 +52,24 @@
   function sidebar(top){return `<aside class="site-sidebar"><div class="sidebar-title">Insights collectifs</div>${top.sidebar.map(i=>i.kind==='year'?yearCard(i):i.kind==='directors'?directorsCard(i):insightCard(i)).join('')}</aside>`}
 
   function heroTitle(top){
-    if(top.hero.titleArt)return `<div class="hero-title-art" style="background-image:url('${top.hero.titleArt}')"></div><div class="hero-top-three hero-art-medallions">${top.films.slice(0,3).map(f=>`<span class="hero-medallion"><img src="${f.img}" alt=""></span>`).join('')}</div>`;
-    return `<h1><span class="hero-title-line"><span>${esc(top.hero.line||'Top films')}</span><span class="hero-top-three">${top.films.slice(0,3).map(f=>`<span class="hero-medallion"><img src="${f.img}" alt=""></span>`).join('')}</span></span><em>${esc(top.hero.em||top.label)}</em></h1>`
+    const hero=top.hero||{};
+    if(hero.titleArt){
+      const alt=esc(hero.titleAlt||top.label);
+      const width=esc(hero.titleMaxWidth||'920px');
+      const offset=esc(hero.titleOffsetY||'0px');
+      const fit=esc(hero.titleFit||'contain');
+      const medals=top.films.slice(0,3).map((f,i)=>`<span class="hero-medallion" style="--i:${i}"><img src="${f.img}" alt="" decoding="async"></span>`).join('');
+      return `<div class="hero-title-art-wrap" style="--hero-title-max:${width};--hero-title-y:${offset}" aria-label="${alt}"><img class="hero-title-art" src="${hero.titleArt}" alt="${alt}" loading="eager" decoding="async" style="object-fit:${fit}"></div>${medals?`<div class="hero-top-three hero-art-medallions" aria-hidden="true">${medals}</div>`:''}`;
+    }
+    return `<h1><span class="hero-title-line"><span>${esc(hero.line||'Top films')}</span><span class="hero-top-three">${top.films.slice(0,3).map(f=>`<span class="hero-medallion"><img src="${f.img}" alt=""></span>`).join('')}</span></span><em>${esc(hero.em||top.label)}</em></h1>`
   }
-  function screen(top,t){return `<section class="era-screen" data-top-id="${top.id}" style="${themeVars(top)}"><header class="hero-header"><img class="hero-media" src="${top.hero.image}" alt="" style="object-position:${top.hero.position}"><nav class="hero-nav"><span>Aimer Star Wars à 40 ans</span><span>${esc(top.community)} · <small>v1.0 platform</small></span></nav><div class="hero-title">${heroTitle(top)}</div></header><div class="shell"><div class="site-layout"><main><div class="stack">${top.sections.map((s,i)=>sectionMarkup(s,top,t,i)).join('')}</div></main>${sidebar(top)}</div></div></section>`}
+  function screen(top,t){
+    const hero=top.hero||{};
+    const position=hero.position||'center';
+    const fit=hero.fit||'cover';
+    const scale=Number.isFinite(hero.scale)?hero.scale:1;
+    return `<section class="era-screen" data-top-id="${top.id}" style="${themeVars(top)}"><header class="hero-header"><img class="hero-media" src="${hero.image}" alt="" style="object-position:${position};object-fit:${fit};--hero-media-scale:${scale}"><nav class="hero-nav"><span>Aimer Star Wars à 40 ans</span><span>${esc(top.community)} · <small>v1.0 platform</small></span></nav><div class="hero-title">${heroTitle(top)}</div></header><div class="shell"><div class="site-layout"><main><div class="stack">${top.sections.map((s,i)=>sectionMarkup(s,top,t,i)).join('')}</div></main>${sidebar(top)}</div></div></section>`
+  }
 
   function render(){stage.style.width=`${TOPS.length*100}vw`;stage.innerHTML=TOPS.map(screen).join('');hud.innerHTML=`${TOPS.map((_,i)=>`<span class="era-dot${i===0?' active':''}"></span>`).join('')}<span class="era-hud-label">${TOPS[0].label}</span>`;bindSections();bindSidebar();bindTiles();bindCoverFlow();bindFullReveal();decodeInitial();}
 

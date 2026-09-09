@@ -3,19 +3,9 @@
   if(!screen)return;
   screen.classList.add('legacy-2000-parity');
 
-  /* Header parity */
-  const top=typeof TOPS!=='undefined'?TOPS.find(t=>t.id==='2000-2024'):null;
+  /* Header metadata parity only. The title artwork is rendered once by app.js. */
   const nav=screen.querySelector('.hero-nav');
   if(nav)nav.innerHTML='<span>Aimer Star Wars à 40 ans</span><span>Une communauté de 9 cinéphiles <small class="build-version" aria-label="Version 0.9.9">v0.9.9</small></span>';
-  const title=screen.querySelector('.hero-title');
-  if(title&&top){
-    const medals=top.films.slice(0,3).map((f,i)=>`<span class="hero-medallion" style="--i:${i}"><img src="${f.img}" alt="#${f.rank} · ${f.title}"></span>`).join('');
-    title.innerHTML=`<h1><span class="hero-title-line"><span>Top films</span><span class="hero-top-three" aria-label="Les trois premiers films du classement">${medals}</span></span><em>2000–2024</em></h1><button class="hero-title-cue" type="button" aria-label="Aller au Top 25"><svg viewBox="0 0 24 36"><path d="M12 2v30m-6-6 6 6 6-6"/></svg></button>`;
-    title.querySelector('.hero-title-cue')?.addEventListener('click',()=>{
-      const sec=screen.querySelector('.stack .sec');
-      sec?.scrollIntoView({behavior:'smooth',block:'start'});
-    });
-  }
 
   /* Exact 2000 sidebar content/functionality */
   const sidebar=screen.querySelector('.site-sidebar');
