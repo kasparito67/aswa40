@@ -1690,6 +1690,13 @@
     "backdropPath": null,
     "year": "1988"
   },
+  "sci-fi-realiste:18": {
+    "img": "../assets/posters/sci-fi-realiste/018-moon.jpg",
+    "tmdbId": 17431,
+    "posterPath": "/35IU0Mq0zFsN1mYwDGts5mKc77n.jpg",
+    "backdropPath": "/mvUAo9ACgmLpS4Ofc2IwD4n7WCt.jpg",
+    "year": "2009"
+  },
   "sci-fi-realiste:19": {
     "img": "../assets/posters/sci-fi-realiste/019-robocop.jpg",
     "tmdbId": 5548,
@@ -1760,6 +1767,13 @@
     "backdropPath": "/mKIkGoyuR71qz6FdiEiOjxvBQcS.jpg",
     "year": "1995"
   },
+  "sci-fi-realiste:29": {
+    "img": "../assets/posters/sci-fi-realiste/029-contact.jpg",
+    "tmdbId": 686,
+    "posterPath": "/bCpMIywuNZeWt3i5UMLEIc0VSwM.jpg",
+    "backdropPath": "/yFkUPqBuUnbhYbQL8VFpTrAT9za.jpg",
+    "year": "1997"
+  },
   "sci-fi-realiste:30": {
     "img": "../assets/posters/1975-1999/terminator-2.jpg",
     "tmdbId": 280,
@@ -1773,6 +1787,13 @@
     "posterPath": "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
     "backdropPath": "/5XNQBqnBwPA9yT0jZ0p3s8bbLh0.jpg",
     "year": "2014"
+  },
+  "sci-fi-realiste:32": {
+    "img": "../assets/posters/sci-fi-realiste/032-signs.jpg",
+    "tmdbId": 2675,
+    "posterPath": "/YtrIdrTxpRhvCnlw43dwOjfLqx.jpg",
+    "backdropPath": "/rsPjEr7o02mo8ex6wD2PbRwasUe.jpg",
+    "year": "2002"
   },
   "sci-fi-realiste:33": {
     "img": "../assets/posters/sci-fi-realiste/033-strange-days.jpg",
@@ -1899,6 +1920,13 @@
     "posterPath": "/6cTHBq49ApwsJaRr3ojlY1cmiXk.jpg",
     "backdropPath": "/9Z4msMhKvNp63sOB1ZvxPMPvqz3.jpg",
     "year": "2006"
+  },
+  "sci-fi-realiste:51": {
+    "img": "../assets/posters/sci-fi-realiste/051-the-road.jpg",
+    "tmdbId": 20766,
+    "posterPath": "/qLaXnLzqleBWQtjvZ6JGVSaKoC3.jpg",
+    "backdropPath": "/6188iOmUAitGThYUjyx20fO4LJd.jpg",
+    "year": "2009"
   },
   "sci-fi-realiste:52": {
     "img": "../assets/posters/sci-fi-realiste/052-escape-from-new-york.jpg",
@@ -2126,6 +2154,13 @@
     "posterPath": "/hbhFnRzzg6ZDmm8YAmxBnQpQIPh.jpg",
     "backdropPath": "/nYs4ZwnJBK4AgljhvzwNz7fpr3E.jpg",
     "year": "2008"
+  },
+  "animation:19": {
+    "img": "../assets/posters/animation/019-cars.jpg",
+    "tmdbId": 920,
+    "posterPath": "/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
+    "backdropPath": "/sOLgkBKf1gjMRc4yXxM5aciXdfr.jpg",
+    "year": "2006"
   },
   "animation:20": {
     "img": "../assets/posters/animation/020-the-iron-giant.jpg",
@@ -2701,6 +2736,13 @@
     "backdropPath": "/gXWzBnxUfLCT0w0WzAmJ5wF37hC.jpg",
     "year": "1997"
   },
+  "biopics:14": {
+    "img": "../assets/posters/biopics/014-lion.jpg",
+    "tmdbId": 334543,
+    "posterPath": "/kCELJH1tCmaRLqvwIgKDb09aEaw.jpg",
+    "backdropPath": "/ycABRSIK1Ff10Tc2A6WJHagp1Co.jpg",
+    "year": "2016"
+  },
   "biopics:15": {
     "img": "../assets/posters/biopics/015-malcolm-x.jpg",
     "tmdbId": 1883,
@@ -3022,6 +3064,13 @@
     "posterPath": "/e1zGOGjIVxzRudOq0SQteQQKfmr.jpg",
     "backdropPath": "/aFGFVXvqOzrK07jnRaSrzIJYp95.jpg",
     "year": "2010"
+  },
+  "biopics:61": {
+    "img": "../assets/posters/biopics/061-ray.jpg",
+    "tmdbId": 1677,
+    "posterPath": "/tSPC7sO2XYNL9QcMmK88tuUALL5.jpg",
+    "backdropPath": "/umtxTkop7Ec9UFynjB7Z53lmkX1.jpg",
+    "year": "2004"
   },
   "biopics:62": {
     "img": "../assets/posters/biopics/062-sully.jpg",
