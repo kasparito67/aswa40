@@ -6,6 +6,7 @@
   const next=document.getElementById('eraNext');
   const mb=document.getElementById('modalBg');
   const modal=document.getElementById('filmModal');
+  const modalContent=modal?.querySelector('.modal-content');
   const modalPoster=document.getElementById('modalPoster');
   const modalBackdrop=document.getElementById('modalBackdrop');
   const modalRank=document.getElementById('modalRank');
@@ -17,11 +18,27 @@
   const modalNext=document.getElementById('modalNext');
 
   let topIndex=0,drag=null,wheelSum=0,wheelTimer=null,stageBusy=false;
-  let modalTop=0,modalIndex=0,modalDrag=null;
+  let modalTop=0,modalIndex=0,modalDrag=null,modalRequest=0;
+  let modalWheelSum=0,modalWheelLocked=false,modalWheelQuiet=null;
   const loadedFull=new Map();
   const W=()=>innerWidth;
   const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+  const slug=s=>norm(s).replace(/\s+/g,'-');
   const yearsFromText=(text,min,max)=>{const out=new Set();[...String(text).matchAll(/(19\d{2}|20\d{2})\s*[–-]\s*(?:(19\d{2}|20\d{2})|(\d{2}))/g)].forEach(m=>{const a=Number(m[1]),b=Number(m[2]||String(a).slice(0,2)+m[3]);for(let y=Math.min(a,b);y<=Math.max(a,b);y++)if(y>=min&&y<=max)out.add(y)});String(text).match(/(?:19|20)\d{2}/g)?.forEach(y=>{const n=Number(y);if(n>=min&&n<=max)out.add(n)});return [...out]};
+
+  const letterboxdAliases={
+    'lord of the rings':'the-lord-of-the-rings-the-fellowship-of-the-ring',
+    'spirited away':'spirited-away',
+    'goodfellas':'goodfellas',
+    'children of men':'children-of-men',
+    'akira':'akira',
+    'the social network':'the-social-network',
+    'schindlers list':'schindlers-list',
+    'catch me if you can':'catch-me-if-you-can',
+    'wall e':'wall-e',
+    'a i artificial intelligence':'ai-artificial-intelligence'
+  };
 
   function themeVars(top){return `--accent:${top.theme.accent};--secondary:${top.theme.secondary};--top-bg:${top.theme.bg};--top-panel:${top.theme.panel}`}
   function filmTile(f,t,mode='normal',defer=false){const winner=f.rank===1?'<span class="winner-crown" aria-hidden="true">♛</span>':'';const img=defer?`<img class="poster-deferred" data-src="${f.img}" alt="" loading="lazy" decoding="async">`:`<img src="${f.img}" alt="" loading="${f.rank<=25?'eager':'lazy'}" decoding="async">`;return `<button class="tile" type="button" data-top="${t}" data-r="${f.rank}" data-mode="${mode}">${img}${winner}<span class="rank">${f.rank}</span><span class="name">${esc(f.title)}</span><span class="hover"><b>${f.pts} pts</b><span>${f.votes} votes · Best rank ${f.best}</span></span></button>`}
@@ -33,7 +50,7 @@
 
   function insightCard(item){return `<div class="insight-item"${item.key?` data-insight="${esc(item.key)}"`:''}><button class="insight-card" type="button" aria-expanded="false"><span class="insight-icon">${item.icon||'◎'}</span><span><b>${esc(item.title)}</b><span>${esc(item.sub)}</span></span><span class="insight-chevron">↓</span></button><div class="insight-detail" aria-hidden="true"><div><ul>${(item.bullets||[]).map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div></div></div>`}
   function yearCard(item){const start=item.yearStart,end=start+item.bars.length-1,titleYears=yearsFromText(item.title,start,end);const notes=(item.notes||[]).map(note=>{const yrs=yearsFromText(note,start,end),parts=String(note).split(/\s+[—-]\s+/);return `<button class="year-highlight" type="button" data-years="${yrs.join(',')}"><b>${esc(parts[0]||note)}</b><span>${esc(parts.slice(1).join(' — ')||'Voir dans le graphique')}</span></button>`}).join('');const decadeMatch=String(item.sub||'').match(/((?:19|20)\d{2}\s*[–-]\s*(?:19|20)\d{2})[^\d]*(\d+%)/),decadeYears=decadeMatch?yearsFromText(decadeMatch[1],start,end):[],summary=decadeMatch?`<button class="year-insight-decade" type="button" data-years="${decadeYears.join(',')}"><b>${esc(decadeMatch[1])}</b><strong>${esc(decadeMatch[2])}</strong></button>`:'',countText=String(item.sub||'').split('·')[0].trim();return `<div class="year-insight-card"><button class="year-toggle" type="button" aria-expanded="false"><div class="year-insight-kicker special-card-label"><span>${esc(item.label)}</span></div><div class="year-insight-year">${esc(item.title)}</div><div class="year-insight-maincount">${esc(countText)}</div><span class="year-arrow">↓</span></button><div class="year-insight-detail" aria-hidden="true"><div class="year-insight-detail-inner">${summary}<div class="year-chart" aria-label="Nombre de films par année de ${start} à ${end}">${item.bars.map((v,i)=>`<span class="year-chart-bar${titleYears.includes(start+i)?' hot':''}" style="--v:${v}" data-y="${start+i}" tabindex="0" aria-label="${start+i} : ${v} film${v>1?'s':''}"></span>`).join('')}</div><div class="year-highlights">${notes}</div></div></div></div>`}
-  function directorsCard(item){const entries=item.entries||[],norm=entries.map((e,i)=>Array.isArray(e)?{name:e[0],films:e[1],img:item.faces?.[i]?`../assets/posters/1975-1999/${item.faces[i]}.jpg`:''}:e),faces=norm.slice(0,4).map(e=>e.img?`${e.url?`<a class="director-face" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(e.name)} sur IMDb">`:'<span class="director-face">'}<img src="${esc(e.img)}" alt="">${e.url?'</a>':'</span>'}`:'').join('');return `<div class="director-card"><div class="director-toggle"><button class="director-toggle-action" type="button" aria-expanded="false" aria-label="Afficher les autres réalisateurs"></button><div class="director-copy"><div class="director-k special-card-label"><span>${esc(item.label||'Réalisateurs')}</span></div><div class="director-title">${esc(item.title)}</div></div><div class="director-heading"><div class="director-faces">${faces}</div><span class="director-arrow">↓</span></div></div><div class="director-detail" aria-hidden="true"><div class="director-detail-inner"><div class="director-list">${norm.map(e=>e.url?`<a class="director-row" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${e.img?`<img src="${esc(e.img)}" alt="${esc(e.name)}">`:''}<div><b>${esc(e.name)}</b><div class="director-films">${esc(e.films)}</div></div></a>`:`<div class="director-row director-row-text"><div><b>${esc(e.name)}</b><div class="director-films">${esc(e.films)}</div></div></div>`).join('')}</div></div></div></div>`}
+  function directorsCard(item){const entries=item.entries||[],normEntries=entries.map((e,i)=>Array.isArray(e)?{name:e[0],films:e[1],img:item.faces?.[i]?`../assets/posters/1975-1999/${item.faces[i]}.jpg`:''}:e),faces=normEntries.slice(0,4).map(e=>e.img?`${e.url?`<a class="director-face" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(e.name)} sur IMDb">`:'<span class="director-face">'}<img src="${esc(e.img)}" alt="">${e.url?'</a>':'</span>'}`:'').join('');return `<div class="director-card"><div class="director-toggle"><button class="director-toggle-action" type="button" aria-expanded="false" aria-label="Afficher les autres réalisateurs"></button><div class="director-copy"><div class="director-k special-card-label"><span>${esc(item.label||'Réalisateurs')}</span></div><div class="director-title">${esc(item.title)}</div></div><div class="director-heading"><div class="director-faces">${faces}</div><span class="director-arrow">↓</span></div></div><div class="director-detail" aria-hidden="true"><div class="director-detail-inner"><div class="director-list">${normEntries.map(e=>e.url?`<a class="director-row" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${e.img?`<img src="${esc(e.img)}" alt="${esc(e.name)}">`:''}<div><b>${esc(e.name)}</b><div class="director-films">${esc(e.films)}</div></div></a>`:`<div class="director-row director-row-text"><div><b>${esc(e.name)}</b><div class="director-films">${esc(e.films)}</div></div></div>`).join('')}</div></div></div></div>`}
   function sidebar(top){return `<aside class="site-sidebar"><div class="sidebar-title">Insights collectifs</div>${(top.sidebar||[]).map(i=>i.kind==='year'?yearCard(i):i.kind==='directors'?directorsCard(i):insightCard(i)).join('')}</aside>`}
 
   function heroTitle(top){const hero=top.hero||{};if(hero.titleArt){const alt=esc(hero.titleAlt||top.label),width=esc(hero.titleMaxWidth||'920px'),offset=esc(hero.titleOffsetY||'0px'),fit=esc(hero.titleFit||'contain'),medals=top.films.slice(0,3).map((f,i)=>`<span class="hero-medallion" style="--i:${i}"><img src="${f.img}" alt="" decoding="async"></span>`).join('');return `<div class="hero-title-art-wrap" style="--hero-title-max:${width};--hero-title-y:${offset}" aria-label="${alt}"><img class="hero-title-art" src="${hero.titleArt}" alt="${alt}" loading="eager" decoding="async" style="object-fit:${fit}"></div>${medals?`<div class="hero-top-three hero-art-medallions" aria-hidden="true">${medals}</div>`:''}`};return `<h1><span class="hero-title-line"><span>${esc(hero.line||'Top films')}</span><span class="hero-top-three">${top.films.slice(0,3).map(f=>`<span class="hero-medallion"><img src="${f.img}" alt=""></span>`).join('')}</span></span><em>${esc(hero.em||top.label)}</em></h1>`}
@@ -64,14 +81,40 @@
   function finishDrag(){if(!drag)return;const d=drag;drag=null,v=d.dx/Math.max(16,performance.now()-d.t),commit=Math.abs(d.dx)>W()*.13||Math.abs(v)>.48;snap(commit?topIndex+(d.dx<0?1:-1):topIndex)}
   app.addEventListener('pointerup',finishDrag);app.addEventListener('pointercancel',finishDrag);
   addEventListener('wheel',e=>{if(mb.classList.contains('open')||stageBusy)return;if(Math.abs(e.deltaX)<Math.abs(e.deltaY)*1.18)return;wheelSum+=e.deltaX;clearTimeout(wheelTimer);preview(-wheelSum*.32);wheelTimer=setTimeout(()=>{wheelSum=0;snap(topIndex)},220);if(Math.abs(wheelSum)>145){const d=wheelSum>0?1:-1;wheelSum=0;snap(topIndex+d)}e.preventDefault()},{passive:false});
-  function showModal(){const top=TOPS[modalTop],f=top.films[modalIndex];modalPoster.src=f.img;modalBackdrop.src=f.img;modalRank.textContent=`#${f.rank} · classement collectif`;modalTitle.textContent=f.title;modalStats.innerHTML=`<span><b>${f.pts}</b> points</span><span><b>${f.votes}</b> votes</span><span>Best rank <b>${f.best}</b></span>`;const d=top.details?.[String(f.rank)];modalBody.innerHTML=d?`<p><b>${esc(d.headline||'')}</b></p><p>${esc(d.body||'')}</p>`:'';preloadModalNeighbor(-1);preloadModalNeighbor(1)}
-  function openModal(t,i){modalTop=t;modalIndex=i;showModal();mb.classList.add('open');mb.setAttribute('aria-hidden','false')}
-  function closeModal(){mb.classList.remove('open');mb.setAttribute('aria-hidden','true')}
-  function stepModal(dir){const arr=TOPS[modalTop].films;modalIndex=(modalIndex+dir+arr.length)%arr.length;const oldX=dir>0?-16:16;modal.animate([{opacity:.72,transform:`translateX(${oldX}px)`},{opacity:1,transform:'translateX(0)'}],{duration:190,easing:'cubic-bezier(.16,1,.3,1)'});showModal()}
-  function preloadModalNeighbor(dir){const arr=TOPS[modalTop].films,i=(modalIndex+dir+arr.length)%arr.length,n=new Image();n.src=arr[i].img}
-  modalClose.onclick=closeModal;modalPrev.onclick=()=>stepModal(-1);modalNext.onclick=()=>stepModal(1);mb.onclick=e=>{if(e.target===mb)closeModal()};
-  modal.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'||e.target.closest('button,a'))return;modalDrag={id:e.pointerId,x:e.clientX,dx:0};modal.setPointerCapture?.(e.pointerId)});modal.addEventListener('pointermove',e=>{if(!modalDrag||modalDrag.id!==e.pointerId)return;modalDrag.dx=e.clientX-modalDrag.x;modal.style.transform=`translateX(${modalDrag.dx*.55}px)`;modal.style.opacity=String(Math.max(.72,1-Math.abs(modalDrag.dx)/700))});modal.addEventListener('pointerup',()=>{if(!modalDrag)return;const dx=modalDrag.dx;modalDrag=null;modal.style.transform='';modal.style.opacity='';if(Math.abs(dx)>70)stepModal(dx<0?1:-1)});
-  addEventListener('keydown',e=>{if(mb.classList.contains('open')){if(e.key==='Escape')closeModal();if(e.key==='ArrowLeft')stepModal(-1);if(e.key==='ArrowRight')stepModal(1);return}if(e.key==='ArrowLeft')snap(topIndex-1);if(e.key==='ArrowRight')snap(topIndex+1)});
+
+  function letterboxdUrl(f){return f.letterboxd||`https://letterboxd.com/film/${letterboxdAliases[norm(f.title)]||slug(f.title)}/`}
+  function backdropFor(top,f){
+    if(f.backdrop)return f.backdrop;
+    if(top.id==='sci-fi-realiste'&&f.rank===1)return 'https://image.tmdb.org/t/p/original/kdjNM3yOwtQkJIwHZPqvyY4p0Ul.jpg';
+    if(top.id==='2000-2024'&&typeof filmBackdrops!=='undefined'){
+      const src=filmBackdrops[String(f.rank)];
+      if(src)return `../${src}`;
+    }
+    return f.img;
+  }
+  function modalData(t,i){const top=TOPS[t],f=top?.films?.[i];if(!top||!f)return null;const d=top.details?.[String(f.rank)]||{};return{top,f,poster:f.img,backdrop:backdropFor(top,f),detail:d,letterboxd:letterboxdUrl(f)}}
+  function loadImage(src){return new Promise(resolve=>{if(!src)return resolve();const img=new Image();let done=false;const finish=()=>{if(done)return;done=true;resolve()};img.onload=finish;img.onerror=finish;img.src=src;if(img.complete)finish()})}
+  function animateModalChange(dir){if(!dir||matchMedia('(prefers-reduced-motion: reduce)').matches)return;modalContent?.getAnimations().forEach(a=>a.cancel());modalBackdrop?.getAnimations().forEach(a=>a.cancel());modalContent?.animate([{opacity:.18,transform:`translate3d(${dir>0?72:-72}px,0,0)`},{opacity:1,transform:'translate3d(0,0,0)'}],{duration:430,easing:'cubic-bezier(.16,1,.3,1)'});modalBackdrop?.animate([{opacity:.44,transform:`translate3d(${dir>0?28:-28}px,0,0) scale(1.07)`},{opacity:1,transform:'translate3d(0,0,0) scale(1.025)'}],{duration:520,easing:'cubic-bezier(.16,1,.3,1)'})}
+  function paintModal(data,dir=0){const {f,poster,backdrop,detail,letterboxd}=data;modalPoster.src=poster;modalPoster.alt=`Affiche de ${f.title}`;modalBackdrop.src=backdrop;modalBackdrop.alt='';modalRank.textContent=`#${f.rank} · classement collectif`;modalTitle.textContent=f.title;modalStats.innerHTML=`<span><b>${f.pts}</b> points</span><span><b>${f.votes}</b> votes</span><span>Best rank <b>${f.best}</b></span>`;modalBody.innerHTML=`${detail.headline?`<p><b>${esc(detail.headline)}</b></p>`:''}${detail.body?`<p>${esc(detail.body)}</p>`:''}<a class="modal-detail-link" href="${esc(letterboxd)}" target="_blank" rel="noopener noreferrer">Voir sur Letterboxd ↗</a>`;animateModalChange(dir)}
+  function preloadModalNeighbor(dir){const arr=TOPS[modalTop]?.films||[];if(!arr.length)return;const i=(modalIndex+dir+arr.length)%arr.length,data=modalData(modalTop,i);if(!data)return;loadImage(data.poster);if(data.backdrop!==data.poster)loadImage(data.backdrop)}
+  async function renderModal(t,i,dir=0,open=false){const data=modalData(t,i);if(!data)return;const request=++modalRequest;await Promise.all([loadImage(data.poster),loadImage(data.backdrop)]);if(request!==modalRequest)return;modalTop=t;modalIndex=i;paintModal(data,dir);if(open){mb.classList.add('open');mb.setAttribute('aria-hidden','false');requestAnimationFrame(()=>modalClose?.focus({preventScroll:true}))}preloadModalNeighbor(-1);preloadModalNeighbor(1)}
+  function openModal(t,i){modalTop=t;modalIndex=i;renderModal(t,i,0,true)}
+  function closeModal(){modalRequest++;mb.classList.remove('open');mb.setAttribute('aria-hidden','true');resetModalWheel();modal.style.transform='';modal.style.opacity=''}
+  function stepModal(dir){const arr=TOPS[modalTop]?.films||[];if(!arr.length)return;modalIndex=(modalIndex+dir+arr.length)%arr.length;renderModal(modalTop,modalIndex,dir,false)}
+  function resetModalWheel(){modalWheelSum=0;modalWheelLocked=false;clearTimeout(modalWheelQuiet);modalWheelQuiet=null}
+  function releaseModalWheelAfterQuiet(){clearTimeout(modalWheelQuiet);modalWheelQuiet=setTimeout(()=>{modalWheelLocked=false;modalWheelSum=0},520)}
+
+  modalClose.onclick=closeModal;
+  modalPrev.onclick=()=>stepModal(-1);
+  modalNext.onclick=()=>stepModal(1);
+  mb.onclick=e=>{if(e.target===mb)closeModal()};
+  mb.addEventListener('wheel',e=>{if(!mb.classList.contains('open'))return;if(Math.abs(e.deltaX)<Math.abs(e.deltaY)*.78)return;e.preventDefault();e.stopPropagation();releaseModalWheelAfterQuiet();if(modalWheelLocked)return;modalWheelSum+=e.deltaX;if(Math.abs(modalWheelSum)>=64){const dir=modalWheelSum>0?1:-1;modalWheelSum=0;modalWheelLocked=true;stepModal(dir)}},{passive:false,capture:true});
+  modal.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'||e.target.closest('button,a'))return;modalDrag={id:e.pointerId,x:e.clientX,y:e.clientY,dx:0,dy:0,locked:false};modal.setPointerCapture?.(e.pointerId)});
+  modal.addEventListener('pointermove',e=>{if(!modalDrag||modalDrag.id!==e.pointerId)return;modalDrag.dx=e.clientX-modalDrag.x;modalDrag.dy=e.clientY-modalDrag.y;if(!modalDrag.locked){if(Math.abs(modalDrag.dx)<8&&Math.abs(modalDrag.dy)<8)return;if(Math.abs(modalDrag.dy)>Math.abs(modalDrag.dx)*1.05){modalDrag=null;modal.style.transform='';modal.style.opacity='';return}modalDrag.locked=true}modal.style.transform=`translateX(${modalDrag.dx*.55}px)`;modal.style.opacity=String(Math.max(.72,1-Math.abs(modalDrag.dx)/700));e.preventDefault()},{passive:false});
+  function finishModalDrag(){if(!modalDrag)return;const dx=modalDrag.dx,locked=modalDrag.locked;modalDrag=null;modal.style.transform='';modal.style.opacity='';if(locked&&Math.abs(dx)>70)stepModal(dx<0?1:-1)}
+  modal.addEventListener('pointerup',finishModalDrag);modal.addEventListener('pointercancel',finishModalDrag);
+
+  addEventListener('keydown',e=>{if(mb.classList.contains('open')){if(e.key==='Escape'){closeModal();return}if(e.key==='ArrowLeft'){e.preventDefault();stepModal(-1);return}if(e.key==='ArrowRight'){e.preventDefault();stepModal(1);return}return}if(e.key==='ArrowLeft')snap(topIndex-1);if(e.key==='ArrowRight')snap(topIndex+1)});
   addEventListener('resize',()=>snap(topIndex));
   render();snap(0);
 })();
