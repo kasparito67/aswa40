@@ -1,0 +1,41 @@
+name: Fetch verified posters for new Tops
+
+on:
+  push:
+    branches: [work-cleanup-sept9]
+    paths:
+      - 'scripts/fetch-posters-new-tops.mjs'
+      - '.github/workflows/fetch-posters-new-tops.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work-cleanup-sept9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Resolve and download verified TMDB posters
+        env:
+          TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_ACCESS_TOKEN }}
+        run: node scripts/fetch-posters-new-tops.mjs
+      - name: Commit poster metadata and assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/posters/sci-fi-realiste assets/posters/animation assets/posters/biopics data v2/scripts/poster-metadata.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Validate and repair movie poster metadata'
+          git push origin HEAD:work-cleanup-sept9
+      - name: Upload sync result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: poster-sync-result
+          path: poster-sync-result.json
