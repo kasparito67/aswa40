@@ -2318,10 +2318,10 @@
   },
   "animation:42": {
     "img": "../assets/posters/animation/042-perfect-blue.jpg",
-    "tmdbId": 42994,
-    "posterPath": "/e0HIBRiKS5dWmXkxWvEh6JQZcc2.jpg",
-    "backdropPath": "/hNf6J498veQVdq5FhHmL08ardwf.jpg",
-    "year": "1995"
+    "tmdbId": 10494,
+    "posterPath": "/6WTiOCfDPP8XV4jqfloiVWf7KHq.jpg",
+    "backdropPath": "/mHG7dpLb0ZScSY3LpP443IHRmjy.jpg",
+    "year": "1998"
   },
   "animation:43": {
     "img": "../assets/posters/2000-2024/076-ponyo.jpg",
@@ -2330,12 +2330,19 @@
     "backdropPath": "/1QmEcK0w2Ub4Hm094fHbZT8vA7o.jpg",
     "year": "2008"
   },
-  "animation:45": {
-    "img": "../assets/posters/animation/045-coraline.jpg",
+  "animation:44": {
+    "img": "../assets/posters/animation/044-asterix-chez-les-bretons.jpg",
     "tmdbId": 9318,
     "posterPath": "/10L5R1l03MqDx36e0LJ99NKLGD3.jpg",
     "backdropPath": "/cNwnAack1iyaLoWqGyTGocMOarg.jpg",
     "year": "1986"
+  },
+  "animation:45": {
+    "img": "../assets/posters/animation/045-coraline.jpg",
+    "tmdbId": 14836,
+    "posterPath": "/4jeFXQYytChdZYE9JYO7Un87IlW.jpg",
+    "backdropPath": "/hofnlIyF6bePkgQOpcuRWLvzf15.jpg",
+    "year": "2009"
   },
   "animation:46": {
     "img": "../assets/posters/animation/046-isle-of-dogs.jpg",
@@ -2346,10 +2353,10 @@
   },
   "animation:47": {
     "img": "../assets/posters/animation/047-the-adventures-of-tintin.jpg",
-    "tmdbId": 399174,
-    "posterPath": "/c0nUX6Q1ZB0P2t1Jo6EeFSVnOGQ.jpg",
-    "backdropPath": "/goMGTcitprGu7YD6VZS4lUUwzRA.jpg",
-    "year": "2018"
+    "tmdbId": 17578,
+    "posterPath": "/fQZ3sLR1Fi63NMsNRbjm9q5qODJ.jpg",
+    "backdropPath": "/6mqgl2szMLRYj4lhlXOjju5Tpeo.jpg",
+    "year": "2011"
   },
   "animation:48": {
     "img": "../assets/posters/2000-2024/111-the-boy-and-the-beast.jpg",
@@ -2374,17 +2381,17 @@
   },
   "animation:51": {
     "img": "../assets/posters/animation/051-metropolis.jpg",
-    "tmdbId": 19,
-    "posterPath": "/kr9wXRN23zLuWJIelahas1mtnYj.jpg",
-    "backdropPath": "/eeMoFKxjjiCi6iep2GEZtSAMYIr.jpg",
-    "year": "1927"
-  },
-  "animation:52": {
-    "img": "../assets/posters/animation/052-kung-fu-panda.jpg",
     "tmdbId": 9606,
     "posterPath": "/41WtqvaObaYE3RuqgBfQFPV3aV1.jpg",
     "backdropPath": "/1FBByew9RnXQ2HFqf7b6EWkyzTP.jpg",
     "year": "2001"
+  },
+  "animation:52": {
+    "img": "../assets/posters/animation/052-kung-fu-panda.jpg",
+    "tmdbId": 9502,
+    "posterPath": "/wWt4JYXTg5Wr3xBW2phBrMKgp3x.jpg",
+    "backdropPath": "/qdthf9WrRDSaIkGVQGhhJ9pz1hn.jpg",
+    "year": "2008"
   },
   "animation:53": {
     "img": "../assets/posters/animation/053-the-great-mouse-detective.jpg",
@@ -2402,10 +2409,10 @@
   },
   "animation:55": {
     "img": "../assets/posters/animation/055-the-lego-movie.jpg",
-    "tmdbId": 2011,
-    "posterPath": "/aU8i2QAdTyRR1nYb36Gq51xXP8p.jpg",
-    "backdropPath": "/4pfb85bv0rKkmslTp2hzAqA7RT4.jpg",
-    "year": "2007"
+    "tmdbId": 137106,
+    "posterPath": "/lbctonEnewCYZ4FYoTZhs8cidAl.jpg",
+    "backdropPath": "/6gI1dAkOaUQ6659OdRPsTLlsem5.jpg",
+    "year": "2014"
   },
   "animation:56": {
     "img": "../assets/posters/animation/056-cowboy-bebop-the-movie.jpg",
@@ -2423,24 +2430,24 @@
   },
   "animation:58": {
     "img": "../assets/posters/animation/058-how-to-train-your-dragon-2.jpg",
-    "tmdbId": 823219,
-    "posterPath": "/z2sG41PxfL1hnL1mHbxzSREUtOf.jpg",
-    "backdropPath": "/pZfpUMEJzw9BZHtXuZzzOrRxtMa.jpg",
-    "year": "2024"
-  },
-  "animation:59": {
-    "img": "../assets/posters/animation/059-klaus.jpg",
     "tmdbId": 82702,
     "posterPath": "/d13Uj86LdbDLrfDoHR5aDOFYyJC.jpg",
     "backdropPath": "/8AAuJtCzaibYkbE0QVHc8EBsELB.jpg",
     "year": "2014"
   },
-  "animation:60": {
-    "img": "../assets/posters/animation/060-nausicaa-of-the-valley-of-the-wind.jpg",
+  "animation:59": {
+    "img": "../assets/posters/animation/059-klaus.jpg",
     "tmdbId": 508965,
     "posterPath": "/q125RHUDgR4gjwh1QkfYuJLYkL.jpg",
     "backdropPath": "/cYQvXNPZLow73lhspVQ7CYlT3Mi.jpg",
     "year": "2019"
+  },
+  "animation:60": {
+    "img": "../assets/posters/animation/060-nausicaa-of-the-valley-of-the-wind.jpg",
+    "tmdbId": 81,
+    "posterPath": "/tcrkfB8SRPQCgwI88hQScua6nxh.jpg",
+    "backdropPath": "/ulVUa2MvnJAjAeRt7h23FFJVRKH.jpg",
+    "year": "1984"
   },
   "animation:61": {
     "img": "../assets/posters/2000-2024/060-up.jpg",
@@ -2458,24 +2465,31 @@
   },
   "animation:63": {
     "img": "../assets/posters/animation/063-the-simpsons-movie.jpg",
-    "tmdbId": 7443,
-    "posterPath": "/8XgmIsbpVamdhwcNVsYzohFZTtT.jpg",
-    "backdropPath": "/3eYkMSjWbvTaZso7ow5ub9ikNNq.jpg",
-    "year": "2000"
+    "tmdbId": 35,
+    "posterPath": "/s3b8TZWwmkYc2KoJ5zk77qB6PzY.jpg",
+    "backdropPath": "/8ln5VUVk7gnNGIb2VNgw8nICDVt.jpg",
+    "year": "2007"
   },
-  "animation:65": {
-    "img": "../assets/posters/animation/065-the-snowman.jpg",
+  "animation:64": {
+    "img": "../assets/posters/animation/064-la-planete-sauvage.jpg",
     "tmdbId": 16306,
     "posterPath": "/prq0j1S0K07UjwLZLF6oMGflRUI.jpg",
     "backdropPath": "/AwrqoanoZVYoc0MRyE0RiHEKm71.jpg",
     "year": "1973"
   },
-  "animation:66": {
-    "img": "../assets/posters/animation/066-shrek.jpg",
+  "animation:65": {
+    "img": "../assets/posters/animation/065-the-snowman.jpg",
     "tmdbId": 13396,
     "posterPath": "/b3CMolkeXrPaVvd5vTsssMKfZZo.jpg",
     "backdropPath": "/aNCGvBqqrc9L6JKgujYkc2EKbXH.jpg",
     "year": "1982"
+  },
+  "animation:66": {
+    "img": "../assets/posters/animation/066-shrek.jpg",
+    "tmdbId": 808,
+    "posterPath": "/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg",
+    "backdropPath": "/w0eKUOEog2ImtktCHAMUZws8qif.jpg",
+    "year": "2001"
   },
   "animation:67": {
     "img": "../assets/posters/animation/067-monsters-inc.jpg",
@@ -2498,26 +2512,33 @@
     "backdropPath": "/bhspYsRMHgMqzUlxiVpIY8OrqMt.jpg",
     "year": "2016"
   },
-  "animation:71": {
-    "img": "../assets/posters/animation/071-a-close-shave.jpg",
+  "animation:70": {
+    "img": "../assets/posters/animation/070-lascars.jpg",
     "tmdbId": 19106,
     "posterPath": "/myw0jbvci1Z84dMKMtQkCLBaY5u.jpg",
     "backdropPath": "/6nUQxbLI0MT44tyuy9CbwrxDg1T.jpg",
     "year": "2009"
   },
-  "animation:72": {
-    "img": "../assets/posters/animation/072-asterix-et-cleopatre.jpg",
+  "animation:71": {
+    "img": "../assets/posters/animation/071-a-close-shave.jpg",
     "tmdbId": 532,
     "posterPath": "/qdIR27trLyrlJ5nmkbcG3Bomah6.jpg",
     "backdropPath": "/aD8ZhhrlJ6PXDiyyIvaMltxfbSz.jpg",
     "year": "1996"
   },
-  "animation:73": {
-    "img": "../assets/posters/animation/073-shrek-2.jpg",
+  "animation:72": {
+    "img": "../assets/posters/animation/072-asterix-et-cleopatre.jpg",
     "tmdbId": 9929,
     "posterPath": "/gNpKAmWFsCiWKKx39Ap8pF7EWQg.jpg",
     "backdropPath": "/ort14Ott2BvpfmTuhsMUVnSEsWd.jpg",
     "year": "1968"
+  },
+  "animation:73": {
+    "img": "../assets/posters/animation/073-shrek-2.jpg",
+    "tmdbId": 809,
+    "posterPath": "/2yYP0PQjG8zVqturh1BAqu2Tixl.jpg",
+    "backdropPath": "/8ohobj5lAIbl5XWw11FywS3IRrS.jpg",
+    "year": "2004"
   },
   "animation:74": {
     "img": "../assets/posters/animation/074-sleeping-beauty.jpg",
@@ -2528,10 +2549,10 @@
   },
   "animation:75": {
     "img": "../assets/posters/animation/075-south-park-bigger-longer-uncut.jpg",
-    "tmdbId": 10882,
-    "posterPath": "/pO9YMLSmj3essVSWSGygjGxX6Kw.jpg",
-    "backdropPath": "/me67dwJnUBt3O9NqZaBdEQ6i4vM.jpg",
-    "year": "1959"
+    "tmdbId": 9473,
+    "posterPath": "/tS0PedvA2mFO9VCHYwQpaU1K36U.jpg",
+    "backdropPath": "/2q3B90h2hZ6xJTvna9CIFDNaIr4.jpg",
+    "year": "1999"
   },
   "animation:76": {
     "img": "../assets/posters/animation/076-the-mitchells-vs-the-machines.jpg",
@@ -2563,17 +2584,17 @@
   },
   "animation:80": {
     "img": "../assets/posters/animation/080-aladdin-and-the-wonderful-lamp.jpg",
-    "tmdbId": 174295,
-    "posterPath": "/axZQ2evnbAjNxXQxSheNAdBht18.jpg",
-    "backdropPath": "/ogC1yPAnnabNSxyYaHjELEsWANZ.jpg",
-    "year": "1934"
-  },
-  "animation:81": {
-    "img": "../assets/posters/animation/081-robot-carnival.jpg",
     "tmdbId": 310576,
     "posterPath": "/dC2EDGSuoUvo2za7VXv91iZTuo3.jpg",
     "backdropPath": "/8PIht7T949nzeG40FVVOzPhxB1H.jpg",
     "year": "1982"
+  },
+  "animation:81": {
+    "img": "../assets/posters/animation/081-robot-carnival.jpg",
+    "tmdbId": 33441,
+    "posterPath": "/2DTREQNErBYtZd1isRqdqNbbXA8.jpg",
+    "backdropPath": "/iV6G3qnnEsZ1CsHXjxoXNBeKMw6.jpg",
+    "year": "1987"
   },
   "animation:82": {
     "img": "../assets/posters/animation/082-zootopia.jpg",
@@ -2598,10 +2619,10 @@
   },
   "animation:85": {
     "img": "../assets/posters/animation/085-steamboy.jpg",
-    "tmdbId": 11886,
-    "posterPath": "/x9AvkYek0bGdxQSZ8W3lAjGrREm.jpg",
-    "backdropPath": "/3WeFPoPVIGgMumjgLn0EPIfq53A.jpg",
-    "year": "1973"
+    "tmdbId": 8953,
+    "posterPath": "/he3fyAy1OUruuwhiv2xvup8H3pc.jpg",
+    "backdropPath": "/c31SAQjVMeVGv7mZsrw5BKGXj2P.jpg",
+    "year": "2004"
   },
   "animation:86": {
     "img": "../assets/posters/animation/086-team-america-world-police.jpg",
@@ -2610,12 +2631,22 @@
     "backdropPath": "/splQED8WZ5M5OEqDCwZYAAtguZe.jpg",
     "year": "2004"
   },
-  "animation:88": {
-    "img": "https://image.tmdb.org/t/p/w500/8RDzFr9kGPJU2D5pOOzk0W1ATJq.jpg",
+  "animation:87": {
+    "img": "../assets/posters/animation/087-l-illusionniste.jpg",
     "tmdbId": 41201,
     "posterPath": "/Ac2tNYW9sRaOhmtMJQuhf2mvo00.jpg",
     "backdropPath": "/sYFrtzMXBo3zd1Iv3h0zB9Oj0fc.jpg",
     "year": "2010"
+  },
+  "animation:88": {
+    "img": "https://image.tmdb.org/t/p/w500/8RDzFr9kGPJU2D5pOOzk0W1ATJq.jpg"
+  },
+  "animation:89": {
+    "img": "../assets/posters/animation/089-the-story-of-jean-valjean.jpg",
+    "tmdbId": 546201,
+    "posterPath": "/qyCVFQn4egsjbGh3gJhOCiOOEsP.jpg",
+    "backdropPath": "/wleCBsSRCI8vFwuJijHbdDr4BTF.jpg",
+    "year": "1979"
   },
   "biopics:1": {
     "img": "../assets/posters/1975-1999/goodfellas.jpg",
@@ -2751,7 +2782,7 @@
     "year": "2001"
   },
   "biopics:20": {
-    "img": "../assets/posters/2000-2024/087-the-intouchables.jpg",
+    "img": "../assets/posters/biopics/020-intouchables.jpg",
     "tmdbId": 77338,
     "posterPath": "/1QU7HKgsQbGpzsJbJK4pAVQV9F5.jpg",
     "backdropPath": "/q6OGlZ1KMEb14AC8KbPCxyNOal6.jpg",
@@ -3192,7 +3223,7 @@
     "year": "2004"
   },
   "rewatched:1": {
-    "img": "../assets/posters/1975-1999/star-wars.jpg",
+    "img": "../assets/posters/rewatched/001-star-wars.jpg",
     "tmdbId": 11,
     "posterPath": "/fai0rspsNeJCS69wHNjOdWxcI7P.jpg",
     "backdropPath": "/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
@@ -4964,6 +4995,13 @@
     "posterPath": "/lkZ9gqCEjzX85lKR6Jjd1uGAXNp.jpg",
     "backdropPath": "/iCDMBi6WLjUBnt24dNwHqqF81UL.jpg",
     "year": "2007"
+  },
+  "rewatched:255": {
+    "img": "../assets/posters/rewatched/255-school-of-rock.jpg",
+    "tmdbId": 1584,
+    "posterPath": "/zXLXaepIBvFVLU25DH3wv4IPSbe.jpg",
+    "backdropPath": "/k5MTAtE9CCi5TWA84qaFMYv3ajB.jpg",
+    "year": "2003"
   },
   "rewatched:256": {
     "img": "../assets/posters/rewatched/256-meet-the-parents.jpg",

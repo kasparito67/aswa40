@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T21:41:17.141Z",
+  "generatedAt": "2026-09-09T21:44:18.117Z",
   "source": "TMDB + established ASWA40 assets",
   "films": [
     {
@@ -195,7 +195,7 @@
     {
       "rank": 20,
       "title": "Intouchables",
-      "img": "../assets/posters/2000-2024/087-the-intouchables.jpg",
+      "img": "../assets/posters/biopics/020-intouchables.jpg",
       "status": "ok",
       "tmdbId": 77338,
       "posterPath": "/1QU7HKgsQbGpzsJbJK4pAVQV9F5.jpg",
