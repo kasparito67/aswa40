@@ -21,10 +21,11 @@ const overrides={
   '1975-1999:1':11,
   '1975-1999:20':862,
   'sci-fi-realiste:18':17431,'sci-fi-realiste:19':5548,'sci-fi-realiste:22':49047,'sci-fi-realiste:23':42188,'sci-fi-realiste:28':63,'sci-fi-realiste:29':686,'sci-fi-realiste:32':2675,'sci-fi-realiste:33':281,'sci-fi-realiste:39':865,'sci-fi-realiste:40':861,'sci-fi-realiste:41':9314,'sci-fi-realiste:42':11814,'sci-fi-realiste:43':8413,'sci-fi-realiste:44':49049,'sci-fi-realiste:46':37686,'sci-fi-realiste:48':39538,'sci-fi-realiste:49':19,'sci-fi-realiste:51':20766,'sci-fi-realiste:53':95,'sci-fi-realiste:57':419704,'sci-fi-realiste:58':11850,'sci-fi-realiste:60':1272,'sci-fi-realiste:61':646380,'sci-fi-realiste:63':8810,'sci-fi-realiste:65':11484,'sci-fi-realiste:66':9426,
-  'animation:3':324857,'animation:9':9385,'animation:10':8587,'animation:12':22504,'animation:16':4977,'animation:17':9662,'animation:19':920,'animation:25':569094,'animation:26':49565,'animation:30':10693,'animation:32':44896,'animation:33':12477,'animation:35':812,'animation:37':16859,'animation:39':10895,'animation:42':42994,'animation:43':10494,'animation:45':9318,'animation:47':399174,'animation:52':9606,'animation:55':2011,'animation:58':823219,'animation:59':82702,'animation:60':508965,'animation:61':81,'animation:63':7443,'animation:65':16306,'animation:66':13396,'animation:71':19106,'animation:72':532,'animation:73':9929,'animation:75':10882,'animation:81':310576,'animation:85':11886,'animation:88':41201,
+  'animation:3':324857,'animation:9':9385,'animation:10':8587,'animation:12':22504,'animation:16':4977,'animation:17':9662,'animation:19':920,'animation:25':569094,'animation:26':49565,'animation:30':10693,'animation:32':44896,'animation:33':12477,'animation:35':812,'animation:37':16859,'animation:39':10895,
+  'animation:41':42994,'animation:42':10494,'animation:44':9318,'animation:46':399174,'animation:51':9606,'animation:54':2011,'animation:57':823219,'animation:58':82702,'animation:59':508965,'animation:60':81,'animation:62':7443,'animation:64':16306,'animation:65':13396,'animation:70':19106,'animation:71':532,'animation:72':9929,'animation:74':10882,'animation:80':310576,'animation:84':11886,'animation:87':41201,'animation:89':546201,
   'biopics:11':9008,'biopics:14':334543,'biopics:15':1883,'biopics:16':1850,'biopics:18':429197,'biopics:19':4133,'biopics:20':77338,'biopics:24':10139,'biopics:26':68812,'biopics:27':2567,'biopics:30':7984,'biopics:32':69,'biopics:34':1955,'biopics:35':266856,'biopics:37':3902,'biopics:42':746,'biopics:43':5708,'biopics:45':15362,'biopics:46':10537,'biopics:47':205596,'biopics:49':197,'biopics:51':687,'biopics:52':1653,'biopics:54':10360,'biopics:56':820,'biopics:57':11327,'biopics:61':1677,'biopics:64':1254808,'biopics:67':12160,
   'documentaires:1':1430,
-  'rewatched:1':11
+  'rewatched:1':11,'rewatched:255':1584
 };
 const editorialExceptions=new Set(['1975-1999:3']);
 
@@ -46,7 +47,7 @@ for(const top of tops.filter(t=>t.films?.length)){
     let img=film.img||'';
     if(overrides[key]&&!meta){try{meta=await details(overrides[key])}catch{}}
     const posterValid=await validCurrent(img);
-    if(targetIds.has(top.id)&&!posterValid){
+    if(targetIds.has(top.id)&&(!posterValid||overrides[key])){
       const hit=await choose(top,film);
       if(hit?.poster_path){const file=`assets/posters/${top.id}/${String(film.rank).padStart(3,'0')}-${slug(film.title)}.jpg`;await download(hit,file);img=`../${file}`;meta=hit}
     }
