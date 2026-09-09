@@ -32,8 +32,7 @@ jobs:
         run: node scripts/audit-posters-all-tops.mjs
       - name: Show audit summary
         if: always()
-        run: |
-          cat poster-audit.md || true
+        run: cat poster-audit.md || true
       - name: Verify active wheel ownership
         run: |
           node <<'NODE' > wheel-handler-audit.txt
@@ -67,11 +66,16 @@ jobs:
           const fs=require('fs');
           const {chromium}=require('playwright-core');
           (async()=>{
-            const candidates=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'];
-            const executablePath=candidates.find(fs.existsSync);
+            const executablePath=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'].find(fs.existsSync);
             if(!executablePath)throw new Error('No Chromium/Chrome executable found on runner');
             const browser=await chromium.launch({headless:true,executablePath,args:['--no-sandbox']});
             const results={url:'http://127.0.0.1:4173/v2/',desktop:{},mobile:{}};
+            const title=page=>page.locator('#modalTitle').textContent().then(x=>x?.trim()||'');
+            const rank=page=>page.locator('#modalRank').textContent().then(x=>Number((x||'').match(/#(\d+)/)?.[1]||0));
+            const mediaReady=page=>page.evaluate(()=>['modalPoster','modalBackdrop'].every(id=>{const i=document.getElementById(id);return !!i?.src&&i.complete&&i.naturalWidth>0}));
+            async function waitChange(page,before){await page.waitForFunction(prev=>document.getElementById('modalTitle')?.textContent?.trim()!==prev,before,{timeout:10000});await page.waitForTimeout(180)}
+            async function openFirst(page){const tile=page.locator('.era-screen').first().locator('.tile').first();await tile.scrollIntoViewIfNeeded();await tile.click();await page.waitForSelector('.modal-bg.open',{timeout:10000});await page.waitForFunction(()=>document.getElementById('modalPoster')?.complete&&document.getElementById('modalPoster')?.naturalWidth>0,{timeout:15000})}
+            async function closed(page){return !(await page.locator('.modal-bg').evaluate(el=>el.classList.contains('open')))}
 
             async function runCase(name,viewport,isMobile=false){
               const context=await browser.newContext({viewport,isMobile,hasTouch:isMobile,reducedMotion:'no-preference'});
@@ -86,73 +90,59 @@ jobs:
               const topCount=await page.locator('.era-screen').count();
               const labels=await page.locator('.era-screen').evaluateAll(es=>es.map(e=>e.dataset.topId));
 
-              const firstTile=page.locator('.era-screen').first().locator('.tile').first();
-              await firstTile.scrollIntoViewIfNeeded();
-              await firstTile.click();
-              await page.waitForSelector('.modal-bg.open',{timeout:10000});
-              const initialTitle=(await page.locator('#modalTitle').textContent())?.trim();
+              await openFirst(page);
+              const initialTitle=await title(page),initialRank=await rank(page);
+              const initialHref=await page.locator('.modal-detail-link').getAttribute('href');
+              const initialLetterboxd=initialHref?.includes('letterboxd.com/film/star-wars')||false;
+              const geometry=await page.evaluate(()=>{const p=document.getElementById('modalPoster')?.getBoundingClientRect(),c=document.querySelector('.modal-copy')?.getBoundingClientRect(),b=document.querySelector('.modal-backdrop')?.getBoundingClientRect();return{posterLeftOfCopy:!!p&&!!c&&p.left<c.left,backdropHorizontal:!!b&&b.width>b.height*1.2,posterVisible:!!p&&p.width>80&&p.height>120,copyVisible:!!c&&c.width>120}});
 
-              await page.keyboard.press('ArrowRight');
-              await page.waitForTimeout(900);
-              const keyboardTitle=(await page.locator('#modalTitle').textContent())?.trim();
-              const keyboardNav=!!initialTitle&&!!keyboardTitle&&initialTitle!==keyboardTitle;
+              const clickBefore=await title(page);await page.locator('#modalNext').click();await waitChange(page,clickBefore);const clickNext=await title(page);const clickNextRank=await rank(page);const clickNav=clickNext!==clickBefore&&clickNextRank===initialRank+1&&await mediaReady(page);
+              const prevBefore=await title(page);await page.locator('#modalPrev').click();await waitChange(page,prevBefore);const clickPrev=await title(page);const clickPrevNav=clickPrev===initialTitle&&await mediaReady(page);
 
-              const beforeWheel=(await page.locator('#modalTitle').textContent())?.trim();
-              await page.locator('#filmModal').dispatchEvent('wheel',{deltaX:140,deltaY:0,bubbles:true,cancelable:true});
-              await page.waitForTimeout(900);
-              const afterWheel=(await page.locator('#modalTitle').textContent())?.trim();
-              const modalWheelNav=!!beforeWheel&&!!afterWheel&&beforeWheel!==afterWheel;
+              const keyBefore=await title(page);await page.keyboard.press('ArrowRight');await waitChange(page,keyBefore);const keyboardTitle=await title(page);const keyboardRank=await rank(page);const keyboardNav=keyboardTitle!==keyBefore&&keyboardRank===initialRank+1&&await mediaReady(page);
 
-              await page.keyboard.press('Escape');
-              await page.waitForTimeout(250);
-              const escapeClosed=!(await page.locator('.modal-bg').evaluate(el=>el.classList.contains('open')));
+              const wheelBefore=await title(page),wheelRankBefore=await rank(page);await page.locator('#filmModal').dispatchEvent('wheel',{deltaX:140,deltaY:0,bubbles:true,cancelable:true});await waitChange(page,wheelBefore);const wheelAfter=await title(page),wheelRankAfter=await rank(page);const modalWheelNav=wheelAfter!==wheelBefore&&wheelRankAfter===wheelRankBefore+1&&await mediaReady(page);
+              const wheelOneGestureOneFilm=wheelRankAfter-wheelRankBefore===1;
+
+              await page.keyboard.press('Escape');await page.waitForTimeout(120);const escapeClosed=await closed(page);
+              await openFirst(page);await page.locator('#modalClose').click();await page.waitForTimeout(120);const buttonClosed=await closed(page);
+              await openFirst(page);await page.locator('.modal-bg').evaluate(el=>el.click());await page.waitForTimeout(120);const outsideClosed=await closed(page);
+
+              if(isMobile){
+                await openFirst(page);const swipeBefore=await title(page),swipeRankBefore=await rank(page);
+                await page.locator('#filmModal').dispatchEvent('pointerdown',{pointerId:7,pointerType:'touch',clientX:320,clientY:420,bubbles:true});
+                await page.locator('#filmModal').dispatchEvent('pointermove',{pointerId:7,pointerType:'touch',clientX:190,clientY:424,bubbles:true,cancelable:true});
+                await page.locator('#filmModal').dispatchEvent('pointerup',{pointerId:7,pointerType:'touch',clientX:190,clientY:424,bubbles:true});
+                await waitChange(page,swipeBefore);const swipeRankAfter=await rank(page);results[name].touchSwipe=swipeRankAfter===swipeRankBefore+1&&await mediaReady(page);
+                await page.keyboard.press('Escape');
+              }
 
               const beforeTransform=await page.locator('#stage').evaluate(el=>getComputedStyle(el).transform);
-              await page.locator('.era-screen').first().dispatchEvent('wheel',{deltaX:420,deltaY:0,bubbles:true,cancelable:true});
-              await page.waitForTimeout(900);
+              await page.locator('.era-screen').first().dispatchEvent('wheel',{deltaX:420,deltaY:0,bubbles:true,cancelable:true});await page.waitForTimeout(900);
               const afterTransform=await page.locator('#stage').evaluate(el=>getComputedStyle(el).transform);
               const topWheelNav=beforeTransform!==afterTransform;
 
               if(isMobile){
-                await page.locator('#eraPrev').click().catch(()=>{});
-                await page.waitForTimeout(700);
-                const screen=page.locator('.era-screen').first();
-                const beforeScroll=await screen.evaluate(el=>el.scrollTop);
-                await screen.evaluate(el=>{el.scrollTop=Math.min(el.scrollHeight-el.clientHeight,420);el.dispatchEvent(new Event('scroll',{bubbles:true}))});
-                await page.waitForTimeout(150);
-                const afterScroll=await screen.evaluate(el=>el.scrollTop);
-                results[name].verticalMobileScroll=afterScroll>beforeScroll;
+                await page.locator('#eraPrev').click().catch(()=>{});await page.waitForTimeout(700);
+                const screen=page.locator('.era-screen').first();const beforeScroll=await screen.evaluate(el=>el.scrollTop);
+                await screen.evaluate(el=>{el.scrollTop=Math.min(el.scrollHeight-el.clientHeight,420);el.dispatchEvent(new Event('scroll',{bubbles:true}))});await page.waitForTimeout(100);
+                results[name].verticalMobileScroll=(await screen.evaluate(el=>el.scrollTop))>beforeScroll;
               }
 
               await page.screenshot({path:`qc-artifacts/${name}.png`,fullPage:false});
-              Object.assign(results[name],{
-                viewport,topCount,labels,modalOpened:!!initialTitle,keyboardNav,modalWheelNav,escapeClosed,topWheelNav,
-                consoleErrors,consoleWarnings,pageErrors,requestFailures,httpErrors
-              });
+              Object.assign(results[name],{viewport,topCount,labels,modalOpened:!!initialTitle,initialLetterboxd,geometry,clickNav,clickPrevNav,keyboardNav,modalWheelNav,wheelOneGestureOneFilm,escapeClosed,buttonClosed,outsideClosed,topWheelNav,successiveMediaReady:await mediaReady(page).catch(()=>true),consoleErrors,consoleWarnings,pageErrors,requestFailures,httpErrors});
               await context.close();
             }
 
             await runCase('desktop',{width:1440,height:1000},false);
             await runCase('mobile',{width:390,height:844},true);
 
-            const reduced=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'reduce'});
-            const rp=await reduced.newPage();
-            await rp.goto(results.url,{waitUntil:'domcontentloaded',timeout:90000});
-            results.reducedMotion=await rp.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
-            await reduced.close();
-
+            const reduced=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'reduce'});const rp=await reduced.newPage();await rp.goto(results.url,{waitUntil:'networkidle',timeout:90000});await openFirst(rp);const rb=await title(rp);await rp.keyboard.press('ArrowRight');await waitChange(rp,rb);results.reducedMotion=await rp.evaluate(()=>({media:matchMedia('(prefers-reduced-motion: reduce)').matches,modalAnimations:document.querySelector('.modal-content')?.getAnimations().length||0,backdropAnimations:document.getElementById('modalBackdrop')?.getAnimations().length||0}));await reduced.close();
             await browser.close();
-            fs.writeFileSync('qc-artifacts/browser-qc.json',JSON.stringify(results,null,2));
-            console.log(JSON.stringify(results,null,2));
+            fs.writeFileSync('qc-artifacts/browser-qc.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));
             const failures=[];
-            for(const name of ['desktop','mobile']){
-              const r=results[name];
-              if(r.topCount!==7)failures.push(`${name}: expected 7 Tops, got ${r.topCount}`);
-              for(const k of ['modalOpened','keyboardNav','modalWheelNav','escapeClosed','topWheelNav'])if(!r[k])failures.push(`${name}: ${k} failed`);
-              if(r.consoleErrors.length||r.pageErrors.length||r.requestFailures.length||r.httpErrors.length)failures.push(`${name}: console/network errors present`);
-            }
-            if(!results.mobile.verticalMobileScroll)failures.push('mobile: vertical scroll failed');
-            if(!results.reducedMotion)failures.push('reduced motion media query not active in test context');
+            for(const name of ['desktop','mobile']){const r=results[name];if(r.topCount!==7)failures.push(`${name}: expected 7 Tops`);for(const k of ['modalOpened','initialLetterboxd','clickNav','clickPrevNav','keyboardNav','modalWheelNav','wheelOneGestureOneFilm','escapeClosed','buttonClosed','outsideClosed','topWheelNav'])if(!r[k])failures.push(`${name}: ${k} failed`);for(const [k,v] of Object.entries(r.geometry||{}))if(!v)failures.push(`${name}: geometry.${k} failed`);if(r.consoleErrors.length||r.pageErrors.length||r.requestFailures.length||r.httpErrors.length)failures.push(`${name}: console/network errors present`)}
+            if(!results.mobile.touchSwipe)failures.push('mobile: touch swipe failed');if(!results.mobile.verticalMobileScroll)failures.push('mobile: vertical scroll failed');if(!results.reducedMotion.media||results.reducedMotion.modalAnimations||results.reducedMotion.backdropAnimations)failures.push('reduced motion failed');
             if(failures.length){console.error(failures.join('\n'));process.exit(1)}
           })().catch(e=>{console.error(e);process.exit(1)});
           NODE
