@@ -66,9 +66,21 @@
 
   TOPS.slice(2).forEach(top=>{
     top.films.forEach(f=>{
-      if(!isPlaceholder(f.img))return;
-      const found=resolve(f.title);
-      if(found)f.img=found;
+      if(isPlaceholder(f.img)){
+        const found=resolve(f.title);
+        if(found)f.img=found;
+      }
+    });
+  });
+
+  // Documentaires and Re.Watched were imported with canonical TMDB poster paths
+  // before every corresponding local file existed. At runtime, use the verified
+  // TMDB image directly instead of issuing requests to non-existent local assets.
+  const remotePosterTops=new Set(['documentaires','rewatched']);
+  TOPS.forEach(top=>{
+    if(!remotePosterTops.has(top.id))return;
+    top.films.forEach(f=>{
+      if(f.posterPath)f.img=`https://image.tmdb.org/t/p/w500${f.posterPath}`;
     });
   });
 })();
