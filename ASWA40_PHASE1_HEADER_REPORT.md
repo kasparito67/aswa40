@@ -18,11 +18,15 @@ The renderer reads the artwork, alt text, maximum width, vertical offset and fit
 
 `v2/scripts/hero-config.js` centralizes the approved configuration for the five current Tops:
 
-- 2000–2024 → `../assets/header2000.webp`
+- 2000–2024 → `../assets/header-title.png`
 - 1975–1999 → `../assets/header-title-1975-1999.svg`
 - Sci-fi réalistes → `../assets/header-sci-fi.svg`
 - Animation → `../assets/header-animation-01.svg`
 - Biopics → `../assets/header-Biopics.svg`
+
+For 2000–2024, `header-title.png` is the valid 1,288,767-byte PNG corresponding to the artwork embedded in the supplied `header2000.svg`. The malformed `header2000.webp` is no longer referenced.
+
+For Animation, `header-animation-01.svg` has been restored from the valid supplied SVG source; the corrupted repository copy is no longer used.
 
 It also owns the current approved hero image URLs/positions for Sci-fi, Animation and Biopics.
 
@@ -52,40 +56,24 @@ Duplicate 2000 title rules were removed from:
 
 The base `app.css` still contains historical generic hero primitives; removing obsolete base selectors safely belongs to the final cleanup pass unless visual validation proves they interfere.
 
-## Build validation
+## Asset repair after browser validation
 
-Vercel status for the Phase 1 code state succeeded.
+Two source-asset failures were exposed once the renderer was consolidated:
 
-Deployment dashboard:
-https://vercel.com/kasper6/aswa40-films/ADG2mXX1bBFZjtmiDm7pPGEj8eyP
+1. `assets/header2000.webp` was not a valid renderable WebP. The canonical configuration now uses `assets/header-title.png`, which is the valid source-equivalent PNG already present in the repository.
+2. `assets/header-animation-01.svg` contained malformed path data. It has been replaced with the valid supplied SVG source.
 
-No production promotion or merge to `main` was performed.
-
-## Important blocker: Animation source asset
-
-The approved source of truth remains `assets/header-animation-01.svg`, exactly as required by the refactor guide.
-
-However, inspection of both the current file and its original introduction commit shows that this SVG itself contains malformed/corrupted data inside one of the white title paths. This predates Phase 1 and explains why using the approved file directly can still make the Animation title fail to render.
-
-Phase 1 deliberately does **not** substitute `header-animation-clean.svg`, because that file is explicitly not approved and visually differs from the desired artwork.
-
-Therefore:
-
-- the renderer problem is consolidated;
-- 2000, 1975, Sci-fi and Biopics now point directly to their approved assets through one renderer;
-- exact Animation visual validation remains blocked until a valid copy of the approved `header-animation-01.svg` artwork is supplied/restored.
-
-Do not solve this with another runtime override.
+No post-render patch or second renderer was introduced to solve these issues.
 
 ## Validation still required in Work/browser
 
 At 1440×900 and mobile, verify:
 
-1. 2000–2024 artwork is visible and matches `header2000.webp`.
+1. 2000–2024 artwork is visible and matches the supplied source.
 2. 1975–1999 artwork remains unchanged.
 3. Sci-fi artwork remains unchanged.
 4. Biopics artwork remains unchanged.
-5. Animation behavior is checked after restoring a valid approved SVG source.
+5. Animation artwork is visible and matches its supplied SVG.
 6. No one-frame title replacement or temporary text title occurs.
 7. Hero swipe/arrows still work.
 8. No browser console errors.
