@@ -62,6 +62,11 @@
 /* Make film-to-film movement legible without making the whole dialog jump. */
 .modal-content,.modal-backdrop img{will-change:transform,opacity}
 
+/* The page carousel owns horizontal touch gestures; vertical scrolling remains native. */
+.app,.era-screen,.tile,.ghost-card,.sec>.toggle,.insight-card,.year-toggle,.director-toggle-action,.full-reveal-button{
+  touch-action:pan-y;
+}
+
 /* Non-master sidebars: closed state must show only the primary information. */
 .era-screen:not([data-top-id="2000-2024"]) .parity-year-card:not(.is-open) .year-insight-detail,
 .era-screen:not([data-top-id="2000-2024"]) .parity-director-card:not(.is-open) .director-detail{
@@ -89,12 +94,69 @@
   .modal-copy{padding-bottom:20px!important}
   .modal-stats{margin-bottom:32px!important}
 }
+
 @media(max-width:560px){
-  .film-modal{height:auto!important;max-height:94vh!important;overflow:auto!important}
-  .modal-content{display:block!important;height:auto!important;padding:54px 20px 28px!important}
-  .modal-poster{width:118px!important;max-height:none!important;float:left;margin:0 18px 12px 0!important;border-width:4px!important}
-  .modal-copy{padding:0!important}
-  .modal-body{clear:both;padding-top:12px!important}
+  .modal-bg{padding:8px!important;align-items:center!important}
+  .film-modal{
+    width:calc(100vw - 16px)!important;
+    height:auto!important;
+    max-height:calc(100dvh - 24px)!important;
+    overflow:auto!important;
+    border-radius:16px!important;
+  }
+  .modal-content{
+    display:grid!important;
+    grid-template-columns:104px minmax(0,1fr)!important;
+    grid-auto-rows:auto!important;
+    gap:10px 16px!important;
+    height:auto!important;
+    padding:48px 16px 22px!important;
+    align-items:start!important;
+  }
+  .modal-poster{
+    grid-column:1!important;
+    grid-row:1 / span 3!important;
+    width:104px!important;
+    max-height:none!important;
+    float:none!important;
+    margin:0!important;
+    border-width:4px!important;
+    border-radius:8px!important;
+    align-self:start!important;
+  }
+  .modal-copy{display:contents!important;padding:0!important}
+  .modal-rank{
+    grid-column:2!important;
+    margin:3px 36px 0 0!important;
+    align-self:end!important;
+    font-size:9px!important;
+  }
+  .film-modal h2{
+    grid-column:2!important;
+    margin:3px 32px 5px 0!important;
+    max-width:none!important;
+    font-size:clamp(30px,9.4vw,42px)!important;
+    line-height:.92!important;
+    text-wrap:balance!important;
+  }
+  .modal-stats{
+    grid-column:2!important;
+    margin:0!important;
+    gap:5px 10px!important;
+    font-size:11px!important;
+    align-self:start!important;
+  }
+  .modal-body{
+    grid-column:1 / -1!important;
+    clear:none!important;
+    max-width:none!important;
+    padding-top:16px!important;
+    font-size:13px!important;
+    line-height:1.5!important;
+  }
+  .modal-body p{margin-bottom:10px!important}
+  .modal-detail-link{margin-top:12px!important}
+  .modal-close{top:10px!important;right:10px!important}
 }
 
 @media(prefers-reduced-motion:reduce){
