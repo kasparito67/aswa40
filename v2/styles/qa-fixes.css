@@ -1,0 +1,16 @@
+/* Phase 3B/QC fixes — shared interaction and alignment polish */
+.sidebar-title{display:none!important}
+.site-layout{margin-top:0!important}
+.stack{gap:12px!important}
+.sec>.toggle{min-height:112px!important;padding:24px 22px!important}
+.site-sidebar{padding-top:0!important}
+.era-prev{margin-left:100px!important}
+.era-next{margin-right:100px!important}
+.poster-deferred{opacity:1!important}
+.era-screen[data-top-id="rewatched"] .grid[data-flow="rest"]{grid-template-columns:repeat(5,minmax(0,1fr))}
+.era-screen[data-top-id="rewatched"] .full-progress{pointer-events:none}
+@media(max-width:900px){
+  .era-prev{margin-left:28px!important}
+  .era-next{margin-right:28px!important}
+  .site-layout{margin-top:0!important}
+}
