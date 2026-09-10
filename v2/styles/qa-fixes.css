@@ -34,9 +34,13 @@
   .pad{padding:10px!important}
   .heroTop,.grid,.ghosts{width:100%!important;max-width:100%!important;min-width:0!important}
 
-  /* Poster cards: preserve the whole poster instead of cropping it to the tile.
-     Small letterboxing is preferable to losing artwork on narrow phones. */
-  .heroTop{
+  /* Two columns everywhere on phones: posters remain readable and never get squeezed
+     into the narrow 3-column compact grid used by desktop. */
+  .heroTop,
+  .grid,
+  .grid.compact,
+  .full-grid,
+  .era-screen[data-top-id="rewatched"] .grid[data-flow="rest"]{
     grid-template-columns:repeat(2,minmax(0,1fr))!important;
     grid-auto-rows:auto!important;
     gap:8px!important;
@@ -51,12 +55,6 @@
     min-height:0!important;
     aspect-ratio:2/3!important;
   }
-  .grid:not(.full-grid),
-  .era-screen[data-top-id="rewatched"] .grid[data-flow="rest"]{
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    gap:8px!important;
-  }
-  .full-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}
   .tile,.ghost-card{
     width:100%!important;
     min-width:0!important;
@@ -64,8 +62,10 @@
     border-radius:9px!important;
     aspect-ratio:2/3!important;
     background:#090c0e!important;
+    overflow:hidden!important;
   }
   .tile img,.ghost-card img{
+    display:block!important;
     width:100%!important;
     height:100%!important;
     object-fit:contain!important;
