@@ -35,6 +35,13 @@
   object-fit:fill;
 }
 
+/* Re.Watched is a much wider/flatter lockup than the other normalized title artworks.
+   Scale it optically so its overall footprint matches the rest of the platform. */
+.era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
+  transform:translateY(50px) scale(.88);
+  transform-origin:center;
+}
+
 /* Shared medal treatment. Placement is based on the supplied 1920×1080 comps. */
 .hero-art-medallions{
   position:absolute;
@@ -78,6 +85,7 @@
   .hero-title-art-wrap{transform:translateY(32px)}
   .hero-art-medallions{transform:translate(-50%,32px)}
   .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{transform:translateY(32px)}
+  .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{transform:translateY(32px) scale(.88)}
   .hero-medallion{
     width:clamp(42px,12vw,54px);
     height:clamp(42px,12vw,54px);
