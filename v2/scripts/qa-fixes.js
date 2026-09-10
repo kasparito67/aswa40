@@ -1,4 +1,5 @@
 (()=>{
+  const app=document.getElementById('app');
   const stage=document.getElementById('stage');
   const modalBg=document.getElementById('modalBg');
   const modalPrev=document.getElementById('modalPrev');
@@ -35,18 +36,79 @@
     if(range&&ranks.length)range.textContent=`#${Math.min(...ranks)}–${Math.max(...ranks)}`;
   };
 
-  const normalize=()=>{hydrate(stage);fixRewatched()};
+  const currentTopIndex=()=>{
+    const id=stage.querySelector('.era-screen')?.dataset.topId;
+    return Array.isArray(TOPS)?TOPS.findIndex(top=>top.id===id):-1;
+  };
+
+  const paintTransitionBackdrop=index=>{
+    if(!app||!Array.isArray(TOPS)||index<0||index>=TOPS.length)return;
+    const top=TOPS[index],hero=top.hero||{};
+    const bg=top.theme?.bg||'#080a0b';
+    app.style.backgroundColor=bg;
+    if(hero.image){
+      const src=new URL(hero.image,document.baseURI).href;
+      app.style.backgroundImage=`linear-gradient(180deg,rgba(8,10,11,.08),rgba(8,10,11,.42)),url("${src}")`;
+      app.style.backgroundSize='cover';
+      app.style.backgroundPosition=hero.position||'center';
+      app.style.backgroundRepeat='no-repeat';
+    }else{
+      app.style.backgroundImage='none';
+    }
+  };
+
+  const paintNeighbor=dir=>{
+    const i=currentTopIndex();
+    if(i<0)return;
+    paintTransitionBackdrop(Math.max(0,Math.min(TOPS.length-1,i+dir)));
+  };
+
+  const normalize=()=>{
+    hydrate(stage);
+    fixRewatched();
+    const i=currentTopIndex();
+    if(i>=0&&getComputedStyle(stage).transform==='none')paintTransitionBackdrop(i);
+  };
   normalize();
   const observer=new MutationObserver(()=>requestAnimationFrame(normalize));
   observer.observe(stage,{childList:true,subtree:true});
 
+  // Keep the target hero behind the active screen so route transitions reveal
+  // the next visual world instead of the app's black canvas.
+  eraPrev?.addEventListener('click',()=>paintNeighbor(-1),{capture:true});
+  eraNext?.addEventListener('click',()=>paintNeighbor(1),{capture:true});
+
+  let pointerStart=null;
+  app?.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='mouse'||e.target.closest?.('button,a,input,textarea,select'))return;
+    pointerStart={id:e.pointerId,x:e.clientX};
+  },{capture:true,passive:true});
+  app?.addEventListener('pointermove',e=>{
+    if(!pointerStart||pointerStart.id!==e.pointerId)return;
+    const dx=e.clientX-pointerStart.x;
+    if(Math.abs(dx)>18)paintNeighbor(dx<0?1:-1);
+  },{capture:true,passive:true});
+  const clearPointer=()=>{pointerStart=null};
+  app?.addEventListener('pointerup',clearPointer,{capture:true,passive:true});
+  app?.addEventListener('pointercancel',clearPointer,{capture:true,passive:true});
+
   let modalAccum=0,pageAccum=0;
-  let modalLockUntil=0,pageLockUntil=0;
+  let modalLockUntil=0;
   let modalQuiet=0,pageQuiet=0;
-  const resetLater=(kind)=>{
-    clearTimeout(kind==='modal'?modalQuiet:pageQuiet);
-    const id=setTimeout(()=>{if(kind==='modal')modalAccum=0;else pageAccum=0},150);
-    if(kind==='modal')modalQuiet=id;else pageQuiet=id;
+  let pageGestureLocked=false;
+
+  const resetModalLater=()=>{
+    clearTimeout(modalQuiet);
+    modalQuiet=setTimeout(()=>{modalAccum=0},150);
+  };
+  const settlePageGesture=()=>{
+    clearTimeout(pageQuiet);
+    pageQuiet=setTimeout(()=>{
+      pageAccum=0;
+      pageGestureLocked=false;
+      const i=currentTopIndex();
+      if(i>=0)paintTransitionBackdrop(i);
+    },560);
   };
 
   addEventListener('wheel',e=>{
@@ -59,7 +121,7 @@
       e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
       const now=performance.now();
       if(now<modalLockUntil)return;
-      modalAccum+=dx;resetLater('modal');
+      modalAccum+=dx;resetModalLater();
       if(Math.abs(modalAccum)<70)return;
       (modalAccum>0?modalNext:modalPrev)?.click();
       modalAccum=0;modalLockUntil=now+210;
@@ -68,11 +130,20 @@
 
     if(!e.target.closest?.('.era-screen'))return;
     e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
-    const now=performance.now();
-    if(now<pageLockUntil)return;
-    pageAccum+=dx;resetLater('page');
+
+    // Momentum events from a single Mac trackpad gesture can last well after
+    // navigation begins. Keep this gesture locked until the wheel stream has
+    // actually gone quiet, rather than unlocking after a fixed duration.
+    settlePageGesture();
+    if(pageGestureLocked)return;
+
+    pageAccum+=dx;
+    paintNeighbor(pageAccum>0?1:-1);
     if(Math.abs(pageAccum)<220)return;
-    (pageAccum>0?eraNext:eraPrev)?.click();
-    pageAccum=0;pageLockUntil=now+680;
+
+    const dir=pageAccum>0?1:-1;
+    pageAccum=0;
+    pageGestureLocked=true;
+    (dir>0?eraNext:eraPrev)?.click();
   },{capture:true,passive:false});
 })();
