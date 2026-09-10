@@ -66,8 +66,6 @@
   const normalize=()=>{
     hydrate(stage);
     fixRewatched();
-    const i=currentTopIndex();
-    if(i>=0&&getComputedStyle(stage).transform==='none')paintTransitionBackdrop(i);
   };
   normalize();
   const observer=new MutationObserver(()=>requestAnimationFrame(normalize));
@@ -94,7 +92,7 @@
 
   let modalAccum=0,pageAccum=0;
   let modalLockUntil=0;
-  let modalQuiet=0,pageQuiet=0;
+  let modalQuiet=0,pageQuiet=0,snapBackTimer=0;
   let pageGestureLocked=false;
 
   const resetModalLater=()=>{
@@ -104,8 +102,15 @@
   const settlePageGesture=()=>{
     clearTimeout(pageQuiet);
     pageQuiet=setTimeout(()=>{
+      const wasLocked=pageGestureLocked;
       pageAccum=0;
       pageGestureLocked=false;
+      if(!wasLocked){
+        stage.style.transition='transform .24s var(--ease)';
+        stage.style.setProperty('--stage-x','0px');
+        clearTimeout(snapBackTimer);
+        snapBackTimer=setTimeout(()=>{stage.style.transition=''},260);
+      }
       const i=currentTopIndex();
       if(i>=0)paintTransitionBackdrop(i);
     },560);
@@ -131,17 +136,27 @@
     if(!e.target.closest?.('.era-screen'))return;
     e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
 
-    // Momentum events from a single Mac trackpad gesture can last well after
-    // navigation begins. Keep this gesture locked until the wheel stream has
-    // actually gone quiet, rather than unlocking after a fixed duration.
+    // Momentum events from one Mac trackpad gesture can outlive the route
+    // animation. Lock until the wheel stream is actually quiet so inertia
+    // cannot trigger a second, opposite navigation.
     settlePageGesture();
     if(pageGestureLocked)return;
 
     pageAccum+=dx;
-    paintNeighbor(pageAccum>0?1:-1);
+    const dir=pageAccum>0?1:-1;
+    paintNeighbor(dir);
+
+    // Let the current Top physically follow the trackpad. The neighbor hero is
+    // already painted behind it, so the revealed area never falls back to black.
+    const atStart=currentTopIndex()===0&&pageAccum<0;
+    const atEnd=currentTopIndex()===TOPS.length-1&&pageAccum>0;
+    const edge=atStart||atEnd;
+    const travel=-pageAccum*.32*(edge?.22:1);
+    stage.style.transition='none';
+    stage.style.setProperty('--stage-x',`${travel}px`);
+
     if(Math.abs(pageAccum)<220)return;
 
-    const dir=pageAccum>0?1:-1;
     pageAccum=0;
     pageGestureLocked=true;
     (dir>0?eraNext:eraPrev)?.click();
