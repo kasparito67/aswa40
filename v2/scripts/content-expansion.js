@@ -59,14 +59,10 @@
     });
   }
 
-  function hydrateDeferredPosters(){
-    document.querySelectorAll('.poster-deferred[data-src]').forEach(img=>{img.src=img.dataset.src;img.addEventListener('load',()=>img.classList.add('is-loaded'),{once:true});delete img.dataset.src});
-  }
-
-  // Re.Watched Top 50 is now rendered canonically by app.js through section.count.
-  // Do not restructure its DOM after render; route-based mounting must stay deterministic.
+  // Phase 5A: app.js now owns poster hydration. Do not globally convert every
+  // data-src into src here; that defeated lazy-loading and caused closed ranking
+  // sections to download images during first paint.
   requestAnimationFrame(()=>{
-    hydrateDeferredPosters();
     bindYearRollovers();
     improveDirectorDisclosure();
   });
