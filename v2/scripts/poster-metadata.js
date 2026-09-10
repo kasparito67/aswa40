@@ -1736,7 +1736,7 @@
     "img": "../assets/posters/sci-fi-realiste/024-snowpiercer.jpg",
     "tmdbId": 110415,
     "posterPath": "/kw6YQudA0TMcNmGUGy5XIw7zbnV.jpg",
-    "backdropPath": "/vz45GHSnBNYRcyoZe3UCQ4HD4D4.jpg",
+    "backdropPath": "/tBIRtMCELcA5PxO7z7OiuCHJdFO.jpg",
     "year": "2013"
   },
   "sci-fi-realiste:25": {
@@ -4023,13 +4023,6 @@
     "backdropPath": "/qbiREyYmjFDqcAjT2MjGhpvdxZD.jpg",
     "year": "1998"
   },
-  "rewatched:62": {
-    "img": "../assets/posters/rewatched/062-the-boys.jpg",
-    "tmdbId": 13821,
-    "posterPath": "/jLyfVrwm5028RPhx5oXmJv01uSr.jpg",
-    "backdropPath": "/dIi3u1qnCMvRJRxLAa230UXgOfX.jpg",
-    "year": "1998"
-  },
   "rewatched:63": {
     "img": "../assets/posters/rewatched/063-batman-begins.jpg",
     "tmdbId": 272,
@@ -5154,7 +5147,7 @@
     "img": "../assets/posters/rewatched/223-harry-potter-and-the-chamber-of-secrets.jpg",
     "tmdbId": 672,
     "posterPath": "/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg",
-    "backdropPath": "/7tbeoSTWW2cWPecjQo9fcdf0Hzv.jpg",
+    "backdropPath": "/qSrq6ACzPDv4xerGJ78iS3N827K.jpg",
     "year": "2002"
   },
   "rewatched:224": {
