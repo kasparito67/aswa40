@@ -1736,7 +1736,7 @@
     "img": "../assets/posters/sci-fi-realiste/024-snowpiercer.jpg",
     "tmdbId": 110415,
     "posterPath": "/kw6YQudA0TMcNmGUGy5XIw7zbnV.jpg",
-    "backdropPath": "/tBIRtMCELcA5PxO7z7OiuCHJdFO.jpg",
+    "backdropPath": "/vz45GHSnBNYRcyoZe3UCQ4HD4D4.jpg",
     "year": "2013"
   },
   "sci-fi-realiste:25": {
@@ -2620,8 +2620,8 @@
   "animation:85": {
     "img": "../assets/posters/animation/085-steamboy.jpg",
     "tmdbId": 8953,
-    "posterPath": "/he3fyAy1OUruuwhiv2xvup8H3pc.jpg",
-    "backdropPath": "/c31SAQjVMeVGv7mZsrw5BKGXj2P.jpg",
+    "posterPath": "/o6WsW5QFh3YaDdAJkyVUweTpUtr.jpg",
+    "backdropPath": "/eu7qPQljYrB5rDuXL2MDopA95g3.jpg",
     "year": "2004"
   },
   "animation:86": {
@@ -3222,6 +3222,384 @@
     "backdropPath": "/kVlnObukrKh1vyAuLyHGdsCxJNH.jpg",
     "year": "2004"
   },
+  "documentaires:16": {
+    "img": "../assets/posters/documentaires/016-sound-city.jpg",
+    "tmdbId": 157117,
+    "posterPath": "/hgPJg7tVETVpjfrBMc4WLil8ltC.jpg",
+    "backdropPath": "/9GQSUxZS7EBgEPtoDx5G8SOLPex.jpg",
+    "year": "2013"
+  },
+  "documentaires:18": {
+    "img": "../assets/posters/documentaires/018-inside-job.jpg",
+    "tmdbId": 44639,
+    "posterPath": "/7yXXIWec24htucjsZS1sDuPLqw8.jpg",
+    "backdropPath": "/1yFmxvVYgVrFKL2ksFzgX0MrWOM.jpg",
+    "year": "2010"
+  },
+  "documentaires:19": {
+    "img": "../assets/posters/documentaires/019-the-civil-war.jpg",
+    "tmdbId": 580299,
+    "posterPath": "/e0cIJy1S74hE2CYfcDAI5jdMoqO.jpg",
+    "backdropPath": null,
+    "year": "1991"
+  },
+  "documentaires:21": {
+    "img": "../assets/posters/documentaires/021-fahrenheit-9-11.jpg",
+    "tmdbId": 1777,
+    "posterPath": "/cZ7M343iuiMDc36fSeSm699XQFv.jpg",
+    "backdropPath": "/cLZxnkj75cGBK1tLTMyIudOZYZk.jpg",
+    "year": "2004"
+  },
+  "documentaires:22": {
+    "img": "../assets/posters/documentaires/022-gimme-danger.jpg",
+    "tmdbId": 392820,
+    "posterPath": "/8YHqUETRBIFza756s8kcuU8XhEQ.jpg",
+    "backdropPath": "/pZpNErsqNbzODGAudQvhJ7pp6oH.jpg",
+    "year": "2016"
+  },
+  "documentaires:23": {
+    "img": "../assets/posters/documentaires/023-jim-andy-the-great-beyond.jpg",
+    "tmdbId": 469019,
+    "posterPath": "/kKzopOFXz9YfsCTqg3XpF0GoypX.jpg",
+    "backdropPath": "/5ORjzDMq26GI82COSnJngXm5Kww.jpg",
+    "year": "2017"
+  },
+  "documentaires:25": {
+    "img": "../assets/posters/documentaires/025-cuba-and-the-cameraman.jpg",
+    "tmdbId": 474433,
+    "posterPath": "/qaHgQmUAAsB7FzMFQZUp6MfG1r2.jpg",
+    "backdropPath": "/ljVwCo2TwcYZu0fn0lgKxPicaPM.jpg",
+    "year": "2017"
+  },
+  "documentaires:26": {
+    "img": "../assets/posters/documentaires/026-jackass-forever.jpg",
+    "tmdbId": 656663,
+    "posterPath": "/ruHDFumJfW7F2vEqTZEQQ9xT7CA.jpg",
+    "backdropPath": "/f2J8DpT5bqV0AiI9VVcfiuqKo5l.jpg",
+    "year": "2022"
+  },
+  "documentaires:27": {
+    "img": "../assets/posters/documentaires/027-amy.jpg",
+    "tmdbId": 331781,
+    "posterPath": "/qL0RepWSNUuZoeDXfyhqowVYhrn.jpg",
+    "backdropPath": "/8YiAnbmo8ARHNVt25Cp5fVt4rNd.jpg",
+    "year": "2015"
+  },
+  "documentaires:28": {
+    "img": "../assets/posters/documentaires/028-the-last-dance.jpg",
+    "tmdbId": 1226141,
+    "posterPath": "/9Ret10DkYVs45Ooa8yvU23x3L5i.jpg",
+    "backdropPath": "/lhm95L2v3KmDFqIpWSC0daVPW7r.jpg",
+    "year": "2024"
+  },
+  "documentaires:29": {
+    "img": "../assets/posters/documentaires/029-room-237.jpg",
+    "tmdbId": 84330,
+    "posterPath": "/wPXxJSz36VjAkxa4MZ0C28uOdwA.jpg",
+    "backdropPath": "/pYxLP0MWvhMG1Sx852N2PT8F3zf.jpg",
+    "year": "2012"
+  },
+  "documentaires:30": {
+    "img": "../assets/posters/documentaires/030-enron-the-smartest-guys-in-the-room.jpg",
+    "tmdbId": 13020,
+    "posterPath": "/zezeOElCxlPui9SFGj5ToZ4W1Nh.jpg",
+    "backdropPath": "/4enh5oCykgbpNiLTEYsnjZJhYVb.jpg",
+    "year": "2005"
+  },
+  "documentaires:31": {
+    "img": "../assets/posters/documentaires/031-baraka.jpg",
+    "tmdbId": 14002,
+    "posterPath": "/ldEuJQ4z7zEvL7iXraESWBUfQcz.jpg",
+    "backdropPath": "/c0QYwNyeURswT7fxmR2mlfpdk0l.jpg",
+    "year": "1992"
+  },
+  "documentaires:33": {
+    "img": "../assets/posters/documentaires/033-the-social-dilemma.jpg",
+    "tmdbId": 656690,
+    "posterPath": "/jcaM6V2tCtu6iMHDsGLBUbaYgYp.jpg",
+    "backdropPath": "/iYqoT9VBGdGTuLl3cjfbG7ZXDkP.jpg",
+    "year": "2020"
+  },
+  "documentaires:34": {
+    "img": "../assets/posters/documentaires/034-super-size-me.jpg",
+    "tmdbId": 9372,
+    "posterPath": "/zYkbqQaCuIHBxqBDGgnQCwJ9jIG.jpg",
+    "backdropPath": "/f589RGsnKpDvHu9qvELM6LZBEbG.jpg",
+    "year": "2004"
+  },
+  "documentaires:35": {
+    "img": "../assets/posters/documentaires/035-the-greatest-night-in-pop.jpg",
+    "tmdbId": 1226841,
+    "posterPath": "/jDz4wFujk94tQP9Sx6EMKDULvkn.jpg",
+    "backdropPath": "/Amb16QpgV4ZxdU8C80SW6JNySp9.jpg",
+    "year": "2024"
+  },
+  "documentaires:36": {
+    "img": "../assets/posters/documentaires/036-planet-earth.jpg",
+    "tmdbId": 54805,
+    "posterPath": "/dCiVCPHOWhT1MEXWfe3vZPnTOB8.jpg",
+    "backdropPath": "/5krduK75j61udNXJCxQChM9OE2h.jpg",
+    "year": "1974"
+  },
+  "documentaires:38": {
+    "img": "../assets/posters/documentaires/038-moonage-daydream.jpg",
+    "tmdbId": 957457,
+    "posterPath": "/xr4EYd4WHr3Z6MXIYR3tEzP6yuT.jpg",
+    "backdropPath": "/bSgSJfkTutcllEvhDDWtMGgdl2b.jpg",
+    "year": "2022"
+  },
+  "documentaires:39": {
+    "img": "../assets/posters/documentaires/039-the-act-of-killing.jpg",
+    "tmdbId": 123678,
+    "posterPath": "/sp5B7Tz5ttsgOLnIlCP5uEhtesI.jpg",
+    "backdropPath": "/1jLaJPdu7dMl0Nk3vLuafDx9PWS.jpg",
+    "year": "2012"
+  },
+  "documentaires:40": {
+    "img": "../assets/posters/documentaires/040-the-alabama-solution.jpg",
+    "tmdbId": 1413805,
+    "posterPath": "/gultnK0rYs4xLLYhxQ9ZnvPfVAn.jpg",
+    "backdropPath": "/s9oWvDQoVka7Zisi3rmJ3Lj9WA.jpg",
+    "year": "2025"
+  },
+  "documentaires:41": {
+    "img": "../assets/posters/documentaires/041-apollo-11.jpg",
+    "tmdbId": 549559,
+    "posterPath": "/woLMRroHyoTGoXyxdEeBJEYBFtu.jpg",
+    "backdropPath": "/el4j0LHk56uH6ErE5FZu2x5UJx8.jpg",
+    "year": "2019"
+  },
+  "documentaires:42": {
+    "img": "../assets/posters/documentaires/042-lost-in-la-mancha.jpg",
+    "tmdbId": 21189,
+    "posterPath": "/gPlWNmQOzJ7j8djCxXcc40syVS3.jpg",
+    "backdropPath": "/6WleKGryFv038LEj0Z1KvP8I09q.jpg",
+    "year": "2002"
+  },
+  "documentaires:43": {
+    "img": "../assets/posters/documentaires/043-the-other-f-word.jpg",
+    "tmdbId": 75785,
+    "posterPath": "/5aXOrCNV9Hlvftw8qzZpvA1lpjJ.jpg",
+    "backdropPath": "/4AjoilnnuC6GbhaNBbCw0sDid84.jpg",
+    "year": "2011"
+  },
+  "documentaires:44": {
+    "img": "../assets/posters/documentaires/044-the-rescue.jpg",
+    "tmdbId": 680058,
+    "posterPath": "/kC7fVtCkJACwPBaRr2hlj2whfKX.jpg",
+    "backdropPath": "/gOBKWe6lHlt8srk11TFlDuBtl0H.jpg",
+    "year": "2021"
+  },
+  "documentaires:46": {
+    "img": "../assets/posters/documentaires/046-samsara.jpg",
+    "tmdbId": 89708,
+    "posterPath": "/qodkea4k0pNUmNTl5TJO2PdTqgW.jpg",
+    "backdropPath": "/tbSjemOf1nXPOjWELdaeZ7qj1iX.jpg",
+    "year": "2011"
+  },
+  "documentaires:47": {
+    "img": "../assets/posters/documentaires/047-dogtown-and-z-boys.jpg",
+    "tmdbId": 1282,
+    "posterPath": "/eb02dpopuAhuThf7nXAAwKtAF88.jpg",
+    "backdropPath": "/ex21uMbWeAEju9QUAhkAqtfAgaO.jpg",
+    "year": "2002"
+  },
+  "documentaires:48": {
+    "img": "../assets/posters/documentaires/048-indie-game-the-movie.jpg",
+    "tmdbId": 80215,
+    "posterPath": "/2B1IqPg97ZhpEov4Fg3si4hI1Kw.jpg",
+    "backdropPath": "/fPUbP2MpL1zGD1x8xkOtu1o6ZH4.jpg",
+    "year": "2012"
+  },
+  "documentaires:50": {
+    "img": "../assets/posters/documentaires/050-waltz-with-bashir.jpg",
+    "tmdbId": 8885,
+    "posterPath": "/zQaCv7lKwHsh0YSHkt1QNjIOZ1c.jpg",
+    "backdropPath": "/cMoiIk3tD6qshxccYRjjym7l5YV.jpg",
+    "year": "2008"
+  },
+  "documentaires:52": {
+    "img": "../assets/posters/documentaires/052-citizenfour.jpg",
+    "tmdbId": 293310,
+    "posterPath": "/nOVhX69EAxtSKEEnr5UcSd5UVci.jpg",
+    "backdropPath": "/godZeVdLEH6YFOBPajdLkAvhy5l.jpg",
+    "year": "2014"
+  },
+  "documentaires:53": {
+    "img": "../assets/posters/documentaires/053-jodorowsky-s-dune.jpg",
+    "tmdbId": 191720,
+    "posterPath": "/mv1zSd6P59D43iYQXs7qx01nSiX.jpg",
+    "backdropPath": "/xfC6hsmcsnf2MY1iXDs56gJNfQZ.jpg",
+    "year": "2013"
+  },
+  "documentaires:54": {
+    "img": "../assets/posters/documentaires/054-red-army.jpg",
+    "tmdbId": 256876,
+    "posterPath": "/y2e6I7A8AgNTfB1MeNZfhh9Q4ES.jpg",
+    "backdropPath": "/cVzqqF4akx3TQgMPgJcn6Dc68a5.jpg",
+    "year": "2015"
+  },
+  "documentaires:56": {
+    "img": "../assets/posters/documentaires/056-casa-bonita-mi-amor.jpg",
+    "tmdbId": 1278666,
+    "posterPath": "/nEktirdxkXk42NuM8WGlUcP9D28.jpg",
+    "backdropPath": "/aeMwiZOalyFDPQhbdwT7kHeIRKG.jpg",
+    "year": "2024"
+  },
+  "documentaires:57": {
+    "img": "../assets/posters/documentaires/057-roger-me.jpg",
+    "tmdbId": 1779,
+    "posterPath": "/vSi4YK4E63geptUAxtizRUeTCFu.jpg",
+    "backdropPath": "/1TFrt5rlgbAS7WdHfCp142NPt4s.jpg",
+    "year": "1989"
+  },
+  "documentaires:58": {
+    "img": "../assets/posters/documentaires/058-the-imposter.jpg",
+    "tmdbId": 84287,
+    "posterPath": "/bhdGcqZqPju3KEaT9J6lMxRO0TI.jpg",
+    "backdropPath": "/gwxItUSR8qvaKlNqsQCRVNNZAAF.jpg",
+    "year": "2012"
+  },
+  "documentaires:59": {
+    "img": "../assets/posters/documentaires/059-the-fog-of-war.jpg",
+    "tmdbId": 12698,
+    "posterPath": "/m1dEnkrdJGBSLeAyJepuGrU9sNI.jpg",
+    "backdropPath": "/dFFdQgTtvL2X02xuGpDwn6SqFiL.jpg",
+    "year": "2003"
+  },
+  "documentaires:60": {
+    "img": "../assets/posters/documentaires/060-bones-brigade-an-autobiography.jpg",
+    "tmdbId": 84179,
+    "posterPath": "/lXS8idgCI7JfIFfITn4EbRbjhIz.jpg",
+    "backdropPath": "/u7XgTQZHLQnKSRiZ9Pcq29Edeeu.jpg",
+    "year": "2012"
+  },
+  "documentaires:61": {
+    "img": "../assets/posters/documentaires/061-murderball.jpg",
+    "tmdbId": 14278,
+    "posterPath": "/qxaXzZnGsHaAJpSaF72nDhhL58n.jpg",
+    "backdropPath": "/doqhyJkdsM2djS43hiajZJwBmM3.jpg",
+    "year": "2005"
+  },
+  "documentaires:64": {
+    "img": "../assets/posters/documentaires/064-fyre.jpg",
+    "tmdbId": 567860,
+    "posterPath": "/yFsP0BAJhAH3RTXCAnGvI1CtaUb.jpg",
+    "backdropPath": "/5i2prsAzznXWGSmhkr9yMh5tnmO.jpg",
+    "year": "2019"
+  },
+  "documentaires:65": {
+    "img": "../assets/posters/documentaires/065-into-the-abyss.jpg",
+    "tmdbId": 77365,
+    "posterPath": "/omYLK5w7N5YeWi4gFcNTylgvL8j.jpg",
+    "backdropPath": "/fFt23F1shcYqwD7QgvdapZNrTvy.jpg",
+    "year": "2011"
+  },
+  "documentaires:66": {
+    "img": "../assets/posters/documentaires/066-life-itself.jpg",
+    "tmdbId": 446696,
+    "posterPath": "/pE2hxC8bPbIi9tGyhFg5xiFW6dA.jpg",
+    "backdropPath": "/zTMtN7DjyqYuTFwBXw1ywl3JyTO.jpg",
+    "year": "2018"
+  },
+  "documentaires:68": {
+    "img": "../assets/posters/documentaires/068-the-truffle-hunters.jpg",
+    "tmdbId": 653762,
+    "posterPath": "/A8kuHpb1AKvRVbYbxBK4hua008p.jpg",
+    "backdropPath": "/2yAeit9stzwfRB5tIRBQQyoRQ4M.jpg",
+    "year": "2020"
+  },
+  "documentaires:69": {
+    "img": "../assets/posters/documentaires/069-microcosmos.jpg",
+    "tmdbId": 9305,
+    "posterPath": "/OPoiGrzNr5FWoczXH5Gs1cReec.jpg",
+    "backdropPath": "/87NFGpptRN7xnI3VfERAZEwbh7C.jpg",
+    "year": "1996"
+  },
+  "documentaires:70": {
+    "img": "../assets/posters/documentaires/070-will-harper.jpg",
+    "tmdbId": 1214506,
+    "posterPath": "/1xbYcoEb9gqezNnLgjWcZI5Hlsl.jpg",
+    "backdropPath": "/p8o3o3oETlAZxfQf10T6vJG8eZq.jpg",
+    "year": "2024"
+  },
+  "documentaires:72": {
+    "img": "../assets/posters/documentaires/072-1991-the-year-punk-broke.jpg",
+    "tmdbId": 28742,
+    "posterPath": "/nDWYYzzfBUeWQhWowEAExqwGbyv.jpg",
+    "backdropPath": "/d6MIFNVaf3Z0rQHJfrlta6pb9fT.jpg",
+    "year": "1992"
+  },
+  "documentaires:73": {
+    "img": "../assets/posters/documentaires/073-one-child-nation.jpg",
+    "tmdbId": 566368,
+    "posterPath": "/bV0aqhB7fsw5mWJROBnFro1Qhwn.jpg",
+    "backdropPath": "/9VVyZl0ul9ZGn6iLDkRNzuFVvvj.jpg",
+    "year": "2019"
+  },
+  "documentaires:74": {
+    "img": "../assets/posters/documentaires/074-sour-grapes.jpg",
+    "tmdbId": 396232,
+    "posterPath": "/8jLfS18TvzQ4IkpMXHIgWgS8kZW.jpg",
+    "backdropPath": "/rOo8r3NzUVL5Q9mIb6xbsdp5b3c.jpg",
+    "year": "2016"
+  },
+  "documentaires:76": {
+    "img": "../assets/posters/documentaires/076-for-tomorrow-the-documentary.jpg",
+    "tmdbId": 1021890,
+    "posterPath": "/4nfvIPhllhPWvdPmDRyjbsUGFCN.jpg",
+    "backdropPath": "/hEa2hF4Rh9wo4oCKCf7iHcv5ACk.jpg",
+    "year": "2022"
+  },
+  "documentaires:77": {
+    "img": "../assets/posters/documentaires/077-andre-is-an-idiot.jpg",
+    "tmdbId": 1400731,
+    "posterPath": "/lUDoDeCyobKik81PWUrBWOEV0qt.jpg",
+    "backdropPath": "/yf7OJzxWAg0LRFUMyp0Jpa2sRKY.jpg",
+    "year": "2026"
+  },
+  "documentaires:78": {
+    "img": "../assets/posters/documentaires/078-beware-the-slenderman.jpg",
+    "tmdbId": 376424,
+    "posterPath": "/f5W2nhbnzOR2aNa7vSpwWCzzAw2.jpg",
+    "backdropPath": "/vxda5MKQVGD3P0imt3tW9QCacZJ.jpg",
+    "year": "2016"
+  },
+  "documentaires:79": {
+    "img": "../assets/posters/documentaires/079-pumping-iron.jpg",
+    "tmdbId": 5205,
+    "posterPath": "/x0zmAcHKzvfjd6nBwUF6T659JjT.jpg",
+    "backdropPath": "/pqpOzayMENfhXNE9wzXdRGwUSho.jpg",
+    "year": "1977"
+  },
+  "documentaires:80": {
+    "img": "../assets/posters/documentaires/080-saturday-night.jpg",
+    "tmdbId": 1120911,
+    "posterPath": "/oCf5O6uxooTvRwKVnLHwGqZUifq.jpg",
+    "backdropPath": "/9ewYb0LIBJNds8ZMoobKYUd647g.jpg",
+    "year": "2024"
+  },
+  "documentaires:81": {
+    "img": "../assets/posters/documentaires/081-daft-punk-unchained.jpg",
+    "tmdbId": 346401,
+    "posterPath": "/cZhguyhaCAcRCSEn1QUHPCDSKzk.jpg",
+    "backdropPath": "/2pd2uIvfmVXiAgBPQIAgUuGvVM1.jpg",
+    "year": "2015"
+  },
+  "documentaires:82": {
+    "img": "../assets/posters/documentaires/082-league-of-denial-the-nfl-s-concussion-crisis.jpg",
+    "tmdbId": 334763,
+    "posterPath": "/aZF3ma5VqiOqZRFxaZSehHc4ucS.jpg",
+    "backdropPath": "/sirRkxCLfqdFINBN8lP999xjfpx.jpg",
+    "year": "2013"
+  },
+  "documentaires:83": {
+    "img": "../assets/posters/documentaires/083-the-fourth-kind.jpg",
+    "tmdbId": 22824,
+    "posterPath": "/vfnsGUwurUQqlpvArBvUVc9rYXa.jpg",
+    "backdropPath": "/4Ue8De8AXVrSWvFQMzmoJQn4Pxe.jpg",
+    "year": "2009"
+  },
   "rewatched:1": {
     "img": "../assets/posters/rewatched/001-star-wars.jpg",
     "tmdbId": 11,
@@ -3555,7 +3933,7 @@
     "img": "../assets/posters/rewatched/048-the-bourne-identity.jpg",
     "tmdbId": 2501,
     "posterPath": "/aP8swke3gmowbkfZ6lmNidu0y9p.jpg",
-    "backdropPath": "/zxYp7GhqzcNqNSkjHoOdx0BEtOM.jpg",
+    "backdropPath": "/kJaRWmy1BGq3pHyE94LOTteiHer.jpg",
     "year": "2002"
   },
   "rewatched:49": {
@@ -4503,7 +4881,7 @@
     "img": "../assets/posters/rewatched/184-the-godfather-part-ii.jpg",
     "tmdbId": 240,
     "posterPath": "/sSuQTCZwqKrNBNIsksO9IAUoWP9.jpg",
-    "backdropPath": "/pGzqRKrYeK4LogoysNro0vG8d8N.jpg",
+    "backdropPath": "/kGzFbGhp99zva6oZODW5atUtnqi.jpg",
     "year": "1974"
   },
   "rewatched:185": {
@@ -4776,7 +5154,7 @@
     "img": "../assets/posters/rewatched/223-harry-potter-and-the-chamber-of-secrets.jpg",
     "tmdbId": 672,
     "posterPath": "/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg",
-    "backdropPath": "/qSrq6ACzPDv4xerGJ78iS3N827K.jpg",
+    "backdropPath": "/7tbeoSTWW2cWPecjQo9fcdf0Hzv.jpg",
     "year": "2002"
   },
   "rewatched:224": {
@@ -4839,7 +5217,7 @@
     "img": "../assets/posters/rewatched/232-mission-impossible-ghost-protocol.jpg",
     "tmdbId": 56292,
     "posterPath": "/eRZTGx7GsiKqPch96k27LK005ZL.jpg",
-    "backdropPath": "/ih4lZkUpmSE7AP3maymiO72xJ1z.jpg",
+    "backdropPath": "/hqyjzDRCs1N5gEsh2gklzPdsEFD.jpg",
     "year": "2011"
   },
   "rewatched:233": {
