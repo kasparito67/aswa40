@@ -96,72 +96,105 @@
 }
 
 @media(max-width:560px){
-  .modal-bg{padding:8px!important;align-items:center!important}
+  /* True mobile sheet: keep every part inside the visual viewport and let the
+     sheet itself scroll vertically. No desktop columns, floats or vw-based width. */
+  .modal-bg{
+    padding:8px!important;
+    align-items:center!important;
+    justify-content:center!important;
+    overflow:hidden!important;
+    backdrop-filter:none!important;
+  }
   .film-modal{
-    width:calc(100vw - 16px)!important;
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
     height:auto!important;
-    max-height:calc(100dvh - 24px)!important;
+    min-height:0!important;
+    max-height:calc(100dvh - 16px)!important;
+    margin:0!important;
     overflow-x:hidden!important;
     overflow-y:auto!important;
+    overscroll-behavior:contain!important;
     border-radius:16px!important;
   }
-
-  /* Phone detail cards use one simple vertical flow. This removes the squeezed
-     two-column composition that could clip long titles, stats and editorial copy. */
   .modal-content{
+    box-sizing:border-box!important;
     display:block!important;
     width:100%!important;
+    max-width:100%!important;
     height:auto!important;
-    padding:48px 18px 24px!important;
+    min-height:0!important;
+    padding:48px 18px max(24px,env(safe-area-inset-bottom))!important;
+    overflow:visible!important;
   }
   .modal-poster{
     display:block!important;
-    width:min(42vw,150px)!important;
+    box-sizing:border-box!important;
+    width:min(46%,168px)!important;
+    max-width:168px!important;
     height:auto!important;
     max-height:none!important;
     aspect-ratio:2/3!important;
     object-fit:contain!important;
     object-position:center!important;
     float:none!important;
-    margin:0 0 18px!important;
+    margin:0 auto 20px!important;
     border-width:4px!important;
     border-radius:8px!important;
     background:#090c0e!important;
   }
   .modal-copy{
     display:block!important;
+    box-sizing:border-box!important;
     width:100%!important;
+    max-width:100%!important;
     min-width:0!important;
     padding:0!important;
+    overflow:visible!important;
   }
   .modal-rank{
-    margin:0 42px 8px 0!important;
+    width:100%!important;
+    margin:0 0 8px!important;
+    padding-right:38px!important;
     font-size:9px!important;
   }
   .film-modal h2{
-    margin:0 42px 12px 0!important;
+    box-sizing:border-box!important;
+    width:100%!important;
     max-width:100%!important;
-    font-size:clamp(32px,10.5vw,46px)!important;
-    line-height:.94!important;
+    margin:0 0 12px!important;
+    padding-right:34px!important;
+    font-size:clamp(30px,9.5vw,42px)!important;
+    line-height:.96!important;
     overflow-wrap:anywhere!important;
+    word-break:normal!important;
     text-wrap:balance!important;
   }
   .modal-stats{
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
     margin:0 0 22px!important;
+    display:flex!important;
+    flex-wrap:wrap!important;
     gap:6px 12px!important;
     font-size:11px!important;
   }
   .modal-body{
+    box-sizing:border-box!important;
     width:100%!important;
-    max-width:none!important;
+    max-width:100%!important;
+    min-width:0!important;
     padding:0!important;
     font-size:13px!important;
     line-height:1.5!important;
     overflow-wrap:anywhere!important;
   }
-  .modal-body p{margin-bottom:10px!important}
-  .modal-detail-link{margin-top:12px!important}
+  .modal-body p{margin:0 0 10px!important}
+  .modal-detail-link{max-width:100%!important;margin-top:12px!important;white-space:normal!important}
   .modal-close{top:10px!important;right:10px!important}
+  .modal-nav{display:none!important}
 }
 
 @media(prefers-reduced-motion:reduce){
