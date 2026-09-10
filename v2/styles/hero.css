@@ -113,13 +113,36 @@
 }
 
 @media(max-width:700px){
-  .hero-title-art-wrap{transform:translateY(32px)}
-  .hero-art-medallions{transform:translate(-50%,32px)}
-  .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{transform:translateY(32px)}
-  .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{transform:translateY(32px) scale(.42)}
+  /* Mobile heroes need a larger optical footprint than a literal 1920×1080 fit.
+     Enlarge the normalized artboard while keeping its center locked to the viewport. */
+  .hero-title-art-wrap{
+    inset:auto!important;
+    left:-19%!important;
+    top:0!important;
+    width:138%!important;
+    height:100%!important;
+    transform:translateY(22px)!important;
+  }
+  .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
+    transform:translateY(22px) scale(.42)!important;
+    transform-origin:center!important;
+  }
+  /* The 2000 title is a cropped PNG rather than a normalized SVG, so size it directly. */
+  .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{
+    left:9%!important;
+    top:27%!important;
+    width:82%!important;
+    height:31%!important;
+    transform:translateY(20px)!important;
+  }
+  .hero-art-medallions{
+    left:50%!important;
+    top:59%!important;
+    transform:translate(-50%,20px)!important;
+  }
   .hero-medallion{
-    width:clamp(42px,12vw,54px);
-    height:clamp(42px,12vw,54px);
+    width:clamp(44px,13vw,58px);
+    height:clamp(44px,13vw,58px);
     border-width:1.5px;
     margin-left:-8px;
   }
