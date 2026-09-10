@@ -1,0 +1,18 @@
+{
+  "resolved": 346,
+  "unresolved": [],
+  "hero": {
+    "documentaires": {
+      "image": "https://image.tmdb.org/t/p/original/70uUnpfe7en9x011UjpZoub101l.jpg",
+      "position": "center 44%",
+      "fit": "cover",
+      "scale": 1.01
+    },
+    "rewatched": {
+      "image": "https://image.tmdb.org/t/p/original/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
+      "position": "center 44%",
+      "fit": "cover",
+      "scale": 1.01
+    }
+  }
+}
