@@ -5,7 +5,7 @@
   "rewrites": [
     {
       "source": "/tops/:top",
-      "destination": "/v2/index.html"
+      "destination": "/v2"
     }
   ]
 }
