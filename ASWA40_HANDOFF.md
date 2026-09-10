@@ -16,283 +16,221 @@ This file is the shared source of truth for ChatGPT Chat, Work, Local and any fu
 ### Current code reference
 
 - Repository: `kasparito67/aswa40`
-- Branch: `main`
-- GitHub `main` is the stable code source of truth unless **Active local work** below names another working branch.
-- Always resolve the current branch HEAD instead of relying on a copied commit hash.
+- Stable branch: `main`
+- Active working branch: `work-cleanup-sept9`
+- Do not merge or promote the working branch without explicit user validation.
 
 ### Official public / visual reference
 
 `https://aswa40-films.vercel.app/`
 
-This is the public production reference. The historical `aswa40-films-live` project was deleted on 2026-09-02 and must not be used as a visual source of truth.
+This remains the production reference. The historical `aswa40-films-live` project was deleted on 2026-09-02 and must not be used.
 
-### Current production / finalization state
+### Active refactor state — September 10, 2026
 
-`v0.9.9` remains the visible version label and the accepted baseline for the ASWA40 2000–2024 site. A small post-`v0.9.9` finalization batch is now present on `main` and deployed:
+The multi-Top platform is being cleaned up phase by phase on `work-cleanup-sept9`.
 
-- film-detail panels have **previous / next navigation arrows**;
-- ranked films navigate in ranking order and wrap from `#135 → #1` and `#1 → #135`;
-- “Grands oubliés” navigate within their own ordered set;
-- keyboard **Left / Right Arrow** performs the same navigation while a detail panel is open;
-- mobile supports **swipe left = next** and **swipe right = previous**;
-- swipe recognition uses a horizontal threshold and dominance check so ordinary vertical scrolling does not trigger navigation accidentally;
-- accessible labels identify the previous/next title;
-- navigation now animates the **entire detail card**, not only its inner content: the current card slides slightly out in the navigation direction and the next card enters from the opposite side;
-- the directional slide applies consistently to arrow buttons, keyboard navigation and mobile swipe;
-- motion is intentionally restrained on desktop and slightly more pronounced on mobile so the interaction reads naturally as a swipe/carousel gesture;
-- rapid repeated navigation is temporarily locked while the transition is running to prevent visual glitches;
-- `prefers-reduced-motion` bypasses the slide animation and switches cards directly.
+Validated / implemented before Phase 4:
+- one canonical hero-title renderer;
+- shared interactions and modal behavior aligned across Tops;
+- poster metadata audited and repaired;
+- Documentaires and Re.Watched added to the platform;
+- Icarus locked to TMDB 432976 / 2017 documentary;
+- Senna locked to TMDB 58496 / 2010 documentary;
+- Home Alone locked to TMDB 771;
+- Re.Watched title artwork uses `assets/header-rewatch.svg`.
 
-The cinematic detail-card treatment from `v0.9.7–0.9.9` remains intact: local TMDB backdrops, vertical transparency fade, larger poster, Letterboxd link, and stale-backdrop protection.
+### Phase 4 — routes + virtualized iOS-like navigation
 
-### Current header direction
+Phase 4 is **in validation**, not yet approved.
 
-The current header remains LOTR-inspired:
+Target architecture:
+- one repository and one Vercel project;
+- one SPA shell and one shared renderer;
+- one shareable route per Top (`/tops/<top.id>`);
+- only the active Top remains mounted while idle;
+- during a horizontal transition, only the current Top + one adjacent Top are mounted temporarily;
+- after the transition, the old Top is unmounted;
+- swipe, trackpad, arrows and keyboard update the route;
+- browser Back / Forward restores the correct Top;
+- `/v2` remains a compatibility entry and resolves to the first routed Top;
+- Vercel rewrite sends `/tops/:top` to `/v2`.
 
-- current local hero asset: `assets/cinema-hero.jpg`;
-- title artwork: `assets/header-title.png`;
-- semantic H1 remains in the DOM behind the image treatment;
-- title sits high in the hero, with diffuse CSS drop shadow / halo;
-- circular scroll cue uses a thin outline and subtle floating motion;
-- palette is gold / bronze for surrounding UI accents;
-- body/UI remains Inter Tight;
-- editorial/display titles use a visible serif treatment.
+This is intentionally **not** a collection of visually separate page loads. The user wants an iOS-like continuous screen-navigation feeling. Route separation exists for deep-linking/history, while the visual experience stays inside one shell.
 
-**Pending requested header change:** replace the current hero image with the TMDB backdrop at:
-
-`https://image.tmdb.org/t/p/original/oiwc338EoBgS4sEI2ixAny4KQKg.jpg`
-
-This has **not yet been applied**. When implementing it, follow the existing TMDB asset policy: fetch it through the authenticated/local asset workflow and serve a local repository copy. Do not hotlink the TMDB image URL in browser code.
-
-### Latest validated visual / UX state
-
-- LOTR title artwork is smaller and positioned 45 px higher using layout positioning independent from its entrance animation.
-- The title has a strong diffuse CSS drop shadow.
-- Hero image is brighter than the earlier pass.
-- Logo and circular scroll cue float subtly and stop under `prefers-reduced-motion`.
-- Circular cue smoothly scrolls to the first Top 25 section.
-- “Insights collectifs” heading is intentionally removed.
-- “Année reine” uses a crown icon; “Le quatuor” uses a clapper icon.
-- Director portraits and rows link to IMDb.
-- Year and Director card rollover outlines use gold/bronze.
-- All 135 ranked-film posters and 15 “Grands oubliés” posters are local TMDB-sourced assets.
-- All current film / forgotten-film detail panels use local TMDB backdrops.
-- Opening a different film never flashes the previous backdrop; stale image load events are ignored.
-- On mobile, #1 spans the Top 5 grid width; #2–5 follow in two columns. The winner keeps both crown and rank visible.
-- Detail-card previous/next navigation uses a full-card directional slide so backdrop, poster, text and controls move together as one object.
+Latest Phase 4 correction batch:
+- removes the fake hero-background transition experiment;
+- transitions use two real `.era-screen` nodes side-by-side only while moving;
+- trackpad inertia is treated as one gesture;
+- Re.Watched Top 50 is rendered canonically with normal hierarchy: large #1, medium #2–5, then #6–50 grid;
+- Re.Watched OVNI cards carry ranks and open the canonical film modal;
+- OVNI editorial explanations are rendered by the canonical renderer for all current Top categories;
+- `Jesus of Nazareth` is an explicit curated OVNI in 1975–1999: 1/7 vote, best rank #2; no chooser name should be invented unless sourced;
+- Documentaires OVNI copy may name Quentin where source material explicitly supports it;
+- late DOM restructuring in `content-expansion.js`, `qa-fixes.js` and `ovnis-polish.js` has been neutralized where Phase 4 now owns the behavior canonically. Phase 5 may remove obsolete files after proving they are no longer referenced.
 
 ### Phase status
 
-- **Status: active finalization batch on top of accepted `v0.9.9`.**
-- Detail-panel arrow / keyboard / swipe navigation is implemented and deployed.
-- Full-card directional transition for detail navigation is implemented and deployed.
-- The requested replacement header backdrop is still pending.
-- Do not bump or infer a new visible version number unless the user explicitly validates / names the next release.
+- Phase 0 — baseline: complete
+- Phase 1 — single hero renderer: complete
+- Phase 2 — interaction parity / consolidation: complete
+- Phase 3 — poster/data QA: complete
+- Phase 4 — shareable routes + virtualized continuous navigation: **implementation in validation**
+- Phase 5 — cleanup obsolete layers: not started
+- Phase 6 — final Work handoff/audit: not started
 
-### Active local work
-
-- None for the 2000–2024 site at this moment.
-- Treat current `main` as the working baseline for the next 2000–2024 change.
-
-### Immediate rule for every space
-
-When resuming in Master, Local or Work:
-
-1. Read this file.
-2. Check **Active local work**.
-3. If none is active, start from current `main`.
-4. Read only files relevant to the requested change; do not begin with a full audit.
-5. Preserve unrelated validated work and UX invariants.
-6. Batch related changes.
-7. Update this handoff after a coherent validated batch or roughly ten related micro-iterations.
-8. Verify Vercel and the public URL separately before declaring a production change live.
+Do not start Phase 5 until the user validates Phase 4 visually and behaviorally.
 
 ## 1. Current architecture
 
-The site is static with separated responsibilities:
+Entry:
+- `v2/index.html`
 
-- `index.html` — semantic structure, sections, sidebar and modal shell
-- `assets/styles.css` — main visual system, layout, responsive rules and animations
-- `assets/top5-hover-fix.css` — late-loading override layer carrying Top 5 + recent hero/type/palette refinements
-- `scripts/data.js` — film ranking, poster references and editorial data
-- `scripts/backdrops.js` — generated local TMDB backdrop mappings
-- `scripts/app.js` — rendering, accordions, modal content, cover-flow, progressive ranking loading, parallax and year interactions
-- `scripts/detail-nav.js` — film-detail previous/next navigation, keyboard navigation, mobile swipe handling and full-card directional transition
-- `assets/posters/2000-2024/` — 135 local ranked-film posters
-- `assets/grands-oublies/2000-2024/` — 15 local “Grands oubliés” posters
-- `assets/backdrops/2000-2024/` — ranked-film local backdrops
-- `assets/backdrops/grands-oublies/` — “Grands oubliés” local backdrops
-- `data/2000-2024/poster-manifest.json` — audited TMDB poster correspondences
-- `scripts/fetch-posters-2000-2024.mjs` — authenticated poster-fetch utility
-- `assets/tmdb-logo.svg` — official TMDB attribution mark
-- `assets/directors/` — local director portraits
-- `assets/cinema-hero.jpg` — current hero image, pending requested replacement
-- `assets/header-title.png` — LOTR-style hero title artwork
-- `favicon.svg` — cinema clapper favicon
-- `vercel.json` — static Vercel configuration
+Current key scripts:
+- `v2/scripts/app.js` — canonical rendering, sections, modal, cover-flow, progressive loading, routed Top navigation and temporary two-screen transitions
+- `v2/scripts/data.js`
+- `v2/scripts/new-tops.js`
+- `v2/scripts/expanded-tops.js`
+- `v2/scripts/poster-metadata.js`
+- `v2/scripts/poster-aliases.js`
+- `v2/scripts/expansion-media.js`
+- `v2/scripts/qa-data-fixes.js`
+- `v2/scripts/top-skeletons.js`
+- `v2/scripts/hero-config.js`
+- `v2/scripts/section-polish.js`
+- `v2/scripts/content-expansion.js`
+- `v2/scripts/ovnis-polish.js`
+- `v2/scripts/parallax.js`
+- `v2/scripts/qa-fixes.js`
 
-Do **not** return to the old monolithic `aswa40_prod_deploy.html` workflow.
+Current styles:
+- `v2/styles/app.css`
+- `v2/styles/hero.css`
+- `v2/styles/legacy-parity.css`
+- `v2/styles/content-expansion.css`
+- `v2/styles/modal-polish.css`
+- `v2/styles/section-polish.css`
+- `v2/styles/interaction-fix.css`
+- `v2/styles/parallax.css`
+- `v2/styles/qa-fixes.css`
 
-## 2. Deployment / production guardrail
+Do not add another late-loading `final`, `fix-2`, or override layer. Consolidate into existing canonical files.
 
-The sole production project is `aswa40-films`.
+## 2. Deployment guardrail
 
-Official URL:
+The sole Vercel project is `aswa40-films`.
 
+Production URL:
 `https://aswa40-films.vercel.app/`
 
-Before calling a change live:
+Working branch preview is used for validation. A successful GitHub commit alone is not enough to call a change live; verify Vercel status separately.
 
-1. Read current GitHub `main`.
-2. Check the Vercel status for `aswa40-films`.
-3. Verify the actual public page.
-4. Never say “live” only because a GitHub commit succeeded.
-
-Historical note: the deleted duplicate `aswa40-films-live` project caused redundant builds and contributed to `build-rate-limit` failures.
+Never merge `work-cleanup-sept9` into `main` or promote it without explicit user approval.
 
 ## 3. TMDB image / attribution policy
 
-- TMDB is the standard source for ASWA40 poster / backdrop assets.
-- Fetch via authenticated build / asset tooling, then serve local repository copies.
+- TMDB is the standard metadata source for posters/backdrops.
 - Never expose `TMDB_ACCESS_TOKEN` in browser code, committed source, handoff text or logs.
-- Do not hotlink TMDB image URLs in the production browser experience.
-- Each TMDB-powered Top uses one discreet shared footer with the official TMDB logo and:
-  `This product uses the TMDB API but is not endorsed or certified by TMDB.`
-- TMDB attribution does not imply blanket rights to the underlying movie artwork; treat it as third-party copyrighted promotional material.
+- Prefer local repository assets for final production where the asset workflow supports it.
+- TMDB attribution remains required where TMDB-powered content is presented.
 
 ## 4. UX / visual invariants
 
+### Platform navigation
+
+- Must feel like horizontally navigable iOS screens, not unrelated page loads.
+- Route changes must not introduce a black frame or fake-background crossfade.
+- At idle, only one Top screen is mounted.
+- During a transition, current + target neighbor may coexist briefly.
+- One physical trackpad gesture must result in at most one Top navigation.
+- Incomplete gestures should return smoothly to the current Top.
+- Arrow navigation, swipe and keyboard use the same directional model.
+- Browser Back / Forward and direct refresh on `/tops/<id>` must work.
+- Reduced-motion preference must remain respected.
+
+### Top hierarchy
+
+Default ranking presentation:
+- #1 is the dominant tile;
+- #2–5 are medium hero tiles;
+- remaining films in the featured ranking use the smaller grid treatment.
+
+Re.Watched Top 50 follows the same hierarchy, with #6–50 in the smaller grid.
+
+### OVNIs
+
+- OVNI cards are editorial, not just duplicated bottom-ranked films.
+- Each current category should show a short reason explaining why the film is an OVNI.
+- A low-vote / bottom-ranked status is itself a valid editorial reason when nothing more distinctive is known.
+- Name the chooser only when supported by source material; never infer a member identity from point totals alone.
+- Ranked OVNI cards must remain clickable and open the same canonical modal as the film elsewhere in the ranking.
+- `Jesus of Nazareth` is intentionally highlighted as a strong 1975–1999 OVNI.
+
 ### Header / hero
 
-- LOTR direction is intentional.
-- Inter Tight remains the UI/body typeface.
-- Editorial/display headings use serif treatment.
-- `2000–2024` is roman, not italic.
-- Hero has subtle parallax.
-- Preserve refined header spacing / title position.
-- Use CSS for title scale, position and shadow; do not edit `header-title.png` unless artwork itself changes.
-- Keep the 45 px upward title offset independent from entrance-animation transform.
-- Preserve semantic H1 behind the title artwork.
-- Gold/bronze accents and circular cue are intentional.
-- Motion must respect `prefers-reduced-motion`.
+- Hero distinct. Interface common. Palette adapted.
+- Inter + Inter Tight remain the interface typography.
+- Approved source artwork should be rendered directly; do not recreate artwork in CSS.
+- Preserve semantic structure and `prefers-reduced-motion` behavior.
 
-### Main sections
+### Main interactions
 
-Sections:
-
-1. `TOP 25`
-2. `#25–135` / full ranking
-3. `Les grands oubliés`
-4. `Les OVNIS`
-
-Opening one section must not force-close the others. Sections already open in initial HTML must render in final state on refresh; section-entry animation is for explicit user opening only.
-
-### Top 25
-
-- `#topHero` = Top 5.
-- `#topRest` = ranks 6–25.
+- Sections are independent accordions.
 - Desktop cover-flow is intentional.
-- Top 5 rollover: tile grows more than poster, revealing slightly more crop; no cover→contain jump, no black bars, no shrinking-poster impression.
-- Mobile: #1 spans full width, #2–5 use two columns; winner crown and rank both remain visible.
+- Full ranking preserves progressive loading.
+- Film modal retains poster + backdrop + previous/next + keyboard + touch/trackpad behavior.
+- Sidebar remains sticky and keeps Year / Director disclosures.
 
-### Full ranking #26–135
+## 5. Important current Top data notes
 
-- Progressive batches are preserved on close/reopen.
-- Cover-flow neighbours are calculated by visual row, not rank adjacency.
-- Desktop poster ratio stays `2:3` with `object-fit:cover` and no letterbox bands.
+Current Tops include:
+- `1975-1999`
+- `2000-2024`
+- `sci-fi-realiste`
+- `animation`
+- `biopics`
+- `documentaires`
+- `rewatched`
 
-### Detail panels
+Re.Watched:
+- Top 50 featured section;
+- #51–263 full section;
+- curated OVNI set includes UHF, Airbag, Grind, Le Retour de Goldorak and Condorman;
+- Home Alone is TMDB 771.
 
-- Film and “Grand oublié” panels use local TMDB backdrops with a vertical fade.
-- Backdrop remains hidden until the requested image has loaded; stale load events must not reveal a previous film.
-- Poster remains enlarged and Letterboxd link stays visually aligned near poster bottom.
-- Previous / next arrows remain part of the panel navigation.
-- Ranked-film arrows follow ranking order and wrap at the ends.
-- “Grands oubliés” arrows navigate only within the forgotten-film set.
-- Keyboard Left / Right navigates when the modal is open.
-- Mobile swipe left / right navigates next / previous, with enough horizontal threshold to preserve vertical scrolling.
-- **The entire modal card moves as one unit during navigation**: backdrop, poster, text, Letterboxd link, close control and nav controls stay visually attached.
-- Navigating forward sends the current card slightly left and brings the next card in from the right; navigating backward mirrors that direction.
-- Desktop movement stays restrained; mobile gets a slightly larger translation so the gesture feels naturally connected to swiping.
-- Buttons, keyboard and swipe all use the same directional animation language.
-- Repeated inputs are ignored while a transition is running to avoid double-navigation glitches.
-- `prefers-reduced-motion` switches directly without the directional slide.
+Documentaires:
+- Top 15 featured section;
+- #16–83 full section;
+- Icarus = TMDB 432976;
+- Senna = TMDB 58496.
 
-### Sidebar
+## 6. Working method
 
-Four editorial insight accordions plus Year and Director special cards; no visible group heading.
+1. Read this handoff and inspect current `work-cleanup-sept9` HEAD.
+2. Work on one phase at a time.
+3. Preserve unrelated validated work.
+4. Prefer canonical renderer/data changes over post-render DOM rewrites.
+5. Commit coherent batches distinctly.
+6. Validate Vercel preview after each meaningful phase batch.
+7. Update this handoff after coherent changes, not every micro-adjustment.
+8. Stop for user validation before the next phase.
 
-- Religion commune
-- Monsieur Consensus
-- Duo cinéphile
-- OVNI culturel
-- Année reine
-- Le quatuor
+## 7. Immediate validation checklist for Phase 4
 
-Year / Director UI accent borders remain gold/bronze. The year chart’s semantic highlight red is intentionally distinct from the card UI palette.
+Before declaring Phase 4 complete, test:
+- direct route opens for every Top;
+- refresh preserves the Top;
+- browser Back / Forward works;
+- arrow navigation updates URL;
+- keyboard Left / Right updates Top and URL;
+- pointer/touch horizontal swipe feels continuous;
+- Mac trackpad gesture causes one navigation only;
+- no black/fake background appears between Tops;
+- incomplete swipe returns smoothly;
+- only one `.era-screen` remains mounted after the transition;
+- Re.Watched has #1 / #2–5 / #6–50 hierarchy;
+- Re.Watched OVNIs open their film modal;
+- OVNI editorial reason appears for every current category;
+- desktop/mobile layout remains intact.
 
-### Director quartet
-
-- Denis Villeneuve
-- Christopher Nolan
-- Quentin Tarantino
-- Wes Anderson
-
-Paul Thomas Anderson is intentionally excluded. Portraits and detail rows link to IMDb.
-
-## 5. Data / rendering details worth preserving
-
-- All current poster references are local; no base64 / third-party runtime poster URLs remain.
-- `scripts/backdrops.js` maps each film / forgotten film to local backdrop assets.
-- Letterboxd URLs include manual slug exceptions for franchises.
-- Some editorial modal detail exists only for selected ranks.
-- Full-ranking poster images use deferred `data-src` loading.
-- Responsive column count affects progressive batch sizes.
-- Cover-flow is enabled only when `(hover:hover) and (pointer:fine)` matches.
-- Reduced-motion preferences are respected.
-
-## 6. Three-space working method
-
-### Master chat
-
-- Read this handoff first.
-- Start from **Active local work** if one exists, otherwise current `main`.
-- Inspect targeted files / branch diff only.
-- Preserve validated work.
-- Prefer a coherent batch instead of chains of tiny production commits.
-- Update handoff after a meaningful validated batch.
-
-### Local
-
-- Use a named branch for visual exploration.
-- Record branch name and starting `main` commit under **Active local work**.
-- Test locally rather than through Vercel.
-- Update branch handoff at meaningful checkpoints.
-- Promote only after user validation.
-
-### Work
-
-- Read handoff and active branch first.
-- Continue the unfinished branch when the task belongs to it.
-- Make the smallest coherent change.
-- Update handoff when decisions, branch status or remaining work materially change.
-- Verify Vercel / public page separately from GitHub push success.
-
-## 7. Continuity rule
-
-If conversation memory conflicts with this file, current GitHub code wins for code state. If `main` and production disagree, treat `main` as the latest source and production as potentially stale until verified.
-
-For visual/product decisions, Master chat is the decision thread; once recorded here, Local and Work should follow the handoff without asking the user to restate them.
-
-
-## Mise à jour Documentaires — 2026-09-10
-
-- Source : neuf listes individuelles fournies en captures d’écran.
-- Le Top 15 déjà publié demeure verrouillé et inchangé.
-- Classement complémentaire compilé par points décroissants, puis nombre de votes, puis meilleur rang individuel.
-- Le Top Documentaires contient maintenant 83 films et une section de classement complet `#16–83`.
-- Sections ajoutées : `Les grands oubliés` et `Les OVNIS`.
-- Grands oubliés documentaires : `Shoah`, `The Thin Blue Line`, `Grey Gardens`, `Paris Is Burning`, `Harlan County War`, `Crumb`, `Hearts of Darkness: A Filmmaker’s Apocalypse`.
-- La synchronisation TMDB traite désormais aussi les séries documentaires, les titres alternatifs et les affiches des grands oubliés.
-- Quatre titres classés restent sans correspondance TMDB automatisée : `The Rolling Stones: Crossfire Hurricane`, `Pour la suite du monde`, `Les Ordres`, `La nuit de la poésie`.
-- Travail réalisé sur `work-cleanup-sept9`; ne pas fusionner dans `main` sans validation.
+Stop after validation. Phase 5 is cleanup only and must not begin early.
