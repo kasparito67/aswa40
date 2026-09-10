@@ -12,6 +12,7 @@ on:
 permissions:
   contents: write
 
+# Keep this workflow on the latest cleanup HEAD so generated media never races manual UI commits.
 jobs:
   sync:
     runs-on: ubuntu-latest
