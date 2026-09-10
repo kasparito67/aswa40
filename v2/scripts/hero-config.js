@@ -31,6 +31,10 @@
       scale:1,
       titleArt:'../assets/header-biopics-normalized.svg',
       titleAlt:'Top Biopics et faits vécus'
+    },
+    'rewatched':{
+      titleArt:'../assets/header-rewatch.svg',
+      titleAlt:'Top 50 Re.Watch'
     }
   };
 
