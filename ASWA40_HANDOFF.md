@@ -283,3 +283,16 @@ Paul Thomas Anderson is intentionally excluded. Portraits and detail rows link t
 If conversation memory conflicts with this file, current GitHub code wins for code state. If `main` and production disagree, treat `main` as the latest source and production as potentially stale until verified.
 
 For visual/product decisions, Master chat is the decision thread; once recorded here, Local and Work should follow the handoff without asking the user to restate them.
+
+
+## Mise à jour Documentaires — 2026-09-10
+
+- Source : neuf listes individuelles fournies en captures d’écran.
+- Le Top 15 déjà publié demeure verrouillé et inchangé.
+- Classement complémentaire compilé par points décroissants, puis nombre de votes, puis meilleur rang individuel.
+- Le Top Documentaires contient maintenant 83 films et une section de classement complet `#16–83`.
+- Sections ajoutées : `Les grands oubliés` et `Les OVNIS`.
+- Grands oubliés documentaires : `Shoah`, `The Thin Blue Line`, `Grey Gardens`, `Paris Is Burning`, `Harlan County War`, `Crumb`, `Hearts of Darkness: A Filmmaker’s Apocalypse`.
+- La synchronisation TMDB traite désormais aussi les séries documentaires, les titres alternatifs et les affiches des grands oubliés.
+- Quatre titres classés restent sans correspondance TMDB automatisée : `The Rolling Stones: Crossfire Hurricane`, `Pour la suite du monde`, `Les Ordres`, `La nuit de la poésie`.
+- Travail réalisé sur `work-cleanup-sept9`; ne pas fusionner dans `main` sans validation.
