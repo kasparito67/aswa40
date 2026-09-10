@@ -97,7 +97,7 @@
 
 @media(max-width:560px){
   /* True mobile sheet: keep every part inside the visual viewport and let the
-     sheet itself scroll vertically. No desktop columns, floats or vw-based width. */
+     sheet itself scroll vertically. No desktop columns, floats or negative pull-up. */
   .modal-bg{
     padding:8px!important;
     align-items:center!important;
@@ -119,13 +119,15 @@
     border-radius:16px!important;
   }
   .modal-content{
+    position:relative!important;
     box-sizing:border-box!important;
     display:block!important;
     width:100%!important;
     max-width:100%!important;
     height:auto!important;
     min-height:0!important;
-    padding:48px 18px max(24px,env(safe-area-inset-bottom))!important;
+    margin-top:0!important;
+    padding:58px 18px max(28px,env(safe-area-inset-bottom))!important;
     overflow:visible!important;
   }
   .modal-poster{
@@ -139,7 +141,7 @@
     object-fit:contain!important;
     object-position:center!important;
     float:none!important;
-    margin:0 auto 20px!important;
+    margin:0 auto 24px!important;
     border-width:4px!important;
     border-radius:8px!important;
     background:#090c0e!important;
