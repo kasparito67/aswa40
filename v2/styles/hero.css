@@ -41,6 +41,25 @@
   transform-origin:center;
 }
 
+/* Expanded-top hero image treatments now live with the rest of the hero system. */
+.era-screen[data-top-id="sci-fi-realiste"] .hero-media{
+  filter:saturate(.82) contrast(1.08) brightness(.66);
+  transform:scale(1.015);
+  object-fit:cover;
+}
+.era-screen[data-top-id="animation"] .hero-media,
+.era-screen[data-top-id="biopics"] .hero-media{
+  filter:saturate(.76) contrast(1.06) brightness(.64);
+  object-fit:cover!important;
+  transform:scale(1)!important;
+  background:#07090a;
+}
+.era-screen[data-top-id="sci-fi-realiste"] .hero-header:before,
+.era-screen[data-top-id="animation"] .hero-header:before,
+.era-screen[data-top-id="biopics"] .hero-header:before{
+  background:linear-gradient(90deg,rgba(5,7,8,.72),rgba(5,7,8,.14) 42%,rgba(5,7,8,.34)),linear-gradient(180deg,rgba(5,7,8,.46),transparent 34%,var(--top-bg) 100%);
+}
+
 /* Shared medal treatment. Placement is based on the supplied 1920×1080 comps. */
 .hero-art-medallions{
   position:absolute;
@@ -148,6 +167,9 @@
     height:31vw!important;
     transform:translate(-50%,-50%)!important;
   }
+
+  .era-screen[data-top-id="animation"] .hero-media,
+  .era-screen[data-top-id="biopics"] .hero-media{transform:scale(1)!important}
 
   .hero-art-medallions,
   .era-screen[data-top-id="2000-2024"] .hero-art-medallions,
