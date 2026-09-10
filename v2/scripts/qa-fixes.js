@@ -4,8 +4,6 @@
   const modalBg=document.getElementById('modalBg');
   const modalRank=document.getElementById('modalRank');
   const modalBody=document.getElementById('modalBody');
-  const prev=document.getElementById('eraPrev');
-  const next=document.getElementById('eraNext');
   if(!app)return;
 
   // OVNI editorial notes belong in the film detail card, not on touch tiles.
@@ -58,27 +56,20 @@
     },true);
   }
 
-  // One mobile gesture source. This script is loaded before app.js so its guards
-  // run before the canonical pointer/resize handlers are registered.
+  // Mobile stability guards only. The canonical carousel in app.js now owns the
+  // complete touch gesture, including direct 1:1 drag over interactive cards.
   const touchDevice=matchMedia('(pointer:coarse)').matches||('ontouchstart' in window);
   if(!touchDevice)return;
-
-  let gesture=null;
-  let suppressClickUntil=0;
-  const modalOpen=()=>modalBg&&(modalBg.classList.contains('open')||modalBg.getAttribute('aria-hidden')==='false');
-  const suppressSelector='.tile,.ghost-card,.sec>.toggle,.insight-card,.year-toggle,.director-toggle-action,.full-reveal-button,.era-arrow,a';
   const stageTransitioning=()=>stage&&(stage.children.length>1||stage.style.width==='200vw');
 
   // Android browser chrome can emit resize while a horizontal navigation is in
-  // flight. app.js historically treated every resize as a cancelled carousel and
-  // restored the previous screen. Ignore only those transient resize events.
+  // flight. Never let that transient resize cancel an active page transition.
   addEventListener('resize',e=>{
     if(stageTransitioning())e.stopImmediatePropagation();
   },{capture:true});
 
-  // At rest there must be no latent CSS transition. app.js briefly clears its
-  // inline transition after finalizing a route, which can otherwise animate the
-  // reset from ±100vw back to zero on some mobile compositors.
+  // At rest there must be no latent CSS transition. This prevents the compositor
+  // from animating the ±100vw -> 0 reset after the committed page is isolated.
   if(stage){
     const stabilize=()=>{
       if(stage.children.length===1&&stage.style.width==='100vw'&&stage.style.transition!=='none'){
@@ -88,53 +79,4 @@
     };
     new MutationObserver(()=>queueMicrotask(stabilize)).observe(stage,{attributes:true,childList:true,attributeFilter:['style']});
   }
-
-  // Block touch-pointer events before app.js's live-drag handler. Native touch
-  // events below are the sole mobile page gesture path.
-  ['pointerdown','pointermove','pointerup','pointercancel'].forEach(type=>{
-    app.addEventListener(type,e=>{
-      if(e.pointerType!=='touch'||modalOpen())return;
-      e.stopImmediatePropagation();
-    },{capture:true,passive:true});
-  });
-
-  app.addEventListener('touchstart',e=>{
-    if(modalOpen())return;
-    const touch=e.touches?.[0];
-    if(!touch)return;
-    gesture={x:touch.clientX,y:touch.clientY,dx:0,dy:0,horizontal:false,cancelled:false};
-  },{capture:true,passive:true});
-
-  app.addEventListener('touchmove',e=>{
-    if(!gesture||gesture.cancelled||modalOpen())return;
-    const touch=e.touches?.[0];
-    if(!touch)return;
-    gesture.dx=touch.clientX-gesture.x;
-    gesture.dy=touch.clientY-gesture.y;
-    if(Math.abs(gesture.dx)<12&&Math.abs(gesture.dy)<12)return;
-    if(!gesture.horizontal){
-      if(Math.abs(gesture.dy)>Math.abs(gesture.dx)*1.08){gesture.cancelled=true;return}
-      if(Math.abs(gesture.dx)>Math.abs(gesture.dy)*1.12)gesture.horizontal=true;
-    }
-    if(gesture.horizontal)e.preventDefault();
-  },{capture:true,passive:false});
-
-  app.addEventListener('touchend',()=>{
-    if(!gesture)return;
-    const g=gesture;
-    gesture=null;
-    if(g.cancelled||!g.horizontal||Math.abs(g.dx)<58)return;
-    suppressClickUntil=performance.now()+700;
-    (g.dx<0?next:prev)?.click();
-  },{capture:true,passive:true});
-
-  app.addEventListener('touchcancel',()=>{gesture=null},{capture:true,passive:true});
-
-  document.addEventListener('click',e=>{
-    if(!e.isTrusted||performance.now()>=suppressClickUntil)return;
-    if(!e.target.closest?.(suppressSelector))return;
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-  },true);
 })();
