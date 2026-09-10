@@ -3,9 +3,24 @@
   if(!stage)return;
 
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const mobile=matchMedia('(max-width:700px)').matches||matchMedia('(pointer:coarse)').matches;
+
+  // Phase 5A: mobile gets the spatial page transition but not continuous parallax.
+  // This avoids scroll listeners, MutationObservers and repeated per-frame style writes
+  // on the devices that benefit least from the extra depth effect.
+  if(mobile){
+    stage.querySelectorAll('.era-screen').forEach(screen=>{
+      screen.style.setProperty('--px-bg-x','0px');
+      screen.style.setProperty('--px-bg-y','0px');
+      screen.style.setProperty('--px-title-x','0px');
+      screen.style.setProperty('--px-title-y','0px');
+      screen.style.setProperty('--px-content-x','0px');
+    });
+    return;
+  }
+
   let raf=0;
   let until=0;
-
   const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
 
   function updateScreen(screen){
@@ -22,12 +37,8 @@
     const rect=screen.getBoundingClientRect();
     const side=clamp(rect.left,-vw*1.1,vw*1.1);
     const sy=screen.scrollTop||0;
-
-    /* Vertical depth: background lags most, title less, sections remain the reference plane. */
     const bgY=clamp(sy*.22,0,150);
     const titleY=clamp(sy*.10,0,78);
-
-    /* Horizontal depth: each layer moves at a slightly different rate during stage translation. */
     const bgX=clamp(-side*.060,-72,72);
     const titleX=clamp(-side*.032,-42,42);
     const contentX=clamp(-side*.012,-18,18);
@@ -59,11 +70,8 @@
     });
   }
 
-  /* The stage style changes continuously during drag and once at snap; observe it so CSS transitions keep their depth. */
   const stageObserver=new MutationObserver(()=>burst(820));
   stageObserver.observe(stage,{attributes:true,attributeFilter:['style','class']});
-
-  /* App.js renders synchronously before this file, but this also keeps the layer safe if screens are regenerated later. */
   const childObserver=new MutationObserver(()=>{bindScroll();burst(100)});
   childObserver.observe(stage,{childList:true});
 
