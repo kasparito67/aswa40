@@ -130,24 +130,28 @@
     });
   }
 
-  // Performance pass: keep initial full-ranking payloads compact. app.js hydrates
-  // the first full grid eagerly, so lowering the first batch prevents dozens of
-  // off-screen poster downloads during first paint without changing the ranking.
+  // Phase 5A performance pass. Keep the first ranking payload deliberately small:
+  // closed sections are secondary content and mobile bandwidth is the hard constraint.
   const mobile=matchMedia('(max-width:700px)').matches;
+  const tmdbSize=(src,size)=>typeof src==='string'
+    ?src.replace(/https:\/\/image\.tmdb\.org\/t\/p\/(?:original|w\d+)\//,`https://image.tmdb.org/t/p/${size}/`)
+    :src;
+
   TOPS.forEach(top=>{
     (top.sections||[]).forEach(section=>{
       if(section.kind!=='full')return;
-      const limit=mobile?12:27;
+      const limit=mobile?8:18;
       section.batch=Math.min(Number(section.batch)||limit,limit);
     });
 
-    // TMDB "original" backdrops can be several megabytes. Mobile does not need
-    // that resolution for a phone-sized hero/modal, so use the official w780 CDN
-    // variant while leaving desktop artwork untouched.
     if(mobile){
-      const compact=src=>typeof src==='string'?src.replace('https://image.tmdb.org/t/p/original/','https://image.tmdb.org/t/p/w780/'):src;
-      if(top.hero?.image)top.hero.image=compact(top.hero.image);
-      (top.films||[]).forEach(f=>{if(f.backdrop)f.backdrop=compact(f.backdrop)});
+      // Phone grids do not benefit from 500px posters or original-size backdrops.
+      if(top.hero?.image)top.hero.image=tmdbSize(top.hero.image,'w780');
+      (top.films||[]).forEach(f=>{
+        if(f.img)f.img=tmdbSize(f.img,'w342');
+        if(f.backdrop)f.backdrop=tmdbSize(f.backdrop,'w780');
+      });
+      (top.ghosts||[]).forEach(g=>{if(g.img)g.img=tmdbSize(g.img,'w342')});
     }
   });
 })();
