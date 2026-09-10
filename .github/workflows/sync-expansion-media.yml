@@ -1,0 +1,36 @@
+name: Sync expansion media
+
+on:
+  push:
+    branches: [work-cleanup-sept9]
+    paths:
+      - 'scripts/sync-expansion-media.mjs'
+      - '.github/workflows/sync-expansion-media.yml'
+      - 'v2/scripts/expanded-tops.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work-cleanup-sept9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Resolve posters and hero backdrops
+        env:
+          TMDB_ACCESS_TOKEN: ${{ secrets.TMDB_ACCESS_TOKEN }}
+        run: node scripts/sync-expansion-media.mjs
+      - name: Commit synced media
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/posters/documentaires assets/posters/rewatched data/documentaires data/rewatched v2/scripts/expansion-media.js expansion-media-result.json || true
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Sync documentary and Re.Watched media'
+          git push origin HEAD:work-cleanup-sept9
