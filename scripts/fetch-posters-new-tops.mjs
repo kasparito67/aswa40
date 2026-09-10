@@ -38,7 +38,7 @@ async function download(hit,file){const r=await fetch(`https://image.tmdb.org/t/
 
 const oldMeta=new Map();
 for(const era of ['1975-1999','2000-2024']){try{const m=JSON.parse(await fs.readFile(`data/${era}/poster-manifest.json`,'utf8'));for(const x of [...(m.ranked||[]),...(m.forgotten||[])])if(x.title&&x.tmdbId)oldMeta.set(norm(x.title),x)}catch{}}
-const resolved=new Map(), manifests={};
+const resolved=new Map(), resolvedGhosts=new Map(), manifests={};
 for(const top of tops.filter(t=>t.films?.length)){
   const entries=[];
   for(const film of top.films){
@@ -55,14 +55,35 @@ for(const top of tops.filter(t=>t.films?.length)){
     if(img&&!isPlaceholder(img)&&await validCurrent(img))resolved.set(key,{img,...canonical});
     entries.push({rank:film.rank,title:film.title,img,status:resolved.has(key)?'ok':editorialExceptions.has(key)?'editorial-exception':'unresolved',...canonical});
   }
-  manifests[top.id]=entries;
+  const ghostEntries=[];
+  for(const [index,ghost] of (top.ghosts||[]).entries()){
+    const key=`${top.id}:ghost:${index}`;
+    let img=ghost.img||'';
+    let meta=oldMeta.get(norm(ghost.title))||null;
+    const posterValid=await validCurrent(img);
+    if(targetIds.has(top.id)&&!posterValid){
+      const results=await search(ghost.title);
+      const hit=results.find(x=>norm(x.title)===norm(ghost.title)&&x.poster_path)||results.find(x=>x.poster_path)||null;
+      if(hit?.poster_path){
+        const file=`assets/posters/${top.id}/ghost-${String(index+1).padStart(2,'0')}-${slug(ghost.title)}.jpg`;
+        await download(hit,file);
+        img=`../${file}`;
+        meta=hit;
+      }
+    }
+    const canonical=meta?{tmdbId:meta.id||meta.tmdbId||null,posterPath:meta.poster_path||meta.posterPath||null,backdropPath:meta.backdrop_path||meta.backdropPath||null,year:String(meta.release_date||meta.tmdbDate||'').slice(0,4)||null}:{};
+    if(img&&!isPlaceholder(img)&&await validCurrent(img))resolvedGhosts.set(key,{img,...canonical});
+    ghostEntries.push({title:ghost.title,img,status:resolvedGhosts.has(key)?'ok':'unresolved',...canonical});
+  }
+  manifests[top.id]=entries.concat(ghostEntries.map((entry,index)=>({rank:`ghost-${index+1}`,...entry})));
   await fs.mkdir(`data/${top.id}`,{recursive:true});
   await fs.writeFile(`data/${top.id}/poster-manifest-v2.json`,JSON.stringify({generatedAt:new Date().toISOString(),source:'TMDB + established ASWA40 assets',films:entries},null,2)+'\n');
 }
 const payload=Object.fromEntries(resolved);
-const js=`(()=>{\n  const metadata=${JSON.stringify(payload,null,2)};\n  TOPS.forEach(top=>(top.films||[]).forEach(f=>{const m=metadata[top.id+':'+f.rank];if(!m)return;Object.assign(f,m);if(m.img)f.img=m.img;}));\n})();\n`;
+const ghostPayload=Object.fromEntries(resolvedGhosts);
+const js=`(()=>{\n  const metadata=${JSON.stringify(payload,null,2)};\n  const ghostMetadata=${JSON.stringify(ghostPayload,null,2)};\n  TOPS.forEach(top=>{\n    (top.films||[]).forEach(f=>{const m=metadata[top.id+':'+f.rank];if(!m)return;Object.assign(f,m);if(m.img)f.img=m.img;});\n    (top.ghosts||[]).forEach((g,index)=>{const m=ghostMetadata[top.id+':ghost:'+index];if(!m)return;Object.assign(g,m);if(m.img)g.img=m.img;});\n  });\n})();\n`;
 await fs.writeFile('v2/scripts/poster-metadata.js',js);
 const unresolved=[];for(const [id,entries] of Object.entries(manifests))for(const e of entries)if(e.status!=='ok')unresolved.push({topId:id,...e});
 await fs.writeFile('poster-sync-result.json',JSON.stringify({resolved:resolved.size,unresolved},null,2)+'\n');
-console.log(`Canonical metadata entries: ${resolved.size}; unresolved: ${unresolved.length}`);
+console.log(`Canonical metadata entries: ${resolved.size + resolvedGhosts.size}; unresolved: ${unresolved.length}`);
 if(unresolved.length)console.log(unresolved.map(x=>`${x.topId} #${x.rank} ${x.title} [${x.status}]`).join('\n'));
