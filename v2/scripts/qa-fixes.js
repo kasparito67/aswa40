@@ -59,10 +59,10 @@
     },true);
   }
 
-  // app.js owns the canonical screen-to-screen transition. On touch devices its
-  // pointer handler intentionally ignores buttons, which makes most poster/card
-  // surfaces impossible to start a page swipe from. Bridge only those interactive
-  // surfaces back to the canonical arrow navigation; blank areas still use app.js.
+  // app.js owns the canonical swipe on blank surfaces. Its pointer handler ignores
+  // buttons, so interactive cards need a small touch bridge. Do NOT navigate during
+  // touchmove: committing while inertial touch events are still arriving can create
+  // a visible snap/back-snap. Track the gesture and commit exactly once on touchend.
   const touchDevice=matchMedia('(pointer:coarse)').matches||('ontouchstart' in window);
   if(!touchDevice)return;
 
@@ -77,30 +77,33 @@
     const target=e.target.closest?.(interactiveSelector);
     const touch=e.touches?.[0];
     if(!target||!touch)return;
-    gesture={x:touch.clientX,y:touch.clientY,target};
+    gesture={x:touch.clientX,y:touch.clientY,dx:0,dy:0,horizontal:false,cancelled:false,target};
   },{capture:true,passive:true});
 
   app.addEventListener('touchmove',e=>{
-    if(!gesture||modalOpen())return;
+    if(!gesture||gesture.cancelled||modalOpen())return;
     const touch=e.touches?.[0];
     if(!touch)return;
-    const dx=touch.clientX-gesture.x;
-    const dy=touch.clientY-gesture.y;
-    if(Math.abs(dx)<18&&Math.abs(dy)<18)return;
-    if(Math.abs(dy)>Math.abs(dx)*1.08){gesture=null;return}
-    if(Math.abs(dx)<58)return;
-
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    suppressClickUntil=performance.now()+700;
-    (dx<0?next:prev)?.click();
-    gesture=null;
+    gesture.dx=touch.clientX-gesture.x;
+    gesture.dy=touch.clientY-gesture.y;
+    if(Math.abs(gesture.dx)<12&&Math.abs(gesture.dy)<12)return;
+    if(!gesture.horizontal){
+      if(Math.abs(gesture.dy)>Math.abs(gesture.dx)*1.08){gesture.cancelled=true;return}
+      if(Math.abs(gesture.dx)>Math.abs(gesture.dy)*1.12)gesture.horizontal=true;
+    }
+    if(gesture.horizontal)e.preventDefault();
   },{capture:true,passive:false});
 
-  const clear=()=>{gesture=null};
-  app.addEventListener('touchend',clear,{capture:true,passive:true});
-  app.addEventListener('touchcancel',clear,{capture:true,passive:true});
+  app.addEventListener('touchend',()=>{
+    if(!gesture)return;
+    const g=gesture;
+    gesture=null;
+    if(g.cancelled||!g.horizontal||Math.abs(g.dx)<58)return;
+    suppressClickUntil=performance.now()+700;
+    (g.dx<0?next:prev)?.click();
+  },{capture:true,passive:true});
+
+  app.addEventListener('touchcancel',()=>{gesture=null},{capture:true,passive:true});
 
   document.addEventListener('click',e=>{
     if(performance.now()>=suppressClickUntil)return;
