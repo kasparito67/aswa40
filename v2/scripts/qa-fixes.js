@@ -1,5 +1,6 @@
 (()=>{
   const app=document.getElementById('app');
+  const stage=document.getElementById('stage');
   const modalBg=document.getElementById('modalBg');
   const modalRank=document.getElementById('modalRank');
   const modalBody=document.getElementById('modalBody');
@@ -57,19 +58,39 @@
     },true);
   }
 
-  // Mobile owns one swipe path only. app.js still owns the actual page transition,
-  // but its live pointer-drag preview is disabled for touch pointers because that
-  // preview plus the browser touch stream can visibly snap back at release.
+  // One mobile gesture source. This script is loaded before app.js so its guards
+  // run before the canonical pointer/resize handlers are registered.
   const touchDevice=matchMedia('(pointer:coarse)').matches||('ontouchstart' in window);
   if(!touchDevice)return;
 
   let gesture=null;
   let suppressClickUntil=0;
   const modalOpen=()=>modalBg&&(modalBg.classList.contains('open')||modalBg.getAttribute('aria-hidden')==='false');
-  const suppressSelector='.tile,.ghost-card,.sec>.toggle,.insight-card,.year-toggle,.director-toggle-action,.full-reveal-button,a';
+  const suppressSelector='.tile,.ghost-card,.sec>.toggle,.insight-card,.year-toggle,.director-toggle-action,.full-reveal-button,.era-arrow,a';
+  const stageTransitioning=()=>stage&&(stage.children.length>1||stage.style.width==='200vw');
 
-  // Capture touch-pointer events before the canonical bubble listeners in app.js.
-  // Native touch events below become the single mobile gesture source.
+  // Android browser chrome can emit resize while a horizontal navigation is in
+  // flight. app.js historically treated every resize as a cancelled carousel and
+  // restored the previous screen. Ignore only those transient resize events.
+  addEventListener('resize',e=>{
+    if(stageTransitioning())e.stopImmediatePropagation();
+  },{capture:true});
+
+  // At rest there must be no latent CSS transition. app.js briefly clears its
+  // inline transition after finalizing a route, which can otherwise animate the
+  // reset from ±100vw back to zero on some mobile compositors.
+  if(stage){
+    const stabilize=()=>{
+      if(stage.children.length===1&&stage.style.width==='100vw'&&stage.style.transition!=='none'){
+        stage.style.transition='none';
+        stage.style.willChange='auto';
+      }
+    };
+    new MutationObserver(()=>queueMicrotask(stabilize)).observe(stage,{attributes:true,childList:true,attributeFilter:['style']});
+  }
+
+  // Block touch-pointer events before app.js's live-drag handler. Native touch
+  // events below are the sole mobile page gesture path.
   ['pointerdown','pointermove','pointerup','pointercancel'].forEach(type=>{
     app.addEventListener(type,e=>{
       if(e.pointerType!=='touch'||modalOpen())return;
@@ -110,8 +131,7 @@
   app.addEventListener('touchcancel',()=>{gesture=null},{capture:true,passive:true});
 
   document.addEventListener('click',e=>{
-    if(performance.now()>=suppressClickUntil)return;
-    if(e.target.closest?.('.era-arrow'))return;
+    if(!e.isTrusted||performance.now()>=suppressClickUntil)return;
     if(!e.target.closest?.(suppressSelector))return;
     e.preventDefault();
     e.stopPropagation();
