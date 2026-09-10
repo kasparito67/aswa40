@@ -24,7 +24,7 @@ const overrides={
   'animation:3':324857,'animation:9':9385,'animation:10':8587,'animation:12':22504,'animation:16':4977,'animation:17':9662,'animation:19':920,'animation:25':569094,'animation:26':49565,'animation:30':10693,'animation:32':44896,'animation:33':12477,'animation:35':812,'animation:37':16859,'animation:39':10895,
   'animation:41':42994,'animation:42':10494,'animation:44':9318,'animation:46':399174,'animation:51':9606,'animation:54':2011,'animation:57':823219,'animation:58':82702,'animation:59':508965,'animation:60':81,'animation:62':7443,'animation:64':16306,'animation:65':13396,'animation:70':19106,'animation:71':532,'animation:72':9929,'animation:74':10882,'animation:80':310576,'animation:84':11886,'animation:87':41201,'animation:89':546201,
   'biopics:11':9008,'biopics:14':334543,'biopics:15':1883,'biopics:16':1850,'biopics:18':429197,'biopics:19':4133,'biopics:20':77338,'biopics:24':10139,'biopics:26':68812,'biopics:27':2567,'biopics:30':7984,'biopics:32':69,'biopics:34':1955,'biopics:35':266856,'biopics:37':3902,'biopics:42':746,'biopics:43':5708,'biopics:45':15362,'biopics:46':10537,'biopics:47':205596,'biopics:49':197,'biopics:51':687,'biopics:52':1653,'biopics:54':10360,'biopics:56':820,'biopics:57':11327,'biopics:61':1677,'biopics:64':1254808,'biopics:67':12160,
-  'documentaires:1':1430,
+  'documentaires:1':1430,'documentaires:7':432976,
   'rewatched:1':11,'rewatched:255':1584
 };
 const editorialExceptions=new Set(['1975-1999:3']);
