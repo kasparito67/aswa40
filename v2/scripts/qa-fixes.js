@@ -8,8 +8,6 @@
   if(!app)return;
 
   // OVNI editorial notes belong in the film detail card, not on touch tiles.
-  // The canonical renderer already owns the desktop hover copy. This small bridge
-  // mirrors the same note inside the clickable detail view for every Top.
   const currentTop=()=>{
     const id=document.querySelector('.era-screen')?.dataset.topId;
     return Array.isArray(TOPS)?TOPS.find(t=>t.id===id):null;
@@ -59,25 +57,31 @@
     },true);
   }
 
-  // app.js owns the canonical swipe on blank surfaces. Its pointer handler ignores
-  // buttons, so interactive cards need a small touch bridge. Do NOT navigate during
-  // touchmove: committing while inertial touch events are still arriving can create
-  // a visible snap/back-snap. Track the gesture and commit exactly once on touchend.
+  // Mobile owns one swipe path only. app.js still owns the actual page transition,
+  // but its live pointer-drag preview is disabled for touch pointers because that
+  // preview plus the browser touch stream can visibly snap back at release.
   const touchDevice=matchMedia('(pointer:coarse)').matches||('ontouchstart' in window);
   if(!touchDevice)return;
 
-  const interactiveSelector='.tile,.ghost-card,.sec>.toggle,.insight-card,.year-toggle,.director-toggle-action,.full-reveal-button';
   let gesture=null;
   let suppressClickUntil=0;
-
   const modalOpen=()=>modalBg&&(modalBg.classList.contains('open')||modalBg.getAttribute('aria-hidden')==='false');
+  const suppressSelector='.tile,.ghost-card,.sec>.toggle,.insight-card,.year-toggle,.director-toggle-action,.full-reveal-button,a';
+
+  // Capture touch-pointer events before the canonical bubble listeners in app.js.
+  // Native touch events below become the single mobile gesture source.
+  ['pointerdown','pointermove','pointerup','pointercancel'].forEach(type=>{
+    app.addEventListener(type,e=>{
+      if(e.pointerType!=='touch'||modalOpen())return;
+      e.stopImmediatePropagation();
+    },{capture:true,passive:true});
+  });
 
   app.addEventListener('touchstart',e=>{
     if(modalOpen())return;
-    const target=e.target.closest?.(interactiveSelector);
     const touch=e.touches?.[0];
-    if(!target||!touch)return;
-    gesture={x:touch.clientX,y:touch.clientY,dx:0,dy:0,horizontal:false,cancelled:false,target};
+    if(!touch)return;
+    gesture={x:touch.clientX,y:touch.clientY,dx:0,dy:0,horizontal:false,cancelled:false};
   },{capture:true,passive:true});
 
   app.addEventListener('touchmove',e=>{
@@ -107,7 +111,8 @@
 
   document.addEventListener('click',e=>{
     if(performance.now()>=suppressClickUntil)return;
-    if(!e.target.closest?.(interactiveSelector))return;
+    if(e.target.closest?.('.era-arrow'))return;
+    if(!e.target.closest?.(suppressSelector))return;
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
