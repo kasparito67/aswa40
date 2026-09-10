@@ -50,6 +50,20 @@
 
   const re=TOPS.find(t=>t.id==='rewatched');
   if(re){
+    // Home Alone has had an incorrect image despite the correct TMDB identity being present.
+    // Keep the visible poster and metadata pinned to the 1990 film (TMDB 771).
+    const homeAlone=re.films.find(f=>f.rank===5||norm(f.title)==='home alone');
+    if(homeAlone)Object.assign(homeAlone,{
+      title:'Home Alone',
+      year:'1990',
+      tmdbId:771,
+      img:'https://image.tmdb.org/t/p/w500/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg',
+      posterPath:'/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg',
+      backdropPath:'/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg',
+      backdrop:'https://image.tmdb.org/t/p/original/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg',
+      letterboxd:'https://letterboxd.com/film/home-alone/'
+    });
+
     re.community='9 cinéphiles';
     re.sections=[
       {kicker:'Les plus revus',title:'TOP 50',kind:'top25'},
