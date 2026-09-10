@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T16:10:02.002Z",
+  "generatedAt": "2026-09-10T16:11:50.020Z",
   "source": "TMDB + established ASWA40 assets",
   "films": [
     {
@@ -263,10 +263,10 @@
       "title": "The Land Before Time",
       "img": "../assets/posters/animation/027-the-land-before-time.jpg",
       "status": "ok",
-      "tmdbId": 12144,
-      "posterPath": "/7phV1ETZnQrLsEeuk4hNeceEl25.jpg",
-      "backdropPath": "/sXfQGa7juaTpZ5IF17Xa6hI53nx.jpg",
-      "year": "1988"
+      "tmdbId": 3817,
+      "posterPath": "/p4eUTWcyh5U62Y26HkALQQjdwMF.jpg",
+      "backdropPath": "/oWLc5nZuzPEaH55f3x31I8pllIj.jpg",
+      "year": null
     },
     {
       "rank": 28,
@@ -463,10 +463,10 @@
       "title": "The Adventures of Tintin",
       "img": "../assets/posters/animation/047-the-adventures-of-tintin.jpg",
       "status": "ok",
-      "tmdbId": 17578,
-      "posterPath": "/fQZ3sLR1Fi63NMsNRbjm9q5qODJ.jpg",
-      "backdropPath": "/6mqgl2szMLRYj4lhlXOjju5Tpeo.jpg",
-      "year": "2011"
+      "tmdbId": 1570,
+      "posterPath": "/usUB0lQSYQPuBZIg6V8CdVaVkdT.jpg",
+      "backdropPath": "/e9pwnvHUVtP7jg4icWXYRWF2uc9.jpg",
+      "year": null
     },
     {
       "rank": 48,
@@ -803,10 +803,10 @@
       "title": "Robot Carnival",
       "img": "../assets/posters/animation/081-robot-carnival.jpg",
       "status": "ok",
-      "tmdbId": 33441,
-      "posterPath": "/2DTREQNErBYtZd1isRqdqNbbXA8.jpg",
-      "backdropPath": "/iV6G3qnnEsZ1CsHXjxoXNBeKMw6.jpg",
-      "year": "1987"
+      "tmdbId": 87055,
+      "posterPath": "/4IFyW7E8tyWbR76xymkbniknI0T.jpg",
+      "backdropPath": "/qFRvBgN3kA2uKnOJ2BagM2CR8w3.jpg",
+      "year": null
     },
     {
       "rank": 82,

@@ -1734,10 +1734,10 @@
   },
   "sci-fi-realiste:24": {
     "img": "../assets/posters/sci-fi-realiste/024-snowpiercer.jpg",
-    "tmdbId": 110415,
-    "posterPath": "/kw6YQudA0TMcNmGUGy5XIw7zbnV.jpg",
-    "backdropPath": "/tBIRtMCELcA5PxO7z7OiuCHJdFO.jpg",
-    "year": "2013"
+    "tmdbId": 79680,
+    "posterPath": "/exKzfiKzMdQBHrdd7zNmKauJkbg.jpg",
+    "backdropPath": "/h8dzXytAPFkAHv1kZAN1SshXI68.jpg",
+    "year": null
   },
   "sci-fi-realiste:25": {
     "img": "../assets/posters/sci-fi-realiste/025-a-i-artificial-intelligence.jpg",
@@ -2213,10 +2213,10 @@
   },
   "animation:27": {
     "img": "../assets/posters/animation/027-the-land-before-time.jpg",
-    "tmdbId": 12144,
-    "posterPath": "/7phV1ETZnQrLsEeuk4hNeceEl25.jpg",
-    "backdropPath": "/sXfQGa7juaTpZ5IF17Xa6hI53nx.jpg",
-    "year": "1988"
+    "tmdbId": 3817,
+    "posterPath": "/p4eUTWcyh5U62Y26HkALQQjdwMF.jpg",
+    "backdropPath": "/oWLc5nZuzPEaH55f3x31I8pllIj.jpg",
+    "year": null
   },
   "animation:28": {
     "img": "../assets/posters/animation/028-howl-s-moving-castle.jpg",
@@ -2353,10 +2353,10 @@
   },
   "animation:47": {
     "img": "../assets/posters/animation/047-the-adventures-of-tintin.jpg",
-    "tmdbId": 17578,
-    "posterPath": "/fQZ3sLR1Fi63NMsNRbjm9q5qODJ.jpg",
-    "backdropPath": "/6mqgl2szMLRYj4lhlXOjju5Tpeo.jpg",
-    "year": "2011"
+    "tmdbId": 1570,
+    "posterPath": "/usUB0lQSYQPuBZIg6V8CdVaVkdT.jpg",
+    "backdropPath": "/e9pwnvHUVtP7jg4icWXYRWF2uc9.jpg",
+    "year": null
   },
   "animation:48": {
     "img": "../assets/posters/2000-2024/111-the-boy-and-the-beast.jpg",
@@ -2591,10 +2591,10 @@
   },
   "animation:81": {
     "img": "../assets/posters/animation/081-robot-carnival.jpg",
-    "tmdbId": 33441,
-    "posterPath": "/2DTREQNErBYtZd1isRqdqNbbXA8.jpg",
-    "backdropPath": "/iV6G3qnnEsZ1CsHXjxoXNBeKMw6.jpg",
-    "year": "1987"
+    "tmdbId": 87055,
+    "posterPath": "/4IFyW7E8tyWbR76xymkbniknI0T.jpg",
+    "backdropPath": "/qFRvBgN3kA2uKnOJ2BagM2CR8w3.jpg",
+    "year": null
   },
   "animation:82": {
     "img": "../assets/posters/animation/082-zootopia.jpg",
@@ -3168,10 +3168,10 @@
   },
   "documentaires:8": {
     "img": "../assets/posters/documentaires/008-senna.jpg",
-    "tmdbId": 58496,
-    "posterPath": "/nZbLCbRoP6iJq5sr8daHQzjnzFh.jpg",
-    "backdropPath": "/sS3jaC2SXoeYmjAuqPeoeelPZqP.jpg",
-    "year": "2010"
+    "tmdbId": 211039,
+    "posterPath": "/dmRfKme3j8mbTf4iTJd0L8wtaQa.jpg",
+    "backdropPath": "/pP9Or3dN8k0go1G2OSldcwBpUFO.jpg",
+    "year": null
   },
   "documentaires:9": {
     "img": "../assets/posters/documentaires/009-grizzly-man.jpg",
@@ -3231,17 +3231,24 @@
   },
   "documentaires:18": {
     "img": "../assets/posters/documentaires/018-inside-job.jpg",
-    "tmdbId": 44639,
-    "posterPath": "/7yXXIWec24htucjsZS1sDuPLqw8.jpg",
-    "backdropPath": "/1yFmxvVYgVrFKL2ksFzgX0MrWOM.jpg",
-    "year": "2010"
+    "tmdbId": 97727,
+    "posterPath": "/qwJUDMJ4i3KBYjeUFK9Js87iJEa.jpg",
+    "backdropPath": "/tiLJNqQuCwIIgK30iavU6x0SFQj.jpg",
+    "year": null
   },
   "documentaires:19": {
     "img": "../assets/posters/documentaires/019-the-civil-war.jpg",
-    "tmdbId": 580299,
-    "posterPath": "/e0cIJy1S74hE2CYfcDAI5jdMoqO.jpg",
+    "tmdbId": 9693,
+    "posterPath": "/qs6J3T0mfAlmoOOUt0B2d4zd6je.jpg",
+    "backdropPath": "/lOtqhEeng0lBjsYU2AJ1t6GssV3.jpg",
+    "year": null
+  },
+  "documentaires:20": {
+    "img": "../assets/posters/documentaires/020-500-nations.jpg",
+    "tmdbId": 6457,
+    "posterPath": "/8VbdLQo3dfrmPEmhe3s9z9BtlWK.jpg",
     "backdropPath": null,
-    "year": "1991"
+    "year": null
   },
   "documentaires:21": {
     "img": "../assets/posters/documentaires/021-fahrenheit-9-11.jpg",
@@ -3263,6 +3270,13 @@
     "posterPath": "/kKzopOFXz9YfsCTqg3XpF0GoypX.jpg",
     "backdropPath": "/5ORjzDMq26GI82COSnJngXm5Kww.jpg",
     "year": "2017"
+  },
+  "documentaires:24": {
+    "img": "../assets/posters/documentaires/024-baseball.jpg",
+    "tmdbId": 19215,
+    "posterPath": "/qneEtyv9BKgfb7sVmtnvDqTmV4b.jpg",
+    "backdropPath": "/wdFi5VudQdkhnII5SQim8J7rAFe.jpg",
+    "year": null
   },
   "documentaires:25": {
     "img": "../assets/posters/documentaires/025-cuba-and-the-cameraman.jpg",
@@ -3287,10 +3301,10 @@
   },
   "documentaires:28": {
     "img": "../assets/posters/documentaires/028-the-last-dance.jpg",
-    "tmdbId": 1226141,
-    "posterPath": "/9Ret10DkYVs45Ooa8yvU23x3L5i.jpg",
-    "backdropPath": "/lhm95L2v3KmDFqIpWSC0daVPW7r.jpg",
-    "year": "2024"
+    "tmdbId": 79525,
+    "posterPath": "/oVf4xGGbDtwVHiKn8uTuSriY7PH.jpg",
+    "backdropPath": "/kY0h95L73t7a6ev6Rv0aHSCtN7y.jpg",
+    "year": null
   },
   "documentaires:29": {
     "img": "../assets/posters/documentaires/029-room-237.jpg",
@@ -3336,10 +3350,10 @@
   },
   "documentaires:36": {
     "img": "../assets/posters/documentaires/036-planet-earth.jpg",
-    "tmdbId": 54805,
-    "posterPath": "/dCiVCPHOWhT1MEXWfe3vZPnTOB8.jpg",
-    "backdropPath": "/5krduK75j61udNXJCxQChM9OE2h.jpg",
-    "year": "1974"
+    "tmdbId": 1044,
+    "posterPath": "/bNcNxUtZ520d5de5s78onoiSiwQ.jpg",
+    "backdropPath": "/qmRUwosX4BsCj6QanpBYScLl3Sp.jpg",
+    "year": null
   },
   "documentaires:38": {
     "img": "../assets/posters/documentaires/038-moonage-daydream.jpg",
@@ -3378,10 +3392,10 @@
   },
   "documentaires:43": {
     "img": "../assets/posters/documentaires/043-the-other-f-word.jpg",
-    "tmdbId": 75785,
-    "posterPath": "/5aXOrCNV9Hlvftw8qzZpvA1lpjJ.jpg",
-    "backdropPath": "/4AjoilnnuC6GbhaNBbCw0sDid84.jpg",
-    "year": "2011"
+    "tmdbId": 255942,
+    "posterPath": "/986L3wJKbyYjj9dEoNLwuyGDkhQ.jpg",
+    "backdropPath": null,
+    "year": null
   },
   "documentaires:44": {
     "img": "../assets/posters/documentaires/044-the-rescue.jpg",
@@ -3389,6 +3403,13 @@
     "posterPath": "/kC7fVtCkJACwPBaRr2hlj2whfKX.jpg",
     "backdropPath": "/gOBKWe6lHlt8srk11TFlDuBtl0H.jpg",
     "year": "2021"
+  },
+  "documentaires:45": {
+    "img": "../assets/posters/documentaires/045-mr-scorsese.jpg",
+    "tmdbId": 292130,
+    "posterPath": "/atok9lbfro3hZxGTlaJZWN0BWRM.jpg",
+    "backdropPath": "/yvToMgv3CHs7T4yQe9EPsMgEXG3.jpg",
+    "year": null
   },
   "documentaires:46": {
     "img": "../assets/posters/documentaires/046-samsara.jpg",
@@ -3411,12 +3432,26 @@
     "backdropPath": "/fPUbP2MpL1zGD1x8xkOtu1o6ZH4.jpg",
     "year": "2012"
   },
+  "documentaires:49": {
+    "img": "../assets/posters/documentaires/049-don-t-f-k-with-cats-hunting-an-internet-killer.jpg",
+    "tmdbId": 96129,
+    "posterPath": "/Crc4XkhLddMTNJfj1iLca0w1Bb.jpg",
+    "backdropPath": "/5B5hpcQ4hc6ywi1MiauLhs4liem.jpg",
+    "year": null
+  },
   "documentaires:50": {
     "img": "../assets/posters/documentaires/050-waltz-with-bashir.jpg",
     "tmdbId": 8885,
     "posterPath": "/zQaCv7lKwHsh0YSHkt1QNjIOZ1c.jpg",
     "backdropPath": "/cMoiIk3tD6qshxccYRjjym7l5YV.jpg",
     "year": "2008"
+  },
+  "documentaires:51": {
+    "img": "../assets/posters/documentaires/051-the-american-revolution.jpg",
+    "tmdbId": 258023,
+    "posterPath": "/hXDHzOJxbsWZNy5jd5TMBAKIb0w.jpg",
+    "backdropPath": "/37Fn6Qf0JTLfbE719FvilHCyZK4.jpg",
+    "year": null
   },
   "documentaires:52": {
     "img": "../assets/posters/documentaires/052-citizenfour.jpg",
@@ -3439,6 +3474,13 @@
     "backdropPath": "/cVzqqF4akx3TQgMPgJcn6Dc68a5.jpg",
     "year": "2015"
   },
+  "documentaires:55": {
+    "img": "../assets/posters/documentaires/055-trainwreck-woodstock-99.jpg",
+    "tmdbId": 206246,
+    "posterPath": "/hFWNQTiJ2VXfZeKrsykem0o9nWc.jpg",
+    "backdropPath": "/2K1qU488CD5beY0dPa3l0AJRqMi.jpg",
+    "year": null
+  },
   "documentaires:56": {
     "img": "../assets/posters/documentaires/056-casa-bonita-mi-amor.jpg",
     "tmdbId": 1278666,
@@ -3455,10 +3497,10 @@
   },
   "documentaires:58": {
     "img": "../assets/posters/documentaires/058-the-imposter.jpg",
-    "tmdbId": 84287,
-    "posterPath": "/bhdGcqZqPju3KEaT9J6lMxRO0TI.jpg",
-    "backdropPath": "/gwxItUSR8qvaKlNqsQCRVNNZAAF.jpg",
-    "year": "2012"
+    "tmdbId": 93421,
+    "posterPath": "/yLtLTnivr3CwnBwKW7E7008u363.jpg",
+    "backdropPath": "/kHAxjfdl1cMgDpIjuxKWa1nE44i.jpg",
+    "year": null
   },
   "documentaires:59": {
     "img": "../assets/posters/documentaires/059-the-fog-of-war.jpg",
@@ -3481,6 +3523,20 @@
     "backdropPath": "/doqhyJkdsM2djS43hiajZJwBmM3.jpg",
     "year": "2005"
   },
+  "documentaires:62": {
+    "img": "../assets/posters/documentaires/062-the-rolling-stones-gimme-shelter.jpg",
+    "tmdbId": 232175,
+    "posterPath": "/eEvqFlmn7d8prqRVaFJ5pjJFHuB.jpg",
+    "backdropPath": "/hTUveXKSPA7jWZ08MaXaHSvY6lO.jpg",
+    "year": "2013"
+  },
+  "documentaires:63": {
+    "img": "../assets/posters/documentaires/063-the-sorrow-and-the-pity.jpg",
+    "tmdbId": 128062,
+    "posterPath": "/e2U7S6kmiwsvq0vgiuKSYWOBFKM.jpg",
+    "backdropPath": "/63MtkSIyPBRyGZDpil9bMUxzSfw.jpg",
+    "year": null
+  },
   "documentaires:64": {
     "img": "../assets/posters/documentaires/064-fyre.jpg",
     "tmdbId": 567860,
@@ -3501,6 +3557,13 @@
     "posterPath": "/pE2hxC8bPbIi9tGyhFg5xiFW6dA.jpg",
     "backdropPath": "/zTMtN7DjyqYuTFwBXw1ywl3JyTO.jpg",
     "year": "2018"
+  },
+  "documentaires:67": {
+    "img": "../assets/posters/documentaires/067-making-a-murderer.jpg",
+    "tmdbId": 64439,
+    "posterPath": "/sy2nV3rCcJQaRK5M0NWvvTU7CBx.jpg",
+    "backdropPath": "/i0bVPXHdvLQzE1Ld8dDwbCj1kOW.jpg",
+    "year": null
   },
   "documentaires:68": {
     "img": "../assets/posters/documentaires/068-the-truffle-hunters.jpg",
@@ -3543,6 +3606,13 @@
     "posterPath": "/8jLfS18TvzQ4IkpMXHIgWgS8kZW.jpg",
     "backdropPath": "/rOo8r3NzUVL5Q9mIb6xbsdp5b3c.jpg",
     "year": "2016"
+  },
+  "documentaires:75": {
+    "img": "../assets/posters/documentaires/075-the-beatles-get-back.jpg",
+    "tmdbId": 128876,
+    "posterPath": "/nxy9fg1rT853P7zP7ZQGqRimiCS.jpg",
+    "backdropPath": "/bCKlJ0yCpbKTT7BcMvlcVSofJwg.jpg",
+    "year": null
   },
   "documentaires:76": {
     "img": "../assets/posters/documentaires/076-for-tomorrow-the-documentary.jpg",
@@ -3630,10 +3700,10 @@
   },
   "rewatched:5": {
     "img": "../assets/posters/rewatched/005-home-alone.jpg",
-    "tmdbId": 771,
-    "posterPath": "/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg",
-    "backdropPath": "/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg",
-    "year": "1990"
+    "tmdbId": 65282,
+    "posterPath": "/1hqGagr94soBq70Lq7tPHvNmmxy.jpg",
+    "backdropPath": "/sztoil0XfQ0cSHy4PXmYW6uAdfQ.jpg",
+    "year": null
   },
   "rewatched:6": {
     "img": "../assets/posters/1975-1999/casino.jpg",
@@ -3672,10 +3742,10 @@
   },
   "rewatched:11": {
     "img": "../assets/posters/rewatched/011-willow.jpg",
-    "tmdbId": 847,
-    "posterPath": "/pAIRGMIdN7ZdZhflazdV2ezuJ9f.jpg",
-    "backdropPath": "/3sF6AibdbTTkswfSRxXEGCt5w6s.jpg",
-    "year": "1988"
+    "tmdbId": 111837,
+    "posterPath": "/lw4n5CBlLR62nogy46FyJaIFziH.jpg",
+    "backdropPath": "/93SxdkiR3gBcbG5FxIt0DCBttul.jpg",
+    "year": null
   },
   "rewatched:12": {
     "img": "../assets/posters/1975-1999/the-dinner-game.jpg",
@@ -4023,6 +4093,13 @@
     "backdropPath": "/qbiREyYmjFDqcAjT2MjGhpvdxZD.jpg",
     "year": "1998"
   },
+  "rewatched:62": {
+    "img": "../assets/posters/rewatched/062-the-boys.jpg",
+    "tmdbId": 76479,
+    "posterPath": "/in1R2dDc421JxsoRWaIIAqVI2KE.jpg",
+    "backdropPath": "/n6vVs6z8obNbExdD3QHTr4Utu1Z.jpg",
+    "year": null
+  },
   "rewatched:63": {
     "img": "../assets/posters/rewatched/063-batman-begins.jpg",
     "tmdbId": 272,
@@ -4221,10 +4298,10 @@
   },
   "rewatched:91": {
     "img": "../assets/posters/rewatched/091-batman.jpg",
-    "tmdbId": 268,
-    "posterPath": "/cij4dd21v2Rk2YtUQbV5kW69WB2.jpg",
-    "backdropPath": "/rBN6GPKUDZ6ZKAQiEZegZ0DZb6V.jpg",
-    "year": "1989"
+    "tmdbId": 2287,
+    "posterPath": "/1ZEJuuDh0Zpi5ELM3Zev0GBhQ3R.jpg",
+    "backdropPath": "/c4zV2ysi5Qlns4CPjRJj3hBGMSx.jpg",
+    "year": null
   },
   "rewatched:92": {
     "img": "../assets/posters/rewatched/092-spider-man.jpg",
@@ -4277,10 +4354,10 @@
   },
   "rewatched:99": {
     "img": "../assets/posters/rewatched/099-the-killing.jpg",
-    "tmdbId": 247,
-    "posterPath": "/A6VzUPcADZGYdGHlVdWvpMNDF5d.jpg",
-    "backdropPath": "/2EltoldCMsYmP2BXJVGiuNalEWv.jpg",
-    "year": "1956"
+    "tmdbId": 34415,
+    "posterPath": "/3yiwAUNGn1rsPSVmFgVwPVJFtYf.jpg",
+    "backdropPath": "/LjXBJaNaBGgAsNHDYfFTwGOUWb.jpg",
+    "year": null
   },
   "rewatched:100": {
     "img": "../assets/posters/rewatched/100-bullitt.jpg",
@@ -4550,10 +4627,10 @@
   },
   "rewatched:138": {
     "img": "../assets/posters/rewatched/138-spy-game.jpg",
-    "tmdbId": 1535,
-    "posterPath": "/6y8M1rxjKofQCRKKe6xeV91K2Fc.jpg",
-    "backdropPath": "/7Hfatv0lZkMyxw8UBZmiK2qSXDR.jpg",
-    "year": "2001"
+    "tmdbId": 13479,
+    "posterPath": "/6p3cNQ5VsCCilWA4nImPppZjvag.jpg",
+    "backdropPath": "/64jnLr3rD0w4yW6gTqJ6HYk45aI.jpg",
+    "year": null
   },
   "rewatched:139": {
     "img": "../assets/posters/rewatched/139-the-fisher-king.jpg",
@@ -4620,10 +4697,10 @@
   },
   "rewatched:148": {
     "img": "../assets/posters/rewatched/148-young-guns.jpg",
-    "tmdbId": 11967,
-    "posterPath": "/3AgCq7xY1rHRAAn0iVcnNr2OWL.jpg",
-    "backdropPath": "/AoFo9HeJU7jiHAUNawpwhs3zQbd.jpg",
-    "year": "1988"
+    "tmdbId": 251892,
+    "posterPath": "/yUeWzEFxXE97nEkEbdQhzMoqjY9.jpg",
+    "backdropPath": "/wcSoUYHNe51bdCyT02GgltmF0QS.jpg",
+    "year": null
   },
   "rewatched:149": {
     "img": "../assets/posters/1975-1999/the-game.jpg",
@@ -4970,10 +5047,10 @@
   },
   "rewatched:198": {
     "img": "../assets/posters/rewatched/198-the-fugitive.jpg",
-    "tmdbId": 5503,
-    "posterPath": "/b3rEtLKyOnF89mcK75GXDXdmOEf.jpg",
-    "backdropPath": "/7WVRxZ7KZmzoHnUkAjnEFT4o6Dw.jpg",
-    "year": "1993"
+    "tmdbId": 10083,
+    "posterPath": "/cSvrnCMFX8OWqHSkUwERfKU7mnP.jpg",
+    "backdropPath": "/vh29Z9EqTbaBy0sX5I370Hf3KJG.jpg",
+    "year": null
   },
   "rewatched:199": {
     "img": "../assets/posters/rewatched/199-how-to-train-your-dragon-2.jpg",
@@ -5061,10 +5138,10 @@
   },
   "rewatched:211": {
     "img": "../assets/posters/rewatched/211-the-pink-panther.jpg",
-    "tmdbId": 12096,
-    "posterPath": "/57ViRkdsddHLK32W8Nf3ZPLSAu4.jpg",
-    "backdropPath": "/3jiNJ4lyAmdSidvbFTFIL2GQGBu.jpg",
-    "year": "2006"
+    "tmdbId": 14693,
+    "posterPath": "/ulQ6nGkApH7gkoWIo1sGcCGPkHk.jpg",
+    "backdropPath": "/rMqsTrIzOaFnxiL1R2x3E2x6ZZR.jpg",
+    "year": null
   },
   "rewatched:212": {
     "img": "../assets/posters/2000-2024/006-the-departed.jpg",
@@ -5194,10 +5271,10 @@
   },
   "rewatched:230": {
     "img": "../assets/posters/rewatched/230-teenage-mutant-ninja-turtles.jpg",
-    "tmdbId": 98566,
-    "posterPath": "/azL2ThbJMIkts3ZMt3j1YgBUeDB.jpg",
-    "backdropPath": "/eezsbzYPbYKjjh6E1XHDBNlLynh.jpg",
-    "year": "2014"
+    "tmdbId": 51817,
+    "posterPath": "/n0DN6kJf0kGeuNFUYLT6eZe5ERR.jpg",
+    "backdropPath": "/7NWAe3Bc7s3hYDKdarkwGuxT1GM.jpg",
+    "year": null
   },
   "rewatched:231": {
     "img": "../assets/posters/rewatched/231-condorman.jpg",
@@ -5264,10 +5341,10 @@
   },
   "rewatched:240": {
     "img": "../assets/posters/rewatched/240-interview-with-the-vampire.jpg",
-    "tmdbId": 628,
-    "posterPath": "/t7NU8IcmcNBrlunCxiycX9JV7Rp.jpg",
-    "backdropPath": "/3fChciF2G1wXHsyTfJD9y7uN6Il.jpg",
-    "year": "1994"
+    "tmdbId": 128098,
+    "posterPath": "/mQ0fbfc5ELwb2zjFZM4uwAnN3ee.jpg",
+    "backdropPath": "/1tADVruLbywl7P3TOVQmNza3aAO.jpg",
+    "year": null
   },
   "rewatched:241": {
     "img": "../assets/posters/rewatched/241-natural-born-killers.jpg",
@@ -5418,10 +5495,10 @@
   },
   "rewatched:262": {
     "img": "../assets/posters/rewatched/262-true-lies.jpg",
-    "tmdbId": 36955,
-    "posterPath": "/pqdvCBDThAOjlA0XBzbNm7GvwpU.jpg",
-    "backdropPath": "/jRZ3joUcg8YDCQYl4Tog5xhY6wk.jpg",
-    "year": "1994"
+    "tmdbId": 202099,
+    "posterPath": "/lTnVIuHiXPnFALOSBQWUOkSR8Ya.jpg",
+    "backdropPath": "/izANb0XYjvuAgRAcIxZ1iBJwN2T.jpg",
+    "year": null
   },
   "rewatched:263": {
     "img": "../assets/posters/rewatched/263-young-frankenstein.jpg",

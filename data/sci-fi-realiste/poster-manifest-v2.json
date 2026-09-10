@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T16:09:53.847Z",
+  "generatedAt": "2026-09-10T16:11:45.578Z",
   "source": "TMDB + established ASWA40 assets",
   "films": [
     {
@@ -237,10 +237,10 @@
       "title": "Snowpiercer",
       "img": "../assets/posters/sci-fi-realiste/024-snowpiercer.jpg",
       "status": "ok",
-      "tmdbId": 110415,
-      "posterPath": "/kw6YQudA0TMcNmGUGy5XIw7zbnV.jpg",
-      "backdropPath": "/tBIRtMCELcA5PxO7z7OiuCHJdFO.jpg",
-      "year": "2013"
+      "tmdbId": 79680,
+      "posterPath": "/exKzfiKzMdQBHrdd7zNmKauJkbg.jpg",
+      "backdropPath": "/h8dzXytAPFkAHv1kZAN1SshXI68.jpg",
+      "year": null
     },
     {
       "rank": 25,

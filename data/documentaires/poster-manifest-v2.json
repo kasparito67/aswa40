@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T16:10:17.534Z",
+  "generatedAt": "2026-09-10T16:11:57.715Z",
   "source": "TMDB + established ASWA40 assets",
   "films": [
     {
@@ -77,10 +77,10 @@
       "title": "Senna",
       "img": "../assets/posters/documentaires/008-senna.jpg",
       "status": "ok",
-      "tmdbId": 58496,
-      "posterPath": "/nZbLCbRoP6iJq5sr8daHQzjnzFh.jpg",
-      "backdropPath": "/sS3jaC2SXoeYmjAuqPeoeelPZqP.jpg",
-      "year": "2010"
+      "tmdbId": 211039,
+      "posterPath": "/dmRfKme3j8mbTf4iTJd0L8wtaQa.jpg",
+      "backdropPath": "/pP9Or3dN8k0go1G2OSldcwBpUFO.jpg",
+      "year": null
     },
     {
       "rank": 9,
@@ -173,26 +173,30 @@
       "title": "Inside Job",
       "img": "../assets/posters/documentaires/018-inside-job.jpg",
       "status": "ok",
-      "tmdbId": 44639,
-      "posterPath": "/7yXXIWec24htucjsZS1sDuPLqw8.jpg",
-      "backdropPath": "/1yFmxvVYgVrFKL2ksFzgX0MrWOM.jpg",
-      "year": "2010"
+      "tmdbId": 97727,
+      "posterPath": "/qwJUDMJ4i3KBYjeUFK9Js87iJEa.jpg",
+      "backdropPath": "/tiLJNqQuCwIIgK30iavU6x0SFQj.jpg",
+      "year": null
     },
     {
       "rank": 19,
       "title": "The Civil War",
       "img": "../assets/posters/documentaires/019-the-civil-war.jpg",
       "status": "ok",
-      "tmdbId": 580299,
-      "posterPath": "/e0cIJy1S74hE2CYfcDAI5jdMoqO.jpg",
-      "backdropPath": null,
-      "year": "1991"
+      "tmdbId": 9693,
+      "posterPath": "/qs6J3T0mfAlmoOOUt0B2d4zd6je.jpg",
+      "backdropPath": "/lOtqhEeng0lBjsYU2AJ1t6GssV3.jpg",
+      "year": null
     },
     {
       "rank": 20,
       "title": "500 Nations",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3E500%20Nations%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/020-500-nations.jpg",
+      "status": "ok",
+      "tmdbId": 6457,
+      "posterPath": "/8VbdLQo3dfrmPEmhe3s9z9BtlWK.jpg",
+      "backdropPath": null,
+      "year": null
     },
     {
       "rank": 21,
@@ -227,8 +231,12 @@
     {
       "rank": 24,
       "title": "Baseball",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EBaseball%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/024-baseball.jpg",
+      "status": "ok",
+      "tmdbId": 19215,
+      "posterPath": "/qneEtyv9BKgfb7sVmtnvDqTmV4b.jpg",
+      "backdropPath": "/wdFi5VudQdkhnII5SQim8J7rAFe.jpg",
+      "year": null
     },
     {
       "rank": 25,
@@ -265,10 +273,10 @@
       "title": "The Last Dance",
       "img": "../assets/posters/documentaires/028-the-last-dance.jpg",
       "status": "ok",
-      "tmdbId": 1226141,
-      "posterPath": "/9Ret10DkYVs45Ooa8yvU23x3L5i.jpg",
-      "backdropPath": "/lhm95L2v3KmDFqIpWSC0daVPW7r.jpg",
-      "year": "2024"
+      "tmdbId": 79525,
+      "posterPath": "/oVf4xGGbDtwVHiKn8uTuSriY7PH.jpg",
+      "backdropPath": "/kY0h95L73t7a6ev6Rv0aHSCtN7y.jpg",
+      "year": null
     },
     {
       "rank": 29,
@@ -341,10 +349,10 @@
       "title": "Planet Earth",
       "img": "../assets/posters/documentaires/036-planet-earth.jpg",
       "status": "ok",
-      "tmdbId": 54805,
-      "posterPath": "/dCiVCPHOWhT1MEXWfe3vZPnTOB8.jpg",
-      "backdropPath": "/5krduK75j61udNXJCxQChM9OE2h.jpg",
-      "year": "1974"
+      "tmdbId": 1044,
+      "posterPath": "/bNcNxUtZ520d5de5s78onoiSiwQ.jpg",
+      "backdropPath": "/qmRUwosX4BsCj6QanpBYScLl3Sp.jpg",
+      "year": null
     },
     {
       "rank": 37,
@@ -407,10 +415,10 @@
       "title": "The Other F Word",
       "img": "../assets/posters/documentaires/043-the-other-f-word.jpg",
       "status": "ok",
-      "tmdbId": 75785,
-      "posterPath": "/5aXOrCNV9Hlvftw8qzZpvA1lpjJ.jpg",
-      "backdropPath": "/4AjoilnnuC6GbhaNBbCw0sDid84.jpg",
-      "year": "2011"
+      "tmdbId": 255942,
+      "posterPath": "/986L3wJKbyYjj9dEoNLwuyGDkhQ.jpg",
+      "backdropPath": null,
+      "year": null
     },
     {
       "rank": 44,
@@ -425,8 +433,12 @@
     {
       "rank": 45,
       "title": "Mr. Scorsese",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EMr.%20Scorsese%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/045-mr-scorsese.jpg",
+      "status": "ok",
+      "tmdbId": 292130,
+      "posterPath": "/atok9lbfro3hZxGTlaJZWN0BWRM.jpg",
+      "backdropPath": "/yvToMgv3CHs7T4yQe9EPsMgEXG3.jpg",
+      "year": null
     },
     {
       "rank": 46,
@@ -461,8 +473,12 @@
     {
       "rank": 49,
       "title": "Don't F**k with Cats: Hunting an Internet Killer",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EDon't%20F**k%20with%20Cats%3A%20Hunting%20an%20Internet%20Killer%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/049-don-t-f-k-with-cats-hunting-an-internet-killer.jpg",
+      "status": "ok",
+      "tmdbId": 96129,
+      "posterPath": "/Crc4XkhLddMTNJfj1iLca0w1Bb.jpg",
+      "backdropPath": "/5B5hpcQ4hc6ywi1MiauLhs4liem.jpg",
+      "year": null
     },
     {
       "rank": 50,
@@ -477,8 +493,12 @@
     {
       "rank": 51,
       "title": "The American Revolution",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20American%20Revolution%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/051-the-american-revolution.jpg",
+      "status": "ok",
+      "tmdbId": 258023,
+      "posterPath": "/hXDHzOJxbsWZNy5jd5TMBAKIb0w.jpg",
+      "backdropPath": "/37Fn6Qf0JTLfbE719FvilHCyZK4.jpg",
+      "year": null
     },
     {
       "rank": 52,
@@ -513,8 +533,12 @@
     {
       "rank": 55,
       "title": "Trainwreck: Woodstock '99",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3ETrainwreck%3A%20Woodstock%20'99%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/055-trainwreck-woodstock-99.jpg",
+      "status": "ok",
+      "tmdbId": 206246,
+      "posterPath": "/hFWNQTiJ2VXfZeKrsykem0o9nWc.jpg",
+      "backdropPath": "/2K1qU488CD5beY0dPa3l0AJRqMi.jpg",
+      "year": null
     },
     {
       "rank": 56,
@@ -541,10 +565,10 @@
       "title": "The Imposter",
       "img": "../assets/posters/documentaires/058-the-imposter.jpg",
       "status": "ok",
-      "tmdbId": 84287,
-      "posterPath": "/bhdGcqZqPju3KEaT9J6lMxRO0TI.jpg",
-      "backdropPath": "/gwxItUSR8qvaKlNqsQCRVNNZAAF.jpg",
-      "year": "2012"
+      "tmdbId": 93421,
+      "posterPath": "/yLtLTnivr3CwnBwKW7E7008u363.jpg",
+      "backdropPath": "/kHAxjfdl1cMgDpIjuxKWa1nE44i.jpg",
+      "year": null
     },
     {
       "rank": 59,
@@ -579,14 +603,22 @@
     {
       "rank": 62,
       "title": "The Rolling Stones: Gimme Shelter",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Rolling%20Stones%3A%20Gimme%20Shelter%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/062-the-rolling-stones-gimme-shelter.jpg",
+      "status": "ok",
+      "tmdbId": 232175,
+      "posterPath": "/eEvqFlmn7d8prqRVaFJ5pjJFHuB.jpg",
+      "backdropPath": "/hTUveXKSPA7jWZ08MaXaHSvY6lO.jpg",
+      "year": "2013"
     },
     {
       "rank": 63,
       "title": "The Sorrow and the Pity",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Sorrow%20and%20the%20Pity%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/063-the-sorrow-and-the-pity.jpg",
+      "status": "ok",
+      "tmdbId": 128062,
+      "posterPath": "/e2U7S6kmiwsvq0vgiuKSYWOBFKM.jpg",
+      "backdropPath": "/63MtkSIyPBRyGZDpil9bMUxzSfw.jpg",
+      "year": null
     },
     {
       "rank": 64,
@@ -621,8 +653,12 @@
     {
       "rank": 67,
       "title": "Making a Murderer",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EMaking%20a%20Murderer%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/067-making-a-murderer.jpg",
+      "status": "ok",
+      "tmdbId": 64439,
+      "posterPath": "/sy2nV3rCcJQaRK5M0NWvvTU7CBx.jpg",
+      "backdropPath": "/i0bVPXHdvLQzE1Ld8dDwbCj1kOW.jpg",
+      "year": null
     },
     {
       "rank": 68,
@@ -693,8 +729,12 @@
     {
       "rank": 75,
       "title": "The Beatles: Get Back",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Beatles%3A%20Get%20Back%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/documentaires/075-the-beatles-get-back.jpg",
+      "status": "ok",
+      "tmdbId": 128876,
+      "posterPath": "/nxy9fg1rT853P7zP7ZQGqRimiCS.jpg",
+      "backdropPath": "/bCKlJ0yCpbKTT7BcMvlcVSofJwg.jpg",
+      "year": null
     },
     {
       "rank": 76,

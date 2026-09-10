@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T16:10:38.053Z",
+  "generatedAt": "2026-09-10T16:12:07.730Z",
   "source": "TMDB + established ASWA40 assets",
   "films": [
     {
@@ -47,10 +47,10 @@
       "title": "Home Alone",
       "img": "../assets/posters/rewatched/005-home-alone.jpg",
       "status": "ok",
-      "tmdbId": 771,
-      "posterPath": "/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg",
-      "backdropPath": "/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg",
-      "year": "1990"
+      "tmdbId": 65282,
+      "posterPath": "/1hqGagr94soBq70Lq7tPHvNmmxy.jpg",
+      "backdropPath": "/sztoil0XfQ0cSHy4PXmYW6uAdfQ.jpg",
+      "year": null
     },
     {
       "rank": 6,
@@ -107,10 +107,10 @@
       "title": "Willow",
       "img": "../assets/posters/rewatched/011-willow.jpg",
       "status": "ok",
-      "tmdbId": 847,
-      "posterPath": "/pAIRGMIdN7ZdZhflazdV2ezuJ9f.jpg",
-      "backdropPath": "/3sF6AibdbTTkswfSRxXEGCt5w6s.jpg",
-      "year": "1988"
+      "tmdbId": 111837,
+      "posterPath": "/lw4n5CBlLR62nogy46FyJaIFziH.jpg",
+      "backdropPath": "/93SxdkiR3gBcbG5FxIt0DCBttul.jpg",
+      "year": null
     },
     {
       "rank": 12,
@@ -611,8 +611,12 @@
     {
       "rank": 62,
       "title": "The Boys",
-      "img": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20900%22%3E%3Crect%20width%3D%22600%22%20height%3D%22900%22%20fill%3D%22%230b0e10%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2248%25%22%20fill%3D%22%23f4f1eb%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%3EThe%20Boys%3C%2Ftext%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2255%25%22%20fill%3D%22%238c969b%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2218%22%20text-anchor%3D%22middle%22%3EASWA40%20%C2%B7%20poster%20%C3%A0%20venir%3C%2Ftext%3E%3C%2Fsvg%3E",
-      "status": "unresolved"
+      "img": "../assets/posters/rewatched/062-the-boys.jpg",
+      "status": "ok",
+      "tmdbId": 76479,
+      "posterPath": "/in1R2dDc421JxsoRWaIIAqVI2KE.jpg",
+      "backdropPath": "/n6vVs6z8obNbExdD3QHTr4Utu1Z.jpg",
+      "year": null
     },
     {
       "rank": 63,
@@ -899,10 +903,10 @@
       "title": "Batman",
       "img": "../assets/posters/rewatched/091-batman.jpg",
       "status": "ok",
-      "tmdbId": 268,
-      "posterPath": "/cij4dd21v2Rk2YtUQbV5kW69WB2.jpg",
-      "backdropPath": "/rBN6GPKUDZ6ZKAQiEZegZ0DZb6V.jpg",
-      "year": "1989"
+      "tmdbId": 2287,
+      "posterPath": "/1ZEJuuDh0Zpi5ELM3Zev0GBhQ3R.jpg",
+      "backdropPath": "/c4zV2ysi5Qlns4CPjRJj3hBGMSx.jpg",
+      "year": null
     },
     {
       "rank": 92,
@@ -979,10 +983,10 @@
       "title": "The Killing",
       "img": "../assets/posters/rewatched/099-the-killing.jpg",
       "status": "ok",
-      "tmdbId": 247,
-      "posterPath": "/A6VzUPcADZGYdGHlVdWvpMNDF5d.jpg",
-      "backdropPath": "/2EltoldCMsYmP2BXJVGiuNalEWv.jpg",
-      "year": "1956"
+      "tmdbId": 34415,
+      "posterPath": "/3yiwAUNGn1rsPSVmFgVwPVJFtYf.jpg",
+      "backdropPath": "/LjXBJaNaBGgAsNHDYfFTwGOUWb.jpg",
+      "year": null
     },
     {
       "rank": 100,
@@ -1369,10 +1373,10 @@
       "title": "Spy Game",
       "img": "../assets/posters/rewatched/138-spy-game.jpg",
       "status": "ok",
-      "tmdbId": 1535,
-      "posterPath": "/6y8M1rxjKofQCRKKe6xeV91K2Fc.jpg",
-      "backdropPath": "/7Hfatv0lZkMyxw8UBZmiK2qSXDR.jpg",
-      "year": "2001"
+      "tmdbId": 13479,
+      "posterPath": "/6p3cNQ5VsCCilWA4nImPppZjvag.jpg",
+      "backdropPath": "/64jnLr3rD0w4yW6gTqJ6HYk45aI.jpg",
+      "year": null
     },
     {
       "rank": 139,
@@ -1469,10 +1473,10 @@
       "title": "Young Guns",
       "img": "../assets/posters/rewatched/148-young-guns.jpg",
       "status": "ok",
-      "tmdbId": 11967,
-      "posterPath": "/3AgCq7xY1rHRAAn0iVcnNr2OWL.jpg",
-      "backdropPath": "/AoFo9HeJU7jiHAUNawpwhs3zQbd.jpg",
-      "year": "1988"
+      "tmdbId": 251892,
+      "posterPath": "/yUeWzEFxXE97nEkEbdQhzMoqjY9.jpg",
+      "backdropPath": "/wcSoUYHNe51bdCyT02GgltmF0QS.jpg",
+      "year": null
     },
     {
       "rank": 149,
@@ -1969,10 +1973,10 @@
       "title": "The Fugitive",
       "img": "../assets/posters/rewatched/198-the-fugitive.jpg",
       "status": "ok",
-      "tmdbId": 5503,
-      "posterPath": "/b3rEtLKyOnF89mcK75GXDXdmOEf.jpg",
-      "backdropPath": "/7WVRxZ7KZmzoHnUkAjnEFT4o6Dw.jpg",
-      "year": "1993"
+      "tmdbId": 10083,
+      "posterPath": "/cSvrnCMFX8OWqHSkUwERfKU7mnP.jpg",
+      "backdropPath": "/vh29Z9EqTbaBy0sX5I370Hf3KJG.jpg",
+      "year": null
     },
     {
       "rank": 199,
@@ -2099,10 +2103,10 @@
       "title": "The Pink Panther",
       "img": "../assets/posters/rewatched/211-the-pink-panther.jpg",
       "status": "ok",
-      "tmdbId": 12096,
-      "posterPath": "/57ViRkdsddHLK32W8Nf3ZPLSAu4.jpg",
-      "backdropPath": "/3jiNJ4lyAmdSidvbFTFIL2GQGBu.jpg",
-      "year": "2006"
+      "tmdbId": 14693,
+      "posterPath": "/ulQ6nGkApH7gkoWIo1sGcCGPkHk.jpg",
+      "backdropPath": "/rMqsTrIzOaFnxiL1R2x3E2x6ZZR.jpg",
+      "year": null
     },
     {
       "rank": 212,
@@ -2289,10 +2293,10 @@
       "title": "Teenage Mutant Ninja Turtles",
       "img": "../assets/posters/rewatched/230-teenage-mutant-ninja-turtles.jpg",
       "status": "ok",
-      "tmdbId": 98566,
-      "posterPath": "/azL2ThbJMIkts3ZMt3j1YgBUeDB.jpg",
-      "backdropPath": "/eezsbzYPbYKjjh6E1XHDBNlLynh.jpg",
-      "year": "2014"
+      "tmdbId": 51817,
+      "posterPath": "/n0DN6kJf0kGeuNFUYLT6eZe5ERR.jpg",
+      "backdropPath": "/7NWAe3Bc7s3hYDKdarkwGuxT1GM.jpg",
+      "year": null
     },
     {
       "rank": 231,
@@ -2389,10 +2393,10 @@
       "title": "Interview with the Vampire",
       "img": "../assets/posters/rewatched/240-interview-with-the-vampire.jpg",
       "status": "ok",
-      "tmdbId": 628,
-      "posterPath": "/t7NU8IcmcNBrlunCxiycX9JV7Rp.jpg",
-      "backdropPath": "/3fChciF2G1wXHsyTfJD9y7uN6Il.jpg",
-      "year": "1994"
+      "tmdbId": 128098,
+      "posterPath": "/mQ0fbfc5ELwb2zjFZM4uwAnN3ee.jpg",
+      "backdropPath": "/1tADVruLbywl7P3TOVQmNza3aAO.jpg",
+      "year": null
     },
     {
       "rank": 241,
@@ -2609,10 +2613,10 @@
       "title": "True Lies",
       "img": "../assets/posters/rewatched/262-true-lies.jpg",
       "status": "ok",
-      "tmdbId": 36955,
-      "posterPath": "/pqdvCBDThAOjlA0XBzbNm7GvwpU.jpg",
-      "backdropPath": "/jRZ3joUcg8YDCQYl4Tog5xhY6wk.jpg",
-      "year": "1994"
+      "tmdbId": 202099,
+      "posterPath": "/lTnVIuHiXPnFALOSBQWUOkSR8Ya.jpg",
+      "backdropPath": "/izANb0XYjvuAgRAcIxZ1iBJwN2T.jpg",
+      "year": null
     },
     {
       "rank": 263,
