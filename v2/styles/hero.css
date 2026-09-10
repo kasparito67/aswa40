@@ -35,7 +35,7 @@
   object-fit:fill;
 }
 
-/* Re.Watched uses a very wide lockup. Match its optical footprint to the other platform titles. */
+/* Re.Watched uses a tight, wide SVG rather than a 1920×1080 artboard. */
 .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
   transform:translateY(50px) scale(.42);
   transform-origin:center;
@@ -75,9 +75,7 @@
 .era-screen[data-top-id="2000-2024"] .hero-art-medallions{left:50%;top:54.2%}
 .era-screen[data-top-id="1975-1999"] .hero-art-medallions{left:49%;top:50.3%}
 .era-screen[data-top-id="sci-fi-realiste"] .hero-art-medallions{left:49%;top:50.3%}
-/* Animation: medals now sit below the title, centered like the other Tops. */
 .era-screen[data-top-id="animation"] .hero-art-medallions{left:50%;top:55.5%}
-/* Biopics: title stays centered in its normalized artboard; medals sit below the wordmark. */
 .era-screen[data-top-id="biopics"] .hero-art-medallions{left:50%;top:55.5%}
 .era-screen[data-top-id="rewatched"] .hero-art-medallions{left:50%;top:54.5%}
 
@@ -113,32 +111,54 @@
 }
 
 @media(max-width:700px){
-  /* Mobile heroes need a larger optical footprint than a literal 1920×1080 fit.
-     Enlarge the normalized artboard while keeping its center locked to the viewport. */
+  /* Mobile normalization: every 1920×1080 title uses the same virtual artboard.
+     Per-title scale only compensates for how much of that artboard the supplied logo occupies. */
   .hero-title-art-wrap{
     inset:auto!important;
-    left:-19%!important;
-    top:0!important;
-    width:138%!important;
-    height:100%!important;
-    transform:translateY(22px)!important;
-  }
-  .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
-    transform:translateY(22px) scale(.42)!important;
+    left:50%!important;
+    top:52%!important;
+    width:100vw!important;
+    height:56.25vw!important;
+    transform:translate(-50%,-50%) scale(var(--mobile-title-scale,1.8))!important;
     transform-origin:center!important;
   }
-  /* The 2000 title is a cropped PNG rather than a normalized SVG, so size it directly. */
-  .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{
-    left:9%!important;
-    top:27%!important;
-    width:82%!important;
-    height:31%!important;
-    transform:translateY(20px)!important;
+  .era-screen[data-top-id="1975-1999"] .hero-title-art-wrap{
+    --mobile-title-scale:1.66;
+    left:57%!important;
   }
-  .hero-art-medallions{
+  .era-screen[data-top-id="sci-fi-realiste"] .hero-title-art-wrap{--mobile-title-scale:1.78}
+  .era-screen[data-top-id="animation"] .hero-title-art-wrap{--mobile-title-scale:2.34}
+  .era-screen[data-top-id="biopics"] .hero-title-art-wrap{--mobile-title-scale:1.98}
+  .era-screen[data-top-id="documentaires"] .hero-title-art-wrap{--mobile-title-scale:2.28}
+
+  /* Re.Watched is already tightly cropped: size the actual lockup instead of scaling a fake artboard. */
+  .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
     left:50%!important;
-    top:59%!important;
-    transform:translate(-50%,20px)!important;
+    top:49%!important;
+    width:78vw!important;
+    height:18.45vw!important;
+    transform:translate(-50%,-50%)!important;
+  }
+
+  /* 2000 is the other non-normalized source asset, so give it a direct optical box. */
+  .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{
+    left:50%!important;
+    top:49%!important;
+    width:82vw!important;
+    height:31vw!important;
+    transform:translate(-50%,-50%)!important;
+  }
+
+  .hero-art-medallions,
+  .era-screen[data-top-id="2000-2024"] .hero-art-medallions,
+  .era-screen[data-top-id="1975-1999"] .hero-art-medallions,
+  .era-screen[data-top-id="sci-fi-realiste"] .hero-art-medallions,
+  .era-screen[data-top-id="animation"] .hero-art-medallions,
+  .era-screen[data-top-id="biopics"] .hero-art-medallions,
+  .era-screen[data-top-id="rewatched"] .hero-art-medallions{
+    left:50%!important;
+    top:62%!important;
+    transform:translate(-50%,0)!important;
   }
   .hero-medallion{
     width:clamp(44px,13vw,58px);
