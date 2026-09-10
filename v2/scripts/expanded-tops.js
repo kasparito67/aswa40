@@ -27,7 +27,7 @@
     ],
     sections:[
       {kicker:'Le palmarès collectif',title:'TOP 15',kind:'top25'},
-      {kicker:'Le classement complet',title:'#16–77',kind:'full',start:16,batch:25},
+      {kicker:'Le classement complet',title:'#16–83',kind:'full',start:16,batch:25},
       {kicker:'Aucun vote',title:'Les grands oubliés',kind:'ghosts'},
       {kicker:'Les bons derniers',title:'Les OVNIS',kind:'bottom',count:10}
     ],
