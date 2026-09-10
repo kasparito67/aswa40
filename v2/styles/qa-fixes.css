@@ -17,14 +17,19 @@
 }
 
 @media(max-width:700px){
-  /* During a two-screen swipe, soften the hard cut between the adjacent pages.
-     This keeps the iOS-like spatial movement but adds a subtle image-to-image fade. */
+  /* During a two-screen swipe, soften the hard cut between the adjacent pages. */
   .stage:has(>.era-screen + .era-screen)>.era-screen:first-child{
     box-shadow:inset -72px 0 58px -50px rgba(0,0,0,.92);
   }
   .stage:has(>.era-screen + .era-screen)>.era-screen:nth-child(2){
     box-shadow:inset 72px 0 58px -50px rgba(0,0,0,.92);
   }
+
+  /* Phase 5A: avoid permanent GPU layers on mobile. The carousel itself remains
+     transform-accelerated only while it is moving. */
+  .hero-title,.modal-content,.modal-backdrop img{will-change:auto!important}
+  .era-arrow,.era-hud{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .sec:not(.open) .inner{content-visibility:hidden}
 }
 
 @media(max-width:560px){
@@ -100,8 +105,7 @@
     width:46px!important;
     height:62px!important;
     border-radius:999px!important;
-    background:rgba(8,10,11,.42)!important;
-    backdrop-filter:blur(8px)!important;
+    background:rgba(8,10,11,.72)!important;
     color:#fff!important;
     font-size:28px!important;
     opacity:.9!important;
@@ -110,5 +114,5 @@
   .era-prev{left:8px!important;margin-left:0!important}
   .era-next{right:8px!important;margin-right:0!important}
   .era-arrow.disabled{opacity:.14!important}
-  .era-hud{bottom:10px!important;max-width:calc(100vw - 24px)!important}
+  .era-hud{bottom:10px!important;max-width:calc(100vw - 24px)!important;background:rgba(8,10,11,.88)!important}
 }
