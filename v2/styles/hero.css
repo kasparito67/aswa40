@@ -35,10 +35,9 @@
   object-fit:fill;
 }
 
-/* Re.Watched is a much wider/flatter lockup than the other normalized title artworks.
-   Scale it optically so its overall footprint matches the rest of the platform. */
+/* Re.Watched uses a very wide lockup. Match its optical footprint to the other platform titles. */
 .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
-  transform:translateY(50px) scale(.88);
+  transform:translateY(50px) scale(.42);
   transform-origin:center;
 }
 
@@ -80,12 +79,44 @@
 .era-screen[data-top-id="animation"] .hero-art-medallions{left:50%;top:55.5%}
 /* Biopics: title stays centered in its normalized artboard; medals sit below the wordmark. */
 .era-screen[data-top-id="biopics"] .hero-art-medallions{left:50%;top:55.5%}
+.era-screen[data-top-id="rewatched"] .hero-art-medallions{left:50%;top:54.5%}
+
+/* Re.Watched hover fallback: preserve the same visual feedback even when the coverflow
+   pointer-mode gate does not activate on a desktop browser/trackpad combination. */
+@media(hover:hover){
+  .era-screen[data-top-id="rewatched"] .tile:hover .hover{opacity:1}
+  .era-screen[data-top-id="rewatched"] .heroTop .tile:hover:not(.cf-active){
+    transform:translate3d(0,-4px,0) scale(1.20);
+    z-index:8;
+    opacity:1;
+    filter:saturate(1.08) brightness(1.04);
+    border-color:#59666d;
+    box-shadow:0 22px 45px rgba(0,0,0,.42)
+  }
+  .era-screen[data-top-id="rewatched"] .grid[data-flow="rest"] .tile:hover:not(.cf-active),
+  .era-screen[data-top-id="rewatched"] .grid[data-flow="bottom"] .tile:hover:not(.cf-active){
+    transform:translate3d(0,-8px,62px) scale(1.34);
+    z-index:16;
+    opacity:1;
+    filter:saturate(1.1) brightness(1.06);
+    border-color:#607078;
+    box-shadow:0 28px 54px rgba(0,0,0,.52)
+  }
+  .era-screen[data-top-id="rewatched"] .full-grid .tile:hover:not(.cf-active){
+    transform:translate3d(0,-9px,76px) scale(1.41);
+    z-index:20;
+    opacity:1;
+    filter:saturate(1.12) brightness(1.08);
+    border-color:#64737b;
+    box-shadow:0 30px 58px rgba(0,0,0,.58)
+  }
+}
 
 @media(max-width:700px){
   .hero-title-art-wrap{transform:translateY(32px)}
   .hero-art-medallions{transform:translate(-50%,32px)}
   .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{transform:translateY(32px)}
-  .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{transform:translateY(32px) scale(.88)}
+  .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{transform:translateY(32px) scale(.42)}
   .hero-medallion{
     width:clamp(42px,12vw,54px);
     height:clamp(42px,12vw,54px);
