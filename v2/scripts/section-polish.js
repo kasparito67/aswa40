@@ -2,6 +2,14 @@
   const byId=id=>TOPS.find(t=>t.id===id);
   const tmdbBackdrop=film=>film?.backdropPath?`https://image.tmdb.org/t/p/original${film.backdropPath}`:null;
 
+  // The platform opens on 1975–1999. Keep the historical/current Tops in a
+  // natural chronological order while preserving route ids for deep links.
+  const defaultTopIndex=TOPS.findIndex(t=>t.id==='1975-1999');
+  if(defaultTopIndex>0){
+    const [defaultTop]=TOPS.splice(defaultTopIndex,1);
+    TOPS.unshift(defaultTop);
+  }
+
   const ovnis={
     '1975-1999':{
       ranks:[86,87,88,89,90,33,34,49],
@@ -121,4 +129,25 @@
       return{rank:f?.rank||rank,title:f?.title||title,img:f?.img||'',copy};
     });
   }
+
+  // Performance pass: keep initial full-ranking payloads compact. app.js hydrates
+  // the first full grid eagerly, so lowering the first batch prevents dozens of
+  // off-screen poster downloads during first paint without changing the ranking.
+  const mobile=matchMedia('(max-width:700px)').matches;
+  TOPS.forEach(top=>{
+    (top.sections||[]).forEach(section=>{
+      if(section.kind!=='full')return;
+      const limit=mobile?12:27;
+      section.batch=Math.min(Number(section.batch)||limit,limit);
+    });
+
+    // TMDB "original" backdrops can be several megabytes. Mobile does not need
+    // that resolution for a phone-sized hero/modal, so use the official w780 CDN
+    // variant while leaving desktop artwork untouched.
+    if(mobile){
+      const compact=src=>typeof src==='string'?src.replace('https://image.tmdb.org/t/p/original/','https://image.tmdb.org/t/p/w780/'):src;
+      if(top.hero?.image)top.hero.image=compact(top.hero.image);
+      (top.films||[]).forEach(f=>{if(f.backdrop)f.backdrop=compact(f.backdrop)});
+    }
+  });
 })();
