@@ -5,6 +5,7 @@ on:
     branches: [work-cleanup-sept9]
     paths:
       - 'scripts/fetch-posters-new-tops.mjs'
+      - 'v2/scripts/expanded-tops.js'
       - '.github/workflows/fetch-posters-new-tops.yml'
   workflow_dispatch:
 
