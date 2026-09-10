@@ -5,19 +5,9 @@
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const mobile=matchMedia('(max-width:700px)').matches||matchMedia('(pointer:coarse)').matches;
 
-  // Phase 5A: mobile gets the spatial page transition but not continuous parallax.
-  // This avoids scroll listeners, MutationObservers and repeated per-frame style writes
-  // on the devices that benefit least from the extra depth effect.
-  if(mobile){
-    stage.querySelectorAll('.era-screen').forEach(screen=>{
-      screen.style.setProperty('--px-bg-x','0px');
-      screen.style.setProperty('--px-bg-y','0px');
-      screen.style.setProperty('--px-title-x','0px');
-      screen.style.setProperty('--px-title-y','0px');
-      screen.style.setProperty('--px-content-x','0px');
-    });
-    return;
-  }
+  // Mobile keeps the horizontal spatial transition but skips continuous parallax.
+  // CSS defaults already hold all offsets at zero, so no style writes are needed here.
+  if(mobile)return;
 
   let raf=0;
   let until=0;
@@ -50,15 +40,22 @@
     screen.style.setProperty('--px-content-x',`${contentX.toFixed(2)}px`);
   }
 
-  function screens(){return stage.querySelectorAll('.era-screen')}
-  function updateAll(){screens().forEach(updateScreen)}
+  const screens=()=>stage.querySelectorAll('.era-screen');
+  const updateAll=()=>screens().forEach(updateScreen);
 
   function tick(now){
     updateAll();
-    if(now<until){raf=requestAnimationFrame(tick)}else{raf=0}
+    if(now<until){
+      raf=requestAnimationFrame(tick);
+    }else{
+      raf=0;
+      stage.classList.remove('parallax-active');
+    }
   }
-  function burst(ms=760){
+
+  function burst(ms=620){
     until=Math.max(until,performance.now()+ms);
+    stage.classList.add('parallax-active');
     if(!raf)raf=requestAnimationFrame(tick);
   }
 
@@ -70,18 +67,18 @@
     });
   }
 
-  const stageObserver=new MutationObserver(()=>burst(820));
+  const stageObserver=new MutationObserver(()=>burst(620));
   stageObserver.observe(stage,{attributes:true,attributeFilter:['style','class']});
   const childObserver=new MutationObserver(()=>{bindScroll();burst(100)});
   childObserver.observe(stage,{childList:true});
 
-  addEventListener('resize',()=>burst(220),{passive:true});
-  addEventListener('orientationchange',()=>burst(350),{passive:true});
-  stage.addEventListener('pointerdown',()=>burst(900),{passive:true});
-  stage.addEventListener('pointermove',()=>{if(stage.classList.contains('dragging'))burst(180)},{passive:true});
-  stage.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY)*.6)burst(900)},{passive:true});
+  addEventListener('resize',()=>burst(180),{passive:true});
+  addEventListener('orientationchange',()=>burst(300),{passive:true});
+  stage.addEventListener('pointerdown',()=>burst(760),{passive:true});
+  stage.addEventListener('pointermove',()=>{if(stage.classList.contains('dragging'))burst(140)},{passive:true});
+  stage.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY)*.6)burst(760)},{passive:true});
 
   reduced.addEventListener?.('change',()=>burst(100));
   bindScroll();
-  burst(120);
+  burst(100);
 })();
