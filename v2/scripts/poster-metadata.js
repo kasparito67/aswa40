@@ -5438,5 +5438,248 @@
     "year": "1974"
   }
 };
-  TOPS.forEach(top=>(top.films||[]).forEach(f=>{const m=metadata[top.id+':'+f.rank];if(!m)return;Object.assign(f,m);if(m.img)f.img=m.img;}));
+  const ghostMetadata={
+  "1975-1999:ghost:0": {
+    "img": "../assets/grands-oublies/1975-1999/blue-velvet.jpg",
+    "tmdbId": 793,
+    "posterPath": "/6v1zYh2FKOYVddY5pCQhd4PO9uX.jpg",
+    "backdropPath": null,
+    "year": "1986"
+  },
+  "1975-1999:ghost:1": {
+    "img": "../assets/grands-oublies/1975-1999/the-deer-hunter.jpg",
+    "tmdbId": 11778,
+    "posterPath": "/bbGtogDZOg09bm42KIpCXUXICkh.jpg",
+    "backdropPath": null,
+    "year": "1978"
+  },
+  "1975-1999:ghost:2": {
+    "img": "../assets/grands-oublies/1975-1999/network.jpg",
+    "tmdbId": 10774,
+    "posterPath": "/qZomlHsaALUtkFeMDwdYmwS2Pbo.jpg",
+    "backdropPath": null,
+    "year": "1976"
+  },
+  "1975-1999:ghost:3": {
+    "img": "../assets/grands-oublies/1975-1999/brazil.jpg",
+    "tmdbId": 68,
+    "posterPath": "/aewan59WcFThBimkTVVoNf2o5Vb.jpg",
+    "backdropPath": null,
+    "year": "1985"
+  },
+  "1975-1999:ghost:4": {
+    "img": "../assets/grands-oublies/1975-1999/do-the-right-thing.jpg",
+    "tmdbId": 925,
+    "posterPath": "/63rmSDPahrH7C1gEFYzRuIBAN9W.jpg",
+    "backdropPath": null,
+    "year": "1989"
+  },
+  "1975-1999:ghost:5": {
+    "img": "../assets/grands-oublies/1975-1999/the-thing.jpg",
+    "tmdbId": 1091,
+    "posterPath": "/tzGY49kseSE9QAKk47uuDGwnSCu.jpg",
+    "backdropPath": null,
+    "year": "1982"
+  },
+  "1975-1999:ghost:6": {
+    "img": "../assets/grands-oublies/1975-1999/before-sunrise.jpg",
+    "tmdbId": 76,
+    "posterPath": "/kf1Jb1c2JAOqjuzA3H4oDM263uB.jpg",
+    "backdropPath": null,
+    "year": "1995"
+  },
+  "2000-2024:ghost:0": {
+    "img": "../assets/grands-oublies/2000-2024/mulholland-drive.jpg",
+    "tmdbId": 1018,
+    "posterPath": "/x7A59t6ySylr1L7aubOQEA480vM.jpg",
+    "backdropPath": "/g9ClaS5EqU0Hk8WIbMNhld0Bk6f.jpg",
+    "year": "2001"
+  },
+  "2000-2024:ghost:1": {
+    "img": "../assets/grands-oublies/2000-2024/in-the-mood-for-love.jpg",
+    "tmdbId": 843,
+    "posterPath": "/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg",
+    "backdropPath": "/ffQFnAUm2Uu4RU0nijpjPRf9TBT.jpg",
+    "year": "2000"
+  },
+  "2000-2024:ghost:2": {
+    "img": "../assets/grands-oublies/2000-2024/eternal-sunshine-of-the-spotless-mind.jpg",
+    "tmdbId": 38,
+    "posterPath": "/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg",
+    "backdropPath": "/W1ffLQGHoxfAOq0ZYdPtJlvAdb.jpg",
+    "year": "2004"
+  },
+  "2000-2024:ghost:3": {
+    "img": "../assets/grands-oublies/2000-2024/yi-yi.jpg",
+    "tmdbId": 25538,
+    "posterPath": "/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg",
+    "backdropPath": "/x903dx8Km6XNLFEmvbXc98vePSV.jpg",
+    "year": "2000"
+  },
+  "2000-2024:ghost:4": {
+    "img": "../assets/grands-oublies/2000-2024/the-tree-of-life.jpg",
+    "tmdbId": 8967,
+    "posterPath": "/l8cwuB5WJSoj4uMAsnzuHBOMaSJ.jpg",
+    "backdropPath": "/xq1HIwZq9VbuvMQELAua1nqEkH.jpg",
+    "year": "2011"
+  },
+  "2000-2024:ghost:5": {
+    "img": "../assets/grands-oublies/2000-2024/a-separation.jpg",
+    "tmdbId": 60243,
+    "posterPath": "/xQadpnoLokxzN3hRpCPbBGpxsiz.jpg",
+    "backdropPath": "/vSQ2FK4LzevXeHeXvEHb7t4I0SW.jpg",
+    "year": "2011"
+  },
+  "2000-2024:ghost:6": {
+    "img": "../assets/grands-oublies/2000-2024/portrait-of-a-lady-on-fire.jpg",
+    "tmdbId": 531428,
+    "posterPath": "/rUDuOKpkKBHxx41BScqKej72iT3.jpg",
+    "backdropPath": "/ivJ5UzT6IzucLVfbZwCCwiJJoBz.jpg",
+    "year": "2019"
+  },
+  "2000-2024:ghost:7": {
+    "img": "../assets/grands-oublies/2000-2024/oldboy.jpg",
+    "tmdbId": 670,
+    "posterPath": "/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg",
+    "backdropPath": "/sdwjQEM869JFwMytTmvr6ggvaUl.jpg",
+    "year": "2003"
+  },
+  "2000-2024:ghost:8": {
+    "img": "../assets/grands-oublies/2000-2024/wall-e.jpg",
+    "tmdbId": 10681,
+    "posterPath": "/hbhFnRzzg6ZDmm8YAmxBnQpQIPh.jpg",
+    "backdropPath": "/nYs4ZwnJBK4AgljhvzwNz7fpr3E.jpg",
+    "year": "2008"
+  },
+  "2000-2024:ghost:9": {
+    "img": "../assets/grands-oublies/2000-2024/the-master.jpg",
+    "tmdbId": 68722,
+    "posterPath": "/rUSjbyvYWN9H4az8xt0tDtU7I6v.jpg",
+    "backdropPath": "/6vvt0ghvrrzEB8Z1BLvmHOWUdxw.jpg",
+    "year": "2012"
+  },
+  "2000-2024:ghost:10": {
+    "img": "../assets/grands-oublies/2000-2024/roma.jpg",
+    "tmdbId": 426426,
+    "posterPath": "/dtIIyQyALk57ko5bjac7hi01YQ.jpg",
+    "backdropPath": "/zl9uqCl5iUSb50sTk2BPzw6bJnU.jpg",
+    "year": "2018"
+  },
+  "2000-2024:ghost:11": {
+    "img": "../assets/grands-oublies/2000-2024/before-sunset.jpg",
+    "tmdbId": 80,
+    "posterPath": "/4sW5XH9ZfYXpvFzev00S1IGAEbg.jpg",
+    "backdropPath": "/tcZi0LQc5iu2u6i5aOWyj9NBBvl.jpg",
+    "year": "2004"
+  },
+  "2000-2024:ghost:12": {
+    "img": "../assets/grands-oublies/2000-2024/lady-bird.jpg",
+    "tmdbId": 391713,
+    "posterPath": "/gl66K7zRdtNYGrxyS2YDUP5ASZd.jpg",
+    "backdropPath": "/jwBiY1kE5089i2WpfS1MHDYp3VO.jpg",
+    "year": "2017"
+  },
+  "2000-2024:ghost:13": {
+    "img": "../assets/grands-oublies/2000-2024/la-la-land.jpg",
+    "tmdbId": 313369,
+    "posterPath": "/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
+    "backdropPath": "/nlPCdZlHtRNcF6C9hzUH4ebmV1w.jpg",
+    "year": "2016"
+  },
+  "2000-2024:ghost:14": {
+    "img": "../assets/grands-oublies/2000-2024/oppenheimer.jpg",
+    "tmdbId": 872585,
+    "posterPath": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    "backdropPath": "/neeNHeXjMF5fXoCJRsOmkNGC7q.jpg",
+    "year": "2023"
+  },
+  "documentaires:ghost:0": {
+    "img": "../assets/posters/documentaires/ghost-01-shoah.jpg",
+    "tmdbId": 42044,
+    "posterPath": "/yvwF7dfSCybFcBOklUzKpE46bHM.jpg",
+    "backdropPath": "/bJolDsqM8vnlusFJdnCi9rg1nX7.jpg",
+    "year": "1985"
+  },
+  "documentaires:ghost:1": {
+    "img": "../assets/posters/documentaires/ghost-02-the-thin-blue-line.jpg",
+    "tmdbId": 545938,
+    "posterPath": "/toJRzlXOSZYWW5IUk7DrZJv7kHF.jpg",
+    "backdropPath": null,
+    "year": "1966"
+  },
+  "documentaires:ghost:2": {
+    "img": "../assets/posters/documentaires/ghost-03-grey-gardens.jpg",
+    "tmdbId": 17346,
+    "posterPath": "/jb6o66HE1duy0L7MJzEZXvrrsux.jpg",
+    "backdropPath": "/8gMOMHSkSTJ5NbHvHYK6amERLNM.jpg",
+    "year": "1976"
+  },
+  "documentaires:ghost:3": {
+    "img": "../assets/posters/documentaires/ghost-04-paris-is-burning.jpg",
+    "tmdbId": 31225,
+    "posterPath": "/90rCWH41mj9hjHUEy2SOHfuAOl3.jpg",
+    "backdropPath": "/1DOLRxIQbRxhZcllLVx4DUAGqfS.jpg",
+    "year": "1991"
+  },
+  "documentaires:ghost:4": {
+    "img": "../assets/posters/documentaires/ghost-05-harlan-county-war.jpg",
+    "tmdbId": 194529,
+    "posterPath": "/nPnnxUovPgBr7eol65e4dPpEN5M.jpg",
+    "backdropPath": "/p2qF4af4uMA8FQK6lQBW0p10MyA.jpg",
+    "year": "2000"
+  },
+  "documentaires:ghost:5": {
+    "img": "../assets/posters/documentaires/ghost-06-crumb.jpg",
+    "tmdbId": 26564,
+    "posterPath": "/9ocTHdBCJdwJ65Tubg3lYlfMxEY.jpg",
+    "backdropPath": "/1mlfORlfu2PtZnlEB3gMKqJy7Qp.jpg",
+    "year": "1995"
+  },
+  "documentaires:ghost:6": {
+    "img": "../assets/posters/documentaires/ghost-07-hearts-of-darkness-a-filmmaker-s-apocalypse.jpg",
+    "tmdbId": 4539,
+    "posterPath": "/nVMCtL3r2nj4fySihDDvamaVkfx.jpg",
+    "backdropPath": "/crw9RXI54qmSfc0tIiH5hip79uw.jpg",
+    "year": "1991"
+  },
+  "rewatched:ghost:0": {
+    "img": "../assets/posters/rewatched/ghost-01-uhf.jpg",
+    "tmdbId": 11959,
+    "posterPath": "/wxx5YQLKVH1WMSRXQAUnC76r4iY.jpg",
+    "backdropPath": "/dAz8vPSI2daM4ZVrHSKnpNLUvDM.jpg",
+    "year": "1989"
+  },
+  "rewatched:ghost:1": {
+    "img": "../assets/posters/rewatched/ghost-02-airbag.jpg",
+    "tmdbId": 21700,
+    "posterPath": "/sjvz7mxHsygeO4K09GoSgWR4dfy.jpg",
+    "backdropPath": "/uI7Wxl9RMthNtSPOCfTNvPW6oWs.jpg",
+    "year": "1997"
+  },
+  "rewatched:ghost:2": {
+    "img": "../assets/posters/rewatched/ghost-03-grind.jpg",
+    "tmdbId": 20210,
+    "posterPath": "/3ijvfbWQYLaFQ2PaX6hywnMW3Hv.jpg",
+    "backdropPath": "/5DSsPOA54cb5ffIqJX9Dp5IKgtb.jpg",
+    "year": "2003"
+  },
+  "rewatched:ghost:3": {
+    "img": "../assets/posters/rewatched/ghost-04-le-retour-de-goldorak.jpg",
+    "tmdbId": 820996,
+    "posterPath": "/cFRk8Yyd78YRVLASo3LdDcHE2qE.jpg",
+    "backdropPath": "/fARizsEcTLzz6J9d2TJnfDQMxC7.jpg",
+    "year": "1979"
+  },
+  "rewatched:ghost:4": {
+    "img": "../assets/posters/rewatched/ghost-05-condorman.jpg",
+    "tmdbId": 19379,
+    "posterPath": "/wRe9kAvjN5IGAjPd0oCKhjyQDt0.jpg",
+    "backdropPath": "/kJn4aK6QMn890jnXEeEDLm9zDyK.jpg",
+    "year": "1981"
+  }
+};
+  TOPS.forEach(top=>{
+    (top.films||[]).forEach(f=>{const m=metadata[top.id+':'+f.rank];if(!m)return;Object.assign(f,m);if(m.img)f.img=m.img;});
+    (top.ghosts||[]).forEach((g,index)=>{const m=ghostMetadata[top.id+':ghost:'+index];if(!m)return;Object.assign(g,m);if(m.img)g.img=m.img;});
+  });
 })();
