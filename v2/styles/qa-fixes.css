@@ -6,11 +6,88 @@
 .site-sidebar{padding-top:0!important}
 .era-prev{margin-left:100px!important}
 .era-next{margin-right:100px!important}
-.poster-deferred{opacity:1!important}
+.poster-deferred{opacity:1!important;background:#111719}
 .era-screen[data-top-id="rewatched"] .grid[data-flow="rest"]{grid-template-columns:repeat(5,minmax(0,1fr))}
 .era-screen[data-top-id="rewatched"] .full-progress{pointer-events:none}
+
 @media(max-width:900px){
   .era-prev{margin-left:28px!important}
   .era-next{margin-right:28px!important}
   .site-layout{margin-top:0!important}
+}
+
+@media(max-width:560px){
+  .shell{padding:10px 10px 76px!important}
+  .sec{border-radius:14px!important}
+  .pad{padding:10px!important}
+
+  /* Poster cards: keep actual poster proportions instead of aggressive crops. */
+  .heroTop{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-auto-rows:auto!important;
+    gap:8px!important;
+  }
+  .heroTop .tile:first-child{
+    grid-column:1 / -1!important;
+    grid-row:auto!important;
+    min-height:0!important;
+    aspect-ratio:3/4!important;
+  }
+  .heroTop .tile:nth-child(n+2){
+    min-height:0!important;
+    aspect-ratio:2/3!important;
+  }
+  .grid:not(.full-grid),
+  .era-screen[data-top-id="rewatched"] .grid[data-flow="rest"]{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  .full-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}
+  .tile{border-radius:9px!important}
+  .name{font-size:14px!important;line-height:1.05!important}
+  .heroTop .tile:first-child .name{font-size:22px!important}
+
+  /* Grands oubliés / image-led editorial cards need room for their copy on phones. */
+  .ghosts{grid-template-columns:1fr!important;gap:10px!important}
+  .ghost-card{aspect-ratio:auto!important;min-height:270px!important;border-radius:12px!important}
+  .ghost-copy{padding:100px 15px 15px!important}
+  .ghost-copy b{font-size:20px!important;line-height:1!important}
+  .ghost-copy span{font-size:12px!important;line-height:1.42!important;margin-top:7px!important}
+
+  /* OVNI editorial comments cannot rely on hover on touch screens. */
+  .grid[data-flow="bottom"]{grid-template-columns:1fr!important}
+  .grid[data-flow="bottom"] .tile{aspect-ratio:16/10!important;min-height:220px!important}
+  .grid[data-flow="bottom"] .tile .hover{
+    opacity:1!important;
+    justify-content:flex-end!important;
+    padding:12px 12px 42px!important;
+    background:linear-gradient(180deg,transparent 18%,rgba(0,0,0,.18) 35%,rgba(0,0,0,.96) 100%)!important;
+    font-size:11px!important;
+    line-height:1.38!important;
+    pointer-events:none!important;
+  }
+  .grid[data-flow="bottom"] .tile .name{
+    z-index:5!important;
+    left:12px!important;
+    right:12px!important;
+    bottom:12px!important;
+    font-size:17px!important;
+  }
+
+  /* Touch targets stay available even when the user prefers swiping. */
+  .era-arrow{
+    width:46px!important;
+    height:62px!important;
+    border-radius:999px!important;
+    background:rgba(8,10,11,.42)!important;
+    backdrop-filter:blur(8px)!important;
+    color:#fff!important;
+    font-size:28px!important;
+    opacity:.9!important;
+    touch-action:manipulation!important;
+  }
+  .era-prev{left:8px!important;margin-left:0!important}
+  .era-next{right:8px!important;margin-right:0!important}
+  .era-arrow.disabled{opacity:.14!important}
+  .era-hud{bottom:10px!important;max-width:calc(100vw - 24px)!important}
 }
