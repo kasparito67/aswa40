@@ -12,7 +12,6 @@ on:
 permissions:
   contents: write
 
-# Keep this workflow on the latest cleanup HEAD so generated media never races manual UI commits.
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -31,7 +30,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/posters/documentaires assets/posters/rewatched data/documentaires data/rewatched v2/scripts/expansion-media.js expansion-media-result.json || true
+          git add -A -- assets/posters data/documentaires data/rewatched v2/scripts/expansion-media.js expansion-media-result.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Sync documentary and Re.Watched media'
           git push origin HEAD:work-cleanup-sept9
