@@ -67,8 +67,11 @@
     });
   }
 
+  // Observe only stage transform/style changes. Do not observe class mutations here:
+  // burst() owns the `parallax-active` class, and observing that class creates a
+  // self-sustaining MutationObserver -> burst -> class mutation loop on desktop.
   const stageObserver=new MutationObserver(()=>burst(620));
-  stageObserver.observe(stage,{attributes:true,attributeFilter:['style','class']});
+  stageObserver.observe(stage,{attributes:true,attributeFilter:['style']});
   const childObserver=new MutationObserver(()=>{bindScroll();burst(100)});
   childObserver.observe(stage,{childList:true});
 
