@@ -6,6 +6,7 @@ import { chromium } from 'playwright';
 const root=process.cwd();
 const port=4173;
 const topIds=['1975-1999','2000-2024','sci-fi-realiste','animation','biopics','documentaires','rewatched'];
+const sharedHeaderIds=topIds.filter(id=>id!=='1975-1999');
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff':'font/woff','.woff2':'font/woff2'};
 
 const server=http.createServer((req,res)=>{
@@ -39,19 +40,57 @@ async function waitForTop(page,id){
   await page.waitForTimeout(180);
 }
 
+async function assertHeaderSystem(page){
+  await page.waitForFunction(expected=>document.querySelectorAll('.era-screen.design-header-system').length===expected,sharedHeaderIds.length,{timeout:10000});
+  assert(await page.locator('.era-screen[data-top-id="1975-1999"] .design1975-top5').count()===1,'desktop: validated 1975 Top 5 header is missing');
+  assert(await page.locator('.era-screen.design-header-system').count()===sharedHeaderIds.length,'desktop: shared header did not enhance every remaining Top');
+
+  for(const id of sharedHeaderIds){
+    const screen=page.locator(`.era-screen[data-top-id="${id}"]`);
+    assert(await screen.locator('.design-header-top5 button').count()===5,`desktop: ${id} shared Top 5 does not contain five films`);
+    assert(await screen.locator('.design-header-media-layer').count()===5,`desktop: ${id} shared header does not contain five media layers`);
+    assert(await screen.locator('.design-header-top5 button.is-locked').count()===1,`desktop: ${id} shared header has no single locked film`);
+    const geometry=await screen.evaluate(el=>{
+      const hero=el.querySelector('.hero-header')?.getBoundingClientRect();
+      const shell=el.querySelector(':scope > .shell')?.getBoundingClientRect();
+      const nav=el.querySelector('.design-header-top5')?.getBoundingClientRect();
+      return hero&&shell&&nav?{heroBottom:hero.bottom,shellTop:shell.top,heroTop:hero.top,navTop:nav.top,navBottom:nav.bottom}:null;
+    });
+    assert(geometry&&geometry.shellTop>=geometry.heroBottom-1,`desktop: ${id} content overlaps the shared hero`);
+    assert(geometry&&geometry.navTop>=geometry.heroTop-1&&geometry.navBottom<=geometry.heroBottom+1,`desktop: ${id} Top 5 menu escapes the hero bounds`);
+  }
+
+  const yearIcon=await page.locator('.era-screen[data-top-id="1975-1999"] .year-toggle').evaluate(el=>{
+    const s=getComputedStyle(el,'::before');return s.maskImage||s.webkitMaskImage||'';
+  });
+  const directorIcon=await page.locator('.era-screen[data-top-id="1975-1999"] .director-toggle').evaluate(el=>{
+    const s=getComputedStyle(el,'::before');return s.maskImage||s.webkitMaskImage||'';
+  });
+  assert(yearIcon&&yearIcon!=='none','desktop: year editorial icon is missing');
+  assert(directorIcon&&directorIcon!=='none','desktop: director editorial icon is missing');
+}
+
 const browser=await chromium.launch({headless:true});
 try{
-  // Desktop native carousel / routing / selector / modal / disclosure smoke.
+  // Desktop native carousel / routing / selector / shared headers / modal / disclosure smoke.
   const desktop=await browser.newContext({viewport:{width:1440,height:900}});
   const page=await desktop.newPage();await attachDiagnostics(page,'desktop');
   await page.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});
   await page.waitForSelector('.stage.native-carousel',{timeout:10000});
   assert(await page.locator('.era-screen').count()===7,'desktop: expected seven mounted Top screens');
   assert((await page.locator('.era-screen.is-active-top').getAttribute('data-top-id'))==='1975-1999','desktop: wrong initial active Top');
+  await assertHeaderSystem(page);
 
   await page.locator('#eraNext').click();
   await waitForTop(page,'2000-2024');
   assert((await page.locator('.era-screen.is-active-top').getAttribute('data-top-id'))==='2000-2024','desktop: side arrow did not activate 2000–2024');
+
+  const shared2000=page.locator('.era-screen[data-top-id="2000-2024"] .design-header-top5');
+  await shared2000.locator('button').nth(1).hover();
+  assert(await shared2000.evaluate(el=>el.classList.contains('is-previewing')),'desktop: shared Top 5 hover preview state did not activate');
+  assert(await shared2000.locator('button').nth(1).evaluate(el=>el.classList.contains('is-preview')),'desktop: shared Top 5 hovered film did not become preview');
+  await shared2000.locator('button').nth(1).click();
+  assert(await shared2000.locator('button').nth(1).evaluate(el=>el.classList.contains('is-locked')),'desktop: shared Top 5 click did not lock the new film');
 
   await page.locator('.era-hud-current').click();
   assert(await page.locator('.era-hud').evaluate(el=>el.classList.contains('is-open')),'desktop: Top selector did not open');
@@ -94,6 +133,7 @@ try{
   await mpage.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});
   await mpage.waitForSelector('.era-screen',{timeout:10000});
   assert(await mpage.locator('.era-screen').count()===1,'mobile: expected one mounted Top at rest');
+  assert(await mpage.locator('.design-header-system,.design-header-top5').count()===0,'mobile: desktop shared header skin leaked into the validated mobile renderer');
   await mpage.locator('#eraNext').click();
   await waitForTop(mpage,'2000-2024');
   await mpage.waitForTimeout(520);
