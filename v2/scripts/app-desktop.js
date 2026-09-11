@@ -29,7 +29,7 @@
   let topIndex=0;
   let scrollFrame=0,scrollTimer=0,suppressHistory=false,pendingHistory='push';
   let modalTop=0,modalIndex=0,modalAnimating=false,modalSnapshot=null,modalRequest=0;
-  let modalWheelAxis=null,modalWheelX=0,modalWheelY=0,modalWheelTimer=0,modalWheelLocked=false;
+  let modalWheelAxis=null,modalWheelX=0,modalWheelY=0,modalWheelSignedX=0,modalWheelTimer=0,modalWheelLocked=false;
 
   const routeFor=i=>`/tops/${TOPS[clampTop(i)].id}`;
   const routeIndex=(path=location.pathname)=>{
@@ -111,7 +111,7 @@
   }
   function sectionMarkup(s,top,t,i){
     const rendered=i===0;
-    return `<section class="sec ${rendered?'open':''}" data-kind="${s.kind}" data-section-index="${i}" data-rendered="${rendered?'1':'0'}"><button class="toggle" type="button"><div><div class="k">${esc(s.kicker)}</div><strong>${esc(s.title)}</strong></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad">${rendered?sectionBody(s,top,t):''}</div></div></div></section>`;
+    return `<section class="sec ${rendered?'open':''}" data-kind="${s.kind}" data-section-index="${i}" data-rendered="${rendered?'1':'0'}"><button class="toggle" type="button" aria-expanded="${rendered?'true':'false'}"><div><div class="k">${esc(s.kicker)}</div><strong>${esc(s.title)}</strong></div><span class="arr">↓</span></button><div class="content"><div class="inner"><div class="pad">${rendered?sectionBody(s,top,t):''}</div></div></div></section>`;
   }
 
   function insightCard(item){
@@ -169,12 +169,19 @@
   }
   function bindSections(root){
     root.querySelectorAll('.sec').forEach(sec=>{
-      const body=sec.querySelector('.content'),inner=sec.querySelector('.inner');
+      const body=sec.querySelector('.content'),inner=sec.querySelector('.inner'),toggle=sec.querySelector('.toggle');
+      let heightTimer=0;
       if(sec.classList.contains('open'))body.style.height='auto';
-      sec.querySelector('.toggle').onclick=()=>{
-        const open=!sec.classList.contains('open');if(open)hydrateSection(sec);sec.classList.toggle('open',open);
-        if(open){body.style.height=inner.scrollHeight+'px';setTimeout(()=>body.style.height='auto',540)}
-        else{body.style.height=body.scrollHeight+'px';requestAnimationFrame(()=>body.style.height='0px')}
+      toggle.onclick=()=>{
+        clearTimeout(heightTimer);
+        const open=!sec.classList.contains('open');if(open)hydrateSection(sec);sec.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));
+        if(open){
+          body.style.height=inner.scrollHeight+'px';
+          heightTimer=setTimeout(()=>{if(sec.classList.contains('open'))body.style.height='auto'},540);
+        }else{
+          body.style.height=body.scrollHeight+'px';
+          requestAnimationFrame(()=>{if(!sec.classList.contains('open'))body.style.height='0px'});
+        }
       };
     });
   }
@@ -215,12 +222,15 @@
     });
   }
   function revealMore(sec){
+    if(sec.dataset.loadingMore==='1')return;
     const screenEl=sec.closest('.era-screen'),t=TOPS.findIndex(x=>x.id===screenEl.dataset.topId),top=TOPS[t],grid=sec.querySelector('.full-grid');
-    const start=Number(grid.dataset.start),batch=Number(grid.dataset.batch),key=`${top.id}:full`,count=loadedFull.get(key)||batch,next=Math.min(top.films.length-(start-1),count+batch),loader=sec.querySelector('.full-loader');
-    loader.classList.remove('is-hidden');
+    const start=Number(grid.dataset.start),batch=Number(grid.dataset.batch),key=`${top.id}:full`,count=loadedFull.get(key)||batch,next=Math.min(top.films.length-(start-1),count+batch),loader=sec.querySelector('.full-loader'),button=sec.querySelector('.full-reveal-button');
+    if(next<=count){updateReveal(sec);return}
+    sec.dataset.loadingMore='1';if(button)button.disabled=true;loader.classList.remove('is-hidden');
     setTimeout(()=>{
       grid.insertAdjacentHTML('beforeend',top.films.slice(start-1+count,start-1+next).map(f=>filmTile(f,t,'full',true)).join(''));
-      loadedFull.set(key,next);hydrateDeferred(grid);bindTiles(grid);bindCoverFlow(sec);sec.querySelector('.full-range').textContent=`#${start}–${start+next-1}`;loader.classList.add('is-hidden');updateReveal(sec);
+      loadedFull.set(key,next);hydrateDeferred(grid);bindTiles(grid);bindCoverFlow(sec);sec.querySelector('.full-range').textContent=`#${start}–${start+next-1}`;loader.classList.add('is-hidden');
+      sec.dataset.loadingMore='0';if(button)button.disabled=false;updateReveal(sec);
       const body=sec.querySelector('.content');if(body.style.height!=='auto')body.style.height=sec.querySelector('.inner').scrollHeight+'px';
     },180);
   }
@@ -307,16 +317,16 @@
     const leaving=outgoing.animate([{transform:'translate3d(0,0,0)',opacity:1},{transform:`translate3d(${outX}px,0,0)`,opacity:0}],{duration:170,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'});
     Promise.allSettled([incoming.finished,leaving.finished]).then(()=>{clearModalSnapshot();modalAnimating=false;modal.style.transform='';modal.style.opacity='';idle(()=>{preloadModalNeighbor(-1);preloadModalNeighbor(1)})});
   }
-  function resetModalWheel(){clearTimeout(modalWheelTimer);modalWheelTimer=0;modalWheelAxis=null;modalWheelX=0;modalWheelY=0;modalWheelLocked=false}
+  function resetModalWheel(){clearTimeout(modalWheelTimer);modalWheelTimer=0;modalWheelAxis=null;modalWheelX=0;modalWheelY=0;modalWheelSignedX=0;modalWheelLocked=false}
   function scheduleModalWheelReset(){clearTimeout(modalWheelTimer);modalWheelTimer=setTimeout(()=>{if(!modalAnimating)resetModalWheel();else scheduleModalWheelReset()},125)}
   mb.addEventListener('wheel',e=>{
     if(!mb.classList.contains('open'))return;
-    const ax=Math.abs(e.deltaX),ay=Math.abs(e.deltaY);modalWheelX+=ax;modalWheelY+=ay;
+    const ax=Math.abs(e.deltaX),ay=Math.abs(e.deltaY);modalWheelX+=ax;modalWheelY+=ay;modalWheelSignedX+=e.deltaX;
     if(!modalWheelAxis){if(modalWheelY>5&&modalWheelY>modalWheelX*1.08)modalWheelAxis='y';else if(modalWheelX>5&&modalWheelX>modalWheelY*1.08)modalWheelAxis='x'}
     scheduleModalWheelReset();
     if(modalWheelAxis!=='x')return;
     e.preventDefault();e.stopImmediatePropagation();if(modalWheelLocked||modalAnimating)return;
-    if(modalWheelX>=64){modalWheelLocked=true;transitionModal(e.deltaX>0?1:-1)}
+    if(modalWheelX>=64){modalWheelLocked=true;transitionModal(modalWheelSignedX>=0?1:-1)}
   },{passive:false,capture:true});
 
   modalClose.onclick=closeModal;modalPrev.onclick=()=>transitionModal(-1);modalNext.onclick=()=>transitionModal(1);mb.onclick=e=>{if(e.target===mb)closeModal()};
@@ -333,6 +343,7 @@
   hud.addEventListener('click',e=>{const dots=[...hud.querySelectorAll('.era-dot')],i=dots.indexOf(e.target);if(i>=0)goTo(i)});
   addEventListener('keydown',e=>{
     if(mb.classList.contains('open')){if(e.key==='Escape')closeModal();else if(e.key==='ArrowLeft'){e.preventDefault();transitionModal(-1)}else if(e.key==='ArrowRight'){e.preventDefault();transitionModal(1)}return}
+    if(e.target?.closest?.('button,a,input,select,textarea,[contenteditable="true"]'))return;
     if(e.key==='ArrowLeft'){e.preventDefault();goTo(topIndex-1)}else if(e.key==='ArrowRight'){e.preventDefault();goTo(topIndex+1)}
   });
   addEventListener('resize',()=>{clearTimeout(scrollTimer);stage.scrollTo({left:topIndex*W(),behavior:'auto'})},{passive:true});
