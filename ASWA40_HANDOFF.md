@@ -1,22 +1,41 @@
 # ASWA40 — Canonical Project Handoff
 
-This file is the source of truth for future ChatGPT / Work / local sessions.
+This file is the compact source of truth for future ChatGPT / Work / local sessions.
+
+For the active redesign process, read **`ASWA40_DESIGN_OVERHAUL_GUIDE.md` first**. It contains the phase plan, design rules, implementation risk classes and promotion guardrails.
 
 ## 0. Current state — September 11, 2026
 
 - Repository: `kasparito67/aswa40`
 - Production branch: `main`
-- Production baseline before this audit: `e482e08afb34013fa590dbb1c89993014d5b79c2`
-- Production: `https://aswa40-films.vercel.app/`
-- Active QA branch: `audit-debug-sept11`
+- Production URL: `https://aswa40-films.vercel.app/`
+- Active redesign branch: `design-overhaul-sept11`
+- QA/debug source branch: `audit-debug-sept11`
 - Audit report: `ASWA40_AUDIT_2026-09-11.md`
-- Never promote the QA branch without explicit user visual approval.
+- Redesign guide: `ASWA40_DESIGN_OVERHAUL_GUIDE.md`
 
-The previously validated platform is live on `main`. A full QA/debug pass is now isolated on `audit-debug-sept11`; production is intentionally untouched during validation.
+`design-overhaul-sept11` was created from production and then fast-forwarded to include the validated September 11 QA/debug fixes through commit `33130a791329eae35b2a35f1926bfaf0fb4f5f10` before any redesign work began.
 
-## 1. Canonical routes
+Production must remain untouched during redesign exploration. Never promote or merge the redesign without explicit user approval.
 
-ASWA40 is one static Vercel app with a shareable route for each Top:
+## 1. Current redesign intent
+
+This is a **visual overhaul on top of a stable architecture**, not a ground-up rebuild.
+
+Initial visual scope:
+
+- keep current hero/background identities;
+- keep current navigation model and interaction logic;
+- keep current rollovers initially;
+- deeply redesign typography, sections, ranking presentation, film tiles, insights, spacing, surfaces and visual rhythm;
+- allow experiments where the hero/background continues into lower sections;
+- allow custom transparency/glass treatments if they remain minimal, intentional and Swiss/editorial rather than generic UI-kit glassmorphism.
+
+The hero/header system is preserved initially, not permanently locked. The redesign may later expand upward if the visual direction justifies it.
+
+## 2. Canonical routes
+
+ASWA40 is one static Vercel app with one routed Top per URL:
 
 - `/tops/1975-1999`
 - `/tops/2000-2024`
@@ -28,39 +47,35 @@ ASWA40 is one static Vercel app with a shareable route for each Top:
 
 Default entry remains `1975-1999`.
 
-`vercel.json` intentionally rewrites `/tops/:top` to `/v2`. Do not change that destination to `/v2/index.html` while `cleanUrls` is enabled.
+`vercel.json` rewrites `/tops/:top` to `/v2`. Preserve this routing model.
 
-## 2. Runtime architecture
+## 3. Stable runtime architecture
 
 Entry: `v2/index.html`
 
-`v2/scripts/bootstrap.js` selects one navigation engine.
+`v2/scripts/bootstrap.js` selects the navigation engine.
 
 ### Desktop / fine pointer
 
-Condition: `(min-width:701px) and (hover:hover) and (pointer:fine)`
-
-Loaded runtime:
-
-- `v2/scripts/app-desktop.js` — renderer, all sections/sidebar components, native horizontal rail, route/history state, progressive ranking and film modal;
+- `v2/scripts/app-desktop.js` — renderer, sections/sidebar, native horizontal rail, route/history state, progressive rankings and film modal;
 - `v2/scripts/top-nav.js` — bottom direct Top selector;
-- `v2/scripts/parallax.js` — desktop visual parallax.
+- `v2/scripts/parallax.js` — desktop parallax.
 
-Desktop navigation is now **native horizontal scroll + CSS scroll-snap**. All seven `.era-screen` elements are mounted in one horizontal rail. The browser owns trackpad momentum and snapping. Do not rebuild a wheel/state-machine carousel on top of it.
+Desktop Top navigation is **browser-native horizontal scroll + CSS scroll-snap**. All seven Tops sit in one horizontal rail. The browser owns trackpad momentum and snapping.
+
+Do not reintroduce a JS wheel/state-machine carousel over this system without explicit structural approval.
 
 ### Mobile / coarse pointer
 
-Loaded runtime:
-
-- `v2/scripts/runtime.js` — focused mobile runtime support;
+- `v2/scripts/runtime.js` — focused mobile support;
 - `v2/scripts/app.js` — validated transform carousel + renderer/modal;
-- `v2/scripts/parallax.js` — exits early on mobile.
+- `v2/scripts/parallax.js` exits early on mobile.
 
-Mobile keeps the validated one-screen-at-rest transform model. Current touch physics should not be changed casually.
+Mobile keeps the validated touch/transform model. Cosmetic redesigns should not alter this interaction engine.
 
-## 3. Data / configuration load order
+## 4. Data/configuration load order
 
-`v2/index.html` loads, in order:
+`v2/index.html` loads:
 
 1. `../scripts/data.js`
 2. `../scripts/backdrops.js`
@@ -79,15 +94,17 @@ Mobile keeps the validated one-screen-at-rest transform model. Current touch phy
 
 Responsibilities:
 
-- `canonical-data.js` — durable film identity/metadata locks only;
+- `canonical-data.js` — durable film identity/metadata locks;
 - `platform-config.js` — Top order, sections, OVNI curation and responsive media/batch configuration;
 - `hero-config.js` — hero artwork/position configuration;
-- `animation-data.js` — removes invalid `LE...K` entry and reranks animation list;
+- `animation-data.js` — canonical animation-list correction;
 - poster/expansion files — generated/verified metadata and media augmentation.
 
-Do not reintroduce duplicate section configuration into `canonical-data.js`.
+Do not duplicate structural section configuration across multiple files.
 
-## 4. Loaded styles
+## 5. Loaded styles
+
+Current production styles:
 
 - `v2/styles/app.css`
 - `v2/styles/hero.css`
@@ -99,53 +116,29 @@ Do not reintroduce duplicate section configuration into `canonical-data.js`.
 - `v2/styles/responsive.css`
 - `v2/styles/native-carousel.css`
 
-No loaded v2 stylesheet was identified as dead in the September 11 audit.
+During redesign, prefer responsibility-based edits. Do not create a chain of `final.css`, `fix.css`, `qa-final.css`, etc.
 
-Do not add a new `final`, `fix-2`, `qa-2`, or last-loaded override layer. Put changes in the file that owns the responsibility.
+Temporary prototype CSS is acceptable only for disposable mockups or clearly marked experimental work. Approved production styling should be consolidated.
 
-## 5. September 11 QA/debug pass
+## 6. September 11 QA/debug baseline
 
-Automated project audit on `audit-debug-sept11` currently checks:
+The redesign branch already contains the bugfix baseline from the QA branch.
 
-- JS syntax across project scripts;
-- production entrypoint references;
-- exact data/config pipeline;
-- 7 Tops / 793 ranked films;
-- rank continuity and section ranges;
-- OVNI ranks;
-- durable identity locks;
-- local rendered assets;
-- Vercel route rewrite;
-- unloaded v2 runtime drift.
+Validated fixes include:
 
-Current audit result: **0 errors / 0 warnings**.
+- 2000–2024 full range corrected to `#26–135`;
+- Biopics featured ranking corrected to actual Top 15, with full ranking from `#16`;
+- Animation OVNI ranks corrected after reranking;
+- Documentaires/Re.Watched section ownership consolidated;
+- desktop native programmatic scroll keeps parallax synchronized;
+- bottom Top selector no longer competes with global keyboard navigation;
+- global left/right navigation ignores focused interactive controls;
+- modal trackpad direction uses accumulated movement;
+- rapid section open/close no longer loses to stale timers;
+- repeated `Voir plus` cannot append duplicate batches;
+- section buttons expose correct accessibility state.
 
-A Playwright/Chromium smoke test also covers desktop and mobile boot/navigation, all seven direct routes, bottom selector, section lazy rendering, rapid section state changes and modal open/close. Current smoke result: **PASS**.
-
-Audit tooling:
-
-- `scripts/audit-project.mjs`
-- `.github/workflows/audit-project.yml`
-- `scripts/smoke-browser.mjs`
-- `.github/workflows/browser-smoke.yml`
-
-These two workflows are intentionally branch-scoped to `audit-debug-sept11` until the audit is approved.
-
-## 6. Bugs fixed on the QA branch
-
-- 2000–2024 full-range label aligned to `#26–135`.
-- Biopics explicitly renders `TOP 15`; full ranking starts at `#16`.
-- Animation OVNI bottom ranks corrected after list rerank (`#85–89`, not pre-rerank `#86–90`).
-- Documentaires/Re.Watched section ownership consolidated in `platform-config.js`.
-- Desktop native programmatic scroll now keeps parallax synchronized.
-- Bottom Top selector no longer competes with global keyboard navigation.
-- Global desktop left/right keys ignore focused interactive controls.
-- Modal trackpad direction uses accumulated signed movement rather than the final inertial frame.
-- Rapid section open/close no longer loses to a stale height timer.
-- Repeated `Voir plus` clicks cannot append duplicate batches.
-- Section buttons expose correct `aria-expanded` state.
-
-Removed dead v2 runtime files after proving they were not loaded:
+Removed dead v2 runtime files:
 
 - `header-polish.js`
 - `hero-title-final.js`
@@ -153,52 +146,56 @@ Removed dead v2 runtime files after proving they were not loaded:
 - `modal-polish.js`
 - `sidebar-polish.js`
 
-## 7. UX / visual invariants
+## 7. QA tooling
+
+The project contains:
+
+- `scripts/audit-project.mjs`
+- `.github/workflows/audit-project.yml`
+- `scripts/smoke-browser.mjs`
+- `.github/workflows/browser-smoke.yml`
+
+Both workflows run on `design-overhaul-sept11` as well as the QA branch.
+
+Baseline audit result before redesign: **0 errors / 0 warnings** across 7 Tops / 793 ranked films.
+
+Baseline Playwright/Chromium desktop + mobile smoke: **PASS**.
+
+Every meaningful redesign implementation phase should return to green audit + smoke status before being considered stable.
+
+## 8. UX invariants during redesign
 
 ### Navigation
 
-- Desktop: browser-native scroll-snap rail; trackpad motion must remain native and seamless.
-- Mobile: direct touch/transform carousel; one Top mounted at rest.
-- Routes update with navigation; browser Back/Forward and refresh must restore the correct Top.
+- Desktop: native scroll-snap rail.
+- Mobile: validated direct touch/transform carousel.
+- Routes, refresh and Back/Forward must preserve the correct Top.
+- Bottom selector remains functional direct navigation.
+- Side arrows remain usable.
 - No black flash, fake page load or hard seam between Tops.
-- Desktop bottom selector is direct navigation, not decorative status dots.
-- Side arrows are circular dark controls on desktop and mobile.
 
-### Headers
+### Content hierarchy
 
-- Hero artwork stays distinct per Top while interface geometry is shared.
-- Desktop hero/section baseline is normalized across Tops.
-- Approved source artwork is rendered directly; do not recreate title art in CSS.
-- Mobile title placement is optically normalized.
-- 1975–1999 has deliberate mobile crop treatment.
-- Re.Watched has optical title compensation.
-
-### Rankings
-
-- #1 dominant;
-- #2–5 medium;
-- remaining featured ranking smaller;
-- Re.Watched: Top 50 featured, #51–263 full;
-- Documentaires: Top 15 featured, #16–83 full;
-- Biopics: Top 15 featured, #16–67 full;
-- mobile poster grids remain two columns with correct aspect ratio.
+- #1 remains dominant.
+- #2–5 remain a secondary featured tier unless an approved redesign explicitly establishes an equivalent hierarchy.
+- Long rankings remain progressive/lazy rather than eagerly dumping all content.
+- Mobile must remain touch-safe and free of horizontal overflow.
 
 ### Modal
 
-- Desktop: cinematic detail card + previous/next navigation.
-- Mobile: vertically scrollable sheet with complete poster/title/stats/body.
-- OVNI editorial reason appears in relevant detail cards.
+- Desktop retains previous/next film navigation.
+- Mobile remains vertically scrollable.
+- OVNI editorial copy remains available where configured.
 
 ### Performance
 
 - secondary sections render on demand;
-- full rankings reveal progressively;
-- mobile uses reduced TMDB image sizes;
-- likely-next assets are opportunistically prewarmed;
-- parallax is desktop-only;
+- long rankings reveal progressively;
+- mobile image budgets remain lighter;
+- parallax remains desktop-only unless explicitly reconsidered;
 - avoid permanent unnecessary GPU layers.
 
-## 8. Durable identity locks
+## 9. Durable data locks
 
 Never regress:
 
@@ -206,23 +203,28 @@ Never regress:
 - Senna = 2010 documentary, TMDB `58496`
 - Home Alone = 1990 film, TMDB `771`
 
-## 9. Repository hygiene
+## 10. Redesign implementation rule
 
-There are historical GitHub Actions workflows tied to old pages or old branches (for example `bump-1975-v037`, old TMDB backdrop/poster fetchers and `unify-era-environment`). They are not part of the current v2 runtime. Some retain narrow write triggers.
+When the user says **“push this into the site”** during this redesign, “site” means **`design-overhaul-sept11`**, not production.
 
-They were intentionally **not deleted during the runtime audit** because they are archival/tooling assets, not demonstrated live bugs. Archive or modernize them in a separate repository-hygiene task if desired.
+Use the risk classification in `ASWA40_DESIGN_OVERHAUL_GUIDE.md`:
 
-## 10. Promotion checklist
+- Class A skinning: implement directly;
+- Class B layout adaptation: implement safely while preserving behavior;
+- Class C structural change: explain risk and request explicit approval before changing architecture.
 
-Before moving `audit-debug-sept11` to `main`:
+HTML mockups are disposable design experiments. Never copy their architecture blindly into the production renderer.
 
-- visually test desktop trackpad, side arrows and bottom selector;
-- test vertical scrolling after repeated horizontal navigation;
-- test modal navigation with trackpad and arrows;
-- test rapid section opening/closing and `Voir plus`;
-- spot-check mobile swipe and modal;
-- confirm audit workflow PASS;
-- confirm browser smoke PASS;
-- confirm Vercel preview SUCCESS;
-- obtain explicit user approval;
-- only then fast-forward/promote `main` and verify the production Vercel deployment.
+## 11. Promotion guardrail
+
+Before any redesign promotion to `main`:
+
+- user visually validates the Vercel preview;
+- project audit is green;
+- desktop/mobile browser smoke is green;
+- all seven Tops are spot-checked visually;
+- navigation, sections, progressive loading and modals are exercised;
+- `ASWA40_HANDOFF.md` and the redesign guide are updated with final file responsibilities;
+- explicit user approval to merge/go live is obtained.
+
+Until then, `main` stays untouched.
