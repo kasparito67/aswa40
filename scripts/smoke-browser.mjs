@@ -70,6 +70,28 @@ async function assertHeaderSystem(page){
   assert(directorIcon&&directorIcon!=='none','desktop: director editorial icon is missing');
 }
 
+async function expectedMobileBackdrops(page,id){
+  return page.evaluate(topId=>{
+    const curated1975={
+      'Star Wars':'https://image.tmdb.org/t/p/original/aJCtkxLLzkk1pECehVjKHA2lBgw.jpg',
+      'Apocalypse Now':'https://image.tmdb.org/t/p/original/9Qs9oyn4iE8QtQjGZ0Hp2WyYNXT.jpg',
+      'Indiana Jones':'https://image.tmdb.org/t/p/original/c7Mjuip0jfHLY7x8ZSEriRj45cu.jpg',
+      'Pulp Fiction':'https://image.tmdb.org/t/p/original/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg',
+      'Fargo':'https://image.tmdb.org/t/p/original/36P236xmuc8aWmXK7YkOM5EAKbA.jpg'
+    };
+    const top=TOPS.find(t=>t.id===topId);
+    return top.films.slice(0,5).map((film,index)=>{
+      let src='';
+      if(top.id==='1975-1999'&&curated1975[film.title])src=curated1975[film.title];
+      else if(film.backdrop)src=film.backdrop;
+      else if(film.backdropPath)src=`https://image.tmdb.org/t/p/original${film.backdropPath}`;
+      else if(top.id==='2000-2024'&&typeof filmBackdrops==='object'&&filmBackdrops){const local=filmBackdrops[String(film.rank)]||filmBackdrops[film.rank];if(local)src=`../${local}`}
+      if(!src)src=top.hero?.image||film.img||'';
+      return new URL(src,document.baseURI).href;
+    });
+  },id);
+}
+
 async function assertMobileCinemaHeader(page,id){
   await page.waitForSelector('.era-screen.mobile-cinema-header',{timeout:10000});
   const screen=page.locator('.era-screen');
@@ -77,14 +99,35 @@ async function assertMobileCinemaHeader(page,id){
   assert(await screen.locator('.mobile-cinema-tabs button').count()===5,`mobile: ${id} cinema header does not expose five Top 5 selectors`);
   assert(await screen.locator('.mobile-cinema-layer').count()===5,`mobile: ${id} cinema header does not contain five media layers`);
   assert(await screen.locator('.mobile-cinema-tabs button.is-active').count()===1,`mobile: ${id} cinema header has no single active selector`);
+
+  const expected=await expectedMobileBackdrops(page,id);
+  const actual=await screen.locator('.mobile-cinema-layer img').evaluateAll(imgs=>imgs.map(img=>img.src));
+  assert(JSON.stringify(actual)===JSON.stringify(expected),`mobile: ${id} Top 5 backdrops diverge from desktop source resolution`);
+
   const geometry=await screen.evaluate(el=>{
     const hero=el.querySelector('.hero-header')?.getBoundingClientRect();
     const shell=el.querySelector(':scope > .shell')?.getBoundingClientRect();
     const copy=el.querySelector('.mobile-cinema-copy')?.getBoundingClientRect();
-    return hero&&shell&&copy?{heroBottom:hero.bottom,shellTop:shell.top,copyTop:copy.top,copyBottom:copy.bottom,heroTop:hero.top}:null;
+    const title=el.querySelector('.hero-title-art-wrap')?.getBoundingClientRect();
+    const section=el.querySelector('.sec');
+    const tile=el.querySelector('.tile');
+    const copyStyle=el.querySelector('.mobile-cinema-film b')?getComputedStyle(el.querySelector('.mobile-cinema-film b')):null;
+    return hero&&shell&&copy&&title?{
+      heroBottom:hero.bottom,shellTop:shell.top,heroTop:hero.top,copyTop:copy.top,copyBottom:copy.bottom,
+      titleTop:title.top,titleRight:innerWidth-title.right,titleBottom:title.bottom,
+      secRadius:section?getComputedStyle(section).borderRadius:'',tileRadius:tile?getComputedStyle(tile).borderRadius:'',
+      fontFamily:copyStyle?.fontFamily||'',fontWeight:copyStyle?.fontWeight||''
+    }:null;
   });
   assert(geometry&&geometry.shellTop>=geometry.heroBottom-1,`mobile: ${id} content overlaps cinema hero`);
   assert(geometry&&geometry.copyTop>=geometry.heroTop&&geometry.copyBottom<=geometry.heroBottom,`mobile: ${id} active film copy escapes hero bounds`);
+  assert(geometry&&geometry.titleTop-geometry.heroTop>=48&&geometry.titleTop-geometry.heroTop<=60,`mobile: ${id} title is not on the shared header baseline`);
+  assert(geometry&&geometry.titleRight>=12&&geometry.titleRight<=18,`mobile: ${id} title is not on the shared right anchor`);
+  assert(geometry&&geometry.titleBottom<=geometry.heroBottom,`mobile: ${id} title escapes hero bounds`);
+  assert(geometry&&geometry.secRadius==='0px',`mobile: ${id} section geometry is still rounded`);
+  assert(geometry&&geometry.tileRadius==='0px',`mobile: ${id} film tile geometry is still rounded`);
+  assert(geometry&&geometry.fontFamily.toLowerCase().includes('inter'),`mobile: ${id} active film typography does not use Inter`);
+  assert(geometry&&Number(geometry.fontWeight)>=600,`mobile: ${id} active film typography is lighter than desktop language`);
 }
 
 const browser=await chromium.launch({headless:true});
@@ -142,12 +185,18 @@ try{
 
   const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
   const mpage=await mobile.newPage();await attachDiagnostics(mpage,'mobile');
-  await mpage.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});
-  await mpage.waitForSelector('.era-screen',{timeout:10000});
-  assert(await mpage.locator('.era-screen').count()===1,'mobile: expected one mounted Top at rest');
-  assert(await mpage.locator('.design-header-system,.design-header-top5').count()===0,'mobile: desktop shared header skin leaked into the mobile renderer');
-  await assertMobileCinemaHeader(mpage,'1975-1999');
 
+  // Every mobile Top must use the exact desktop backdrop sources and the same title anchor.
+  for(const id of topIds){
+    await mpage.goto(`http://127.0.0.1:${port}/tops/${id}`,{waitUntil:'domcontentloaded'});
+    await mpage.waitForSelector('.era-screen',{timeout:10000});
+    assert(await mpage.locator('.era-screen').count()===1,`mobile: ${id} expected one mounted Top at rest`);
+    assert(await mpage.locator('.design-header-system,.design-header-top5').count()===0,`mobile: ${id} desktop shared header skin leaked into mobile renderer`);
+    await assertMobileCinemaHeader(mpage,id);
+  }
+
+  await mpage.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});
+  await mpage.waitForSelector('.era-screen.mobile-cinema-header',{timeout:10000});
   const mobileTitleBefore=(await mpage.locator('.mobile-cinema-film b').textContent()).trim();
   await mpage.locator('.mobile-cinema-tabs button').nth(1).click();
   await mpage.waitForTimeout(80);
@@ -161,7 +210,6 @@ try{
   await mpage.waitForTimeout(520);
   assert(await mpage.locator('.era-screen').count()===1,'mobile: transition did not settle back to one screen');
   assert((await mpage.locator('.era-screen').getAttribute('data-top-id'))==='2000-2024','mobile: wrong Top after arrow navigation');
-  await assertMobileCinemaHeader(mpage,'2000-2024');
 
   const msec=mpage.locator('.era-screen .sec').nth(1);
   await msec.locator('.toggle').click();await mpage.waitForTimeout(80);
