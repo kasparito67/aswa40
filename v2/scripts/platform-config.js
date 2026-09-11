@@ -37,7 +37,9 @@
       }
     },
     'animation':{
-      ranks:[86,87,88,89,90,26,38,50],
+      // LE...K is removed and the list is reranked in animation-data.js, so the
+      // original bottom five (#86–90) become the current #85–89.
+      ranks:[85,86,87,88,89,26,38,50],
       comments:{
         26:'Un court métrage québécois placé #1 par une seule personne. C’est à la fois un très gros amour individuel et une anomalie parfaite.',
         38:'The Animatrix est un objet hybride, anthologique et directement lié à une franchise live action : naturellement à part dans ce Top.',
@@ -63,7 +65,7 @@
   };
 
   Object.entries(ovnis).forEach(([id,cfg])=>{
-    const top=byId(id); if(!top) return;
+    const top=byId(id);if(!top)return;
     top.ovnis=cfg;
     let sec=top.sections.find(s=>s.kind==='bottom');
     if(!sec){sec={kicker:'Les choix qui détonnent',title:'Les OVNIS',kind:'bottom',count:5};top.sections.push(sec)}
@@ -74,6 +76,8 @@
   if(top2000){
     const insightKeys=['religion','consensus','duo','ovni'];
     top2000.sidebar.filter(x=>x.kind==='insight').forEach((item,i)=>item.key=insightKeys[i]);
+    const full=top2000.sections.find(s=>s.kind==='full');
+    if(full){full.start=26;full.title='#26–135'}
     const year=top2000.sidebar.find(x=>x.kind==='year');
     if(year){
       Object.assign(year,{label:'Année reine',title:'2000',sub:'13 films · 2000–2009 = 55%',bars:[13,10,10,6,6,6,6,11,2,4,5,5,4,6,8,6,4,5,2,3,2,3,4,3,1],yearStart:2000,notes:['2007 — 11 films','2001–02 — 10 films chacune','2024 — 1 seul film','Le creux — 2008 · 2018 · 2020']});
@@ -89,6 +93,14 @@
         ]
       });
     }
+  }
+
+  const biopics=byId('biopics');
+  if(biopics){
+    const featured=biopics.sections.find(s=>s.kind==='top25');
+    const full=biopics.sections.find(s=>s.kind==='full');
+    if(featured)featured.count=15;
+    if(full){full.start=16;full.title='#16–67'}
   }
 
   const docs=byId('documentaires');
