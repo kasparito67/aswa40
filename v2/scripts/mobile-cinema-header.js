@@ -5,6 +5,7 @@
   const stage=document.getElementById('stage');
   if(!stage||typeof TOPS==='undefined'||!Array.isArray(TOPS))return;
 
+  const perf=window.__ASWA40_MOBILE_PERF__||{};
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
   const curated1975={
     'Star Wars':'https://image.tmdb.org/t/p/original/aJCtkxLLzkk1pECehVjKHA2lBgw.jpg',
@@ -18,16 +19,23 @@
     const src=filmBackdrops[String(film?.rank)]||filmBackdrops[film?.rank];
     return src?`../${src}`:'';
   };
-  // Keep this resolver in lockstep with the validated desktop header systems.
-  const backdropFor=(top,film,index)=>{
+  const originalHero=top=>perf.heroImages?.[top?.id]||top?.hero?.image||'';
+  const desktopBackdrop=(top,film,index)=>{
     if(top?.id==='1975-1999'&&curated1975[film?.title])return curated1975[film.title];
     if(film?.backdrop)return film.backdrop;
     if(film?.backdropPath)return `https://image.tmdb.org/t/p/original${film.backdropPath}`;
     const local=legacyBackdrop(top,film);if(local)return local;
-    if(index===0&&top?.hero?.image)return top.hero.image;
-    return top?.hero?.image||film?.img||'';
+    if(index===0&&originalHero(top))return originalHero(top);
+    return originalHero(top)||film?.img||'';
+  };
+  const deliverySource=src=>{
+    const value=String(src||'');
+    if(!value.includes('image.tmdb.org/t/p/'))return value;
+    if(typeof perf.tmdb==='function')return perf.tmdb(value,perf.backdropSize||'w780');
+    return value.replace(/\/t\/p\/(?:original|w\d+)\//,`/t/p/${perf.backdropSize||'w780'}/`);
   };
   const meta=film=>film?.year?String(film.year):`${film?.pts??'—'} pts · ${film?.votes??'—'} votes`;
+  const idle=cb=>('requestIdleCallback' in window?requestIdleCallback(cb,{timeout:1800}):setTimeout(cb,1200));
 
   function enhance(screen){
     if(!screen||screen.dataset.mobileCinemaHeader==='1')return;
@@ -36,13 +44,13 @@
     if(!top||!hero||!Array.isArray(top.films)||top.films.length<5)return;
 
     const films=top.films.slice(0,5);
-    const sources=films.map((film,i)=>backdropFor(top,film,i));
-    sources.slice(0,2).forEach(src=>{if(src){const img=new Image();img.decoding='async';img.src=src}});
+    const desktopSources=films.map((film,i)=>desktopBackdrop(top,film,i));
+    const sources=desktopSources.map(deliverySource);
 
     const media=document.createElement('div');
     media.className='mobile-cinema-media';
     media.setAttribute('aria-hidden','true');
-    media.innerHTML=sources.map((src,i)=>`<div class="mobile-cinema-layer${i===0?' is-active':''}" data-mobile-cinema-layer="${i}"><img src="${esc(src)}" alt="" decoding="async" fetchpriority="${i===0?'high':'low'}"></div>`).join('');
+    media.innerHTML=sources.map((src,i)=>`<div class="mobile-cinema-layer${i===0?' is-active':''}" data-mobile-cinema-layer="${i}" data-desktop-source="${esc(desktopSources[i])}"><img ${i===0?`src="${esc(src)}"`:`data-src="${esc(src)}"`} alt="" decoding="async" loading="${i===0?'eager':'lazy'}" fetchpriority="${i===0?'high':'low'}"></div>`).join('');
     hero.prepend(media);
 
     const copy=document.createElement('div');
@@ -53,7 +61,7 @@
     const tabs=document.createElement('div');
     tabs.className='mobile-cinema-tabs';
     tabs.setAttribute('aria-label','Top 5');
-    tabs.innerHTML=films.map((film,i)=>`<button type="button" class="${i===0?'is-active':''}" data-mobile-cinema-index="${i}" aria-label="Afficher ${esc(film.title)}">${String(i+1).padStart(2,'0')}</button>`).join('');
+    tabs.innerHTML=films.map((film,i)=>`<button type="button" class="${i===0?'is-active':''}" data-mobile-cinema-index="${i}" aria-pressed="${i===0?'true':'false'}" aria-label="Afficher ${esc(film.title)}">${String(i+1).padStart(2,'0')}</button>`).join('');
     hero.append(tabs);
 
     const layers=[...media.querySelectorAll('.mobile-cinema-layer')];
@@ -62,26 +70,55 @@
     const title=copy.querySelector('.mobile-cinema-film b');
     const filmMeta=copy.querySelector('.mobile-cinema-film span');
     const count=copy.querySelector('.mobile-cinema-count');
-    let active=0;
+    let active=0,request=0;
 
-    const select=i=>{
-      if(i===active)return;
+    const ensureImage=i=>{
+      const img=layers[i]?.querySelector('img');
+      if(!img)return Promise.resolve();
+      if(!img.getAttribute('src')){
+        const src=img.dataset.src;
+        if(src){img.src=src;delete img.dataset.src}
+      }
+      if(img.complete&&img.naturalWidth)return Promise.resolve();
+      if(img.decode)return img.decode().catch(()=>{});
+      return new Promise(resolve=>{img.addEventListener('load',resolve,{once:true});img.addEventListener('error',resolve,{once:true})});
+    };
+
+    const commit=i=>{
       active=i;
       layers.forEach((layer,n)=>layer.classList.toggle('is-active',n===i));
-      buttons.forEach((button,n)=>button.classList.toggle('is-active',n===i));
+      buttons.forEach((button,n)=>{
+        const on=n===i;
+        button.classList.toggle('is-active',on);
+        button.classList.remove('is-loading');
+        button.setAttribute('aria-pressed',String(on));
+      });
       const film=films[i];
       rank.textContent=String(film.rank).padStart(2,'0');
       title.textContent=film.title;
       filmMeta.textContent=meta(film);
       count.textContent=`${String(i+1).padStart(2,'0')} / 05`;
-      const next=sources[(i+1)%sources.length];
-      if(next){const preload=new Image();preload.decoding='async';preload.src=next}
+    };
+
+    const select=i=>{
+      if(i===active)return;
+      const my=++request;
+      buttons[i]?.classList.add('is-loading');
+      ensureImage(i).then(()=>{if(my===request)commit(i)});
     };
 
     buttons.forEach((button,i)=>{
       button.addEventListener('pointerdown',e=>e.stopPropagation());
       button.addEventListener('click',e=>{e.stopPropagation();select(i)});
     });
+
+    // On a genuinely fast connection, quietly warm only the next backdrop after the
+    // initial hero has had time to win the network. Slow/save-data connections fetch
+    // every other backdrop strictly on demand.
+    const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+    if(!connection?.saveData&&(!connection?.effectiveType||connection.effectiveType==='4g')){
+      idle(()=>ensureImage(1));
+    }
 
     screen.dataset.mobileCinemaHeader='1';
     screen.classList.add('mobile-cinema-header');
