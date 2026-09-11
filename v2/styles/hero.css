@@ -98,6 +98,47 @@
 .era-screen[data-top-id="biopics"] .hero-art-medallions{left:50%;top:55.5%}
 .era-screen[data-top-id="rewatched"] .hero-art-medallions{left:50%;top:54.5%}
 
+/* Desktop normalization mirrors the mobile optical system: titles occupy one shared
+   visual band and every Top-3 medallion row lands on the same lower hero baseline.
+   Per-title scale only compensates for transparent padding inside the supplied art. */
+@media(min-width:701px){
+  .hero-title-art-wrap{
+    transform:translateY(-10px) scale(var(--desktop-title-scale,1.18));
+    transform-origin:center;
+  }
+  .era-screen[data-top-id="1975-1999"] .hero-title-art-wrap{--desktop-title-scale:1.12}
+  .era-screen[data-top-id="sci-fi-realiste"] .hero-title-art-wrap{--desktop-title-scale:1.18}
+  .era-screen[data-top-id="animation"] .hero-title-art-wrap{--desktop-title-scale:1.43}
+  .era-screen[data-top-id="biopics"] .hero-title-art-wrap{--desktop-title-scale:1.27}
+  .era-screen[data-top-id="documentaires"] .hero-title-art-wrap{--desktop-title-scale:1.38}
+
+  /* Tight assets are positioned directly instead of inheriting the 16:9 artboard scale. */
+  .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
+    transform:translateY(-18px) scale(.42);
+    transform-origin:center;
+  }
+  .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{
+    left:24.2%;
+    top:24%;
+    width:48%;
+    height:28.4%;
+    transform:none;
+  }
+
+  .hero-art-medallions,
+  .era-screen[data-top-id="2000-2024"] .hero-art-medallions,
+  .era-screen[data-top-id="1975-1999"] .hero-art-medallions,
+  .era-screen[data-top-id="sci-fi-realiste"] .hero-art-medallions,
+  .era-screen[data-top-id="animation"] .hero-art-medallions,
+  .era-screen[data-top-id="biopics"] .hero-art-medallions,
+  .era-screen[data-top-id="documentaires"] .hero-art-medallions,
+  .era-screen[data-top-id="rewatched"] .hero-art-medallions{
+    left:50%;
+    top:67%;
+    transform:translateX(-50%);
+  }
+}
+
 /* Re.Watched hover fallback: preserve the same visual feedback even when the coverflow
    pointer-mode gate does not activate on a desktop browser/trackpad combination. */
 @media(hover:hover){
