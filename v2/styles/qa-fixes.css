@@ -17,6 +17,18 @@
 }
 
 @media(max-width:700px){
+  /* Mobile browsers expose each screen's overlay scrollbar at the page seam while
+     two Tops are visible during a swipe. Keep scrolling native but hide the chrome. */
+  .era-screen{
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .era-screen::-webkit-scrollbar{
+    width:0;
+    height:0;
+    display:none;
+  }
+
   /* During a two-screen swipe, soften the hard cut between the adjacent pages. */
   .stage:has(>.era-screen + .era-screen)>.era-screen:first-child{
     box-shadow:inset -72px 0 58px -50px rgba(0,0,0,.92);
