@@ -134,15 +134,19 @@
   .ghost-copy b{font-size:15px!important;line-height:1!important}
   .ghost-copy span{display:none!important}
 
-  /* Touch targets stay available even when the user prefers swiping. */
+  /* Touch targets use the same circular navigation language as desktop. */
   .era-arrow{
     width:46px!important;
-    height:62px!important;
-    border-radius:999px!important;
-    background:rgba(8,10,11,.72)!important;
+    height:46px!important;
+    padding:0!important;
+    border:1px solid rgba(255,255,255,.18)!important;
+    border-radius:50%!important;
+    background:rgba(8,10,11,.84)!important;
     color:#fff!important;
-    font-size:28px!important;
-    opacity:.9!important;
+    font-size:25px!important;
+    line-height:1!important;
+    box-shadow:0 7px 20px rgba(0,0,0,.3)!important;
+    opacity:.94!important;
     touch-action:manipulation!important;
   }
   .era-prev{left:8px!important;margin-left:0!important}
