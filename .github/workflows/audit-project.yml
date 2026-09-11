@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - audit-debug-sept11
+      - design-overhaul-sept11
   workflow_dispatch:
 
 permissions:
