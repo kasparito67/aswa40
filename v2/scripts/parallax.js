@@ -80,6 +80,10 @@
   stage.addEventListener('pointerdown',()=>burst(760),{passive:true});
   stage.addEventListener('pointermove',()=>{if(stage.classList.contains('dragging'))burst(140)},{passive:true});
   stage.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY)*.6)burst(760)},{passive:true});
+  // The native desktop carousel moves by scrollLeft, not by stage style mutations.
+  // Listen to the rail itself so arrow/menu smooth scrolling cannot leave stale
+  // horizontal parallax offsets after a programmatic navigation.
+  stage.addEventListener('scroll',()=>burst(140),{passive:true});
 
   reduced.addEventListener?.('change',()=>burst(100));
   bindScroll();
