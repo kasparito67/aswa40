@@ -12,11 +12,18 @@
     try{
       if(desktopNative){
         document.documentElement.classList.add('desktop-native');
+        // Desktop-only design systems attach their observers before the renderer mounts.
+        await Promise.all([
+          load('scripts/design-1975.js'),
+          load('scripts/design-header-system.js')
+        ]);
         await load('scripts/app-desktop.js');
         await load('scripts/top-nav.js');
         await load('scripts/parallax.js');
       }else{
+        // Mobile gets only its own performance/data preflight and header system.
         await load('scripts/mobile-performance-preflight.js');
+        await load('scripts/mobile-cinema-header.js');
         await load('scripts/runtime.js');
         await load('scripts/app.js');
         // parallax.js exits immediately on touch/mobile, so do not download/parse it here.
