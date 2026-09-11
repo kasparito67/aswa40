@@ -1,0 +1,7 @@
+/* ASWA40 design overhaul · Phase A · 1975–1999 layout geometry */
+/* Keep the content plane below the hero/menu boundary. The previous negative
+   shell margin pulled Top 25 upward into the Top 5 navigation. */
+.desktop-native .era-screen[data-top-id="1975-1999"]>.shell{
+  margin:0 auto;
+  padding-top:28px;
+}
