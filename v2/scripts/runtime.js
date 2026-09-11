@@ -118,8 +118,8 @@
     clearTimeout(arrowMotionTimer);
     arrowMotionTimer=setTimeout(()=>stage.classList.remove('arrow-motion'),460);
   };
-  prev?.addEventListener('click',()=>{if(!prev.disabled)startArrowMotion()},true);
-  next?.addEventListener('click',()=>{if(!next.disabled)startArrowMotion()},true);
+  prev?.addEventListener('click',e=>{if(e.isTrusted&&!prev.disabled)startArrowMotion()},true);
+  next?.addEventListener('click',e=>{if(e.isTrusted&&!next.disabled)startArrowMotion()},true);
   stage?.addEventListener('transitionend',e=>{
     if(e.target===stage&&e.propertyName==='transform'){
       clearTimeout(arrowMotionTimer);
@@ -132,16 +132,24 @@
   // it vertical until the gesture goes quiet so the horizontal carousel can never
   // prepare/unmount screens during vertical momentum. At the first/last Top the same
   // gate owns a small rubber-band; app.js never sees an outward edge gesture.
+  //
+  // Successive horizontal swipes are allowed to queue one next step while a page is
+  // settling. The queue only arms on a renewed trackpad impulse (a small time gap or
+  // a clear rise in deltaX), so the inertial tail of the previous swipe cannot skip
+  // an extra Top by accident.
   const desktopFine=matchMedia('(hover:hover) and (pointer:fine)').matches;
   if(desktopFine&&stage){
     let gestureAxis=null,gestureX=0,gestureY=0,gestureTimer=0;
     let edgePull=0,edgeDirection=0,edgeAnimating=false,edgeFinishTimer=0;
+    let queuedDirection=0,queuedTravel=0,queuedCandidate=0;
+    let lastHorizontalAt=0,lastHorizontalAbs=0;
     const wheelPx=(value,mode)=>mode===WheelEvent.DOM_DELTA_LINE?value*16:mode===WheelEvent.DOM_DELTA_PAGE?value*Math.max(innerWidth,innerHeight,1):value;
     const activeIndex=()=>{
       if(stage.children.length!==1||stage.classList.contains('is-transitioning'))return -1;
       const id=stage.querySelector('.era-screen')?.dataset.topId;
       return Array.isArray(TOPS)?TOPS.findIndex(t=>t.id===id):-1;
     };
+    const pageBusy=()=>stage.classList.contains('is-transitioning')||stage.children.length>1||stage.style.width==='200vw';
     const renderEdge=()=>{
       const maxPull=Math.min(62,Math.max(42,innerWidth*.045));
       const resistance=maxPull*(1-Math.exp(-Math.max(0,edgePull)/100));
@@ -164,16 +172,35 @@
       requestAnimationFrame(()=>stage.style.setProperty('--stage-x','0px'));
       edgeFinishTimer=setTimeout(cleanEdge,duration+24);
     };
+    const resetQueuedCandidate=()=>{queuedTravel=0;queuedCandidate=0};
+    const flushQueued=()=>{
+      if(!queuedDirection)return;
+      const dir=queuedDirection;
+      queuedDirection=0;resetQueuedCandidate();
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        if(pageBusy()){
+          queuedDirection=dir;
+          return;
+        }
+        const button=dir>0?next:prev;
+        if(button&&!button.disabled)button.click();
+      }));
+    };
     const endGesture=()=>{
       gestureTimer=0;gestureAxis=null;gestureX=0;gestureY=0;
+      lastHorizontalAt=0;lastHorizontalAbs=0;resetQueuedCandidate();
       if(edgePull&&!edgeAnimating)snapEdge();
     };
     const scheduleGestureEnd=()=>{
       clearTimeout(gestureTimer);
-      gestureTimer=setTimeout(endGesture,135);
+      gestureTimer=setTimeout(endGesture,118);
     };
+    stage.addEventListener('transitionend',e=>{
+      if(e.target===stage&&e.propertyName==='transform')flushQueued();
+    });
     addEventListener('wheel',e=>{
       if(modalBg?.classList.contains('open'))return;
+      const now=performance.now();
       const dx=wheelPx(e.deltaX,e.deltaMode),dy=wheelPx(e.deltaY,e.deltaMode),ax=Math.abs(dx),ay=Math.abs(dy);
       gestureX+=ax;gestureY+=ay;
       if(!gestureAxis){
@@ -190,6 +217,27 @@
       }
 
       const direction=dx>0?1:-1;
+      const renewed=lastHorizontalAt>0&&(
+        now-lastHorizontalAt>42 ||
+        ax>Math.max(7,lastHorizontalAbs*1.65)
+      );
+
+      // During the short settle animation, don't discard a clearly new swipe. Keep
+      // at most one requested direction and execute it after the stable-frame handoff.
+      if(pageBusy()){
+        e.preventDefault();e.stopImmediatePropagation();
+        if(!queuedDirection){
+          if(renewed&&ax>=5){queuedCandidate=direction;queuedTravel=ax}
+          else if(queuedCandidate===direction)queuedTravel+=ax;
+          else if(queuedCandidate&&queuedCandidate!==direction)queuedTravel=Math.max(0,queuedTravel-ax);
+          if(queuedTravel>=34)queuedDirection=queuedCandidate;
+        }
+        lastHorizontalAt=now;lastHorizontalAbs=ax;
+        return;
+      }
+
+      lastHorizontalAt=now;lastHorizontalAbs=ax;
+
       if(edgeAnimating){
         e.preventDefault();e.stopImmediatePropagation();
         return;
@@ -220,7 +268,8 @@
 
   // IMPORTANT: there is intentionally no separate desktop wheel-to-pointer adapter
   // here anymore. app.js owns valid horizontal page/card navigation; runtime.js only
-  // gates gesture intent and the nonexistent-page rubber-band at the two outer edges.
+  // gates gesture intent, queues one successive Top request, and owns the nonexistent-
+  // page rubber-band at the two outer edges.
 
   // Mobile stability guards only. The canonical carousel in app.js owns the
   // complete touch gesture, including direct 1:1 drag over interactive cards.
