@@ -127,64 +127,100 @@
     }
   });
 
-  // Desktop boundary behaviour. At the first and last Top there is no neighbour to
-  // transition to, so emulate the native macOS/iOS carousel response instead: a
-  // small, progressively resistant rubber-band followed by a short snap back. The
-  // outward event is consumed before app.js sees it, which prevents a nonexistent
-  // page transition from leaving the stage in an offset or semi-locked state.
+  // Desktop wheel intent gate. A Mac trackpad often emits a small deltaX while the
+  // user is vertically scrolling. Once a gesture has declared itself vertical, keep
+  // it vertical until the gesture goes quiet so the horizontal carousel can never
+  // prepare/unmount screens during vertical momentum. At the first/last Top the same
+  // gate owns a small rubber-band; app.js never sees an outward edge gesture.
   const desktopFine=matchMedia('(hover:hover) and (pointer:fine)').matches;
   if(desktopFine&&stage){
-    let edgePull=0,edgeTimer=0,edgeDirection=0,edgeAnimating=false;
-    const wheelPixels=e=>e.deltaMode===WheelEvent.DOM_DELTA_LINE?e.deltaX*16:e.deltaMode===WheelEvent.DOM_DELTA_PAGE?e.deltaX*Math.max(innerWidth,1):e.deltaX;
+    let gestureAxis=null,gestureX=0,gestureY=0,gestureTimer=0;
+    let edgePull=0,edgeDirection=0,edgeAnimating=false,edgeFinishTimer=0;
+    const wheelPx=(value,mode)=>mode===WheelEvent.DOM_DELTA_LINE?value*16:mode===WheelEvent.DOM_DELTA_PAGE?value*Math.max(innerWidth,innerHeight,1):value;
     const activeIndex=()=>{
       if(stage.children.length!==1||stage.classList.contains('is-transitioning'))return -1;
       const id=stage.querySelector('.era-screen')?.dataset.topId;
       return Array.isArray(TOPS)?TOPS.findIndex(t=>t.id===id):-1;
     };
+    const renderEdge=()=>{
+      const maxPull=Math.min(62,Math.max(42,innerWidth*.045));
+      const resistance=maxPull*(1-Math.exp(-Math.max(0,edgePull)/100));
+      stage.style.transition='none';
+      stage.style.setProperty('--stage-x',`${-edgeDirection*resistance}px`);
+    };
     const cleanEdge=()=>{
-      clearTimeout(edgeTimer);edgeTimer=0;edgePull=0;edgeDirection=0;edgeAnimating=false;
+      clearTimeout(edgeFinishTimer);edgeFinishTimer=0;
+      edgePull=0;edgeDirection=0;edgeAnimating=false;
       stage.style.transition='none';stage.style.setProperty('--stage-x','0px');
-      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
         if(stage.children.length===1&&!stage.classList.contains('is-transitioning'))stage.style.transition='';
-      }));
+      });
     };
     const snapEdge=()=>{
-      clearTimeout(edgeTimer);edgeTimer=0;
-      if(!edgePull&&!edgeAnimating){cleanEdge();return}
+      if(!edgePull||edgeAnimating)return;
       edgeAnimating=true;
-      const duration=reducedMotion.matches?0:175;
+      const duration=reducedMotion.matches?0:140;
       stage.style.transition=duration?`transform ${duration}ms cubic-bezier(.22,.78,.18,1)`:'none';
       requestAnimationFrame(()=>stage.style.setProperty('--stage-x','0px'));
-      setTimeout(cleanEdge,duration+24);
+      edgeFinishTimer=setTimeout(cleanEdge,duration+24);
+    };
+    const endGesture=()=>{
+      gestureTimer=0;gestureAxis=null;gestureX=0;gestureY=0;
+      if(edgePull&&!edgeAnimating)snapEdge();
+    };
+    const scheduleGestureEnd=()=>{
+      clearTimeout(gestureTimer);
+      gestureTimer=setTimeout(endGesture,135);
     };
     addEventListener('wheel',e=>{
       if(modalBg?.classList.contains('open'))return;
-      const dx=wheelPixels(e),ax=Math.abs(dx),ay=Math.abs(e.deltaY);
-      if(ax<2||ax<ay*.9)return;
-      const index=activeIndex();
-      const direction=dx>0?1:-1;
-      const outward=index===0&&direction<0||index===TOPS.length-1&&direction>0;
-      if(!outward){
-        if(edgePull||edgeAnimating)cleanEdge();
+      const dx=wheelPx(e.deltaX,e.deltaMode),dy=wheelPx(e.deltaY,e.deltaMode),ax=Math.abs(dx),ay=Math.abs(dy);
+      gestureX+=ax;gestureY+=ay;
+      if(!gestureAxis){
+        if(gestureY>=5&&gestureY>gestureX*1.08)gestureAxis='y';
+        else if(gestureX>=4&&gestureX>gestureY*1.08)gestureAxis='x';
+      }
+      scheduleGestureEnd();
+
+      // Pending/vertical gestures remain native scrolling, but stop here so app.js
+      // cannot reinterpret a later diagonal frame as a page swipe.
+      if(gestureAxis!=='x'){
+        e.stopImmediatePropagation();
         return;
       }
+
+      const direction=dx>0?1:-1;
+      if(edgeAnimating){
+        e.preventDefault();e.stopImmediatePropagation();
+        return;
+      }
+
+      // If the user reverses while the edge is stretched, consume that reversal to
+      // unwind the rubber-band smoothly before handing control back to the carousel.
+      if(edgePull&&edgeDirection&&direction!==edgeDirection){
+        e.preventDefault();e.stopImmediatePropagation();
+        edgePull=Math.max(0,edgePull-ax*1.7);
+        if(edgePull>0)renderEdge();else cleanEdge();
+        return;
+      }
+
+      const index=activeIndex();
+      const outward=index===0&&direction<0||index===TOPS.length-1&&direction>0;
+      if(!outward){
+        if(edgePull)cleanEdge();
+        return;
+      }
+
       e.preventDefault();e.stopImmediatePropagation();
-      clearTimeout(edgeTimer);edgeAnimating=false;
-      if(edgeDirection&&edgeDirection!==direction)edgePull=0;
-      edgeDirection=direction;
-      edgePull+=ax*1.18;
-      const maxPull=Math.min(74,Math.max(46,innerWidth*.052));
-      const resistance=maxPull*(1-Math.exp(-edgePull/105));
-      stage.style.transition='none';
-      stage.style.setProperty('--stage-x',`${-direction*resistance}px`);
-      edgeTimer=setTimeout(snapEdge,78);
+      if(!edgeDirection)edgeDirection=direction;
+      edgePull+=ax*1.15;
+      renderEdge();
     },{passive:false,capture:true});
   }
 
   // IMPORTANT: there is intentionally no separate desktop wheel-to-pointer adapter
-  // here anymore. app.js is now the single owner of trackpad, touch, arrows and film
-  // card navigation. Two competing gesture engines were the source of intermittent
-  // locks, direction reversals and visible frame flashes on desktop.
+  // here anymore. app.js owns valid horizontal page/card navigation; runtime.js only
+  // gates gesture intent and the nonexistent-page rubber-band at the two outer edges.
 
   // Mobile stability guards only. The canonical carousel in app.js owns the
   // complete touch gesture, including direct 1:1 drag over interactive cards.
