@@ -13,6 +13,7 @@
       if(desktopNative){
         document.documentElement.classList.add('desktop-native');
         await load('scripts/app-desktop.js');
+        await load('scripts/top-nav.js');
         await load('scripts/parallax.js');
       }else{
         await load('scripts/runtime.js');
