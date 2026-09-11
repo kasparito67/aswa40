@@ -158,19 +158,22 @@
     transform-origin:center bottom!important;
   }
 
-  /* Re.Watched is already tightly cropped: size the actual lockup instead of scaling a fake artboard. */
+  /* Tight mobile assets need optical, not geometric centering. The superscript 50
+     on Re.Watched adds visual weight to the right edge, so shift the full lockup
+     slightly right while moving it up to the same perceived baseline as other Tops. */
   .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
-    left:50%!important;
-    top:49%!important;
+    left:53%!important;
+    top:44%!important;
     width:78vw!important;
     height:18.45vw!important;
     transform:translate(-50%,-50%)!important;
   }
 
-  /* 2000 is the other non-normalized source asset, so give it a direct optical box. */
+  /* 2000 is the other non-normalized source asset. Raise its direct optical box so
+     the lettering sits on the same visual band as the normalized 1920×1080 titles. */
   .era-screen[data-top-id="2000-2024"] .hero-title-art-wrap{
     left:50%!important;
-    top:49%!important;
+    top:44%!important;
     width:82vw!important;
     height:31vw!important;
     transform:translate(-50%,-50%)!important;
