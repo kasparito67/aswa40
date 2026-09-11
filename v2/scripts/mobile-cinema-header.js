@@ -6,6 +6,7 @@
   if(!stage||typeof TOPS==='undefined'||!Array.isArray(TOPS))return;
 
   const perf=window.__ASWA40_MOBILE_PERF__||{};
+  const mediaConfig=window.ASWA40_HEADER_MEDIA||{};
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
   const curated1975={
     'Star Wars':'https://image.tmdb.org/t/p/original/aJCtkxLLzkk1pECehVjKHA2lBgw.jpg',
@@ -21,6 +22,8 @@
   };
   const originalHero=top=>perf.heroImages?.[top?.id]||top?.hero?.image||'';
   const desktopBackdrop=(top,film,index)=>{
+    const curated=typeof mediaConfig.backdrop==='function'?mediaConfig.backdrop(top,film):'';
+    if(curated)return curated;
     if(top?.id==='1975-1999'&&curated1975[film?.title])return curated1975[film.title];
     if(film?.backdrop)return film.backdrop;
     if(film?.backdropPath)return `https://image.tmdb.org/t/p/original${film.backdropPath}`;
@@ -28,6 +31,7 @@
     if(index===0&&originalHero(top))return originalHero(top);
     return originalHero(top)||film?.img||'';
   };
+  const focusFor=(top,film)=>typeof mediaConfig.focusMobile==='function'?mediaConfig.focusMobile(top,film):'50% 50%';
   const deliverySource=src=>{
     const value=String(src||'');
     if(!value.includes('image.tmdb.org/t/p/'))return value;
@@ -46,11 +50,12 @@
     const films=top.films.slice(0,5);
     const desktopSources=films.map((film,i)=>desktopBackdrop(top,film,i));
     const sources=desktopSources.map(deliverySource);
+    const focuses=films.map(film=>focusFor(top,film));
 
     const media=document.createElement('div');
     media.className='mobile-cinema-media';
     media.setAttribute('aria-hidden','true');
-    media.innerHTML=sources.map((src,i)=>`<div class="mobile-cinema-layer${i===0?' is-active':''}" data-mobile-cinema-layer="${i}" data-desktop-source="${esc(desktopSources[i])}"><img ${i===0?`src="${esc(src)}"`:`data-src="${esc(src)}"`} alt="" decoding="async" loading="${i===0?'eager':'lazy'}" fetchpriority="${i===0?'high':'low'}"></div>`).join('');
+    media.innerHTML=sources.map((src,i)=>`<div class="mobile-cinema-layer${i===0?' is-active':''}" data-mobile-cinema-layer="${i}" data-header-media-key="${esc(`${top.id}:${films[i].rank}`)}" data-desktop-source="${esc(desktopSources[i])}" data-mobile-focus="${esc(focuses[i])}"><img ${i===0?`src="${esc(src)}"`:`data-src="${esc(src)}"`} alt="" decoding="async" loading="${i===0?'eager':'lazy'}" fetchpriority="${i===0?'high':'low'}" style="object-position:${esc(focuses[i])}"></div>`).join('');
     hero.prepend(media);
 
     const copy=document.createElement('div');
