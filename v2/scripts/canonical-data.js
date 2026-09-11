@@ -29,7 +29,7 @@
     const top=TOPS.find(t=>t.id===topId);if(!top)return;
     Object.entries(films).forEach(([rank,path])=>{
       const film=top.films.find(f=>f.rank===Number(rank));
-      if(film)Object.assign(film,{backdropPath:path,backdrop:`https://image.tmdb.org/t/p/original${path}`});
+      if(film)film.backdropPath=path;
     });
   });
 
@@ -80,7 +80,6 @@
       img:'https://image.tmdb.org/t/p/w500/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg',
       posterPath:'/onTSipZ8R3bliBdKfPtsDuHTdlL.jpg',
       backdropPath:'/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg',
-      backdrop:'https://image.tmdb.org/t/p/original/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg',
       letterboxd:'https://letterboxd.com/film/home-alone/'
     });
     re.community='9 cinéphiles';
