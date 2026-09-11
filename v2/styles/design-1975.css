@@ -139,6 +139,121 @@
 .desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-detail,
 .desktop-native .era-screen[data-top-id="1975-1999"] .director-detail{color:rgba(255,255,255,.65)}
 
+/* V28 corrections — use the validated editorial card language everywhere. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .design1975-top5{
+  transform:translate3d(var(--px-title-x),var(--px-title-y),0);
+  will-change:auto;
+}
+.desktop-native .stage.parallax-active .era-screen[data-top-id="1975-1999"] .design1975-top5{will-change:transform}
+
+.desktop-native .era-screen[data-top-id="1975-1999"] .grid[data-flow="rest"] .tile,
+.desktop-native .era-screen[data-top-id="1975-1999"] .full-grid .tile,
+.desktop-native .era-screen[data-top-id="1975-1999"] .grid[data-flow="bottom"] .tile,
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-card{
+  aspect-ratio:.74;
+  min-height:0;
+  border-radius:0;
+  box-shadow:0 16px 38px rgba(0,0,0,.26);
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .grid.compact{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .grid[data-flow="bottom"]{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghosts{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile .name,
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-copy b{
+  font-family:Inter,system-ui,sans-serif;
+  font-weight:600;
+  letter-spacing:-.03em;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .full-grid .name{
+  display:block!important;
+  left:12px;
+  right:12px;
+  bottom:11px;
+  font-size:17px;
+  line-height:.98;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .full-grid .tile:after{display:block!important}
+.desktop-native .era-screen[data-top-id="1975-1999"] .full-grid .rank{font-weight:700}
+
+/* Year detail becomes one editorial module instead of a stack of rounded UI cards. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-detail{
+  background:transparent;
+  border:0!important;
+  border-top:1px solid var(--design-line)!important;
+  border-radius:0;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-detail-inner{
+  padding-left:34px;
+  padding-right:0;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-card.is-open .year-insight-detail-inner{
+  padding-top:0;
+  padding-bottom:8px;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-decade{
+  min-height:62px;
+  padding:15px 0 13px;
+  border:0;
+  border-bottom:1px solid var(--design-line);
+  background:transparent;
+  border-radius:0;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-decade b{
+  font:500 12px/1.2 Inter,system-ui,sans-serif;
+  color:rgba(255,255,255,.56);
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-decade strong{
+  font:600 28px/.9 Inter,system-ui,sans-serif;
+  letter-spacing:-.035em;
+  color:var(--design-red);
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-chart{
+  height:94px;
+  gap:3px;
+  margin:0;
+  padding:17px 0 16px;
+  border-bottom:1px solid var(--design-line);
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-chart-bar{
+  border-radius:0;
+  background:rgba(255,255,255,.26);
+  opacity:.7;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-chart-bar.hot,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-chart-bar.is-highlighted{background:var(--design-red);opacity:1}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-highlights{
+  display:block;
+  margin:0;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-highlight{
+  width:100%;
+  min-height:48px;
+  padding:11px 0 10px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:baseline;
+  border:0;
+  border-bottom:1px solid var(--design-line);
+  border-radius:0;
+  background:transparent;
+  color:inherit;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-highlight:last-child{border-bottom:0}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-highlight b{
+  font:600 13px/1.05 Inter,system-ui,sans-serif;
+  letter-spacing:-.015em;
+  color:var(--design-ink);
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-highlight span{
+  margin:0;
+  font:500 10px/1.2 Inter,system-ui,sans-serif;
+  color:rgba(255,255,255,.45);
+  text-align:right;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-highlight:hover b,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-highlight:focus-visible b{color:var(--design-red)}
+
 @media(max-width:1100px){
   .desktop-native .era-screen[data-top-id="1975-1999"] .site-layout{grid-template-columns:minmax(0,1fr) 330px}
   .desktop-native .era-screen[data-top-id="1975-1999"] .insight-card b,
@@ -148,4 +263,5 @@
 
 @media(prefers-reduced-motion:reduce){
   .design1975-media-layer,.design1975-media-layer img,.design1975-progress span,.design1975-top5 button{transition:none!important}
+  .desktop-native .era-screen[data-top-id="1975-1999"] .design1975-top5{transform:none!important;will-change:auto}
 }
