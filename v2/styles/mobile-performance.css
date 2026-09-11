@@ -1,0 +1,51 @@
+/* Mobile performance pass. Visual geometry stays unchanged; expensive full-screen
+   filters/compositing are replaced with cheap opacity/scale transitions and lower
+   content is allowed to skip paint/layout until it approaches the viewport. */
+@media(max-width:700px),(pointer:coarse){
+  .mobile-cinema-layer{
+    transform:scale(1.012)!important;
+    filter:none!important;
+    transition:opacity .26s ease,transform .42s cubic-bezier(.2,.72,.18,1)!important;
+    will-change:auto!important;
+  }
+  .mobile-cinema-layer.is-active{
+    transform:scale(1)!important;
+    filter:none!important;
+  }
+  .mobile-cinema-layer:not(.is-active){pointer-events:none}
+
+  .era-screen.mobile-cinema-header .hero-title-art-wrap{
+    filter:none!important;
+  }
+
+  .era-screen.mobile-cinema-header .sec:not(.open) .inner{
+    content-visibility:hidden;
+  }
+  .era-screen.mobile-cinema-header .sec.open .inner{
+    content-visibility:auto;
+    contain-intrinsic-size:1px 1100px;
+  }
+  .era-screen.mobile-cinema-header .site-sidebar{
+    content-visibility:auto;
+    contain-intrinsic-size:1px 720px;
+  }
+  .era-screen.mobile-cinema-header .tile,
+  .era-screen.mobile-cinema-header .ghost-card{
+    contain:layout paint;
+    will-change:auto!important;
+  }
+
+  /* Avoid maintaining GPU layers for mobile-only effects that are static at rest. */
+  .era-screen.mobile-cinema-header .hero-title,
+  .era-screen.mobile-cinema-header .mobile-cinema-copy,
+  .era-screen.mobile-cinema-header .mobile-cinema-tabs,
+  .era-screen.mobile-cinema-header .hero-nav{
+    will-change:auto!important;
+  }
+
+  .mobile-cinema-tabs button.is-loading{opacity:.62}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .mobile-cinema-layer{transition:none!important}
+}
