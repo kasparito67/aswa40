@@ -150,6 +150,14 @@
   .era-screen[data-top-id="biopics"] .hero-title-art-wrap{--mobile-title-scale:1.98}
   .era-screen[data-top-id="documentaires"] .hero-title-art-wrap{--mobile-title-scale:2.28}
 
+  /* The custom 1975 backdrop contains a dark strip at the top of its 16:9 frame.
+     On portrait screens the full vertical image is otherwise visible, so crop that
+     strip with a small bottom-anchored zoom instead of shifting the whole hero. */
+  .era-screen[data-top-id="1975-1999"] .hero-media{
+    --hero-media-scale:1.12!important;
+    transform-origin:center bottom!important;
+  }
+
   /* Re.Watched is already tightly cropped: size the actual lockup instead of scaling a fake artboard. */
   .era-screen[data-top-id="rewatched"] .hero-title-art-wrap{
     left:50%!important;
