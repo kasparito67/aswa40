@@ -6,11 +6,26 @@
   if(!stage||typeof TOPS==='undefined'||!Array.isArray(TOPS))return;
 
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
-  const backdrop=(film,top)=>{
+  const curated1975={
+    'Star Wars':'https://image.tmdb.org/t/p/original/aJCtkxLLzkk1pECehVjKHA2lBgw.jpg',
+    'Apocalypse Now':'https://image.tmdb.org/t/p/original/9Qs9oyn4iE8QtQjGZ0Hp2WyYNXT.jpg',
+    'Indiana Jones':'https://image.tmdb.org/t/p/original/c7Mjuip0jfHLY7x8ZSEriRj45cu.jpg',
+    'Pulp Fiction':'https://image.tmdb.org/t/p/original/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg',
+    'Fargo':'https://image.tmdb.org/t/p/original/36P236xmuc8aWmXK7YkOM5EAKbA.jpg'
+  };
+  const legacyBackdrop=(top,film)=>{
+    if(top?.id!=='2000-2024'||typeof filmBackdrops!=='object'||!filmBackdrops)return '';
+    const src=filmBackdrops[String(film?.rank)]||filmBackdrops[film?.rank];
+    return src?`../${src}`:'';
+  };
+  // Keep this resolver in lockstep with the validated desktop header systems.
+  const backdropFor=(top,film,index)=>{
+    if(top?.id==='1975-1999'&&curated1975[film?.title])return curated1975[film.title];
     if(film?.backdrop)return film.backdrop;
     if(film?.backdropPath)return `https://image.tmdb.org/t/p/original${film.backdropPath}`;
-    if(top?.hero?.image)return top.hero.image;
-    return film?.img||'';
+    const local=legacyBackdrop(top,film);if(local)return local;
+    if(index===0&&top?.hero?.image)return top.hero.image;
+    return top?.hero?.image||film?.img||'';
   };
   const meta=film=>film?.year?String(film.year):`${film?.pts??'—'} pts · ${film?.votes??'—'} votes`;
 
@@ -21,7 +36,7 @@
     if(!top||!hero||!Array.isArray(top.films)||top.films.length<5)return;
 
     const films=top.films.slice(0,5);
-    const sources=films.map(f=>backdrop(f,top));
+    const sources=films.map((film,i)=>backdropFor(top,film,i));
     sources.slice(0,2).forEach(src=>{if(src){const img=new Image();img.decoding='async';img.src=src}});
 
     const media=document.createElement('div');
@@ -32,7 +47,7 @@
 
     const copy=document.createElement('div');
     copy.className='mobile-cinema-copy';
-    copy.innerHTML=`<div class="mobile-cinema-rank">#${String(films[0].rank).padStart(2,'0')}</div><div class="mobile-cinema-film"><b>${esc(films[0].title)}</b><span>${esc(meta(films[0]))}</span></div><div class="mobile-cinema-count">01 / 05</div>`;
+    copy.innerHTML=`<div class="mobile-cinema-rank">${String(films[0].rank).padStart(2,'0')}</div><div class="mobile-cinema-film"><b>${esc(films[0].title)}</b><span>${esc(meta(films[0]))}</span></div><div class="mobile-cinema-count">01 / 05</div>`;
     hero.append(copy);
 
     const tabs=document.createElement('div');
@@ -55,7 +70,7 @@
       layers.forEach((layer,n)=>layer.classList.toggle('is-active',n===i));
       buttons.forEach((button,n)=>button.classList.toggle('is-active',n===i));
       const film=films[i];
-      rank.textContent=`#${String(film.rank).padStart(2,'0')}`;
+      rank.textContent=String(film.rank).padStart(2,'0');
       title.textContent=film.title;
       filmMeta.textContent=meta(film);
       count.textContent=`${String(i+1).padStart(2,'0')} / 05`;
