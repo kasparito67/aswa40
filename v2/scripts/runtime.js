@@ -127,6 +127,60 @@
     }
   });
 
+  // Desktop boundary behaviour. At the first and last Top there is no neighbour to
+  // transition to, so emulate the native macOS/iOS carousel response instead: a
+  // small, progressively resistant rubber-band followed by a short snap back. The
+  // outward event is consumed before app.js sees it, which prevents a nonexistent
+  // page transition from leaving the stage in an offset or semi-locked state.
+  const desktopFine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(desktopFine&&stage){
+    let edgePull=0,edgeTimer=0,edgeDirection=0,edgeAnimating=false;
+    const wheelPixels=e=>e.deltaMode===WheelEvent.DOM_DELTA_LINE?e.deltaX*16:e.deltaMode===WheelEvent.DOM_DELTA_PAGE?e.deltaX*Math.max(innerWidth,1):e.deltaX;
+    const activeIndex=()=>{
+      if(stage.children.length!==1||stage.classList.contains('is-transitioning'))return -1;
+      const id=stage.querySelector('.era-screen')?.dataset.topId;
+      return Array.isArray(TOPS)?TOPS.findIndex(t=>t.id===id):-1;
+    };
+    const cleanEdge=()=>{
+      clearTimeout(edgeTimer);edgeTimer=0;edgePull=0;edgeDirection=0;edgeAnimating=false;
+      stage.style.transition='none';stage.style.setProperty('--stage-x','0px');
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        if(stage.children.length===1&&!stage.classList.contains('is-transitioning'))stage.style.transition='';
+      }));
+    };
+    const snapEdge=()=>{
+      clearTimeout(edgeTimer);edgeTimer=0;
+      if(!edgePull&&!edgeAnimating){cleanEdge();return}
+      edgeAnimating=true;
+      const duration=reducedMotion.matches?0:175;
+      stage.style.transition=duration?`transform ${duration}ms cubic-bezier(.22,.78,.18,1)`:'none';
+      requestAnimationFrame(()=>stage.style.setProperty('--stage-x','0px'));
+      setTimeout(cleanEdge,duration+24);
+    };
+    addEventListener('wheel',e=>{
+      if(modalBg?.classList.contains('open'))return;
+      const dx=wheelPixels(e),ax=Math.abs(dx),ay=Math.abs(e.deltaY);
+      if(ax<2||ax<ay*.9)return;
+      const index=activeIndex();
+      const direction=dx>0?1:-1;
+      const outward=index===0&&direction<0||index===TOPS.length-1&&direction>0;
+      if(!outward){
+        if(edgePull||edgeAnimating)cleanEdge();
+        return;
+      }
+      e.preventDefault();e.stopImmediatePropagation();
+      clearTimeout(edgeTimer);edgeAnimating=false;
+      if(edgeDirection&&edgeDirection!==direction)edgePull=0;
+      edgeDirection=direction;
+      edgePull+=ax*1.18;
+      const maxPull=Math.min(74,Math.max(46,innerWidth*.052));
+      const resistance=maxPull*(1-Math.exp(-edgePull/105));
+      stage.style.transition='none';
+      stage.style.setProperty('--stage-x',`${-direction*resistance}px`);
+      edgeTimer=setTimeout(snapEdge,78);
+    },{passive:false,capture:true});
+  }
+
   // IMPORTANT: there is intentionally no separate desktop wheel-to-pointer adapter
   // here anymore. app.js is now the single owner of trackpad, touch, arrows and film
   // card navigation. Two competing gesture engines were the source of intermittent
