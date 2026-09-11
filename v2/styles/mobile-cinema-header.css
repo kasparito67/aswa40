@@ -1,14 +1,22 @@
-/* ASWA40 mobile cinema header — image-first, editorial, A24-inspired without copying layout. */
+/* ASWA40 mobile cinema system — same visual language as the desktop overhaul,
+   composed for portrait screens: image-first, sharp geometry, one coherent title
+   anchor and the exact same Top-5 backdrop sources as desktop. */
 @media(max-width:700px),(pointer:coarse){
+  .era-screen.mobile-cinema-header{
+    --mobile-edge:16px;
+    --mobile-line:rgba(255,255,255,.14);
+    --mobile-black:rgba(5,7,9,.94);
+    font-family:Inter,system-ui,sans-serif;
+  }
+
   .era-screen.mobile-cinema-header .hero-header{
-    min-height:clamp(600px,82svh,780px)!important;
     height:82svh;
+    min-height:610px!important;
     max-height:820px;
     overflow:hidden;
     background:#050607;
     isolation:isolate;
   }
-
   .era-screen.mobile-cinema-header .hero-header:before{
     content:"";
     position:absolute;
@@ -16,261 +24,265 @@
     z-index:2;
     pointer-events:none;
     background:
-      linear-gradient(180deg,rgba(0,0,0,.58) 0%,rgba(0,0,0,.12) 21%,rgba(0,0,0,.03) 48%,rgba(0,0,0,.12) 64%,rgba(0,0,0,.90) 100%),
-      linear-gradient(90deg,rgba(0,0,0,.18),transparent 40%,rgba(0,0,0,.08));
+      linear-gradient(180deg,rgba(0,0,0,.48) 0%,rgba(0,0,0,.10) 18%,rgba(0,0,0,.02) 48%,rgba(0,0,0,.14) 66%,rgba(0,0,0,.91) 100%),
+      linear-gradient(90deg,rgba(0,0,0,.15),transparent 42%,rgba(0,0,0,.06));
   }
-
-  .era-screen.mobile-cinema-header .hero-media{
-    opacity:0!important;
+  .era-screen.mobile-cinema-header .hero-header:after{
+    z-index:3;
+    height:22%;
+    background:linear-gradient(transparent,color-mix(in srgb,var(--top-bg) 92%,transparent));
     pointer-events:none;
   }
+  .era-screen.mobile-cinema-header .hero-media{opacity:0!important;pointer-events:none}
 
-  .mobile-cinema-media{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    overflow:hidden;
-    background:#060708;
-  }
-  .mobile-cinema-layer{
-    position:absolute;
-    inset:-2%;
-    opacity:0;
-    transform:scale(1.035);
-    transition:opacity .42s ease,transform .72s cubic-bezier(.16,1,.3,1),filter .52s ease;
-    filter:blur(10px) brightness(.86) saturate(.88);
-  }
-  .mobile-cinema-layer.is-active{
-    opacity:1;
-    transform:scale(1);
-    filter:blur(0) brightness(.86) saturate(.94);
-  }
-  .mobile-cinema-layer img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-  }
+  .mobile-cinema-media{position:absolute;inset:0;z-index:1;overflow:hidden;background:#060708}
+  .mobile-cinema-layer{position:absolute;inset:0;opacity:0;transform:scale(1.045);transition:opacity .44s ease,transform .82s cubic-bezier(.2,.72,.18,1),filter .58s cubic-bezier(.2,.72,.18,1);filter:blur(15px) saturate(.96) contrast(1.02) brightness(.92)}
+  .mobile-cinema-layer.is-active{opacity:1;transform:scale(1.008);filter:blur(0) saturate(.96) contrast(1.02) brightness(.92)}
+  .mobile-cinema-layer img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center}
 
   .era-screen.mobile-cinema-header .hero-nav{
-    top:max(16px,env(safe-area-inset-top));
-    left:18px;
-    right:18px;
-    z-index:7;
+    position:absolute;
+    top:max(15px,env(safe-area-inset-top));
+    left:var(--mobile-edge);
+    right:var(--mobile-edge);
+    z-index:9;
+    width:auto;
+    margin:0;
     padding:0;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
     color:#fff;
-    font-family:Inter,system-ui,sans-serif;
-    font-size:9px;
-    font-weight:600;
+    font:600 9px/1.2 Inter,system-ui,sans-serif;
     letter-spacing:.08em;
     text-transform:uppercase;
-    mix-blend-mode:normal;
+    text-shadow:0 2px 16px rgba(0,0,0,.72);
     transform:none!important;
   }
-  .era-screen.mobile-cinema-header .hero-nav span:last-child{
-    color:rgba(255,255,255,.66);
-    text-align:right;
-  }
+  .era-screen.mobile-cinema-header .hero-nav span:last-child{max-width:44%;color:rgba(255,255,255,.62);text-align:right}
   .era-screen.mobile-cinema-header .hero-nav small{display:none}
 
-  .era-screen.mobile-cinema-header .hero-title{
-    inset:0;
-    z-index:6;
-    transform:none!important;
-  }
+  /* Shared visual anchor for every page title. Normalized 1920×1080 artwork uses
+     one crop recipe, so the logo does not jump when changing Top. */
+  .era-screen.mobile-cinema-header .hero-title{inset:0;z-index:8;display:block;text-align:initial;transform:none!important}
   .era-screen.mobile-cinema-header .hero-title-art-wrap,
   .era-screen.mobile-cinema-header[data-top-id="1975-1999"] .hero-title-art-wrap,
-  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art-wrap,
   .era-screen.mobile-cinema-header[data-top-id="sci-fi-realiste"] .hero-title-art-wrap,
   .era-screen.mobile-cinema-header[data-top-id="animation"] .hero-title-art-wrap,
   .era-screen.mobile-cinema-header[data-top-id="biopics"] .hero-title-art-wrap,
-  .era-screen.mobile-cinema-header[data-top-id="documentaires"] .hero-title-art-wrap,
-  .era-screen.mobile-cinema-header[data-top-id="rewatched"] .hero-title-art-wrap{
+  .era-screen.mobile-cinema-header[data-top-id="documentaires"] .hero-title-art-wrap{
+    position:absolute!important;
     inset:auto!important;
-    left:18px!important;
-    top:70px!important;
-    width:min(70vw,310px)!important;
-    height:150px!important;
+    top:54px!important;
+    right:var(--mobile-edge)!important;
+    left:auto!important;
+    width:min(74vw,330px)!important;
+    height:auto!important;
+    aspect-ratio:800/330!important;
+    overflow:hidden!important;
     transform:none!important;
-    transform-origin:left top!important;
-    filter:drop-shadow(0 8px 18px rgba(0,0,0,.38));
+    filter:drop-shadow(0 14px 34px rgba(0,0,0,.40))!important;
+    pointer-events:none;
   }
-  .era-screen.mobile-cinema-header .hero-title-art{
-    width:100%;
-    height:100%;
-    object-fit:contain!important;
-    object-position:left top!important;
-  }
-  .era-screen.mobile-cinema-header[data-top-id="rewatched"] .hero-title-art-wrap{
-    top:82px!important;
-    width:min(66vw,280px)!important;
-    height:90px!important;
-  }
-  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art-wrap{
-    width:min(72vw,320px)!important;
-    height:128px!important;
+  .era-screen.mobile-cinema-header .hero-title-art-wrap .hero-title-art,
+  .era-screen.mobile-cinema-header[data-top-id="1975-1999"] .hero-title-art,
+  .era-screen.mobile-cinema-header[data-top-id="sci-fi-realiste"] .hero-title-art,
+  .era-screen.mobile-cinema-header[data-top-id="animation"] .hero-title-art,
+  .era-screen.mobile-cinema-header[data-top-id="biopics"] .hero-title-art,
+  .era-screen.mobile-cinema-header[data-top-id="documentaires"] .hero-title-art{
+    position:absolute!important;
+    width:240%!important;
+    max-width:none!important;
+    height:auto!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    left:-68%!important;
+    top:-95.455%!important;
+    object-fit:initial!important;
+    object-position:initial!important;
+    transform:none!important;
+    filter:none!important;
   }
 
+  /* Tight source assets share that same top-right anchor. */
+  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="rewatched"] .hero-title-art-wrap{
+    position:absolute!important;
+    inset:auto!important;
+    top:54px!important;
+    right:var(--mobile-edge)!important;
+    left:auto!important;
+    width:min(68vw,300px)!important;
+    height:118px!important;
+    overflow:visible!important;
+    transform:none!important;
+    filter:drop-shadow(0 14px 34px rgba(0,0,0,.40))!important;
+  }
+  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art,
+  .era-screen.mobile-cinema-header[data-top-id="rewatched"] .hero-title-art{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:100%!important;
+    max-height:118px!important;
+    object-fit:contain!important;
+    object-position:right top!important;
+    transform:none!important;
+    filter:none!important;
+  }
   .era-screen.mobile-cinema-header .hero-art-medallions,
   .era-screen.mobile-cinema-header .hero-top-three{display:none!important}
 
+  /* Same Inter / semibold language as the desktop Top 5. */
   .mobile-cinema-copy{
     position:absolute;
-    z-index:7;
-    left:18px;
-    right:18px;
-    bottom:82px;
+    z-index:8;
+    left:var(--mobile-edge);
+    right:var(--mobile-edge);
+    bottom:78px;
     display:grid;
-    grid-template-columns:46px minmax(0,1fr) auto;
-    gap:12px;
+    grid-template-columns:30px minmax(0,1fr) auto;
+    gap:10px;
     align-items:end;
     color:#fff;
     font-family:Inter,system-ui,sans-serif;
   }
-  .mobile-cinema-rank{
-    font:500 11px/1 Inter,system-ui,sans-serif;
-    letter-spacing:.04em;
-    color:var(--accent,#e60d45);
-    padding-bottom:4px;
-  }
-  .mobile-cinema-film{
-    min-width:0;
-  }
-  .mobile-cinema-film b{
-    display:block;
-    font:600 clamp(25px,7.6vw,34px)/.92 Inter,system-ui,sans-serif;
-    letter-spacing:-.045em;
-    text-wrap:balance;
-  }
-  .mobile-cinema-film span{
-    display:block;
-    margin-top:7px;
-    color:rgba(255,255,255,.62);
-    font:500 9px/1.2 Inter,system-ui,sans-serif;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-  }
-  .mobile-cinema-count{
-    font:500 9px/1 Inter,system-ui,sans-serif;
-    letter-spacing:.08em;
-    color:rgba(255,255,255,.58);
-    padding-bottom:4px;
-    white-space:nowrap;
-  }
+  .mobile-cinema-rank{font:650 11px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;color:var(--accent,#e60d45);padding-bottom:4px}
+  .mobile-cinema-film{min-width:0}
+  .mobile-cinema-film b{display:block;font:600 clamp(30px,8.5vw,40px)/.91 Inter,system-ui,sans-serif;letter-spacing:-.038em;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.74)}
+  .mobile-cinema-film span{display:block;margin-top:7px;color:rgba(255,255,255,.62);font:600 9px/1.2 Inter,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+  .mobile-cinema-count{font:600 9px/1 Inter,system-ui,sans-serif;letter-spacing:.05em;color:rgba(255,255,255,.58);padding-bottom:4px;white-space:nowrap}
 
   .mobile-cinema-tabs{
     position:absolute;
-    z-index:8;
-    left:18px;
-    right:18px;
-    bottom:26px;
-    height:30px;
+    z-index:9;
+    left:var(--mobile-edge);
+    right:var(--mobile-edge);
+    bottom:24px;
+    height:34px;
     display:grid;
     grid-template-columns:repeat(5,1fr);
-    gap:8px;
+    gap:0;
     border-top:1px solid rgba(255,255,255,.22);
   }
   .mobile-cinema-tabs button{
     position:relative;
     appearance:none;
     border:0;
-    border-radius:0;
-    background:transparent;
-    color:rgba(255,255,255,.52);
-    padding:9px 0 0;
+    border-right:1px solid rgba(255,255,255,.11);
+    border-radius:0!important;
+    background:rgba(5,7,9,.16);
+    color:rgba(255,255,255,.48);
+    padding:10px 8px 0;
     text-align:left;
-    font:500 9px/1 Inter,system-ui,sans-serif;
-    letter-spacing:.06em;
+    font:650 9px/1 Inter,system-ui,sans-serif;
+    letter-spacing:.04em;
     touch-action:manipulation;
     cursor:pointer;
   }
-  .mobile-cinema-tabs button:before{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    top:-1px;
-    height:1px;
-    background:transparent;
-  }
-  .mobile-cinema-tabs button.is-active{
-    color:#fff;
-  }
-  .mobile-cinema-tabs button.is-active:before{
-    background:var(--accent,#e60d45);
-    height:2px;
-  }
+  .mobile-cinema-tabs button:last-child{border-right:0}
+  .mobile-cinema-tabs button:before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:transparent}
+  .mobile-cinema-tabs button.is-active{color:#fff;background:rgba(5,7,9,.32)}
+  .mobile-cinema-tabs button.is-active:before{height:2px;background:var(--accent,#e60d45)}
 
-  .era-screen.mobile-cinema-header .shell{
-    position:relative;
-    z-index:3;
-    margin-top:0!important;
-  }
+  .era-screen.mobile-cinema-header .shell{position:relative;z-index:4;margin-top:0!important;padding:12px 10px 76px!important}
 
-  /* The global Top controls become editorial marks rather than floating UI bubbles. */
+  /* Carry the desktop redesign language through the actual mobile site. */
+  .era-screen.mobile-cinema-header .sec,
+  .era-screen.mobile-cinema-header .tile,
+  .era-screen.mobile-cinema-header .ghost-card,
+  .era-screen.mobile-cinema-header .year-insight-card,
+  .era-screen.mobile-cinema-header .director-card,
+  .era-screen.mobile-cinema-header .year-highlight,
+  .era-screen.mobile-cinema-header .full-progress,
+  .era-screen.mobile-cinema-header .full-reveal-button,
+  .era-screen.mobile-cinema-header .full-reveal-plus,
+  .era-screen.mobile-cinema-header .insight-chevron,
+  .era-screen.mobile-cinema-header .year-arrow,
+  .era-screen.mobile-cinema-header .director-arrow,
+  .era-screen.mobile-cinema-header .director-face,
+  .era-screen.mobile-cinema-header .director-row,
+  .film-modal,
+  .modal-poster,
+  .modal-close{border-radius:0!important}
+
+  .era-screen.mobile-cinema-header .sec{border:0!important;background:linear-gradient(180deg,rgba(17,21,23,.94),rgba(9,12,14,.96))!important;box-shadow:none!important}
+  .era-screen.mobile-cinema-header .toggle{min-height:88px!important;padding:20px 16px!important;border:0!important}
+  .era-screen.mobile-cinema-header .toggle .k{display:none!important}
+  .era-screen.mobile-cinema-header .toggle strong{font:600 clamp(32px,9vw,46px)/.92 Inter,system-ui,sans-serif!important;letter-spacing:-.035em!important;text-transform:none!important}
+  .era-screen.mobile-cinema-header .arr{width:32px;height:32px;border-radius:0!important;background:rgba(255,255,255,.055)!important;color:var(--accent)!important;font-size:0!important;display:grid;place-items:center;transform:none!important}
+  .era-screen.mobile-cinema-header .arr:before{content:"+";font:500 21px/1 Inter,system-ui,sans-serif;transition:transform .25s ease}
+  .era-screen.mobile-cinema-header .sec.open .arr:before{transform:rotate(45deg)}
+  .era-screen.mobile-cinema-header .pad{padding:8px!important;border-top:0!important}
+
+  .era-screen.mobile-cinema-header .heroTop,
+  .era-screen.mobile-cinema-header .grid,
+  .era-screen.mobile-cinema-header .grid.compact,
+  .era-screen.mobile-cinema-header .full-grid,
+  .era-screen.mobile-cinema-header .ghosts,
+  .era-screen.mobile-cinema-header .grid[data-flow="bottom"]{gap:8px!important}
+  .era-screen.mobile-cinema-header .tile,
+  .era-screen.mobile-cinema-header .ghost-card{border:0!important;border-radius:0!important;background:#0a0c0d!important;box-shadow:none!important;overflow:hidden!important}
+  .era-screen.mobile-cinema-header .tile img,
+  .era-screen.mobile-cinema-header .ghost-card img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;background:#090b0c!important}
+  .era-screen.mobile-cinema-header .rank{border:0!important;border-radius:0!important;background:rgba(5,7,9,.72)!important;color:var(--accent)!important;padding:6px 7px!important;font-family:Inter,system-ui,sans-serif!important;font-weight:700!important}
+  .era-screen.mobile-cinema-header .name,
+  .era-screen.mobile-cinema-header .ghost-copy b{font-family:Inter,system-ui,sans-serif!important;font-weight:600!important;letter-spacing:-.025em!important}
+
+  .era-screen.mobile-cinema-header .site-sidebar{background:var(--mobile-black);padding:6px 14px 8px!important;overflow:hidden}
+  .era-screen.mobile-cinema-header .insight-item,
+  .era-screen.mobile-cinema-header .year-insight-card,
+  .era-screen.mobile-cinema-header .director-card{border:0!important;border-bottom:1px solid var(--mobile-line)!important;background:transparent!important}
+  .era-screen.mobile-cinema-header .site-sidebar>*:last-child{border-bottom:0!important}
+  .era-screen.mobile-cinema-header .insight-card,
+  .era-screen.mobile-cinema-header .year-toggle,
+  .era-screen.mobile-cinema-header .director-toggle{border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#f4f4ef!important}
+  .era-screen.mobile-cinema-header .insight-card b,
+  .era-screen.mobile-cinema-header .year-insight-year,
+  .era-screen.mobile-cinema-header .director-title{font-family:Inter,system-ui,sans-serif!important;font-weight:600!important;letter-spacing:-.03em!important}
+  .era-screen.mobile-cinema-header .year-highlight,
+  .era-screen.mobile-cinema-header .director-row,
+  .era-screen.mobile-cinema-header .year-chart-bar{border-radius:0!important}
+
+  /* Site-level navigation follows the same square geometry. */
   body:has(.era-screen.mobile-cinema-header) .era-arrow{
-    width:34px!important;
-    height:64px!important;
+    width:38px!important;
+    height:38px!important;
     padding:0!important;
-    border:0!important;
+    border:1px solid rgba(255,255,255,.14)!important;
     border-radius:0!important;
-    background:transparent!important;
+    background:rgba(5,7,9,.58)!important;
+    color:#fff!important;
+    font-size:20px!important;
+    line-height:1!important;
     box-shadow:none!important;
-    color:rgba(255,255,255,.72)!important;
-    font-size:23px!important;
-    opacity:.9!important;
+    opacity:.74!important;
   }
-  body:has(.era-screen.mobile-cinema-header) .era-prev{left:2px!important}
-  body:has(.era-screen.mobile-cinema-header) .era-next{right:2px!important}
-  body:has(.era-screen.mobile-cinema-header) .era-arrow.disabled{opacity:.16!important}
-  body:has(.era-screen.mobile-cinema-header) .era-hud{
-    bottom:8px!important;
-    max-width:calc(100vw - 32px)!important;
-    padding:5px 7px!important;
-    gap:6px!important;
-    border:0!important;
-    border-radius:0!important;
-    background:transparent!important;
-    box-shadow:none!important;
-    -webkit-backdrop-filter:none!important;
-    backdrop-filter:none!important;
-  }
-  body:has(.era-screen.mobile-cinema-header) .era-dot{
-    width:4px!important;
-    height:4px!important;
-    border-radius:50%!important;
-    background:rgba(255,255,255,.3)!important;
-  }
-  body:has(.era-screen.mobile-cinema-header) .era-dot.active{
-    width:14px!important;
-    border-radius:999px!important;
-    background:var(--active-accent)!important;
-  }
-  body:has(.era-screen.mobile-cinema-header) .era-hud-label{
-    font-family:Inter,system-ui,sans-serif!important;
-    font-size:8px!important;
-    font-weight:600!important;
-    letter-spacing:.08em!important;
-    color:rgba(255,255,255,.62)!important;
-  }
+  body:has(.era-screen.mobile-cinema-header) .era-prev{left:8px!important;margin-left:0!important}
+  body:has(.era-screen.mobile-cinema-header) .era-next{right:8px!important;margin-right:0!important}
+  body:has(.era-screen.mobile-cinema-header) .era-arrow.disabled{opacity:.12!important}
+  body:has(.era-screen.mobile-cinema-header) .era-hud{bottom:8px!important;max-width:calc(100vw - 100px)!important;padding:7px 10px!important;border:1px solid rgba(255,255,255,.13)!important;border-radius:0!important;background:rgba(5,7,9,.90)!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  body:has(.era-screen.mobile-cinema-header) .era-dot{border-radius:0!important;height:5px!important}
+  body:has(.era-screen.mobile-cinema-header) .era-dot.active{border-radius:0!important}
+  body:has(.era-screen.mobile-cinema-header) .era-hud-label{font-family:Inter,system-ui,sans-serif!important;font-size:8px!important;font-weight:600!important;letter-spacing:.07em!important}
 }
 
 @media(max-width:430px){
+  .era-screen.mobile-cinema-header{--mobile-edge:14px}
   .era-screen.mobile-cinema-header .hero-header{height:80svh;min-height:590px!important}
   .era-screen.mobile-cinema-header .hero-title-art-wrap,
   .era-screen.mobile-cinema-header[data-top-id="1975-1999"] .hero-title-art-wrap,
-  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art-wrap,
   .era-screen.mobile-cinema-header[data-top-id="sci-fi-realiste"] .hero-title-art-wrap,
   .era-screen.mobile-cinema-header[data-top-id="animation"] .hero-title-art-wrap,
   .era-screen.mobile-cinema-header[data-top-id="biopics"] .hero-title-art-wrap,
-  .era-screen.mobile-cinema-header[data-top-id="documentaires"] .hero-title-art-wrap{
-    top:64px!important;
-    width:72vw!important;
-    height:136px!important;
-  }
-  .mobile-cinema-copy{bottom:78px}
+  .era-screen.mobile-cinema-header[data-top-id="documentaires"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="rewatched"] .hero-title-art-wrap{top:52px!important}
+  .mobile-cinema-copy{bottom:76px}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .mobile-cinema-layer{transition:none!important;filter:none!important}
+  .mobile-cinema-layer,.mobile-cinema-tabs button,.era-screen.mobile-cinema-header .arr:before{transition:none!important}
+  .mobile-cinema-layer{filter:none!important}
 }
