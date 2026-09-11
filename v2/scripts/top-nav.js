@@ -21,7 +21,6 @@
   const label=hud.querySelector('.era-hud-label');
   const prev=hud.querySelector('.era-hud-step-prev');
   const next=hud.querySelector('.era-hud-step-next');
-  const menu=hud.querySelector('.era-hud-menu');
   const options=[...hud.querySelectorAll('.era-hud-option')];
   let frame=0;
 
@@ -52,15 +51,23 @@
   prev.addEventListener('click',()=>{if(!prev.disabled)pagePrev?.click()});
   next.addEventListener('click',()=>{if(!next.disabled)pageNext?.click()});
   options.forEach(option=>option.addEventListener('click',()=>go(Number(option.dataset.topIndex))));
-  stage.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(sync)},{passive:true});
+  stage.addEventListener('scroll',()=>{
+    // A swipe or any external rail navigation invalidates an open popup position/state.
+    if(hud.classList.contains('is-open'))setOpen(false);
+    if(!frame)frame=requestAnimationFrame(sync);
+  },{passive:true});
   addEventListener('resize',sync,{passive:true});
   document.addEventListener('pointerdown',e=>{if(!hud.contains(e.target))setOpen(false)});
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape')setOpen(false);
     if(!hud.contains(document.activeElement))return;
     const index=indexFromRail();
-    if(e.key==='ArrowLeft'){e.preventDefault();go(index-1)}
-    if(e.key==='ArrowRight'){e.preventDefault();go(index+1)}
+    if(e.key==='ArrowLeft'){
+      e.preventDefault();e.stopPropagation();go(index-1);
+    }
+    if(e.key==='ArrowRight'){
+      e.preventDefault();e.stopPropagation();go(index+1);
+    }
   });
 
   sync();
