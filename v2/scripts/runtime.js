@@ -4,7 +4,6 @@
   const prev=document.getElementById('eraPrev');
   const next=document.getElementById('eraNext');
   const modalBg=document.getElementById('modalBg');
-  const modal=document.getElementById('filmModal');
   const modalRank=document.getElementById('modalRank');
   const modalBody=document.getElementById('modalBody');
   if(!app)return;
@@ -107,125 +106,31 @@
     if(e.target===stage&&e.propertyName==='transform')idle(warmLikelySecondary);
   });
 
-  // Arrow-only motion blur. Swipes remain crisp and track the finger 1:1.
+  // Arrow-only motion blur. Trackpad and touch swipes remain crisp and are owned
+  // entirely by the canonical gesture engine in app.js.
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
   let arrowMotionTimer=0;
-  const startArrowMotion=dir=>{
+  const startArrowMotion=()=>{
     if(!stage||reducedMotion.matches)return;
-    stage.classList.remove('arrow-motion','arrow-motion-prev','arrow-motion-next');
+    stage.classList.remove('arrow-motion');
     void stage.offsetWidth;
-    stage.classList.add('arrow-motion',dir<0?'arrow-motion-prev':'arrow-motion-next');
+    stage.classList.add('arrow-motion');
     clearTimeout(arrowMotionTimer);
-    arrowMotionTimer=setTimeout(()=>stage.classList.remove('arrow-motion','arrow-motion-prev','arrow-motion-next'),460);
+    arrowMotionTimer=setTimeout(()=>stage.classList.remove('arrow-motion'),460);
   };
-  prev?.addEventListener('click',()=>{if(!prev.disabled)startArrowMotion(-1)},true);
-  next?.addEventListener('click',()=>{if(!next.disabled)startArrowMotion(1)},true);
+  prev?.addEventListener('click',()=>{if(!prev.disabled)startArrowMotion()},true);
+  next?.addEventListener('click',()=>{if(!next.disabled)startArrowMotion()},true);
   stage?.addEventListener('transitionend',e=>{
     if(e.target===stage&&e.propertyName==='transform'){
       clearTimeout(arrowMotionTimer);
-      stage.classList.remove('arrow-motion','arrow-motion-prev','arrow-motion-next');
+      stage.classList.remove('arrow-motion');
     }
   });
 
-  // Desktop direct-manipulation adapter. The canonical pointer engine in app.js
-  // already gives touch the right iOS-like behaviour. Trackpad input is translated
-  // into the same pointer gesture so the screen follows the fingers instead of
-  // acting like a threshold-triggered animation. Arrow clicks use that same engine.
-  const desktopDirect=matchMedia('(hover:hover) and (pointer:fine)').matches&&typeof PointerEvent!=='undefined';
-  if(desktopDirect){
-    let syntheticId=7000;
-    let wheelDrag=null;
-    let wheelQuiet=0;
-
-    const withSyntheticCaptureGuard=(el,fn)=>{
-      if(!el)return;
-      const hadOwn=Object.prototype.hasOwnProperty.call(el,'setPointerCapture');
-      const ownValue=el.setPointerCapture;
-      try{el.setPointerCapture=()=>{};fn()}
-      finally{
-        if(hadOwn)el.setPointerCapture=ownValue;
-        else try{delete el.setPointerCapture}catch{}
-      }
-    };
-    const pointer=(el,type,id,x,y)=>{
-      const up=type==='pointerup'||type==='pointercancel';
-      const ev=new PointerEvent(type,{bubbles:true,cancelable:true,composed:true,pointerId:id,pointerType:'touch',isPrimary:true,clientX:x,clientY:y,buttons:up?0:1,pressure:up?0:.5});
-      withSyntheticCaptureGuard(el,()=>el.dispatchEvent(ev));
-    };
-    const wheelPx=e=>{
-      if(e.deltaMode===WheelEvent.DOM_DELTA_LINE)return e.deltaX*16;
-      if(e.deltaMode===WheelEvent.DOM_DELTA_PAGE)return e.deltaX*Math.max(innerWidth,1);
-      return e.deltaX;
-    };
-    const finishWheelDrag=()=>{
-      clearTimeout(wheelQuiet);wheelQuiet=0;
-      if(!wheelDrag)return;
-      const g=wheelDrag;wheelDrag=null;
-      pointer(g.el,'pointerup',g.id,g.startX+g.dx,g.y);
-    };
-    const beginWheelDrag=(el,kind)=>{
-      if(wheelDrag&&wheelDrag.el!==el)finishWheelDrag();
-      if(wheelDrag)return wheelDrag;
-      const id=++syntheticId;
-      const g={el,kind,id,startX:Math.max(80,innerWidth*.5),y:Math.max(80,innerHeight*.45),dx:0};
-      wheelDrag=g;
-      pointer(el,'pointerdown',id,g.startX,g.y);
-      return g;
-    };
-    const feedWheelDrag=(el,kind,e)=>{
-      const g=beginWheelDrag(el,kind);
-      const multiplier=kind==='modal'?1.65:1;
-      const limit=kind==='modal'?Math.max(180,innerWidth*.42):Math.max(320,innerWidth*.94);
-      g.dx=Math.max(-limit,Math.min(limit,g.dx-wheelPx(e)*multiplier));
-      pointer(el,'pointermove',g.id,g.startX+g.dx,g.y);
-      clearTimeout(wheelQuiet);
-      wheelQuiet=setTimeout(finishWheelDrag,110);
-    };
-
-    addEventListener('wheel',e=>{
-      const ax=Math.abs(e.deltaX),ay=Math.abs(e.deltaY);
-      if(ax<2||ax<ay*.9)return;
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      if(modalBg?.classList.contains('open')){
-        if(modal)feedWheelDrag(modal,'modal',e);
-      }else{
-        feedWheelDrag(app,'page',e);
-      }
-    },{passive:false,capture:true});
-
-    const animateArrowDrag=dir=>{
-      finishWheelDrag();
-      if(stage?.classList.contains('is-transitioning'))return;
-      const id=++syntheticId,startX=Math.max(100,innerWidth*.5),y=Math.max(80,innerHeight*.42);
-      const distance=Math.max(240,innerWidth*.56);
-      const duration=reducedMotion.matches?0:240;
-      pointer(app,'pointerdown',id,startX,y);
-      if(!duration){
-        pointer(app,'pointermove',id,startX-dir*distance,y);
-        pointer(app,'pointerup',id,startX-dir*distance,y);
-        return;
-      }
-      const started=performance.now();
-      const frame=now=>{
-        const p=Math.min(1,(now-started)/duration);
-        const eased=1-Math.pow(1-p,3);
-        const x=startX-dir*distance*eased;
-        pointer(app,'pointermove',id,x,y);
-        if(p<1)requestAnimationFrame(frame);
-        else pointer(app,'pointerup',id,x,y);
-      };
-      requestAnimationFrame(frame);
-    };
-    const bindArrow=(button,dir)=>button?.addEventListener('click',e=>{
-      if(button.disabled||stage?.classList.contains('is-transitioning'))return;
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      animateArrowDrag(dir);
-    },true);
-    bindArrow(prev,-1);
-    bindArrow(next,1);
-  }
+  // IMPORTANT: there is intentionally no separate desktop wheel-to-pointer adapter
+  // here anymore. app.js is now the single owner of trackpad, touch, arrows and film
+  // card navigation. Two competing gesture engines were the source of intermittent
+  // locks, direction reversals and visible frame flashes on desktop.
 
   // Mobile stability guards only. The canonical carousel in app.js owns the
   // complete touch gesture, including direct 1:1 drag over interactive cards.
