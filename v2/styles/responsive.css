@@ -10,6 +10,12 @@
 .era-screen[data-top-id="rewatched"] .grid[data-flow="rest"]{grid-template-columns:repeat(5,minmax(0,1fr))}
 .era-screen[data-top-id="rewatched"] .full-progress{pointer-events:none}
 
+/* Desktop section baseline: every Top now uses the same hero depth. This moves the
+   2000–2024 content slightly down and the other Tops slightly up to a shared midpoint. */
+@media(min-width:901px){
+  .era-screen[data-top-id] .hero-header{min-height:clamp(570px,72vh,790px)}
+}
+
 /* Subtle motion blur only for automatic arrow navigation. The touch carousel stays
    completely sharp while it follows the finger. Keep the radius low so the filter
    does not turn a short transition into a heavy GPU effect. */
