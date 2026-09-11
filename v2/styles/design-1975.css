@@ -1,0 +1,151 @@
+/* ASWA40 design overhaul · Phase A · 1975–1999 desktop only */
+.desktop-native .era-screen[data-top-id="1975-1999"]{
+  --design-red:#e60d45;
+  --design-ink:#f4f4ef;
+  --design-muted:rgba(244,244,239,.58);
+  --design-glass:rgba(13,16,19,.48);
+  --design-black:rgba(5,7,9,.92);
+  --design-line:rgba(255,255,255,.14);
+  position:relative;
+  background:#080b0d;
+}
+
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-header{
+  min-height:clamp(700px,88vh,880px);
+  overflow:hidden;
+  background:#050608;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-header>.hero-media{display:none}
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-header:before{
+  z-index:3;
+  background:
+    linear-gradient(180deg,rgba(3,4,6,.08) 0%,rgba(3,4,6,.02) 42%,rgba(4,5,7,.08) 62%,rgba(4,5,7,.66) 100%),
+    linear-gradient(90deg,rgba(3,4,6,.17) 0%,rgba(3,4,6,.05) 32%,transparent 58%);
+  pointer-events:none;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-header:after{
+  z-index:4;height:26%;background:linear-gradient(transparent,rgba(8,11,13,.74));pointer-events:none
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-nav{display:none}
+
+.design1975-media-stack{position:absolute;z-index:0;inset:0;pointer-events:none}
+.design1975-media-layer{position:absolute;inset:0;opacity:0;z-index:0;transition:opacity .44s ease;will-change:opacity}
+.design1975-media-layer img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center;filter:blur(16px) saturate(.96) contrast(1.02) brightness(.94);transform:scale(1.055);transition:filter .58s cubic-bezier(.2,.72,.18,1),transform .86s cubic-bezier(.2,.72,.18,1);will-change:filter,transform}
+.design1975-media-layer.is-incoming{opacity:0;z-index:3}
+.design1975-media-layer.is-active{opacity:1;z-index:2}
+.design1975-media-layer.is-active img{filter:blur(0) saturate(.96) contrast(1.02) brightness(.94);transform:scale(1.008)}
+.design1975-media-layer.is-outgoing{opacity:0;z-index:1}
+.design1975-media-layer.is-outgoing img{filter:blur(0) saturate(.96) contrast(1.02) brightness(.94);transform:scale(1.008);transition:none}
+
+/* Tight visual crop around the oversized 1920×1080 SVG canvas. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-title{z-index:12;inset:0;display:block;text-align:initial}
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-title-art-wrap{
+  position:absolute;top:18px;right:max(24px,calc((100vw - 1240px)/2));left:auto;width:clamp(430px,37vw,610px);height:auto;aspect-ratio:800/330;overflow:hidden;transform:none;filter:drop-shadow(0 18px 44px rgba(0,0,0,.36));pointer-events:none
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-title-art{
+  position:absolute!important;width:240%!important;max-width:none!important;height:auto!important;aspect-ratio:auto!important;left:-60%!important;top:-95.455%!important;transform:none!important;filter:none!important;object-fit:initial!important
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .hero-art-medallions{display:none}
+
+.design1975-top5{position:absolute;z-index:20;left:max(24px,calc((100vw - 1240px)/2));bottom:46px;width:min(610px,48vw);display:flex;flex-direction:column;align-items:flex-start;pointer-events:auto}
+.design1975-top5 button{border:0;background:none;padding:0;min-height:60px;color:rgba(255,255,255,.96);display:flex;align-items:baseline;gap:12px;text-align:left;cursor:pointer;transition:color .16s ease,transform .23s ease;text-shadow:0 2px 18px rgba(0,0,0,.74)}
+.design1975-top5 button:hover,.design1975-top5 button:focus-visible{transform:translateX(5px);outline:none}
+.design1975-top5 .num{width:34px;font-size:12px;font-weight:650;color:inherit}
+.design1975-top5 .film-name{font:600 clamp(42px,4.5vw,68px)/.91 Inter,system-ui,sans-serif;letter-spacing:-.035em;color:inherit}
+.design1975-top5 .year{font-size:11px;font-weight:600;color:inherit;transform:translateY(-11px)}
+.design1975-top5 button.is-locked{color:var(--design-red)}
+.design1975-top5.is-previewing button.is-locked{color:rgba(255,255,255,.96)}
+.design1975-top5 button.is-preview{color:var(--design-red)}
+
+.design1975-progress{position:absolute;z-index:20;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.08);pointer-events:none}
+.design1975-progress span{display:block;width:20%;height:100%;background:var(--design-red);transform:translateX(calc(var(--design-index,0) * 100%));transition:transform .32s cubic-bezier(.2,.75,.2,1)}
+
+/* Duplicated active hero lives behind the content, creating the floating-glass effect. */
+.desktop-native .era-screen[data-top-id="1975-1999"]>.design1975-content-bg{position:absolute;z-index:0;left:0;right:0;top:clamp(700px,88vh,880px);bottom:0;overflow:hidden;pointer-events:none;background:#080b0d}
+.design1975-content-bg .design1975-bg-layer{position:absolute;inset:-5vw;opacity:0;transition:opacity .48s ease;background-position:center 42%;background-size:cover;background-attachment:fixed;filter:blur(30px) saturate(.82) brightness(.68);transform:scale(1.08)}
+.design1975-content-bg .design1975-bg-layer.is-active{opacity:.84}
+.design1975-content-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,13,.14),rgba(8,11,13,.38) 48%,rgba(8,11,13,.84) 100%)}
+
+.desktop-native .era-screen[data-top-id="1975-1999"]>.shell{z-index:2;max-width:1240px;margin:-54px auto 0;padding:28px 24px 150px;background:transparent}
+.desktop-native .era-screen[data-top-id="1975-1999"] .site-layout{grid-template-columns:minmax(0,1fr) 390px;gap:18px;margin-top:0}
+.desktop-native .era-screen[data-top-id="1975-1999"] .stack{gap:46px}
+
+.desktop-native .era-screen[data-top-id="1975-1999"] .sec{border:0;border-radius:0;background:linear-gradient(180deg,rgba(17,21,23,.48),rgba(9,12,14,.38));backdrop-filter:blur(18px) saturate(.94);box-shadow:0 30px 84px rgba(0,0,0,.26);overflow:hidden}
+.desktop-native .era-screen[data-top-id="1975-1999"] .toggle{min-height:104px;padding:24px 26px;align-items:center}
+.desktop-native .era-screen[data-top-id="1975-1999"] .toggle>div{display:block}
+.desktop-native .era-screen[data-top-id="1975-1999"] .toggle .k{display:none}
+.desktop-native .era-screen[data-top-id="1975-1999"] .toggle strong{font:600 clamp(42px,4.5vw,68px)/.91 Inter,system-ui,sans-serif;letter-spacing:-.035em;text-transform:none}
+.desktop-native .era-screen[data-top-id="1975-1999"] .arr{font-size:0;width:38px;height:38px;display:grid;place-items:center;border-radius:0;background:rgba(6,8,10,.3);color:var(--design-red);transform:none}
+.desktop-native .era-screen[data-top-id="1975-1999"] .arr:before{content:"+";font:500 25px/1 Inter,sans-serif;transition:transform .28s ease}
+.desktop-native .era-screen[data-top-id="1975-1999"] .sec.open .arr{transform:none}
+.desktop-native .era-screen[data-top-id="1975-1999"] .sec.open .arr:before{transform:rotate(45deg)}
+.desktop-native .era-screen[data-top-id="1975-1999"] .pad{padding:14px;border-top:0}
+
+/* Top 25 — image-first asymmetry. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .heroTop{grid-template-columns:1.25fr 1fr 1fr;grid-auto-rows:230px;gap:8px;margin-bottom:8px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .heroTop .tile{border:0;border-radius:0;aspect-ratio:auto;min-height:0}
+.desktop-native .era-screen[data-top-id="1975-1999"] .heroTop .tile:nth-child(1){grid-row:span 2}
+.desktop-native .era-screen[data-top-id="1975-1999"] .heroTop .tile:nth-child(n+2){min-height:230px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .grid{gap:8px;grid-template-columns:repeat(5,minmax(0,1fr))}
+.desktop-native .era-screen[data-top-id="1975-1999"] .grid.compact{grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile{border:0;border-radius:0;background:#111;box-shadow:none}
+.desktop-native .era-screen[data-top-id="1975-1999"] .rank{border:0;border-radius:0;background:rgba(8,10,11,.74);color:var(--design-red);padding:6px 7px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .name{font-family:Inter,system-ui,sans-serif;font-weight:600;letter-spacing:-.025em}
+.desktop-native .era-screen[data-top-id="1975-1999"] .heroTop .tile:first-child .rank{font-size:68px;line-height:.8;background:transparent;color:rgba(255,255,255,.92);padding:8px 10px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .heroTop .tile:first-child .name{font-size:32px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .full-progress{border:0;border-radius:0;background:rgba(5,7,9,.86);text-transform:none;letter-spacing:0}
+.desktop-native .era-screen[data-top-id="1975-1999"] .full-reveal-button{border:0;border-radius:0;background:rgba(5,7,9,.94);text-transform:none;letter-spacing:0}
+.desktop-native .era-screen[data-top-id="1975-1999"] .full-reveal-plus{border-radius:0}
+
+/* Lower sections keep the current product's real tile renderers, simply reskinned. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghosts{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-card{border:0;border-radius:0;background:#111}
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-copy b{font:600 18px/.98 Inter,sans-serif;letter-spacing:-.025em}
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-copy span{font-size:11px}
+
+/* Sidebar — one sharp black rectangle, editorial accordion, no outer top/bottom rules. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .site-sidebar{top:18px;background:var(--design-black);padding:8px 18px 10px;box-shadow:0 28px 70px rgba(0,0,0,.2);overflow:hidden}
+.desktop-native .era-screen[data-top-id="1975-1999"] .sidebar-title{display:none}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-item,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-card,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-card{border:0;border-bottom:1px solid var(--design-line);background:transparent}
+.desktop-native .era-screen[data-top-id="1975-1999"] .site-sidebar>*:last-child{border-bottom:0!important}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-card,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-toggle,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-toggle{min-height:74px;padding:17px 0 18px;background:transparent!important;box-shadow:none!important;border:0;color:var(--design-ink);transition:color .18s ease}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-card{grid-template-columns:34px minmax(0,1fr) 30px;gap:9px}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-icon{color:rgba(255,255,255,.55);font-size:21px;text-align:center}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-card b,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-year,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-title{font:600 27px/.94 Inter,system-ui,sans-serif;letter-spacing:-.035em;color:var(--design-ink);white-space:nowrap;transition:color .18s ease}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-card>span:nth-child(2)>span,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-kicker,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-maincount,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-k,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-faces{display:none!important}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-chevron,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-arrow,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-arrow{width:28px;height:28px;display:grid;place-items:center;border-radius:0;background:rgba(255,255,255,.055);font-size:0;color:rgba(255,255,255,.72)}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-chevron:before,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-arrow:before,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-arrow:before{content:"+";font:400 18px/1 Inter,sans-serif}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-card:hover b,
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-item.is-open .insight-card b,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-toggle:hover .year-insight-year,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-card.is-open .year-insight-year,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-toggle:hover .director-title,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-card.is-open .director-title{color:var(--design-red)}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-detail,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-detail,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-detail{color:rgba(255,255,255,.65)}
+
+@media(max-width:1100px){
+  .desktop-native .era-screen[data-top-id="1975-1999"] .site-layout{grid-template-columns:minmax(0,1fr) 330px}
+  .desktop-native .era-screen[data-top-id="1975-1999"] .insight-card b,
+  .desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-year,
+  .desktop-native .era-screen[data-top-id="1975-1999"] .director-title{font-size:23px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .design1975-media-layer,.design1975-media-layer img,.design1975-progress span,.design1975-top5 button{transition:none!important}
+}
