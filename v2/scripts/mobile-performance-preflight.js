@@ -10,6 +10,12 @@
   const tmdb=(src,size)=>String(src||'').replace(/\/t\/p\/(?:original|w\d+)\//,`/t/p/${size}/`);
   const poster=src=>String(src||'').includes('image.tmdb.org/t/p/')?tmdb(src,posterSize):src;
 
+  // Three legacy Documentaires ghost entries referenced local files that do not exist.
+  // Use their known TMDB poster identities instead, avoiding three guaranteed 404s.
+  const docs=TOPS.find(top=>top.id==='documentaires');
+  const docGhostPaths=['/yvwF7dfSCybFcBOklUzKpE46bHM.jpg','/toJRzlXOSZYWW5IUk7DrZJv7kHF.jpg','/jb6o66HE1duy0L7MJzEZXvrrsux.jpg'];
+  (docs?.ghosts||[]).slice(0,3).forEach((g,i)=>{if(g&&docGhostPaths[i])g.img=`https://image.tmdb.org/t/p/w500${docGhostPaths[i]}`});
+
   TOPS.forEach(top=>{
     if(top?.hero?.image){heroImages[top.id]=top.hero.image;top.hero.image=blank}
     (top?.films||[]).forEach(f=>{if(f?.img)f.img=poster(f.img)});
