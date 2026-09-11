@@ -1,6 +1,8 @@
 (()=>{
   const app=document.getElementById('app');
   const stage=document.getElementById('stage');
+  const prev=document.getElementById('eraPrev');
+  const next=document.getElementById('eraNext');
   const modalBg=document.getElementById('modalBg');
   const modalRank=document.getElementById('modalRank');
   const modalBody=document.getElementById('modalBody');
@@ -55,6 +57,74 @@
       if(e.target.closest?.('.tile,.ghost-card,.modal-nav'))setTimeout(injectEditorial,0);
     },true);
   }
+
+  // Perceived-instant loading: keep the first paint light, then warm only the most
+  // likely secondary posters once the browser is idle. This preserves lazy loading
+  // while making the next opened section feel immediate.
+  const idle=cb=>('requestIdleCallback' in window?requestIdleCallback(cb,{timeout:1200}):setTimeout(cb,180));
+  const warmedSecondary=new Set();
+  const warmers=new Set();
+  const warmImage=src=>{
+    if(!src)return;
+    const img=new Image();
+    warmers.add(img);
+    img.decoding='async';
+    img.fetchPriority='low';
+    const release=()=>warmers.delete(img);
+    img.onload=release;img.onerror=release;img.src=src;
+    img.decode?.().catch(()=>{});
+  };
+  const likelySecondarySources=top=>{
+    if(!top)return [];
+    const out=[];
+    const full=(top.sections||[]).find(s=>s.kind==='full');
+    if(full){
+      const start=Math.max(0,(Number(full.start)||1)-1);
+      out.push(...(top.films||[]).slice(start,start+6).map(f=>f.img));
+    }
+    out.push(...(top.ghosts||[]).slice(0,3).map(g=>g.img));
+    const bottom=(top.sections||[]).find(s=>s.kind==='bottom');
+    if(bottom){
+      const ranks=(top.ovnis?.ranks||[]).slice(0,3).map(Number);
+      ranks.forEach(r=>{const f=(top.films||[]).find(x=>Number(x.rank)===r);if(f?.img)out.push(f.img)});
+    }
+    return [...new Set(out.filter(Boolean))];
+  };
+  const warmLikelySecondary=()=>{
+    const top=currentTop();
+    if(!top||warmedSecondary.has(top.id))return;
+    const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+    if(connection?.saveData)return;
+    warmedSecondary.add(top.id);
+    const slow=/2g/.test(String(connection?.effectiveType||''));
+    const mobile=matchMedia('(max-width:700px)').matches||matchMedia('(pointer:coarse)').matches;
+    const budget=slow?4:(mobile?10:14);
+    likelySecondarySources(top).slice(0,budget).forEach(warmImage);
+  };
+  requestAnimationFrame(()=>idle(warmLikelySecondary));
+  stage?.addEventListener('transitionend',e=>{
+    if(e.target===stage&&e.propertyName==='transform')idle(warmLikelySecondary);
+  });
+
+  // Arrow-only motion blur. Swipes remain crisp and track the finger 1:1.
+  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+  let arrowMotionTimer=0;
+  const startArrowMotion=dir=>{
+    if(!stage||reducedMotion.matches)return;
+    stage.classList.remove('arrow-motion','arrow-motion-prev','arrow-motion-next');
+    void stage.offsetWidth;
+    stage.classList.add('arrow-motion',dir<0?'arrow-motion-prev':'arrow-motion-next');
+    clearTimeout(arrowMotionTimer);
+    arrowMotionTimer=setTimeout(()=>stage.classList.remove('arrow-motion','arrow-motion-prev','arrow-motion-next'),460);
+  };
+  prev?.addEventListener('click',()=>{if(!prev.disabled)startArrowMotion(-1)},true);
+  next?.addEventListener('click',()=>{if(!next.disabled)startArrowMotion(1)},true);
+  stage?.addEventListener('transitionend',e=>{
+    if(e.target===stage&&e.propertyName==='transform'){
+      clearTimeout(arrowMotionTimer);
+      stage.classList.remove('arrow-motion','arrow-motion-prev','arrow-motion-next');
+    }
+  });
 
   // Mobile stability guards only. The canonical carousel in app.js now owns the
   // complete touch gesture, including direct 1:1 drag over interactive cards.
