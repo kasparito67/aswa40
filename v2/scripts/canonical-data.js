@@ -6,6 +6,33 @@
   TOPS.forEach(top=>(top.films||[]).forEach(f=>{if(f.img&&!placeholder(f.img))realByTitle.set(norm(f.title),f.img)}));
   TOPS.forEach(top=>(top.films||[]).forEach(f=>{if((!f.img||placeholder(f.img))&&realByTitle.has(norm(f.title)))f.img=realByTitle.get(norm(f.title))}));
 
+  // A few older/shared records had correct posters but no backdrop identity. Without
+  // these locks the hero renderer fell back to the generic Top image, so unrelated
+  // films could visibly share a backdrop. Keep these canonical IDs explicit.
+  const backdropLocks={
+    'sci-fi-realiste':{
+      2:'/hPsCR1ny6GnctJkWqeJwihTDD7T.jpg', // Gattaca
+      3:'/qr7dUqleMRd0VgollazbmyP9XjI.jpg', // Blade Runner
+      5:'/tlm8UkiQsitc8rSuIAscQDCnP8d.jpg'  // The Matrix
+    },
+    animation:{
+      1:'/fK40VGYIm7hmKrLJ26fgPQU0qRG.jpg', // Akira
+      4:'/xWT5F1DNxciNLEMXRl49iq8zvN7.jpg', // Nightmare Before Christmas
+      5:'/3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg'  // Toy Story
+    },
+    biopics:{
+      1:'/7TF4p86ZafnxFuNqWdhpHXFO244.jpg', // GoodFellas
+      2:'/zb6fM1CX41D9rF9hdgclu0peUmy.jpg'  // Schindler's List
+    }
+  };
+  Object.entries(backdropLocks).forEach(([topId,films])=>{
+    const top=TOPS.find(t=>t.id===topId);if(!top)return;
+    Object.entries(films).forEach(([rank,path])=>{
+      const film=top.films.find(f=>f.rank===Number(rank));
+      if(film)Object.assign(film,{backdropPath:path,backdrop:`https://image.tmdb.org/t/p/original${path}`});
+    });
+  });
+
   // Identity locks belong here. Section layout and editorial configuration live in
   // platform-config.js so there is only one source of truth for presentation.
   const docs=TOPS.find(t=>t.id==='documentaires');
