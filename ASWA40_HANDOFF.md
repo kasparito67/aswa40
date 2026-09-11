@@ -1,34 +1,22 @@
 # ASWA40 — Canonical Project Handoff
 
-This file is the shared source of truth for ChatGPT Chat, Work, Local and any future development session.
+This file is the source of truth for future ChatGPT / Work / local sessions.
 
-## 0. Current state — read this first
-
-### Coordination
+## 0. Current state — September 11, 2026
 
 - Repository: `kasparito67/aswa40`
-- Stable production branch: `main`
-- Active working branch: `work-cleanup-sept9`
-- Production remains `https://aswa40-films.vercel.app/`
-- Working preview: `https://aswa40-films-git-work-cleanup-sept9-kasper6.vercel.app/`
-- Never merge or promote `work-cleanup-sept9` without explicit user approval.
-- The branch + this handoff are the source of truth, not conversation history.
+- Production branch: `main`
+- Production baseline before this audit: `e482e08afb34013fa590dbb1c89993014d5b79c2`
+- Production: `https://aswa40-films.vercel.app/`
+- Active QA branch: `audit-debug-sept11`
+- Audit report: `ASWA40_AUDIT_2026-09-11.md`
+- Never promote the QA branch without explicit user visual approval.
 
-### Current refactor state — September 10, 2026
+The previously validated platform is live on `main`. A full QA/debug pass is now isolated on `audit-debug-sept11`; production is intentionally untouched during validation.
 
-Phases 0–5 have been implemented on the working branch. Phase 5 technical cleanup commit:
+## 1. Canonical routes
 
-`ec8f9f167c501eeca4650ec7ef91d22fb3725959` — `Remove obsolete platform overrides`
-
-A documentation-only handoff commit follows that cleanup commit.
-
-The user must visually validate the Phase 5 preview before any overhaul or merge.
-
-## 1. Platform architecture
-
-ASWA40 is one static app / one Vercel project with one shareable route per Top.
-
-Canonical routes:
+ASWA40 is one static Vercel app with a shareable route for each Top:
 
 - `/tops/1975-1999`
 - `/tops/2000-2024`
@@ -38,212 +26,203 @@ Canonical routes:
 - `/tops/documentaires`
 - `/tops/rewatched`
 
-Navigation model:
+Default entry remains `1975-1999`.
 
-- one `.era-screen` remains mounted while idle;
-- during a horizontal transition, current + adjacent target screen may coexist temporarily;
-- swipe follows the finger directly on touch;
-- arrows, keyboard and trackpad use the same directional model;
-- routes update with navigation and browser Back / Forward works;
-- refresh restores the routed Top;
-- neighboring hero assets are prewarmed, while secondary content remains progressively loaded;
-- arrow navigation has a subtle motion blur; direct touch swipe remains sharp;
-- reduced-motion preference is respected.
+`vercel.json` intentionally rewrites `/tops/:top` to `/v2`. Do not change that destination to `/v2/index.html` while `cleanUrls` is enabled.
 
-The site must feel like continuous iOS-style screens, not separate page loads.
+## 2. Runtime architecture
 
-## 2. Current runtime files
+Entry: `v2/index.html`
 
-Entry:
+`v2/scripts/bootstrap.js` selects one navigation engine.
 
-- `v2/index.html`
+### Desktop / fine pointer
 
-### Canonical runtime / renderer
+Condition: `(min-width:701px) and (hover:hover) and (pointer:fine)`
 
-- `v2/scripts/app.js` — renderer, sections, sidebar bindings, modal, coverflow, progressive ranking, routes and carousel
-- `v2/scripts/runtime.js` — focused runtime support: OVNI modal editorial injection, perceived-loading warmup, arrow motion-blur trigger and mobile stability guards
-- `v2/scripts/parallax.js` — desktop parallax only; mobile is intentionally lightweight
+Loaded runtime:
 
-### Data / configuration
+- `v2/scripts/app-desktop.js` — renderer, all sections/sidebar components, native horizontal rail, route/history state, progressive ranking and film modal;
+- `v2/scripts/top-nav.js` — bottom direct Top selector;
+- `v2/scripts/parallax.js` — desktop visual parallax.
 
-- `v2/scripts/data.js`
-- `v2/scripts/new-tops.js`
-- `v2/scripts/expanded-tops.js`
-- `v2/scripts/animation-data.js` — canonical animation-list correction
-- `v2/scripts/poster-metadata.js`
-- `v2/scripts/poster-aliases.js`
-- `v2/scripts/expansion-media.js`
-- `v2/scripts/canonical-data.js` — durable identity locks and canonical metadata corrections
-- `v2/scripts/top-skeletons.js`
-- `v2/scripts/hero-config.js`
-- `v2/scripts/platform-config.js` — Top ordering, OVNI curation, section configuration and mobile media sizing
+Desktop navigation is now **native horizontal scroll + CSS scroll-snap**. All seven `.era-screen` elements are mounted in one horizontal rail. The browser owns trackpad momentum and snapping. Do not rebuild a wheel/state-machine carousel on top of it.
 
-The former runtime filenames `animation-fix.js`, `qa-data-fixes.js`, `section-polish.js` and `qa-fixes.js` are no longer loaded.
+### Mobile / coarse pointer
 
-## 3. Current styles
+Loaded runtime:
 
-Loaded styles are now responsibility-based:
+- `v2/scripts/runtime.js` — focused mobile runtime support;
+- `v2/scripts/app.js` — validated transform carousel + renderer/modal;
+- `v2/scripts/parallax.js` — exits early on mobile.
 
-- `v2/styles/app.css` — common renderer/base UI
-- `v2/styles/hero.css` — hero artwork and title normalization
-- `v2/styles/top-themes.css` — intentional per-Top exceptions, primarily the validated 2000–2024 treatment
-- `v2/styles/modal.css` — film-detail visual model
-- `v2/styles/components.css` — sidebar/disclosure/component presentation
-- `v2/styles/modal-layout.css` — canonical modal layout and responsive geometry
-- `v2/styles/parallax.css` — parallax presentation
-- `v2/styles/responsive.css` — mobile grid/navigation/loading refinements
+Mobile keeps the validated one-screen-at-rest transform model. Current touch physics should not be changed casually.
 
-Removed old loaded paths:
+## 3. Data / configuration load order
 
-- `v2/styles/legacy-parity.css`
-- `v2/styles/modal-polish.css`
-- `v2/styles/section-polish.css`
-- `v2/styles/interaction-fix.css`
-- `v2/styles/qa-fixes.css`
+`v2/index.html` loads, in order:
 
-`modal-layout.css` replaces the old `interaction-fix.css` cascade with normal source-order precedence; the large block of modal `!important` declarations was removed.
+1. `../scripts/data.js`
+2. `../scripts/backdrops.js`
+3. `scripts/data.js`
+4. `scripts/new-tops.js`
+5. `scripts/animation-data.js`
+6. `scripts/expanded-tops.js`
+7. `scripts/poster-metadata.js`
+8. `scripts/poster-aliases.js`
+9. `scripts/expansion-media.js`
+10. `scripts/canonical-data.js`
+11. `scripts/top-skeletons.js`
+12. `scripts/hero-config.js`
+13. `scripts/platform-config.js`
+14. `scripts/bootstrap.js`
 
-Do not introduce a new `final`, `fix-2`, `qa-2`, or last-loaded override layer. Put future work in the canonical responsibility file.
+Responsibilities:
 
-## 4. Phase status
+- `canonical-data.js` — durable film identity/metadata locks only;
+- `platform-config.js` — Top order, sections, OVNI curation and responsive media/batch configuration;
+- `hero-config.js` — hero artwork/position configuration;
+- `animation-data.js` — removes invalid `LE...K` entry and reranks animation list;
+- poster/expansion files — generated/verified metadata and media augmentation.
 
-- Phase 0 — baseline: complete
-- Phase 1 — single hero renderer: complete
-- Phase 2 — interaction parity / consolidation: complete
-- Phase 3 — poster/data QA: complete
-- Phase 4 — routed continuous Top navigation: complete and behaviorally validated
-- Phase 5 — final cleanup / responsibility-based files: implementation complete; visual regression check pending
-- Phase 6 — optional Work handoff/audit: not started
-- Visual overhaul — not started
+Do not reintroduce duplicate section configuration into `canonical-data.js`.
 
-Do not begin the visual overhaul until the user validates the Phase 5 preview.
+## 4. Loaded styles
 
-## 5. UX / visual invariants
+- `v2/styles/app.css`
+- `v2/styles/hero.css`
+- `v2/styles/top-themes.css`
+- `v2/styles/modal.css`
+- `v2/styles/components.css`
+- `v2/styles/modal-layout.css`
+- `v2/styles/parallax.css`
+- `v2/styles/responsive.css`
+- `v2/styles/native-carousel.css`
+
+No loaded v2 stylesheet was identified as dead in the September 11 audit.
+
+Do not add a new `final`, `fix-2`, `qa-2`, or last-loaded override layer. Put changes in the file that owns the responsibility.
+
+## 5. September 11 QA/debug pass
+
+Automated project audit on `audit-debug-sept11` currently checks:
+
+- JS syntax across project scripts;
+- production entrypoint references;
+- exact data/config pipeline;
+- 7 Tops / 793 ranked films;
+- rank continuity and section ranges;
+- OVNI ranks;
+- durable identity locks;
+- local rendered assets;
+- Vercel route rewrite;
+- unloaded v2 runtime drift.
+
+Current audit result: **0 errors / 0 warnings**.
+
+A Playwright/Chromium smoke test also covers desktop and mobile boot/navigation, all seven direct routes, bottom selector, section lazy rendering, rapid section state changes and modal open/close. Current smoke result: **PASS**.
+
+Audit tooling:
+
+- `scripts/audit-project.mjs`
+- `.github/workflows/audit-project.yml`
+- `scripts/smoke-browser.mjs`
+- `.github/workflows/browser-smoke.yml`
+
+These two workflows are intentionally branch-scoped to `audit-debug-sept11` until the audit is approved.
+
+## 6. Bugs fixed on the QA branch
+
+- 2000–2024 full-range label aligned to `#26–135`.
+- Biopics explicitly renders `TOP 15`; full ranking starts at `#16`.
+- Animation OVNI bottom ranks corrected after list rerank (`#85–89`, not pre-rerank `#86–90`).
+- Documentaires/Re.Watched section ownership consolidated in `platform-config.js`.
+- Desktop native programmatic scroll now keeps parallax synchronized.
+- Bottom Top selector no longer competes with global keyboard navigation.
+- Global desktop left/right keys ignore focused interactive controls.
+- Modal trackpad direction uses accumulated signed movement rather than the final inertial frame.
+- Rapid section open/close no longer loses to a stale height timer.
+- Repeated `Voir plus` clicks cannot append duplicate batches.
+- Section buttons expose correct `aria-expanded` state.
+
+Removed dead v2 runtime files after proving they were not loaded:
+
+- `header-polish.js`
+- `hero-title-final.js`
+- `interaction-fix.js`
+- `modal-polish.js`
+- `sidebar-polish.js`
+
+## 7. UX / visual invariants
 
 ### Navigation
 
-- Continuous horizontal screen navigation is core to the product.
-- At rest, only one Top is mounted.
-- During transition, only current + target neighbor may coexist.
-- Incomplete touch swipe returns naturally.
-- One physical trackpad gesture causes at most one navigation.
-- No black frame, fake page load or hard seam should appear between Tops.
-- Mobile scrollbars are visually hidden during the screen experience.
+- Desktop: browser-native scroll-snap rail; trackpad motion must remain native and seamless.
+- Mobile: direct touch/transform carousel; one Top mounted at rest.
+- Routes update with navigation; browser Back/Forward and refresh must restore the correct Top.
+- No black flash, fake page load or hard seam between Tops.
+- Desktop bottom selector is direct navigation, not decorative status dots.
+- Side arrows are circular dark controls on desktop and mobile.
 
 ### Headers
 
-- Hero distinct. Interface common. Palette adapted.
-- Approved source artwork is rendered directly; do not recreate it in CSS.
+- Hero artwork stays distinct per Top while interface geometry is shared.
+- Desktop hero/section baseline is normalized across Tops.
+- Approved source artwork is rendered directly; do not recreate title art in CSS.
 - Mobile title placement is optically normalized.
-- 1975–1999 has a deliberate mobile backdrop crop to remove the dark top strip.
-- Re.Watched has a small optical right-shift because the superscript `50` distorts geometric centering.
-- 2000–2024 and Re.Watched use custom mobile title boxes because their source artworks are not normalized 1920×1080 artboards.
+- 1975–1999 has deliberate mobile crop treatment.
+- Re.Watched has optical title compensation.
 
-### Ranking hierarchy
+### Rankings
 
-- #1 dominant tile;
-- #2–5 medium tiles;
-- remaining featured ranking uses the smaller poster grid;
-- Re.Watched Top 50 follows the same hierarchy, with #6–50 in the smaller grid;
-- mobile grids use two columns and preserve poster aspect ratio.
-
-### OVNIs
-
-- Each category has an editorial OVNI reason.
-- Reasons appear on desktop rollover and in the film detail card after click; they do not permanently cover mobile poster tiles.
-- Chooser identity is named only where source material explicitly supports it.
-- Ranked OVNI cards remain clickable and open the canonical film modal.
-- `Jesus of Nazareth` is intentionally highlighted as a major 1975–1999 OVNI.
+- #1 dominant;
+- #2–5 medium;
+- remaining featured ranking smaller;
+- Re.Watched: Top 50 featured, #51–263 full;
+- Documentaires: Top 15 featured, #16–83 full;
+- Biopics: Top 15 featured, #16–67 full;
+- mobile poster grids remain two columns with correct aspect ratio.
 
 ### Modal
 
-- Desktop: poster + cinematic backdrop + details + previous/next navigation.
-- Mobile: vertically scrolling sheet, centered full poster, full-width title/stats/editorial copy.
-- No negative pull-up or poster clipping on mobile.
+- Desktop: cinematic detail card + previous/next navigation.
+- Mobile: vertically scrollable sheet with complete poster/title/stats/body.
+- OVNI editorial reason appears in relevant detail cards.
 
 ### Performance
 
-- sections other than the first are rendered on demand;
-- full rankings use progressive loading;
-- mobile TMDB posters use reduced image sizes;
-- hero / likely-next assets are decoded or warmed opportunistically;
-- save-data / slow connections receive smaller prewarm budgets;
-- parallax is disabled on mobile;
-- permanent GPU layers are avoided where possible.
+- secondary sections render on demand;
+- full rankings reveal progressively;
+- mobile uses reduced TMDB image sizes;
+- likely-next assets are opportunistically prewarmed;
+- parallax is desktop-only;
+- avoid permanent unnecessary GPU layers.
 
-## 6. Important Top data locks
+## 8. Durable identity locks
 
-Current Tops:
+Never regress:
 
-- `1975-1999`
-- `2000-2024`
-- `sci-fi-realiste`
-- `animation`
-- `biopics`
-- `documentaires`
-- `rewatched`
+- Icarus = 2017 documentary, TMDB `432976`
+- Senna = 2010 documentary, TMDB `58496`
+- Home Alone = 1990 film, TMDB `771`
 
-Durable identity locks:
+## 9. Repository hygiene
 
-- Icarus = 2017 documentary, TMDB 432976
-- Senna = 2010 documentary, TMDB 58496
-- Home Alone = 1990 film, TMDB 771
+There are historical GitHub Actions workflows tied to old pages or old branches (for example `bump-1975-v037`, old TMDB backdrop/poster fetchers and `unify-era-environment`). They are not part of the current v2 runtime. Some retain narrow write triggers.
 
-Documentaires:
+They were intentionally **not deleted during the runtime audit** because they are archival/tooling assets, not demonstrated live bugs. Archive or modernize them in a separate repository-hygiene task if desired.
 
-- Top 15 featured section
-- #16–83 full ranking
+## 10. Promotion checklist
 
-Re.Watched:
+Before moving `audit-debug-sept11` to `main`:
 
-- Top 50 featured section
-- #51–263 full ranking
-- curated OVNI set
-- title artwork: `assets/header-rewatch.svg`
-
-## 7. Deployment guardrail
-
-Sole Vercel project: `aswa40-films`.
-
-A successful GitHub commit is not sufficient to call a change live; verify Vercel deployment status separately.
-
-Never merge into `main` or promote the preview without explicit user approval.
-
-## 8. Next visual direction — only after Phase 5 validation
-
-The planned overhaul changes the interface below the hero while preserving the stabilized architecture and interactions.
-
-Reference direction:
-
-- festival / cinematheque / editorial-program feel;
-- black or very dark transparent panels rather than heavy opaque cards;
-- minimal or absent rounded corners;
-- thin rules and typography create hierarchy;
-- image-first poster presentation;
-- fewer visible containers;
-- hover / interaction reveals secondary information;
-- insights become lighter editorial rows rather than dashboard cards;
-- current heroes remain the starting point and should not be redesigned automatically.
-
-This overhaul must begin in a dedicated visual branch or clearly isolated commit series after the current Phase 5 state is visually approved.
-
-## 9. Immediate validation checklist
-
-Before starting the overhaul, validate on desktop and mobile:
-
-- every direct Top route opens;
-- refresh and browser Back / Forward preserve the correct Top;
-- arrow, keyboard, touch swipe and trackpad navigation work;
-- touch swipe follows the finger and has no jump-back;
-- arrow motion blur is subtle and does not affect direct swipe;
-- no seam / scrollbar line appears between mobile screens;
-- 1975–1999 header has no black top strip;
-- 2000–2024 and Re.Watched mobile titles are optically aligned;
-- sections open with no missing images;
-- full ranking progressive load works;
-- modal works and is not clipped on mobile;
-- OVNI editorial copy appears in modal;
-- sidebar Year / Director / Insight disclosures still work;
-- no obvious visual regression from the Phase 5 file consolidation.
-
-Stop after this validation. Do not merge to `main` automatically.
+- visually test desktop trackpad, side arrows and bottom selector;
+- test vertical scrolling after repeated horizontal navigation;
+- test modal navigation with trackpad and arrows;
+- test rapid section opening/closing and `Voir plus`;
+- spot-check mobile swipe and modal;
+- confirm audit workflow PASS;
+- confirm browser smoke PASS;
+- confirm Vercel preview SUCCESS;
+- obtain explicit user approval;
+- only then fast-forward/promote `main` and verify the production Vercel deployment.
