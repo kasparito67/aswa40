@@ -89,7 +89,6 @@ async function assertMobileCinemaHeader(page,id){
 
 const browser=await chromium.launch({headless:true});
 try{
-  // Desktop native carousel / routing / selector / shared headers / modal / disclosure smoke.
   const desktop=await browser.newContext({viewport:{width:1440,height:900}});
   const page=await desktop.newPage();await attachDiagnostics(page,'desktop');
   await page.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});
@@ -141,7 +140,6 @@ try{
   }
   await desktop.close();
 
-  // Mobile keeps the validated transform carousel, but the hero is now a dedicated image-first cinema composition.
   const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
   const mpage=await mobile.newPage();await attachDiagnostics(mpage,'mobile');
   await mpage.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});
@@ -156,7 +154,7 @@ try{
   const mobileTitleAfter=(await mpage.locator('.mobile-cinema-film b').textContent()).trim();
   assert(mobileTitleAfter&&mobileTitleAfter!==mobileTitleBefore,'mobile: Top 5 selector did not update active film copy');
   assert(await mpage.locator('.mobile-cinema-layer[data-mobile-cinema-layer="1"]').evaluate(el=>el.classList.contains('is-active')),'mobile: Top 5 selector did not update active hero image');
-  assert(location.pathname!==undefined,'mobile: runtime remained responsive after header interaction');
+  assert((await mpage.url()).includes('/tops/1975-1999'),'mobile: Top 5 interaction unexpectedly changed Top route');
 
   await mpage.locator('#eraNext').click();
   await waitForTop(mpage,'2000-2024');
