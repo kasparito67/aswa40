@@ -10,6 +10,20 @@
 .era-screen[data-top-id="rewatched"] .grid[data-flow="rest"]{grid-template-columns:repeat(5,minmax(0,1fr))}
 .era-screen[data-top-id="rewatched"] .full-progress{pointer-events:none}
 
+/* Subtle motion blur only for automatic arrow navigation. The touch carousel stays
+   completely sharp while it follows the finger. Keep the radius low so the filter
+   does not turn a short transition into a heavy GPU effect. */
+.stage.arrow-motion>.era-screen{
+  --arrow-motion-blur:1.7px;
+  animation:arrow-motion-blur .40s cubic-bezier(.22,.68,0,1) both;
+  backface-visibility:hidden;
+}
+@keyframes arrow-motion-blur{
+  0%,100%{filter:blur(0)}
+  34%{filter:blur(var(--arrow-motion-blur))}
+  68%{filter:blur(.45px)}
+}
+
 @media(max-width:900px){
   .era-prev{margin-left:28px!important}
   .era-next{margin-right:28px!important}
@@ -17,6 +31,8 @@
 }
 
 @media(max-width:700px){
+  .stage.arrow-motion>.era-screen{--arrow-motion-blur:1.05px}
+
   /* Mobile browsers expose each screen's overlay scrollbar at the page seam while
      two Tops are visible during a swipe. Keep scrolling native but hide the chrome. */
   .era-screen{
@@ -127,4 +143,8 @@
   .era-next{right:8px!important;margin-right:0!important}
   .era-arrow.disabled{opacity:.14!important}
   .era-hud{bottom:10px!important;max-width:calc(100vw - 24px)!important;background:rgba(8,10,11,.88)!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .stage.arrow-motion>.era-screen{animation:none}
 }
