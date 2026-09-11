@@ -6,8 +6,8 @@
   TOPS.forEach(top=>(top.films||[]).forEach(f=>{if(f.img&&!placeholder(f.img))realByTitle.set(norm(f.title),f.img)}));
   TOPS.forEach(top=>(top.films||[]).forEach(f=>{if((!f.img||placeholder(f.img))&&realByTitle.has(norm(f.title)))f.img=realByTitle.get(norm(f.title))}));
 
-  // Lock ambiguous documentary identities after all automated metadata passes.
-  // These titles have same-name matches that previously replaced the intended films.
+  // Identity locks belong here. Section layout and editorial configuration live in
+  // platform-config.js so there is only one source of truth for presentation.
   const docs=TOPS.find(t=>t.id==='documentaires');
   if(docs){
     const lockedDocs={
@@ -36,21 +36,14 @@
       const film=docs.films.find(f=>f.rank===Number(rank));
       if(film)Object.assign(film,patch);
     });
-
     docs.community='9 cinéphiles';
     docs.hero=docs.hero||{};
     docs.hero.titleArt='../assets/header-documentaires.svg';
     docs.hero.titleAlt='Top 15 Documentaires';
-    docs.sections=[
-      {kicker:'Les gros scoreurs',title:'TOP 15',kind:'top25'},
-      {kicker:'Le classement complet',title:'#16–83',kind:'full',start:16,batch:50},
-      {kicker:'Les bons derniers',title:'Les OVNIS',kind:'bottom',count:5}
-    ];
   }
 
   const re=TOPS.find(t=>t.id==='rewatched');
   if(re){
-    // Home Alone has had an incorrect image despite the correct TMDB identity being present.
     // Keep the visible poster and metadata pinned to the 1990 film (TMDB 771).
     const homeAlone=re.films.find(f=>f.rank===5||norm(f.title)==='home alone');
     if(homeAlone)Object.assign(homeAlone,{
@@ -63,21 +56,6 @@
       backdrop:'https://image.tmdb.org/t/p/original/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg',
       letterboxd:'https://letterboxd.com/film/home-alone/'
     });
-
     re.community='9 cinéphiles';
-    re.sections=[
-      {kicker:'Les plus revus',title:'TOP 50',kind:'top25'},
-      {kicker:'Le classement complet',title:'#51–263',kind:'full',start:26,batch:50},
-      {kicker:'Les vraies bizarreries',title:'Les OVNIS',kind:'ghosts'}
-    ];
-    const oddRanks=[33,50,65,67,229];
-    const oddCopy={
-      33:'UHF · culte télévisuel complètement décalé',
-      50:'La guerre des tuques · anomalie affective très québécoise',
-      65:'Airbag · choix rewatch improbable et ultra personnel',
-      67:'The Toughest Man in the World · obscurité maximale',
-      229:'Le Retour de Goldorak · pur artefact de vidéoclub'
-    };
-    re.ghosts=oddRanks.map(rank=>{const f=re.films.find(x=>x.rank===rank);return f?{title:f.title,img:f.img,copy:oddCopy[rank]}:null}).filter(Boolean);
   }
 })();
