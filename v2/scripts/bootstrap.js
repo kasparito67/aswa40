@@ -10,6 +10,10 @@
 
   (async()=>{
     try{
+      // One small shared source of truth keeps desktop/mobile Top-5 films identical
+      // while allowing the portrait renderer to carry its own optical crop values.
+      await load('scripts/header-media-config.js');
+
       if(desktopNative){
         document.documentElement.classList.add('desktop-native');
         // Desktop-only design systems attach their observers before the renderer mounts.
