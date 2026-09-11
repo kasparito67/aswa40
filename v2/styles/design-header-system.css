@@ -1,0 +1,170 @@
+/* ASWA40 design overhaul · shared desktop header experiment
+   1975–1999 keeps its validated bespoke rules. This file applies the same
+   cinematic header language to the other Tops while preserving each Top's --a palette. */
+
+/* Add missing editorial icons to the validated 1975 sidebar. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-toggle,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-toggle{
+  position:relative;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-toggle:before,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-toggle:before{
+  content:"";
+  position:absolute;
+  z-index:3;
+  left:0;
+  top:50%;
+  width:25px;
+  height:25px;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,.52);
+  pointer-events:none;
+  transition:background .18s ease;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  -webkit-mask-position:center;
+  mask-position:center;
+  -webkit-mask-size:contain;
+  mask-size:contain;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-toggle:before{
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='square'%3E%3Cpath d='M4 5.5h16v14H4zM7.5 3.5v4M16.5 3.5v4M4 9h16M7 12h2M11 12h2M15 12h2M7 15.5h2M11 15.5h2M15 15.5h2'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='square'%3E%3Cpath d='M4 5.5h16v14H4zM7.5 3.5v4M16.5 3.5v4M4 9h16M7 12h2M11 12h2M15 12h2M7 15.5h2M11 15.5h2M15 15.5h2'/%3E%3C/svg%3E");
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-toggle:before{
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='miter'%3E%3Cpath d='M4 8h16v11H4zM4 8l2-4h14l-2 4M8 4 6 8M13 4l-2 4M18 4l-2 4M8 12h8M8 15h5'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='miter'%3E%3Cpath d='M4 8h16v11H4zM4 8l2-4h14l-2 4M8 4 6 8M13 4l-2 4M18 4l-2 4M8 12h8M8 15h5'/%3E%3C/svg%3E");
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-toggle{
+  padding-left:43px!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-copy{
+  padding-left:43px;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-toggle:hover:before,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-card.is-open .year-toggle:before,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-toggle:hover:before,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-card.is-open .director-toggle:before{
+  background:var(--design-red);
+}
+
+/* Shared cinematic header. */
+.desktop-native .era-screen.design-header-system{
+  --design-header-accent:var(--a);
+}
+.desktop-native .era-screen.design-header-system .hero-header{
+  min-height:clamp(700px,88vh,880px);
+  overflow:hidden;
+  background:#050608;
+}
+.desktop-native .era-screen.design-header-system .hero-header>.hero-media{display:none}
+.desktop-native .era-screen.design-header-system .hero-header:before{
+  z-index:3;
+  background:
+    linear-gradient(180deg,rgba(3,4,6,.08) 0%,rgba(3,4,6,.02) 42%,rgba(4,5,7,.08) 62%,rgba(4,5,7,.66) 100%),
+    linear-gradient(90deg,rgba(3,4,6,.19) 0%,rgba(3,4,6,.055) 34%,transparent 60%);
+  pointer-events:none;
+}
+.desktop-native .era-screen.design-header-system .hero-header:after{
+  z-index:4;
+  height:26%;
+  background:linear-gradient(transparent,color-mix(in srgb,var(--top-bg) 88%,transparent));
+  pointer-events:none;
+}
+
+.design-header-media-stack{position:absolute;z-index:0;inset:0;pointer-events:none;background:#050608}
+.design-header-media-layer{position:absolute;inset:0;opacity:0;z-index:0;transition:opacity .44s ease;will-change:opacity}
+.design-header-media-layer img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center;filter:blur(16px) saturate(.96) contrast(1.02) brightness(.92);transform:scale(1.055);transition:filter .58s cubic-bezier(.2,.72,.18,1),transform .86s cubic-bezier(.2,.72,.18,1);will-change:filter,transform}
+.design-header-media-layer.is-incoming{opacity:0;z-index:3}
+.design-header-media-layer.is-active{opacity:1;z-index:2}
+.design-header-media-layer.is-active img{filter:blur(0) saturate(.96) contrast(1.02) brightness(.92);transform:scale(1.008)}
+.design-header-media-layer.is-outgoing{opacity:0;z-index:1}
+.design-header-media-layer.is-outgoing img{filter:blur(0) saturate(.96) contrast(1.02) brightness(.92);transform:scale(1.008);transition:none}
+
+.desktop-native .era-screen.design-header-system .hero-title{z-index:12;inset:0;display:block;text-align:initial}
+.desktop-native .era-screen.design-header-system .hero-title-art-wrap{
+  position:absolute;
+  top:18px;
+  right:max(24px,calc((100vw - 1240px)/2));
+  left:auto;
+  width:clamp(410px,36vw,610px);
+  max-width:46vw;
+  height:auto;
+  min-height:120px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-end;
+  overflow:visible;
+  transform:none;
+  filter:drop-shadow(0 18px 44px rgba(0,0,0,.36));
+  pointer-events:none;
+}
+.desktop-native .era-screen.design-header-system .hero-title-art{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:220px!important;
+  object-fit:contain!important;
+  object-position:right top!important;
+  transform:none!important;
+  filter:none!important;
+}
+.desktop-native .era-screen.design-header-system .hero-art-medallions{display:none}
+
+.design-header-top5{
+  position:absolute;
+  z-index:20;
+  left:max(24px,calc((100vw - 1240px)/2));
+  bottom:46px;
+  width:min(760px,58vw);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  transform:translate3d(var(--px-title-x),var(--px-title-y),0);
+  pointer-events:auto;
+  will-change:auto;
+}
+.desktop-native .stage.parallax-active .design-header-top5{will-change:transform}
+.design-header-top5 button{
+  border:0;
+  background:none;
+  padding:0;
+  min-height:58px;
+  max-width:100%;
+  color:rgba(255,255,255,.96);
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  text-align:left;
+  cursor:pointer;
+  transition:color .16s ease,transform .23s ease;
+  text-shadow:0 2px 18px rgba(0,0,0,.74);
+}
+.design-header-top5 button:hover,.design-header-top5 button:focus-visible{transform:translateX(5px);outline:none}
+.design-header-top5 .num{flex:0 0 34px;width:34px;font:650 12px/1 Inter,system-ui,sans-serif;color:inherit}
+.design-header-top5 .film-name{font:600 clamp(34px,3.8vw,60px)/.91 Inter,system-ui,sans-serif;letter-spacing:-.038em;color:inherit;text-wrap:balance}
+.design-header-top5 button.is-long .film-name{font-size:clamp(27px,3vw,48px);line-height:.94}
+.design-header-top5 .year{font:600 11px/1 Inter,system-ui,sans-serif;color:inherit;transform:translateY(-9px);white-space:nowrap}
+.design-header-top5 button.is-locked{color:var(--design-header-accent)}
+.design-header-top5.is-previewing button.is-locked{color:rgba(255,255,255,.96)}
+.design-header-top5 button.is-preview{color:var(--design-header-accent)}
+
+.design-header-progress{position:absolute;z-index:20;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.08);pointer-events:none}
+.design-header-progress span{display:block;width:20%;height:100%;background:var(--design-header-accent);transform:translateX(calc(var(--design-index,0) * 100%));transition:transform .32s cubic-bezier(.2,.75,.2,1)}
+
+/* Keep the first content plane safely below the new Top 5 menu. */
+.desktop-native .era-screen.design-header-system>.shell{margin:0 auto;padding-top:28px}
+
+/* Small per-title tuning without changing the shared anchor. */
+.desktop-native .era-screen[data-top-id="sci-fi-realiste"].design-header-system .hero-title-art-wrap{width:clamp(430px,39vw,650px)}
+.desktop-native .era-screen[data-top-id="animation"].design-header-system .hero-title-art-wrap{width:clamp(360px,31vw,520px)}
+.desktop-native .era-screen[data-top-id="biopics"].design-header-system .hero-title-art-wrap{width:clamp(390px,34vw,570px)}
+.desktop-native .era-screen[data-top-id="documentaires"].design-header-system .hero-title-art-wrap{width:clamp(400px,35vw,590px)}
+.desktop-native .era-screen[data-top-id="rewatched"].design-header-system .hero-title-art-wrap{width:clamp(390px,34vw,560px)}
+
+@media(prefers-reduced-motion:reduce){
+  .design-header-media-layer,.design-header-media-layer img,.design-header-progress span,.design-header-top5 button{transition:none}
+  .design-header-top5{transform:none!important}
+}
