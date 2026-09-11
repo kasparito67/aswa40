@@ -3,12 +3,15 @@
   if(!desktop.matches)return;
 
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
+  const mediaConfig=window.ASWA40_HEADER_MEDIA||{};
   const legacyBackdrop=(top,film)=>{
     if(top?.id!=='2000-2024'||typeof filmBackdrops!=='object'||!filmBackdrops)return '';
     const src=filmBackdrops[String(film?.rank)]||filmBackdrops[film?.rank];
     return src?`../${src}`:'';
   };
   const backdropFor=(top,film,index)=>{
+    const curated=typeof mediaConfig.backdrop==='function'?mediaConfig.backdrop(top,film):'';
+    if(curated)return curated;
     if(film?.backdrop)return film.backdrop;
     if(film?.backdropPath)return `https://image.tmdb.org/t/p/original${film.backdropPath}`;
     const local=legacyBackdrop(top,film);if(local)return local;
@@ -33,7 +36,7 @@
     const stack=document.createElement('div');
     stack.className='design-header-media-stack';
     stack.setAttribute('aria-hidden','true');
-    stack.innerHTML=sources.map((src,i)=>`<div class="design-header-media-layer${i===0?' is-active':''}" data-design-header-media="${i}"><img ${i===0?`src="${esc(src)}"`:`data-src="${esc(src)}"`} alt="" decoding="async" fetchpriority="${i===0?'high':'low'}"></div>`).join('');
+    stack.innerHTML=sources.map((src,i)=>`<div class="design-header-media-layer${i===0?' is-active':''}" data-design-header-media="${i}" data-header-media-key="${esc(`${top.id}:${films[i].rank}`)}"><img ${i===0?`src="${esc(src)}"`:`data-src="${esc(src)}"`} alt="" decoding="async" fetchpriority="${i===0?'high':'low'}"></div>`).join('');
     hero.prepend(stack);
 
     const nav=document.createElement('nav');
