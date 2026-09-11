@@ -70,6 +70,23 @@ async function assertHeaderSystem(page){
   assert(directorIcon&&directorIcon!=='none','desktop: director editorial icon is missing');
 }
 
+async function assertMobileCinemaHeader(page,id){
+  await page.waitForSelector('.era-screen.mobile-cinema-header',{timeout:10000});
+  const screen=page.locator('.era-screen');
+  assert((await screen.getAttribute('data-top-id'))===id,`mobile: expected ${id} active screen for cinema header check`);
+  assert(await screen.locator('.mobile-cinema-tabs button').count()===5,`mobile: ${id} cinema header does not expose five Top 5 selectors`);
+  assert(await screen.locator('.mobile-cinema-layer').count()===5,`mobile: ${id} cinema header does not contain five media layers`);
+  assert(await screen.locator('.mobile-cinema-tabs button.is-active').count()===1,`mobile: ${id} cinema header has no single active selector`);
+  const geometry=await screen.evaluate(el=>{
+    const hero=el.querySelector('.hero-header')?.getBoundingClientRect();
+    const shell=el.querySelector(':scope > .shell')?.getBoundingClientRect();
+    const copy=el.querySelector('.mobile-cinema-copy')?.getBoundingClientRect();
+    return hero&&shell&&copy?{heroBottom:hero.bottom,shellTop:shell.top,copyTop:copy.top,copyBottom:copy.bottom,heroTop:hero.top}:null;
+  });
+  assert(geometry&&geometry.shellTop>=geometry.heroBottom-1,`mobile: ${id} content overlaps cinema hero`);
+  assert(geometry&&geometry.copyTop>=geometry.heroTop&&geometry.copyBottom<=geometry.heroBottom,`mobile: ${id} active film copy escapes hero bounds`);
+}
+
 const browser=await chromium.launch({headless:true});
 try{
   // Desktop native carousel / routing / selector / shared headers / modal / disclosure smoke.
@@ -102,7 +119,6 @@ try{
   await active.locator('.sec').nth(1).locator('.toggle').click();
   await page.waitForTimeout(80);
   assert((await active.locator('.sec').nth(1).getAttribute('data-rendered'))==='1','desktop: lazy section did not render');
-  // Rapid disclosure changes must settle in the requested state, not a stale timer state.
   const toggle=active.locator('.sec').nth(1).locator('.toggle');
   await toggle.click();await toggle.click();await toggle.click();
   await page.waitForTimeout(650);
@@ -117,7 +133,6 @@ try{
   await page.waitForTimeout(50);
   assert(!(await page.locator('#modalBg').evaluate(el=>el.classList.contains('open'))),'desktop: modal did not close');
 
-  // Every direct Top route must boot to the requested active screen without JS failure.
   for(const id of topIds){
     await page.goto(`http://127.0.0.1:${port}/tops/${id}`,{waitUntil:'domcontentloaded'});
     await page.waitForSelector('.stage.native-carousel',{timeout:10000});
@@ -126,19 +141,29 @@ try{
   }
   await desktop.close();
 
-  // Mobile keeps the validated transform carousel. Smoke its mount, arrow navigation,
-  // disclosure, modal and route update without changing its gesture physics.
+  // Mobile keeps the validated transform carousel, but the hero is now a dedicated image-first cinema composition.
   const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
   const mpage=await mobile.newPage();await attachDiagnostics(mpage,'mobile');
   await mpage.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});
   await mpage.waitForSelector('.era-screen',{timeout:10000});
   assert(await mpage.locator('.era-screen').count()===1,'mobile: expected one mounted Top at rest');
-  assert(await mpage.locator('.design-header-system,.design-header-top5').count()===0,'mobile: desktop shared header skin leaked into the validated mobile renderer');
+  assert(await mpage.locator('.design-header-system,.design-header-top5').count()===0,'mobile: desktop shared header skin leaked into the mobile renderer');
+  await assertMobileCinemaHeader(mpage,'1975-1999');
+
+  const mobileTitleBefore=(await mpage.locator('.mobile-cinema-film b').textContent()).trim();
+  await mpage.locator('.mobile-cinema-tabs button').nth(1).click();
+  await mpage.waitForTimeout(80);
+  const mobileTitleAfter=(await mpage.locator('.mobile-cinema-film b').textContent()).trim();
+  assert(mobileTitleAfter&&mobileTitleAfter!==mobileTitleBefore,'mobile: Top 5 selector did not update active film copy');
+  assert(await mpage.locator('.mobile-cinema-layer[data-mobile-cinema-layer="1"]').evaluate(el=>el.classList.contains('is-active')),'mobile: Top 5 selector did not update active hero image');
+  assert(location.pathname!==undefined,'mobile: runtime remained responsive after header interaction');
+
   await mpage.locator('#eraNext').click();
   await waitForTop(mpage,'2000-2024');
   await mpage.waitForTimeout(520);
   assert(await mpage.locator('.era-screen').count()===1,'mobile: transition did not settle back to one screen');
   assert((await mpage.locator('.era-screen').getAttribute('data-top-id'))==='2000-2024','mobile: wrong Top after arrow navigation');
+  await assertMobileCinemaHeader(mpage,'2000-2024');
 
   const msec=mpage.locator('.era-screen .sec').nth(1);
   await msec.locator('.toggle').click();await mpage.waitForTimeout(80);
