@@ -3,7 +3,7 @@
   if(!desktop.matches)return;
 
   const fallbacks={
-    'Star Wars':'https://image.tmdb.org/t/p/original/c4zJK1mowcps3wvdrm31knxhur2.jpg',
+    'Star Wars':'https://image.tmdb.org/t/p/original/aJCtkxLLzkk1pECehVjKHA2lBgw.jpg',
     'Apocalypse Now':'https://image.tmdb.org/t/p/original/9Qs9oyn4iE8QtQjGZ0Hp2WyYNXT.jpg',
     'Indiana Jones':'https://image.tmdb.org/t/p/original/kCiMExsYuNhYluHxPP2OTmWw7hp.jpg',
     'Pulp Fiction':'https://image.tmdb.org/t/p/original/qQoB4LNDYwQLU1GcBhrEZK5MdWm.jpg',
