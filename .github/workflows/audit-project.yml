@@ -5,6 +5,7 @@ on:
     branches:
       - audit-debug-sept11
       - design-overhaul-sept11
+      - design-overhaul-phase-a
   workflow_dispatch:
 
 permissions:
