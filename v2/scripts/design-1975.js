@@ -4,12 +4,14 @@
 
   const fallbacks={
     'Star Wars':'https://image.tmdb.org/t/p/original/c4zJK1mowcps3wvdrm31knxhur2.jpg',
-    'Apocalypse Now':'https://image.tmdb.org/t/p/original/r4nnTrX5vZSZJ2zDJy06492DWo7.jpg',
+    'Apocalypse Now':'https://image.tmdb.org/t/p/original/9Qs9oyn4iE8QtQjGZ0Hp2WyYNXT.jpg',
     'Indiana Jones':'https://image.tmdb.org/t/p/original/kCiMExsYuNhYluHxPP2OTmWw7hp.jpg',
     'Pulp Fiction':'https://image.tmdb.org/t/p/original/qQoB4LNDYwQLU1GcBhrEZK5MdWm.jpg',
     'Fargo':'https://image.tmdb.org/t/p/original/36P236xmuc8aWmXK7YkOM5EAKbA.jpg'
   };
-  const tmdbBackdrop=f=>f?.backdrop||f?.backdropPath&&`https://image.tmdb.org/t/p/original${f.backdropPath}`||fallbacks[f?.title]||f?.img||'';
+  // The curated Top 5 hero sources are authoritative for this design pass.
+  // This prevents stale/wrong media metadata from overriding the intended film.
+  const tmdbBackdrop=f=>fallbacks[f?.title]||f?.backdrop||f?.backdropPath&&`https://image.tmdb.org/t/p/original${f.backdropPath}`||f?.img||'';
 
   function setText(el,text){if(el)el.textContent=text}
   function renameSidebar(screen){
