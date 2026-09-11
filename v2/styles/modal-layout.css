@@ -1,62 +1,45 @@
-/* Canonical film-detail layout. Loaded after modal.css so these layout rules win by normal cascade, not !important. */
+/* Canonical film-detail geometry. Loaded after modal.css so layout wins by normal cascade. */
 .film-modal{
-  width:min(1180px,94vw);
-  height:min(720px,88vh);
+  width:min(940px,calc(100vw - 64px));
+  height:auto;
   min-height:0;
-  max-height:88vh;
+  max-height:min(600px,calc(100dvh - 80px));
   overflow:hidden;
 }
-.modal-backdrop{position:absolute;inset:0;overflow:hidden}
-.modal-backdrop img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-  transform:scale(1.025);
-  filter:saturate(.78) contrast(1.05) brightness(.54);
-}
-.film-modal:after{
-  background:
-    linear-gradient(90deg,rgba(5,8,10,.08) 0%,rgba(8,12,14,.28) 28%,rgba(12,17,20,.78) 48%,rgba(18,24,28,.96) 78%),
-    linear-gradient(180deg,rgba(4,6,7,.12),rgba(7,10,12,.34) 52%,rgba(10,14,17,.88));
-}
+
 .modal-content{
   box-sizing:border-box;
   width:100%;
-  height:100%;
   min-height:0;
-  padding:46px 72px 46px 48px;
+  padding:24px 58px 24px 24px;
   display:grid;
-  grid-template-columns:minmax(250px,330px) minmax(0,1fr);
-  gap:48px;
-  align-items:end;
+  grid-template-columns:218px minmax(0,1fr);
+  gap:32px;
+  align-items:center;
 }
+
 .modal-poster{
-  display:block;
-  width:100%;
+  width:218px;
+  max-width:100%;
   height:auto;
-  max-height:calc(88vh - 92px);
-  aspect-ratio:2/3;
-  object-fit:cover;
-  object-position:center center;
-  align-self:end;
+  max-height:327px;
+  align-self:center;
   justify-self:start;
-  border:6px solid rgba(255,255,255,.95);
-  box-shadow:0 28px 70px rgba(0,0,0,.48);
 }
+
 .modal-copy{
-  align-self:end;
+  align-self:center;
   min-width:0;
-  padding:0 0 34px;
+  padding:0;
 }
+
 .film-modal h2{
-  margin:14px 70px 18px 0;
-  max-width:720px;
-  font-size:clamp(42px,5vw,70px);
+  max-width:600px;
+  margin:0;
 }
-.modal-stats{margin-bottom:clamp(48px,7vh,82px)}
-.modal-body{max-width:640px}
-.modal-content,.modal-backdrop img{will-change:transform,opacity}
+
+.modal-body{max-width:600px}
+.modal-content{will-change:transform,opacity}
 
 /* The page carousel owns horizontal touch gestures; vertical scrolling remains native. */
 .app,.era-screen,.tile,.ghost-card,.sec>.toggle,.insight-card,.year-toggle,.director-toggle-action,.full-reveal-button{touch-action:pan-y}
@@ -81,19 +64,25 @@
 .era-screen:not([data-top-id="2000-2024"]) .parity-year-card .year-toggle{min-height:132px}
 
 @media(max-width:850px){
-  .film-modal{height:min(650px,90vh)}
-  .modal-content{grid-template-columns:190px minmax(0,1fr);gap:26px;padding:34px 32px}
-  .modal-copy{padding-bottom:20px}
-  .modal-stats{margin-bottom:32px}
+  .film-modal{
+    width:min(760px,calc(100vw - 36px));
+    max-height:calc(100dvh - 44px);
+  }
+  .modal-content{
+    grid-template-columns:168px minmax(0,1fr);
+    gap:24px;
+    padding:20px 48px 20px 20px;
+  }
+  .modal-poster{width:168px;max-height:252px}
+  .film-modal h2{font-size:clamp(32px,5.5vw,44px)}
+  .modal-body{margin-top:19px}
 }
 
 @media(max-width:560px){
   .modal-bg{
-    padding:8px;
     align-items:center;
     justify-content:center;
     overflow:hidden;
-    backdrop-filter:none;
   }
   .film-modal{
     box-sizing:border-box;
@@ -101,94 +90,75 @@
     max-width:100%;
     height:auto;
     min-height:0;
-    max-height:calc(100dvh - 16px);
+    max-height:calc(100dvh - 20px);
     margin:0;
     overflow-x:hidden;
     overflow-y:auto;
     overscroll-behavior:contain;
-    border-radius:16px;
+    border-radius:0;
   }
   .modal-content{
-    position:relative;
     box-sizing:border-box;
-    display:block;
     width:100%;
-    max-width:100%;
     height:auto;
     min-height:0;
-    margin-top:0;
-    padding:58px 18px max(28px,env(safe-area-inset-bottom));
+    padding:48px 16px 18px;
+    display:grid;
+    grid-template-columns:96px minmax(0,1fr);
+    gap:14px;
+    align-items:start;
     overflow:visible;
   }
   .modal-poster{
-    display:block;
     box-sizing:border-box;
-    width:min(46%,168px);
-    max-width:168px;
+    width:96px;
+    max-width:96px;
     height:auto;
-    max-height:none;
-    aspect-ratio:2/3;
-    object-fit:contain;
-    object-position:center;
-    float:none;
-    margin:0 auto 24px;
-    border-width:4px;
-    border-radius:8px;
-    background:#090c0e;
+    max-height:144px;
+    margin:0;
+    border:0;
+    border-radius:0;
+    object-fit:cover;
   }
   .modal-copy{
-    display:block;
     box-sizing:border-box;
     width:100%;
-    max-width:100%;
     min-width:0;
     padding:0;
     overflow:visible;
   }
   .modal-rank{
     width:100%;
-    margin:0 0 8px;
-    padding-right:38px;
-    font-size:9px;
+    margin:0 0 7px;
+    padding-right:26px;
   }
   .film-modal h2{
     box-sizing:border-box;
     width:100%;
     max-width:100%;
-    margin:0 0 12px;
-    padding-right:34px;
-    font-size:clamp(30px,9.5vw,42px);
-    line-height:.96;
+    margin:0;
+    padding-right:18px;
     overflow-wrap:anywhere;
     word-break:normal;
-    text-wrap:balance;
   }
   .modal-stats{
     box-sizing:border-box;
     width:100%;
     max-width:100%;
-    margin:0 0 22px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px 12px;
-    font-size:11px;
+    margin:10px 0 0;
   }
   .modal-body{
     box-sizing:border-box;
     width:100%;
     max-width:100%;
     min-width:0;
-    padding:0;
-    font-size:13px;
-    line-height:1.5;
     overflow-wrap:anywhere;
   }
-  .modal-body p{margin:0 0 10px}
-  .modal-detail-link{max-width:100%;margin-top:12px;white-space:normal}
-  .modal-close{top:10px;right:10px}
+  .modal-body p{margin:0 0 9px}
+  .modal-close{top:9px;right:9px}
   .modal-nav{display:none}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .modal-content,.modal-backdrop img{will-change:auto}
+  .modal-content{will-change:auto}
 }
