@@ -7,7 +7,7 @@ const root=process.cwd();
 const port=4173;
 const topIds=['1975-1999','2000-2024','sci-fi-realiste','animation','biopics','documentaires','rewatched'];
 const sharedHeaderIds=topIds.filter(id=>id!=='1975-1999');
-const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff':'font/woff','.woff2':'font/woff2'};
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff':'font/woff','.woff2':'font/woff2'};
 
 const server=http.createServer((req,res)=>{
   const url=new URL(req.url,'http://localhost');
@@ -80,13 +80,15 @@ async function expectedMobileBackdrops(page,id){
       'Fargo':'https://image.tmdb.org/t/p/original/36P236xmuc8aWmXK7YkOM5EAKbA.jpg'
     };
     const top=TOPS.find(t=>t.id===topId);
+    const perf=window.__ASWA40_MOBILE_PERF__||{};
+    const originalHero=perf.heroImages?.[topId]||top.hero?.image||'';
     return top.films.slice(0,5).map((film,index)=>{
       let src='';
       if(top.id==='1975-1999'&&curated1975[film.title])src=curated1975[film.title];
       else if(film.backdrop)src=film.backdrop;
       else if(film.backdropPath)src=`https://image.tmdb.org/t/p/original${film.backdropPath}`;
       else if(top.id==='2000-2024'&&typeof filmBackdrops==='object'&&filmBackdrops){const local=filmBackdrops[String(film.rank)]||filmBackdrops[film.rank];if(local)src=`../${local}`}
-      if(!src)src=top.hero?.image||film.img||'';
+      if(!src)src=originalHero||film.img||'';
       return new URL(src,document.baseURI).href;
     });
   },id);
@@ -101,8 +103,23 @@ async function assertMobileCinemaHeader(page,id){
   assert(await screen.locator('.mobile-cinema-tabs button.is-active').count()===1,`mobile: ${id} cinema header has no single active selector`);
 
   const expected=await expectedMobileBackdrops(page,id);
-  const actual=await screen.locator('.mobile-cinema-layer img').evaluateAll(imgs=>imgs.map(img=>img.src));
-  assert(JSON.stringify(actual)===JSON.stringify(expected),`mobile: ${id} Top 5 backdrops diverge from desktop source resolution`);
+  const resolvedDesktop=await screen.locator('.mobile-cinema-layer').evaluateAll(layers=>layers.map(layer=>new URL(layer.dataset.desktopSource||'',document.baseURI).href));
+  assert(JSON.stringify(resolvedDesktop)===JSON.stringify(expected),`mobile: ${id} Top 5 imagery diverges from desktop source resolution`);
+
+  const perfState=await screen.evaluate(el=>{
+    const imgs=[...el.querySelectorAll('.mobile-cinema-layer img')];
+    const loaded=imgs.filter(img=>img.hasAttribute('src')&&img.getAttribute('src')).length;
+    const deferred=imgs.filter(img=>img.dataset.src).length;
+    const heroSrc=el.querySelector('.hero-media')?.getAttribute('src')||'';
+    const activeSrc=imgs[0]?.getAttribute('src')||'';
+    const activeFilter=imgs[0]?.parentElement?getComputedStyle(imgs[0].parentElement).filter:'';
+    return {loaded,deferred,heroSrc,activeSrc,activeFilter};
+  });
+  assert(perfState.loaded<=2,`mobile: ${id} eagerly loaded ${perfState.loaded}/5 hero backdrops`);
+  assert(perfState.deferred>=3,`mobile: ${id} did not keep at least three hero backdrops deferred`);
+  assert(perfState.heroSrc.startsWith('data:image/'),`mobile: ${id} legacy hidden hero still triggers a real image request`);
+  if(perfState.activeSrc.includes('image.tmdb.org/t/p/'))assert(!perfState.activeSrc.includes('/original/'),`mobile: ${id} active TMDB backdrop still requests original resolution`);
+  assert(perfState.activeFilter==='none',`mobile: ${id} active hero still uses an expensive CSS filter`);
 
   const geometry=await screen.evaluate(el=>{
     const hero=el.querySelector('.hero-header')?.getBoundingClientRect();
@@ -112,11 +129,13 @@ async function assertMobileCinemaHeader(page,id){
     const section=el.querySelector('.sec');
     const tile=el.querySelector('.tile');
     const copyStyle=el.querySelector('.mobile-cinema-film b')?getComputedStyle(el.querySelector('.mobile-cinema-film b')):null;
+    const sidebar=el.querySelector('.site-sidebar');
     return hero&&shell&&copy&&title?{
       heroBottom:hero.bottom,shellTop:shell.top,heroTop:hero.top,copyTop:copy.top,copyBottom:copy.bottom,
       titleTop:title.top,titleRight:innerWidth-title.right,titleBottom:title.bottom,
       secRadius:section?getComputedStyle(section).borderRadius:'',tileRadius:tile?getComputedStyle(tile).borderRadius:'',
-      fontFamily:copyStyle?.fontFamily||'',fontWeight:copyStyle?.fontWeight||''
+      fontFamily:copyStyle?.fontFamily||'',fontWeight:copyStyle?.fontWeight||'',
+      sidebarVisibility:sidebar?getComputedStyle(sidebar).contentVisibility:''
     }:null;
   });
   assert(geometry&&geometry.shellTop>=geometry.heroBottom-1,`mobile: ${id} content overlaps cinema hero`);
@@ -128,6 +147,7 @@ async function assertMobileCinemaHeader(page,id){
   assert(geometry&&geometry.tileRadius==='0px',`mobile: ${id} film tile geometry is still rounded`);
   assert(geometry&&geometry.fontFamily.toLowerCase().includes('inter'),`mobile: ${id} active film typography does not use Inter`);
   assert(geometry&&Number(geometry.fontWeight)>=600,`mobile: ${id} active film typography is lighter than desktop language`);
+  assert(geometry&&geometry.sidebarVisibility==='auto',`mobile: ${id} lower sidebar content is not paint-deferred`);
 }
 
 const browser=await chromium.launch({headless:true});
@@ -186,7 +206,6 @@ try{
   const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
   const mpage=await mobile.newPage();await attachDiagnostics(mpage,'mobile');
 
-  // Every mobile Top must use the exact desktop backdrop sources and the same title anchor.
   for(const id of topIds){
     await mpage.goto(`http://127.0.0.1:${port}/tops/${id}`,{waitUntil:'domcontentloaded'});
     await mpage.waitForSelector('.era-screen',{timeout:10000});
@@ -197,12 +216,14 @@ try{
 
   await mpage.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});
   await mpage.waitForSelector('.era-screen.mobile-cinema-header',{timeout:10000});
+  const originalRequests=await mpage.evaluate(()=>performance.getEntriesByType('resource').filter(r=>r.name.includes('image.tmdb.org/t/p/original/')).length);
+  assert(originalRequests===0,`mobile: initial route still made ${originalRequests} TMDB original-resolution request(s)`);
+
   const mobileTitleBefore=(await mpage.locator('.mobile-cinema-film b').textContent()).trim();
   await mpage.locator('.mobile-cinema-tabs button').nth(1).click();
-  await mpage.waitForTimeout(80);
+  await mpage.waitForFunction(()=>document.querySelector('.mobile-cinema-layer[data-mobile-cinema-layer="1"]')?.classList.contains('is-active'),null,{timeout:10000});
   const mobileTitleAfter=(await mpage.locator('.mobile-cinema-film b').textContent()).trim();
   assert(mobileTitleAfter&&mobileTitleAfter!==mobileTitleBefore,'mobile: Top 5 selector did not update active film copy');
-  assert(await mpage.locator('.mobile-cinema-layer[data-mobile-cinema-layer="1"]').evaluate(el=>el.classList.contains('is-active')),'mobile: Top 5 selector did not update active hero image');
   assert((await mpage.url()).includes('/tops/1975-1999'),'mobile: Top 5 interaction unexpectedly changed Top route');
 
   await mpage.locator('#eraNext').click();
