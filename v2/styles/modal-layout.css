@@ -11,6 +11,7 @@
   box-sizing:border-box;
   width:100%;
   min-height:0;
+  margin:0;
   padding:24px 58px 24px 24px;
   display:grid;
   grid-template-columns:218px minmax(0,1fr);
