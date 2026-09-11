@@ -1,0 +1,42 @@
+/* ASWA40 film tile system — sharp, borderless editorial cards. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile,
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-card{
+  border:0!important;
+  border-radius:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  overflow:hidden;
+  background:#101214;
+}
+
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile img,
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-card img{
+  border:0!important;
+  border-radius:0!important;
+  display:block;
+}
+
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile.cf-active,
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile.cf-near1,
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile.cf-near2,
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile.cf-near3,
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-card.ghost-focus,
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-card.ghost-near{
+  border:0!important;
+  border-color:transparent!important;
+  border-radius:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+
+.desktop-native .era-screen[data-top-id="1975-1999"] .rank{
+  border:0!important;
+  border-radius:0!important;
+}
+
+.desktop-native .era-screen[data-top-id="1975-1999"] .tile .name,
+.desktop-native .era-screen[data-top-id="1975-1999"] .ghost-copy b{
+  font-family:Inter,system-ui,sans-serif!important;
+  font-weight:600!important;
+  letter-spacing:-.025em!important;
+}
