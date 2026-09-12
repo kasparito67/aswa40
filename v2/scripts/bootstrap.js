@@ -21,7 +21,8 @@
         // Desktop-only design systems attach their observers before the renderer mounts.
         await Promise.all([
           load('scripts/design-1975.js'),
-          load('scripts/design-header-system.js')
+          load('scripts/design-header-system.js'),
+          load('scripts/desktop-editorial-body.js')
         ]);
         await load('scripts/app-desktop.js');
         await load('scripts/top-nav.js');
