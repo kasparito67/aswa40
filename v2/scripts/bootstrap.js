@@ -1,5 +1,6 @@
 (()=>{
-  const desktopNative=matchMedia('(min-width:701px) and (hover:hover) and (pointer:fine)').matches;
+  const forceDesktop=window.__ASWA40_FORCE_DESKTOP__===true;
+  const desktopNative=forceDesktop||matchMedia('(min-width:701px) and (hover:hover) and (pointer:fine)').matches;
   const load=src=>new Promise((resolve,reject)=>{
     const s=document.createElement('script');
     s.src=src;
@@ -16,6 +17,7 @@
 
       if(desktopNative){
         document.documentElement.classList.add('desktop-native');
+        if(forceDesktop)document.documentElement.classList.add('desktop-preview-forced');
         // Desktop-only design systems attach their observers before the renderer mounts.
         await Promise.all([
           load('scripts/design-1975.js'),
