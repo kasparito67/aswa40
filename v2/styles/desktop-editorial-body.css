@@ -1,0 +1,349 @@
+/* ASWA40 design overhaul · shared desktop editorial body
+   Extends the validated 1975–1999 section language to the other Tops only. */
+.desktop-native .era-screen.design-editorial-body{
+  --editorial-accent:var(--accent);
+  --editorial-ink:#f4f4ef;
+  --editorial-muted:rgba(244,244,239,.58);
+  --editorial-black:rgba(5,7,9,.92);
+  --editorial-line:rgba(255,255,255,.14);
+  position:relative;
+  background:#080b0d;
+}
+
+.desktop-native .era-screen.design-editorial-body>.design-editorial-content-bg{
+  position:absolute;
+  z-index:0;
+  left:0;
+  right:0;
+  top:clamp(700px,88vh,880px);
+  bottom:0;
+  overflow:hidden;
+  pointer-events:none;
+  background:#080b0d;
+}
+.desktop-native .era-screen.design-editorial-body>.design-editorial-content-bg:before{
+  content:"";
+  position:absolute;
+  inset:-5vw;
+  background-image:var(--editorial-body-image,none);
+  background-position:center 42%;
+  background-size:cover;
+  background-repeat:no-repeat;
+  filter:blur(30px) saturate(.82) brightness(.68);
+  transform:scale(1.08);
+  opacity:.82;
+  transition:background-image .25s ease,opacity .25s ease;
+}
+.desktop-native .era-screen.design-editorial-body>.design-editorial-content-bg:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(8,11,13,.14),rgba(8,11,13,.38) 48%,rgba(8,11,13,.84) 100%);
+}
+
+.desktop-native .era-screen.design-editorial-body>.shell{
+  position:relative;
+  z-index:2;
+  max-width:1240px;
+  margin:0 auto;
+  padding:28px 24px 150px;
+  background:transparent;
+}
+.desktop-native .era-screen.design-editorial-body .site-layout{
+  grid-template-columns:minmax(0,1fr) 390px;
+  gap:18px;
+  margin-top:0;
+}
+.desktop-native .era-screen.design-editorial-body .stack{gap:46px}
+
+/* Sections */
+.desktop-native .era-screen.design-editorial-body .sec{
+  border:0;
+  border-radius:0;
+  background:linear-gradient(180deg,rgba(17,21,23,.48),rgba(9,12,14,.38));
+  backdrop-filter:blur(18px) saturate(.94);
+  box-shadow:0 30px 84px rgba(0,0,0,.26);
+  overflow:hidden;
+}
+.desktop-native .era-screen.design-editorial-body .toggle{
+  min-height:104px;
+  padding:24px 26px;
+  align-items:center;
+}
+.desktop-native .era-screen.design-editorial-body .toggle>div{display:block}
+.desktop-native .era-screen.design-editorial-body .toggle .k{display:none}
+.desktop-native .era-screen.design-editorial-body .toggle strong{
+  font:600 clamp(42px,4.5vw,68px)/.91 Inter,system-ui,sans-serif;
+  letter-spacing:-.035em;
+  text-transform:none;
+}
+.desktop-native .era-screen.design-editorial-body .arr{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:0;
+  background:rgba(6,8,10,.3);
+  color:var(--editorial-accent);
+  font-size:0;
+  transform:none;
+}
+.desktop-native .era-screen.design-editorial-body .arr:before{
+  content:"+";
+  font:500 25px/1 Inter,sans-serif;
+  transition:transform .28s ease;
+}
+.desktop-native .era-screen.design-editorial-body .sec.open .arr{transform:none}
+.desktop-native .era-screen.design-editorial-body .sec.open .arr:before{transform:rotate(45deg)}
+.desktop-native .era-screen.design-editorial-body .pad{padding:14px;border-top:0}
+
+/* Ranking tiles */
+.desktop-native .era-screen.design-editorial-body .heroTop{
+  grid-template-columns:1.25fr 1fr 1fr;
+  grid-auto-rows:230px;
+  gap:8px;
+  margin-bottom:8px;
+}
+.desktop-native .era-screen.design-editorial-body .heroTop .tile{
+  border:0;
+  border-radius:0;
+  aspect-ratio:auto;
+  min-height:0;
+}
+.desktop-native .era-screen.design-editorial-body .heroTop .tile:nth-child(1){grid-row:span 2}
+.desktop-native .era-screen.design-editorial-body .heroTop .tile:nth-child(n+2){min-height:230px}
+.desktop-native .era-screen.design-editorial-body .grid{gap:8px;grid-template-columns:repeat(5,minmax(0,1fr))}
+.desktop-native .era-screen.design-editorial-body .tile{
+  border:0;
+  border-radius:0;
+  background:#111;
+  box-shadow:none;
+}
+.desktop-native .era-screen.design-editorial-body .rank{
+  border:0;
+  border-radius:0;
+  background:rgba(8,10,11,.74);
+  color:var(--editorial-accent);
+  padding:6px 7px;
+}
+.desktop-native .era-screen.design-editorial-body .name{
+  font-family:Inter,system-ui,sans-serif;
+  font-weight:600;
+  letter-spacing:-.025em;
+}
+.desktop-native .era-screen.design-editorial-body .heroTop .tile:first-child .rank{
+  font-size:68px;
+  line-height:.8;
+  background:transparent;
+  color:rgba(255,255,255,.92);
+  padding:8px 10px;
+}
+.desktop-native .era-screen.design-editorial-body .heroTop .tile:first-child .name{font-size:32px}
+
+.desktop-native .era-screen.design-editorial-body .grid[data-flow="rest"] .tile,
+.desktop-native .era-screen.design-editorial-body .full-grid .tile,
+.desktop-native .era-screen.design-editorial-body .grid[data-flow="bottom"] .tile,
+.desktop-native .era-screen.design-editorial-body .ghost-card{
+  aspect-ratio:.74;
+  min-height:0;
+  border-radius:0;
+  box-shadow:0 16px 38px rgba(0,0,0,.26);
+}
+.desktop-native .era-screen.design-editorial-body .grid.compact{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+.desktop-native .era-screen.design-editorial-body .grid[data-flow="bottom"]{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.desktop-native .era-screen.design-editorial-body .ghosts{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.desktop-native .era-screen.design-editorial-body .ghost-card{border:0;background:#111}
+.desktop-native .era-screen.design-editorial-body .ghost-copy b,
+.desktop-native .era-screen.design-editorial-body .tile .name{
+  font-family:Inter,system-ui,sans-serif;
+  font-weight:600;
+  letter-spacing:-.03em;
+}
+.desktop-native .era-screen.design-editorial-body .ghost-copy b{font-size:18px;line-height:.98}
+.desktop-native .era-screen.design-editorial-body .ghost-copy span{font-size:11px}
+.desktop-native .era-screen.design-editorial-body .full-grid .name{
+  display:block!important;
+  left:12px;
+  right:12px;
+  bottom:11px;
+  font-size:17px;
+  line-height:.98;
+}
+.desktop-native .era-screen.design-editorial-body .full-grid .tile:after{display:block!important}
+.desktop-native .era-screen.design-editorial-body .full-grid .rank{font-weight:700}
+.desktop-native .era-screen.design-editorial-body .full-progress,
+.desktop-native .era-screen.design-editorial-body .full-reveal-button{
+  border:0;
+  border-radius:0;
+  background:rgba(5,7,9,.9);
+  text-transform:none;
+  letter-spacing:0;
+}
+.desktop-native .era-screen.design-editorial-body .full-reveal-plus{border-radius:0}
+
+/* Sidebar */
+.desktop-native .era-screen.design-editorial-body .site-sidebar{
+  top:18px;
+  background:var(--editorial-black);
+  padding:8px 18px 10px;
+  box-shadow:0 28px 70px rgba(0,0,0,.2);
+  overflow:hidden;
+}
+.desktop-native .era-screen.design-editorial-body .sidebar-title{display:none}
+.desktop-native .era-screen.design-editorial-body .insight-item,
+.desktop-native .era-screen.design-editorial-body .year-insight-card,
+.desktop-native .era-screen.design-editorial-body .director-card{
+  border:0;
+  border-bottom:1px solid var(--editorial-line);
+  border-radius:0;
+  background:transparent;
+}
+.desktop-native .era-screen.design-editorial-body .site-sidebar>*:last-child{border-bottom:0!important}
+.desktop-native .era-screen.design-editorial-body .insight-card,
+.desktop-native .era-screen.design-editorial-body .year-toggle,
+.desktop-native .era-screen.design-editorial-body .director-toggle{
+  min-height:74px;
+  padding:17px 0 18px;
+  background:transparent!important;
+  box-shadow:none!important;
+  border:0;
+  border-radius:0;
+  color:var(--editorial-ink);
+  transition:color .18s ease;
+}
+.desktop-native .era-screen.design-editorial-body .insight-card{
+  grid-template-columns:34px minmax(0,1fr) 30px;
+  gap:9px;
+}
+.desktop-native .era-screen.design-editorial-body .insight-icon{
+  color:rgba(255,255,255,.55);
+  font-size:21px;
+  text-align:center;
+}
+.desktop-native .era-screen.design-editorial-body .insight-card b,
+.desktop-native .era-screen.design-editorial-body .year-insight-year,
+.desktop-native .era-screen.design-editorial-body .director-title{
+  font:600 27px/.94 Inter,system-ui,sans-serif;
+  letter-spacing:-.035em;
+  color:var(--editorial-ink);
+  white-space:nowrap;
+  transition:color .18s ease;
+}
+.desktop-native .era-screen.design-editorial-body .insight-card>span:nth-child(2)>span,
+.desktop-native .era-screen.design-editorial-body .year-insight-kicker,
+.desktop-native .era-screen.design-editorial-body .year-insight-maincount,
+.desktop-native .era-screen.design-editorial-body .director-k,
+.desktop-native .era-screen.design-editorial-body .director-faces{display:none!important}
+.desktop-native .era-screen.design-editorial-body .insight-chevron,
+.desktop-native .era-screen.design-editorial-body .year-arrow,
+.desktop-native .era-screen.design-editorial-body .director-arrow{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:0;
+  background:rgba(255,255,255,.055);
+  font-size:0;
+  color:rgba(255,255,255,.72);
+}
+.desktop-native .era-screen.design-editorial-body .insight-chevron:before,
+.desktop-native .era-screen.design-editorial-body .year-arrow:before,
+.desktop-native .era-screen.design-editorial-body .director-arrow:before{
+  content:"+";
+  font:400 18px/1 Inter,sans-serif;
+}
+.desktop-native .era-screen.design-editorial-body .insight-card:hover b,
+.desktop-native .era-screen.design-editorial-body .insight-item.is-open .insight-card b,
+.desktop-native .era-screen.design-editorial-body .year-toggle:hover .year-insight-year,
+.desktop-native .era-screen.design-editorial-body .year-insight-card.is-open .year-insight-year,
+.desktop-native .era-screen.design-editorial-body .director-toggle:hover .director-title,
+.desktop-native .era-screen.design-editorial-body .director-card.is-open .director-title{color:var(--editorial-accent)}
+.desktop-native .era-screen.design-editorial-body .insight-detail,
+.desktop-native .era-screen.design-editorial-body .year-insight-detail,
+.desktop-native .era-screen.design-editorial-body .director-detail{color:rgba(255,255,255,.65)}
+
+/* Year module follows the same flat editorial treatment as 1975–1999. */
+.desktop-native .era-screen.design-editorial-body .year-insight-detail{
+  background:transparent;
+  border:0!important;
+  border-top:1px solid var(--editorial-line)!important;
+  border-radius:0;
+}
+.desktop-native .era-screen.design-editorial-body .year-insight-detail-inner{padding-left:34px;padding-right:0}
+.desktop-native .era-screen.design-editorial-body .year-insight-card.is-open .year-insight-detail-inner{padding-top:0;padding-bottom:8px}
+.desktop-native .era-screen.design-editorial-body .year-insight-decade{
+  min-height:62px;
+  padding:15px 0 13px;
+  border:0;
+  border-bottom:1px solid var(--editorial-line);
+  background:transparent;
+  border-radius:0;
+}
+.desktop-native .era-screen.design-editorial-body .year-insight-decade b{
+  font:500 12px/1.2 Inter,system-ui,sans-serif;
+  color:rgba(255,255,255,.56);
+}
+.desktop-native .era-screen.design-editorial-body .year-insight-decade strong{
+  font:600 28px/.9 Inter,system-ui,sans-serif;
+  letter-spacing:-.035em;
+  color:var(--editorial-accent);
+}
+.desktop-native .era-screen.design-editorial-body .year-chart{
+  height:94px;
+  gap:3px;
+  margin:0;
+  padding:17px 0 16px;
+  border-bottom:1px solid var(--editorial-line);
+}
+.desktop-native .era-screen.design-editorial-body .year-chart-bar{
+  border-radius:0;
+  background:rgba(255,255,255,.26);
+  opacity:.7;
+}
+.desktop-native .era-screen.design-editorial-body .year-chart-bar.hot,
+.desktop-native .era-screen.design-editorial-body .year-chart-bar.is-highlighted{background:var(--editorial-accent);opacity:1}
+.desktop-native .era-screen.design-editorial-body .year-highlights{display:block;margin:0}
+.desktop-native .era-screen.design-editorial-body .year-highlight{
+  width:100%;
+  min-height:48px;
+  padding:11px 0 10px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:baseline;
+  border:0;
+  border-bottom:1px solid var(--editorial-line);
+  border-radius:0;
+  background:transparent;
+  color:inherit;
+}
+.desktop-native .era-screen.design-editorial-body .year-highlight:last-child{border-bottom:0}
+.desktop-native .era-screen.design-editorial-body .year-highlight b{
+  font:600 13px/1.05 Inter,system-ui,sans-serif;
+  letter-spacing:-.015em;
+  color:var(--editorial-ink);
+}
+.desktop-native .era-screen.design-editorial-body .year-highlight span{
+  margin:0;
+  font:500 10px/1.2 Inter,system-ui,sans-serif;
+  color:rgba(255,255,255,.45);
+  text-align:right;
+}
+.desktop-native .era-screen.design-editorial-body .year-highlight:hover b,
+.desktop-native .era-screen.design-editorial-body .year-highlight:focus-visible b{color:var(--editorial-accent)}
+
+@media(max-width:1100px){
+  .desktop-native .era-screen.design-editorial-body .site-layout{grid-template-columns:minmax(0,1fr) 330px}
+  .desktop-native .era-screen.design-editorial-body .insight-card b,
+  .desktop-native .era-screen.design-editorial-body .year-insight-year,
+  .desktop-native .era-screen.design-editorial-body .director-title{font-size:23px}
+}
