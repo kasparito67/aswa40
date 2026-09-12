@@ -1,6 +1,6 @@
 (()=>{
-  const desktop=matchMedia('(min-width:701px) and (hover:hover) and (pointer:fine)');
-  if(!desktop.matches)return;
+  const desktop=window.__ASWA40_FORCE_DESKTOP__===true||matchMedia('(min-width:701px) and (hover:hover) and (pointer:fine)').matches;
+  if(!desktop)return;
 
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
   const mediaConfig=window.ASWA40_HEADER_MEDIA||{};
