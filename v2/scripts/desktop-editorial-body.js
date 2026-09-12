@@ -59,7 +59,7 @@
   };
 
   const enhance=screen=>{
-    if(!screen||screen.dataset.editorialBody==='1'||screen.dataset.topId==='1975-1999'||!Array.isArray(window.TOPS))return false;
+    if(!screen||screen.dataset.editorialBody==='1'||screen.dataset.topId==='1975-1999'||typeof TOPS==='undefined'||!Array.isArray(TOPS))return false;
     const top=TOPS.find(t=>t.id===screen.dataset.topId);
     if(!top)return false;
     screen.dataset.editorialBody='1';
