@@ -33,6 +33,12 @@
     });
   });
 
+  const era1975=TOPS.find(t=>t.id==='1975-1999');
+  if(era1975){
+    const indiana=era1975.films.find(f=>f.rank===3||norm(f.title)==='indiana jones');
+    if(indiana)indiana.year='1981';
+  }
+
   // Identity locks belong here. Section layout and editorial configuration live in
   // platform-config.js so there is only one source of truth for presentation.
   const docs=TOPS.find(t=>t.id==='documentaires');
