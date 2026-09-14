@@ -105,7 +105,7 @@
 .desktop-native .site-sidebar .year-chart-bar{
   position:relative!important;
   min-width:3px!important;
-  height:calc((var(--v) / 13) * 100%)!important;
+  height:calc((var(--v) / var(--chart-max,13)) * 100%)!important;
   min-height:2px!important;
   cursor:crosshair!important;
   overflow:visible!important;
