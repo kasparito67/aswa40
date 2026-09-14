@@ -1,8 +1,9 @@
 (()=>{
   const modalBg=document.getElementById('modalBg');
+  const modal=document.getElementById('filmModal');
   const prev=document.getElementById('modalPrev');
   const next=document.getElementById('modalNext');
-  if(!modalBg||!prev||!next)return;
+  if(!modalBg||!modal||!prev||!next)return;
 
   let sumX=0;
   let locked=false;
@@ -25,7 +26,7 @@
   // advance only one card, but a new strong impulse can re-arm immediately even if
   // the previous gesture still has a little trackpad momentum trailing behind it.
   window.addEventListener('wheel',event=>{
-    if(!modalBg.classList.contains('open'))return;
+    if(!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail'))return;
     const ax=Math.abs(event.deltaX),ay=Math.abs(event.deltaY);
     if(ax<3||ay>ax*1.12)return;
 
