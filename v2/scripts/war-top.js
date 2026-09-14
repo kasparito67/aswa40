@@ -25,15 +25,17 @@
   // The PDF's #1–60 is the complete set of films that received at least one vote.
   // Forgotten films must therefore be absent from that entire corpus: true 0-vote omissions.
   const forgotten=[
-    ['La Grande Illusion','0 vote · un monument du cinéma de guerre classique absent des six listes.'],
-    ['All Quiet on the Western Front','0 vote · l’un des grands archétypes du film antimilitariste, totalement absent du corpus.'],
-    ['The Best Years of Our Lives','0 vote · la guerre vue par le retour des soldats et ses séquelles, une absence majeure.'],
-    ['The Cranes Are Flying','0 vote · classique soviétique majeur, absent malgré la forte présence de la Seconde Guerre mondiale.'],
-    ["Ivan's Childhood",'0 vote · Tarkovski et le front de l’Est ne trouvent aucune place dans les choix.'],
-    ['Patton','0 vote · grand classique hollywoodien du genre, mais aucun des six ne le cite.'],
-    ['The Ascent','0 vote · un autre sommet soviétique de la guerre, entièrement absent des listes.'],
-    ['A Bridge Too Far','0 vote · fresque de guerre emblématique qui ne reçoit pourtant aucun vote.']
-  ].map(([title,copy])=>({title,img:posterFor(title),copy}));
+    ['La Grande Illusion',1937,'0 vote · un monument du cinéma de guerre classique absent des six listes.'],
+    ['All Quiet on the Western Front',1930,'0 vote · l’un des grands archétypes du film antimilitariste, totalement absent du corpus.'],
+    ['The Best Years of Our Lives',1946,'0 vote · la guerre vue par le retour des soldats et ses séquelles, une absence majeure.'],
+    ['The Cranes Are Flying',1957,'0 vote · classique soviétique majeur, absent malgré la forte présence de la Seconde Guerre mondiale.'],
+    ["Ivan's Childhood",1962,'0 vote · Tarkovski et le front de l’Est ne trouvent aucune place dans les choix.'],
+    ['Patton',1970,'0 vote · grand classique hollywoodien du genre, mais aucun des six ne le cite.'],
+    ['The Ascent',1977,'0 vote · un autre sommet soviétique de la guerre, entièrement absent des listes.'],
+    ['A Bridge Too Far',1977,'0 vote · fresque de guerre emblématique qui ne reçoit pourtant aucun vote.'],
+    ['A Few Good Men',1992,'0 vote · le conflit militaire passe par la cour martiale plutôt que le champ de bataille, mais personne ne le cite.'],
+    ['We Were Soldiers',2002,'0 vote · un film de guerre frontal et populaire entièrement absent des six listes.']
+  ].map(([title,year,copy])=>({title,year:String(year),img:posterFor(title),copy}));
 
   const yearStart=1957,yearEnd=2017;
   const bars=Array.from({length:yearEnd-yearStart+1},()=>0);
@@ -48,13 +50,14 @@
     films,
     ghosts:forgotten,
     ovnis:{
-      ranks:[29,32,36,39,43,57],
+      ranks:[29,32,36,39,43,50,57],
       comments:{
         29:'John Woo transforme le film de guerre en mélodrame d’action hongkongais. 1 vote, placé #9.',
         32:'Kurosawa déplace la guerre vers le Japon féodal et la fresque de pouvoir. 1 vote, placé #11.',
         36:'Le conflit passe par le thriller d’aventure et la guerre civile plutôt que par le front traditionnel.',
         39:'La guerre n’est qu’un chapitre d’une grande chronique américaine : un choix très périphérique à la catégorie.',
         43:'Un film de guerre presque sans champ de bataille : science, politique et conséquences atomiques prennent le relais.',
+        50:'Atonement aborde la guerre par le mélodrame, la mémoire et la culpabilité. Un seul vote, placé #19.',
         57:'La satire et la comédie noire comme film de guerre. Un seul vote, placé #23.'
       }
     },
@@ -62,7 +65,7 @@
       {kicker:'Le palmarès collectif',title:'TOP 25',kind:'top25',count:25},
       {kicker:'Le classement complet',title:'#26–60',kind:'full',start:26,batch:35},
       {kicker:'Aucun vote',title:'Les grands oubliés',kind:'ghosts'},
-      {kicker:'Les signatures personnelles',title:'Les OVNIS',kind:'bottom',count:6}
+      {kicker:'Les signatures personnelles',title:'Les OVNIS',kind:'bottom',count:7}
     ],
     sidebar:[
       {kind:'insight',key:'consensus',icon:'◎',title:'Le noyau dur',sub:'4 films · 6/6 votes',bullets:['Full Metal Jacket, Apocalypse Now, Saving Private Ryan et The Thin Red Line sont présents chez les six participants.','Vietnam et Seconde Guerre mondiale dominent le sommet, avec une préférence nette pour la guerre vécue de l’intérieur.']},
