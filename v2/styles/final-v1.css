@@ -1,0 +1,78 @@
+/* ASWA40 final v1 polish — loaded last on purpose. */
+
+/* Exact tight SVGs: preserve the header anchor/wrapper, but do not crop or
+   geometrically normalize the artwork itself. */
+.desktop-native .era-screen[data-top-id="sci-fi-realiste"].design-header-system .hero-title-art-wrap,
+.desktop-native .era-screen[data-top-id="biopics"].design-header-system .hero-title-art-wrap{
+  overflow:visible!important;
+}
+.desktop-native .era-screen[data-top-id="sci-fi-realiste"].design-header-system .hero-title-art,
+.desktop-native .era-screen[data-top-id="biopics"].design-header-system .hero-title-art{
+  position:absolute!important;
+  inset:auto 0 auto auto!important;
+  top:0!important;
+  left:auto!important;
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:right top!important;
+  transform:none!important;
+  filter:none!important;
+}
+.desktop-native .era-screen[data-top-id="sci-fi-realiste"].design-header-system .hero-title-art{
+  width:100%!important;
+  max-width:100%!important;
+}
+.desktop-native .era-screen[data-top-id="biopics"].design-header-system .hero-title-art{
+  width:85%!important;
+  max-width:85%!important;
+}
+
+/* Slightly larger disclosure copy in the desktop insight rail. */
+.desktop-native .era-screen .site-sidebar .insight-detail ul{
+  font-size:15.5px!important;
+  line-height:1.52!important;
+}
+.desktop-native .era-screen .site-sidebar .year-highlight b,
+.desktop-native .era-screen .site-sidebar .director-row b{
+  font-size:15.5px!important;
+  line-height:1.14!important;
+}
+.desktop-native .era-screen .site-sidebar .year-highlight span,
+.desktop-native .era-screen .site-sidebar .director-films{
+  font-size:13px!important;
+  line-height:1.4!important;
+}
+.desktop-native .era-screen .site-sidebar .year-insight-decade b{
+  font-size:13.5px!important;
+}
+
+@media(max-width:700px),(pointer:coarse){
+  .era-screen.mobile-cinema-header[data-top-id="sci-fi-realiste"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="biopics"] .hero-title-art-wrap{
+    overflow:visible!important;
+  }
+  .era-screen.mobile-cinema-header[data-top-id="sci-fi-realiste"] .hero-title-art,
+  .era-screen.mobile-cinema-header[data-top-id="biopics"] .hero-title-art{
+    position:absolute!important;
+    inset:auto 0 auto auto!important;
+    top:0!important;
+    left:auto!important;
+    height:auto!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:right top!important;
+    transform:none!important;
+    filter:none!important;
+  }
+  .era-screen.mobile-cinema-header[data-top-id="sci-fi-realiste"] .hero-title-art{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .era-screen.mobile-cinema-header[data-top-id="biopics"] .hero-title-art{
+    width:85%!important;
+    max-width:85%!important;
+  }
+}
