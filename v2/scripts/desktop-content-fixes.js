@@ -1,6 +1,6 @@
 (()=>{
   const stage=document.getElementById('stage');
-  if(!stage||!Array.isArray(window.TOPS))return;
+  if(!stage||typeof TOPS==='undefined'||!Array.isArray(TOPS))return;
 
   const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const escXml=s=>String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
