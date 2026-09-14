@@ -1,32 +1,36 @@
 /* Live mobile-only page navigation polish. Keep the existing Top-5/header UI unchanged. */
 @media(max-width:700px),(pointer:coarse){
   body:has(.era-screen.mobile-cinema-header) .era-arrow{
+    position:fixed!important;
     width:38px!important;
     height:38px!important;
     padding:0!important;
     border-radius:50%!important;
-    display:grid!important;
-    place-items:center!important;
     font-size:0!important;
     line-height:0!important;
   }
 
   body:has(.era-screen.mobile-cinema-header) .era-arrow::before{
     content:"";
-    display:block;
+    position:absolute;
+    left:50%;
+    top:50%;
     width:8px;
     height:8px;
     box-sizing:border-box;
     border-top:1.5px solid currentColor;
     border-right:1.5px solid currentColor;
     transform-origin:50% 50%;
+    pointer-events:none;
   }
 
+  /* The visible chevron is not optically centred inside its rotated 8px box.
+     Nudge each direction back toward the circle's visual centre. */
   body:has(.era-screen.mobile-cinema-header) .era-prev::before{
-    transform:rotate(-135deg);
+    transform:translate(-50%,-50%) translateX(1.5px) rotate(-135deg);
   }
 
   body:has(.era-screen.mobile-cinema-header) .era-next::before{
-    transform:rotate(45deg);
+    transform:translate(-50%,-50%) translateX(-1.5px) rotate(45deg);
   }
 }
