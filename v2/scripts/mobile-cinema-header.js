@@ -59,23 +59,17 @@
     media.innerHTML=sources.map((src,i)=>`<div class="mobile-cinema-layer${i===0?' is-active':''}" data-mobile-cinema-layer="${i}" data-header-media-key="${esc(`${top.id}:${films[i].rank}`)}" data-desktop-source="${esc(desktopSources[i])}" data-mobile-focus="${esc(focuses[i])}"><img ${i===0?`src="${esc(src)}"`:`data-src="${esc(src)}"`} alt="" decoding="async" loading="${i===0?'eager':'lazy'}" fetchpriority="${i===0?'high':'low'}" style="object-position:${esc(focuses[i])}"></div>`).join('');
     hero.prepend(media);
 
+    const dots=films.map((film,i)=>`<button type="button" class="mobile-cinema-dot${i===0?' is-active':''}" data-mobile-cinema-index="${i}" aria-pressed="${i===0?'true':'false'}" aria-label="Afficher ${esc(film.title)}"></button>`).join('');
     const copy=document.createElement('div');
     copy.className='mobile-cinema-copy';
-    copy.innerHTML=`<div class="mobile-cinema-rank">${String(films[0].rank).padStart(2,'0')}</div><div class="mobile-cinema-film"><b>${esc(displayTitle(top,films[0]))}</b><span>${esc(meta(films[0]))}</span></div><div class="mobile-cinema-count">01 / 05</div>`;
+    copy.innerHTML=`<div class="mobile-cinema-rank">${String(films[0].rank).padStart(2,'0')}</div><div class="mobile-cinema-film"><b>${esc(displayTitle(top,films[0]))}</b><span>${esc(meta(films[0]))}</span></div><div class="mobile-cinema-count" role="group" aria-label="Navigation du Top 5">${dots}</div>`;
     hero.append(copy);
 
-    const tabs=document.createElement('div');
-    tabs.className='mobile-cinema-tabs';
-    tabs.setAttribute('aria-label','Top 5');
-    tabs.innerHTML=films.map((film,i)=>`<button type="button" class="${i===0?'is-active':''}" data-mobile-cinema-index="${i}" aria-pressed="${i===0?'true':'false'}" aria-label="Afficher ${esc(film.title)}">${String(i+1).padStart(2,'0')}</button>`).join('');
-    hero.append(tabs);
-
     const layers=[...media.querySelectorAll('.mobile-cinema-layer')];
-    const buttons=[...tabs.querySelectorAll('button')];
+    const buttons=[...copy.querySelectorAll('.mobile-cinema-dot')];
     const rank=copy.querySelector('.mobile-cinema-rank');
     const title=copy.querySelector('.mobile-cinema-film b');
     const filmMeta=copy.querySelector('.mobile-cinema-film span');
-    const count=copy.querySelector('.mobile-cinema-count');
     let active=0,request=0;
 
     const ensureImage=i=>{
@@ -103,7 +97,6 @@
       rank.textContent=String(film.rank).padStart(2,'0');
       title.textContent=displayTitle(top,film);
       filmMeta.textContent=meta(film);
-      count.textContent=`${String(i+1).padStart(2,'0')} / 05`;
     };
 
     const select=i=>{
