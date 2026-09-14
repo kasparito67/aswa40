@@ -1,0 +1,271 @@
+/* ASWA40 mobile/desktop parity pass.
+   Keep the portrait composition, but use the exact same editorial hierarchy,
+   page palette and flat disclosure language as desktop. */
+
+@media(max-width:700px),(pointer:coarse){
+  .era-screen.mobile-cinema-header{
+    --mobile-title-width:min(74vw,330px);
+  }
+
+  /* ------------------------------------------------------------------------
+     Header title scale
+     All seven Tops share one optical title footprint. Normalized assets keep
+     their crop recipe; the two tight assets now occupy the same visible width.
+     ------------------------------------------------------------------------ */
+  .era-screen.mobile-cinema-header .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="1975-1999"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="sci-fi-realiste"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="animation"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="biopics"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="documentaires"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="rewatched"] .hero-title-art-wrap{
+    width:var(--mobile-title-width)!important;
+    max-width:var(--mobile-title-width)!important;
+  }
+  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art-wrap,
+  .era-screen.mobile-cinema-header[data-top-id="rewatched"] .hero-title-art-wrap{
+    height:128px!important;
+  }
+  .era-screen.mobile-cinema-header[data-top-id="2000-2024"] .hero-title-art,
+  .era-screen.mobile-cinema-header[data-top-id="rewatched"] .hero-title-art{
+    max-height:128px!important;
+  }
+
+  /* The page palette is the only accent system on mobile too. This explicitly
+     neutralizes the old consensus/duo/ovni per-card orange/pink variables. */
+  .era-screen.mobile-cinema-header .site-sidebar .insight-item,
+  .era-screen.mobile-cinema-header .site-sidebar .insight-item[data-insight]{
+    --insight:var(--accent)!important;
+  }
+  .era-screen.mobile-cinema-header .site-sidebar .insight-card{
+    --icon:var(--accent)!important;
+  }
+  .era-screen.mobile-cinema-header .mobile-cinema-rank,
+  .era-screen.mobile-cinema-header .rank,
+  .era-screen.mobile-cinema-header .year-insight-kicker,
+  .era-screen.mobile-cinema-header .special-card-label,
+  .era-screen.mobile-cinema-header .year-chart-bar.hot,
+  .era-screen.mobile-cinema-header .year-chart-bar.is-highlighted{
+    color:var(--accent)!important;
+  }
+  .era-screen.mobile-cinema-header .year-chart-bar.hot,
+  .era-screen.mobile-cinema-header .year-chart-bar.is-highlighted{
+    background:var(--accent)!important;
+  }
+
+  /* ------------------------------------------------------------------------
+     Sidebar / subsections
+     One black editorial plane, edge-to-edge disclosure rows, no rounded cards.
+     ------------------------------------------------------------------------ */
+  .era-screen.mobile-cinema-header .site-sidebar{
+    padding:6px 14px 8px!important;
+    border:0!important;
+    border-radius:0!important;
+    background:rgba(5,7,9,.96)!important;
+    box-shadow:none!important;
+    overflow:hidden!important;
+  }
+  .era-screen.mobile-cinema-header .insight-item,
+  .era-screen.mobile-cinema-header .year-insight-card,
+  .era-screen.mobile-cinema-header .director-card{
+    border:0!important;
+    border-bottom:1px solid var(--mobile-line)!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    overflow:visible!important;
+  }
+  .era-screen.mobile-cinema-header .site-sidebar>*:last-child{border-bottom:0!important}
+
+  /* Header rows bleed through the sidebar gutter, while their content keeps the
+     original 14px inset. */
+  .era-screen.mobile-cinema-header .insight-card,
+  .era-screen.mobile-cinema-header .year-toggle,
+  .era-screen.mobile-cinema-header .director-toggle{
+    width:calc(100% + 28px)!important;
+    max-width:none!important;
+    min-height:72px!important;
+    margin-left:-14px!important;
+    margin-right:-14px!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    color:#f4f4ef!important;
+  }
+  .era-screen.mobile-cinema-header .insight-card{
+    padding:16px 14px!important;
+    grid-template-columns:32px minmax(0,1fr) 28px!important;
+    gap:10px!important;
+  }
+  .era-screen.mobile-cinema-header .year-toggle{
+    padding:16px 14px!important;
+  }
+  .era-screen.mobile-cinema-header .director-toggle{
+    padding:16px 14px!important;
+  }
+  .era-screen.mobile-cinema-header .insight-card:active,
+  .era-screen.mobile-cinema-header .year-toggle:active,
+  .era-screen.mobile-cinema-header .director-toggle:active{
+    background:color-mix(in srgb,var(--accent) 10%,transparent)!important;
+  }
+
+  .era-screen.mobile-cinema-header .insight-icon{
+    color:rgba(255,255,255,.55)!important;
+  }
+  .era-screen.mobile-cinema-header .insight-card b,
+  .era-screen.mobile-cinema-header .year-insight-year,
+  .era-screen.mobile-cinema-header .director-title{
+    color:#f4f4ef!important;
+    font:600 clamp(22px,6.2vw,28px)/.95 Inter,system-ui,sans-serif!important;
+    letter-spacing:-.035em!important;
+    transition:color .18s ease!important;
+  }
+  .era-screen.mobile-cinema-header .insight-item.is-open .insight-card b,
+  .era-screen.mobile-cinema-header .year-insight-card.is-open .year-insight-year,
+  .era-screen.mobile-cinema-header .director-card.is-open .director-title{
+    color:var(--accent)!important;
+  }
+  .era-screen.mobile-cinema-header .insight-card>span:nth-child(2)>span,
+  .era-screen.mobile-cinema-header .year-insight-maincount,
+  .era-screen.mobile-cinema-header .director-k{
+    color:rgba(244,244,239,.5)!important;
+  }
+
+  /* Same disclosure glyph as desktop: + closed, × open. */
+  .era-screen.mobile-cinema-header .insight-chevron,
+  .era-screen.mobile-cinema-header .year-arrow,
+  .era-screen.mobile-cinema-header .director-arrow{
+    width:28px!important;
+    height:28px!important;
+    display:grid!important;
+    place-items:center!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    color:rgba(255,255,255,.68)!important;
+    font-size:0!important;
+    transform:none!important;
+  }
+  .era-screen.mobile-cinema-header .insight-chevron:before,
+  .era-screen.mobile-cinema-header .year-arrow:before,
+  .era-screen.mobile-cinema-header .director-arrow:before{
+    content:"+"!important;
+    display:block!important;
+    color:currentColor!important;
+    font:400 21px/1 Inter,system-ui,sans-serif!important;
+    transition:transform .2s ease,color .18s ease!important;
+  }
+  .era-screen.mobile-cinema-header .insight-item.is-open .insight-chevron,
+  .era-screen.mobile-cinema-header .year-insight-card.is-open .year-arrow,
+  .era-screen.mobile-cinema-header .director-card.is-open .director-arrow{
+    color:var(--accent)!important;
+  }
+  .era-screen.mobile-cinema-header .insight-item.is-open .insight-chevron:before,
+  .era-screen.mobile-cinema-header .year-insight-card.is-open .year-arrow:before,
+  .era-screen.mobile-cinema-header .director-card.is-open .director-arrow:before{
+    transform:rotate(45deg)!important;
+  }
+
+  /* Expanded content floats below the row. No second card, no rounded container. */
+  .era-screen.mobile-cinema-header .insight-detail,
+  .era-screen.mobile-cinema-header .year-insight-detail,
+  .era-screen.mobile-cinema-header .director-detail,
+  .era-screen.mobile-cinema-header .insight-item.is-open .insight-detail,
+  .era-screen.mobile-cinema-header .year-insight-card.is-open .year-insight-detail,
+  .era-screen.mobile-cinema-header .director-card.is-open .director-detail{
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+  .era-screen.mobile-cinema-header .insight-detail ul{
+    list-style:none!important;
+    margin:0!important;
+    padding-left:42px!important;
+    padding-right:4px!important;
+    color:rgba(244,244,239,.66)!important;
+    font:500 12.5px/1.5 Inter,system-ui,sans-serif!important;
+  }
+  .era-screen.mobile-cinema-header .insight-item.is-open .insight-detail ul{
+    padding-top:2px!important;
+    padding-bottom:18px!important;
+  }
+  .era-screen.mobile-cinema-header .insight-detail li{
+    position:relative!important;
+    padding-left:14px!important;
+  }
+  .era-screen.mobile-cinema-header .insight-detail li::marker{content:none!important}
+  .era-screen.mobile-cinema-header .insight-detail li:before{
+    content:""!important;
+    position:absolute!important;
+    left:0!important;
+    top:.62em!important;
+    width:4px!important;
+    height:4px!important;
+    border-radius:50%!important;
+    background:var(--accent)!important;
+  }
+  .era-screen.mobile-cinema-header .insight-detail li+li{margin-top:8px!important}
+
+  .era-screen.mobile-cinema-header .year-insight-detail-inner,
+  .era-screen.mobile-cinema-header .director-detail-inner{
+    padding-left:42px!important;
+    padding-right:0!important;
+  }
+  .era-screen.mobile-cinema-header .year-insight-card.is-open .year-insight-detail-inner,
+  .era-screen.mobile-cinema-header .director-card.is-open .director-detail-inner{
+    padding-top:0!important;
+    padding-bottom:14px!important;
+  }
+  .era-screen.mobile-cinema-header .year-insight-decade,
+  .era-screen.mobile-cinema-header .year-highlight,
+  .era-screen.mobile-cinema-header .director-row{
+    border:0!important;
+    border-bottom:1px solid var(--mobile-line)!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+  .era-screen.mobile-cinema-header .year-highlight:last-child,
+  .era-screen.mobile-cinema-header .director-row:last-child{border-bottom:0!important}
+  .era-screen.mobile-cinema-header .year-insight-decade strong,
+  .era-screen.mobile-cinema-header .year-highlight:active b,
+  .era-screen.mobile-cinema-header .director-row:active b{
+    color:var(--accent)!important;
+  }
+  .era-screen.mobile-cinema-header .year-chart{
+    border-bottom:1px solid var(--mobile-line)!important;
+  }
+
+  /* Section disclosure controls follow the desktop geometry too: pure chevron. */
+  .era-screen.mobile-cinema-header .sec>.toggle .arr{
+    width:32px!important;
+    height:32px!important;
+    border:0!important;
+    background:transparent!important;
+    color:rgba(255,255,255,.65)!important;
+    font-size:0!important;
+  }
+  .era-screen.mobile-cinema-header .sec>.toggle .arr:before{
+    content:""!important;
+    display:block!important;
+    width:10px!important;
+    height:10px!important;
+    border-right:1.6px solid currentColor!important;
+    border-bottom:1.6px solid currentColor!important;
+    transform:translateY(-3px) rotate(45deg)!important;
+  }
+  .era-screen.mobile-cinema-header .sec.open>.toggle .arr:before{
+    transform:translateY(3px) rotate(225deg)!important;
+  }
+  .era-screen.mobile-cinema-header .sec>.toggle:active strong,
+  .era-screen.mobile-cinema-header .sec>.toggle:active .arr{
+    color:var(--accent)!important;
+  }
+}
+
+@media(max-width:430px){
+  .era-screen.mobile-cinema-header{--mobile-title-width:min(76vw,320px)}
+}
