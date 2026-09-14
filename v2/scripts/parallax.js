@@ -4,10 +4,12 @@
 
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const mobile=matchMedia('(max-width:700px)').matches||matchMedia('(pointer:coarse)').matches;
+  const safari=document.documentElement.classList.contains('browser-safari');
 
   // Mobile keeps the horizontal spatial transition but skips continuous parallax.
-  // CSS defaults already hold all offsets at zero, so no style writes are needed here.
-  if(mobile)return;
+  // Safari also keeps the native carousel without continuous full-screen transform
+  // writes; WebKit is substantially smoother when the browser owns that rail alone.
+  if(mobile||safari)return;
 
   let raf=0;
   let until=0;
@@ -43,9 +45,6 @@
 
   const screens=()=>[...stage.querySelectorAll('.era-screen')];
 
-  // During horizontal navigation only the visible page and its immediate neighbours
-  // can contribute to the frame. Updating all seven Tops every animation frame made
-  // the native trackpad rail feel heavier than the browser's actual scroll physics.
   function updateNearby(){
     const list=screens();
     if(!list.length)return;
@@ -79,9 +78,6 @@
     });
   }
 
-  // Native rail scroll is already frame-synchronised by the browser. Mirror it with
-  // one visual update per animation frame instead of extending a long-running RAF
-  // burst on every wheel/scroll event.
   stage.addEventListener('scroll',()=>{
     if(railFrame)return;
     railFrame=requestAnimationFrame(()=>{
@@ -90,8 +86,6 @@
     });
   },{passive:true});
 
-  // Keep these observers for renderer changes and resize settling, but use short
-  // bursts only. Programmatic smooth scroll also emits the rail scroll event above.
   const stageObserver=new MutationObserver(()=>burst(120));
   stageObserver.observe(stage,{attributes:true,attributeFilter:['style']});
   const childObserver=new MutationObserver(()=>{bindScroll();burst(100)});
