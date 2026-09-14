@@ -14,7 +14,7 @@
 
   const THRESHOLD=40;
   const QUIET_GAP=48;
-  const FAST_RATE=1.35;
+  const FAST_RATE=1.5;
 
   const modalBusy=()=>Boolean(modalBg.querySelector('.film-modal:not(#filmModal)'));
   const clearPreview=()=>{
