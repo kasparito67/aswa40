@@ -62,7 +62,7 @@
 
 .modal-rank{
   margin:0 0 9px;
-  color:#e60d45;
+  color:var(--active-accent,#e60d45);
   font-family:Inter,system-ui,sans-serif;
   font-size:10px;
   font-weight:600;
@@ -116,6 +116,7 @@
   font-weight:600;
 }
 .modal-body b{color:rgba(244,244,239,.84);font-weight:600}
+.modal-ovni-editorial b{color:var(--active-accent,#e60d45)}
 
 .modal-detail-link{
   display:inline-flex;
@@ -132,7 +133,7 @@
   letter-spacing:.02em;
   transition:border-color .16s ease,color .16s ease;
 }
-.modal-detail-link:hover{border-color:#e60d45;color:#fff;text-decoration:none}
+.modal-detail-link:hover{border-color:var(--active-accent,#e60d45);color:#fff;text-decoration:none}
 
 .modal-close{
   position:absolute;
@@ -156,8 +157,8 @@
   cursor:pointer;
   transition:color .16s ease,opacity .16s ease;
 }
-.modal-close:hover{color:#e60d45}
-.modal-close:focus-visible{outline:1px solid rgba(255,255,255,.6);outline-offset:2px}
+.modal-close:hover{color:var(--active-accent,#e60d45)}
+.modal-close:focus-visible{outline:1px solid var(--active-accent,#e60d45);outline-offset:2px}
 
 .modal-nav{
   position:absolute;
@@ -181,8 +182,8 @@
   cursor:pointer;
   transition:color .16s ease,background .16s ease;
 }
-.modal-nav:hover{color:#fff;background:rgba(0,0,0,.12)}
-.modal-nav:focus-visible{outline:1px solid rgba(255,255,255,.55);outline-offset:0}
+.modal-nav:hover{color:var(--active-accent,#e60d45);background:rgba(0,0,0,.12)}
+.modal-nav:focus-visible{outline:1px solid var(--active-accent,#e60d45);outline-offset:0}
 .modal-prev{left:3px}
 .modal-next{right:3px}
 
