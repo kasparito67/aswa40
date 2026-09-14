@@ -36,7 +36,7 @@
         await load('scripts/ghost-modal-rail.js');
         await load('scripts/modal-swipe-patch.js');
         await load('scripts/top-nav.js');
-        await load('scripts/desktop-final-polish.js');
+        await load('scripts/desktop-header-lock-v1.js?v=1.0');
         await load('scripts/parallax.js');
       }else{
         // Mobile gets only its own performance/data preflight and header system.
@@ -50,7 +50,7 @@
       }
 
       // Shared legal attribution belongs at the bottom of every Top on both platforms.
-      await load('scripts/legal-footer.js');
+      await load('scripts/legal-footer.js?v=1.0');
     }catch(err){
       console.error('ASWA40 bootstrap failed',err);
     }
