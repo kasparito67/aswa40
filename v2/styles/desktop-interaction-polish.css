@@ -73,6 +73,8 @@
   max-width:none!important;
   margin-left:-18px!important;
   margin-right:-18px!important;
+  border-radius:0!important;
+  overflow:visible!important;
   transition:background .18s ease,box-shadow .18s ease,color .18s ease!important;
 }
 .desktop-native .era-screen .site-sidebar .insight-card{
