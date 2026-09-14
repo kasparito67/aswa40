@@ -11,6 +11,10 @@
 
   (async()=>{
     try{
+      // Shared content normalization must run before the platform-specific renderers
+      // so mobile and desktop expose the same section names and documented extras.
+      await load('scripts/shared-content-normalization.js');
+
       // One small shared source of truth keeps desktop/mobile Top-5 films identical
       // while allowing the portrait renderer to carry its own optical crop values.
       await load('scripts/header-media-config.js');
@@ -24,8 +28,7 @@
           load('scripts/design-header-system.js'),
           load('scripts/desktop-editorial-body.js')
         ]);
-        // Normalize editorial sections/sidebar data before app-desktop builds the DOM,
-        // then keep a small observer alive for post-render polish and lazy sections.
+        // DOM-only desktop polish and interaction fixes.
         await load('scripts/desktop-content-fixes.js');
         await load('scripts/app-desktop.js');
         await load('scripts/modal-swipe-patch.js');
@@ -37,7 +40,8 @@
         await load('scripts/mobile-cinema-header.js');
         await load('scripts/runtime.js');
         await load('scripts/app.js');
-        // parallax.js exits immediately on touch/mobile, so do not download/parse it here.
+        await load('scripts/mobile-content-fixes.js');
+        // parallax.js exits immediately on mobile, so do not download/parse it here.
       }
     }catch(err){
       console.error('ASWA40 bootstrap failed',err);
