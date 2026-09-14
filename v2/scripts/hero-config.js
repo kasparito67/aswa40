@@ -13,7 +13,7 @@
       position:'center 42%',
       fit:'cover',
       scale:1.015,
-      titleArt:'../assets/header-sci-fi-realiste-normalized.svg',
+      titleArt:'../assets/header-sci-fi-realiste-final.svg',
       titleAlt:'Top 25 Sci-fi réalistes et plausibles'
     },
     'animation':{
@@ -29,7 +29,7 @@
       position:'center 40%',
       fit:'cover',
       scale:1,
-      titleArt:'../assets/header-biopics-normalized.svg',
+      titleArt:'../assets/header-biopics-final.svg',
       titleAlt:'Top Biopics et faits vécus'
     },
     'rewatched':{
