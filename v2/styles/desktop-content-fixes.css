@@ -1,9 +1,9 @@
 /* ASWA40 desktop content/system fixes — sidebar polish, charts, avatars. */
 
 /* Sidebar disclosures: one arrow only, no plus-in-box treatment. */
-.desktop-native .site-sidebar .insight-chevron,
-.desktop-native .site-sidebar .year-arrow,
-.desktop-native .site-sidebar .director-arrow{
+.desktop-native .era-screen .site-sidebar .insight-chevron,
+.desktop-native .era-screen .site-sidebar .year-arrow,
+.desktop-native .era-screen .site-sidebar .director-arrow{
   width:28px!important;
   height:28px!important;
   display:grid!important;
@@ -15,25 +15,25 @@
   font:400 19px/1 Inter,system-ui,sans-serif!important;
   transition:transform .22s ease,color .18s ease!important;
 }
-.desktop-native .site-sidebar .insight-chevron:before,
-.desktop-native .site-sidebar .year-arrow:before,
-.desktop-native .site-sidebar .director-arrow:before{display:none!important;content:none!important}
-.desktop-native .site-sidebar .insight-item.is-open .insight-chevron,
-.desktop-native .site-sidebar .year-insight-card.is-open .year-arrow,
-.desktop-native .site-sidebar .director-card.is-open .director-arrow{transform:rotate(180deg)!important;color:var(--a)!important}
+.desktop-native .era-screen .site-sidebar .insight-chevron:before,
+.desktop-native .era-screen .site-sidebar .year-arrow:before,
+.desktop-native .era-screen .site-sidebar .director-arrow:before{display:none!important;content:none!important}
+.desktop-native .era-screen .site-sidebar .insight-item.is-open .insight-chevron,
+.desktop-native .era-screen .site-sidebar .year-insight-card.is-open .year-arrow,
+.desktop-native .era-screen .site-sidebar .director-card.is-open .director-arrow{transform:rotate(180deg)!important;color:var(--a)!important}
 
 /* Clean bullet geometry — never let markers collide with copy. */
-.desktop-native .site-sidebar .insight-detail ul{
+.desktop-native .era-screen .site-sidebar .insight-detail ul{
   list-style:none!important;
   padding-left:54px!important;
   padding-right:4px!important;
 }
-.desktop-native .site-sidebar .insight-detail li{
+.desktop-native .era-screen .site-sidebar .insight-detail li{
   position:relative!important;
   padding-left:16px!important;
 }
-.desktop-native .site-sidebar .insight-detail li::marker{content:none!important}
-.desktop-native .site-sidebar .insight-detail li:before{
+.desktop-native .era-screen .site-sidebar .insight-detail li::marker{content:none!important}
+.desktop-native .era-screen .site-sidebar .insight-detail li:before{
   content:""!important;
   position:absolute!important;
   left:0!important;
@@ -45,10 +45,10 @@
 }
 
 /* Shared year/director icons, not only the first Top. */
-.desktop-native .site-sidebar .year-toggle,
-.desktop-native .site-sidebar .director-toggle{position:relative!important}
-.desktop-native .site-sidebar .year-toggle:before,
-.desktop-native .site-sidebar .director-toggle:before{
+.desktop-native .era-screen .site-sidebar .year-toggle,
+.desktop-native .era-screen .site-sidebar .director-toggle{position:relative!important}
+.desktop-native .era-screen .site-sidebar .year-toggle:before,
+.desktop-native .era-screen .site-sidebar .director-toggle:before{
   content:"";
   position:absolute;
   z-index:3;
@@ -64,21 +64,21 @@
   -webkit-mask-position:center;mask-position:center;
   -webkit-mask-size:contain;mask-size:contain;
 }
-.desktop-native .site-sidebar .year-toggle:before{
+.desktop-native .era-screen .site-sidebar .year-toggle:before{
   -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='square'%3E%3Cpath d='M4 5.5h16v14H4zM7.5 3.5v4M16.5 3.5v4M4 9h16M7 12h2M11 12h2M15 12h2M7 15.5h2M11 15.5h2M15 15.5h2'/%3E%3C/svg%3E");
   mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='square'%3E%3Cpath d='M4 5.5h16v14H4zM7.5 3.5v4M16.5 3.5v4M4 9h16M7 12h2M11 12h2M15 12h2M7 15.5h2M11 15.5h2M15 15.5h2'/%3E%3C/svg%3E");
 }
-.desktop-native .site-sidebar .director-toggle:before{
+.desktop-native .era-screen .site-sidebar .director-toggle:before{
   -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='miter'%3E%3Cpath d='M4 8h16v11H4zM4 8l2-4h14l-2 4M8 4 6 8M13 4l-2 4M18 4l-2 4M8 12h8M8 15h5'/%3E%3C/svg%3E");
   mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='miter'%3E%3Cpath d='M4 8h16v11H4zM4 8l2-4h14l-2 4M8 4 6 8M13 4l-2 4M18 4l-2 4M8 12h8M8 15h5'/%3E%3C/svg%3E");
 }
-.desktop-native .site-sidebar .year-toggle:hover:before,
-.desktop-native .site-sidebar .year-insight-card.is-open .year-toggle:before,
-.desktop-native .site-sidebar .director-toggle:hover:before,
-.desktop-native .site-sidebar .director-card.is-open .director-toggle:before{background:var(--a)}
+.desktop-native .era-screen .site-sidebar .year-toggle:hover:before,
+.desktop-native .era-screen .site-sidebar .year-insight-card.is-open .year-toggle:before,
+.desktop-native .era-screen .site-sidebar .director-toggle:hover:before,
+.desktop-native .era-screen .site-sidebar .director-card.is-open .director-toggle:before{background:var(--a)}
 
 /* Year heading: small editorial kicker above the year. */
-.desktop-native .site-sidebar .year-toggle{
+.desktop-native .era-screen .site-sidebar .year-toggle{
   padding-left:43px!important;
   display:grid!important;
   grid-template-columns:minmax(0,1fr) 28px!important;
@@ -86,7 +86,7 @@
   gap:5px 12px!important;
   align-items:center!important;
 }
-.desktop-native .site-sidebar .year-insight-kicker{
+.desktop-native .era-screen .site-sidebar .year-insight-kicker{
   grid-area:k!important;
   display:block!important;
   margin:0!important;
@@ -95,14 +95,14 @@
   letter-spacing:.13em!important;
   text-transform:uppercase!important;
 }
-.desktop-native .site-sidebar .year-insight-year{grid-area:year!important}
-.desktop-native .site-sidebar .year-arrow{grid-area:arrow!important}
-.desktop-native .site-sidebar .year-insight-maincount{display:none!important}
-.desktop-native .site-sidebar .director-copy{padding-left:43px!important}
+.desktop-native .era-screen .site-sidebar .year-insight-year{grid-area:year!important}
+.desktop-native .era-screen .site-sidebar .year-arrow{grid-area:arrow!important}
+.desktop-native .era-screen .site-sidebar .year-insight-maincount{display:none!important}
+.desktop-native .era-screen .site-sidebar .director-copy{padding-left:43px!important}
 
 /* Year chart rollovers must work identically on every Top. */
-.desktop-native .site-sidebar .year-chart{overflow:visible!important}
-.desktop-native .site-sidebar .year-chart-bar{
+.desktop-native .era-screen .site-sidebar .year-chart{overflow:visible!important}
+.desktop-native .era-screen .site-sidebar .year-chart-bar{
   position:relative!important;
   min-width:3px!important;
   height:calc((var(--v) / var(--chart-max,13)) * 100%)!important;
@@ -110,10 +110,10 @@
   cursor:crosshair!important;
   overflow:visible!important;
 }
-.desktop-native .site-sidebar .year-chart-bar:hover,
-.desktop-native .site-sidebar .year-chart-bar:focus-visible,
-.desktop-native .site-sidebar .year-chart-bar.is-highlighted{background:var(--a)!important;opacity:1!important;outline:0!important}
-.desktop-native .site-sidebar .year-chart-bar:after{
+.desktop-native .era-screen .site-sidebar .year-chart-bar:hover,
+.desktop-native .era-screen .site-sidebar .year-chart-bar:focus-visible,
+.desktop-native .era-screen .site-sidebar .year-chart-bar.is-highlighted{background:var(--a)!important;opacity:1!important;outline:0!important}
+.desktop-native .era-screen .site-sidebar .year-chart-bar:after{
   content:attr(data-tip);
   position:absolute;
   z-index:8;
@@ -133,24 +133,24 @@
   pointer-events:none;
   transition:opacity .14s ease,transform .14s ease,visibility 0s linear .14s;
 }
-.desktop-native .site-sidebar .year-chart-bar:hover:after,
-.desktop-native .site-sidebar .year-chart-bar:focus-visible:after{
+.desktop-native .era-screen .site-sidebar .year-chart-bar:hover:after,
+.desktop-native .era-screen .site-sidebar .year-chart-bar:focus-visible:after{
   opacity:1;
   visibility:visible;
   transform:translateX(-50%) translateY(0);
   transition-delay:0s;
 }
-.desktop-native .site-sidebar .year-chart.is-exploring .year-chart-bar:not(.is-highlighted){opacity:.26!important}
+.desktop-native .era-screen .site-sidebar .year-chart.is-exploring .year-chart-bar:not(.is-highlighted){opacity:.26!important}
 
 /* Director rows: one portrait pill per director, same language as the 2000 Top. */
-.desktop-native .site-sidebar .director-row{
+.desktop-native .era-screen .site-sidebar .director-row{
   grid-template-columns:34px minmax(0,1fr)!important;
   align-items:center!important;
   gap:10px!important;
 }
-.desktop-native .site-sidebar .director-row>img,
-.desktop-native .site-sidebar .director-row-avatar,
-.desktop-native .site-sidebar .director-row-avatar-img{
+.desktop-native .era-screen .site-sidebar .director-row>img,
+.desktop-native .era-screen .site-sidebar .director-row-avatar,
+.desktop-native .era-screen .site-sidebar .director-row-avatar-img{
   width:34px!important;
   height:34px!important;
   min-width:34px!important;
@@ -164,7 +164,7 @@
   place-items:center!important;
   font:600 9px/1 Inter,system-ui,sans-serif!important;
 }
-.desktop-native .site-sidebar .director-row-avatar img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+.desktop-native .era-screen .site-sidebar .director-row-avatar img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
 
 /* Missing/curated forgotten-film sections follow the same three-column language. */
 .desktop-native .era-screen .sec[data-kind="ghosts"] .ghost-card{border-radius:0!important}
