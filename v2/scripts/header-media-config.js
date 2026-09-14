@@ -54,6 +54,16 @@
     'rewatched:4':'Les 12 travaux'
   };
 
+  // Give the 2000–2024 era its own warmer, editorial identity instead of echoing
+  // the 1975 red. Loaded before either renderer mounts, so desktop + mobile agree.
+  if(typeof TOPS!=='undefined'&&Array.isArray(TOPS)){
+    const top2000=TOPS.find(top=>top.id==='2000-2024');
+    if(top2000?.theme){
+      top2000.theme.accent='#d8b15a';
+      top2000.theme.secondary='#9a8150';
+    }
+  }
+
   // Portrait optical crops. These are intentionally editorial rather than mathematically centered:
   // faces / figures sit above the film-name block and iconic negative space is preserved where useful.
   const mobileFocus={
