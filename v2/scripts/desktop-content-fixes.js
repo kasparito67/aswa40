@@ -111,6 +111,7 @@
     const yearItem=top.sidebar?.find(item=>item.kind==='year');
     const yearCard=screen.querySelector('.year-insight-card');
     if(yearItem&&yearCard){
+      yearCard.style.setProperty('--chart-max',String(Math.max(1,...(yearItem.bars||[]))));
       const kicker=yearCard.querySelector('.year-insight-kicker span');
       if(kicker)kicker.textContent=yearLabelFor(yearItem);
       yearCard.querySelectorAll('.year-chart-bar').forEach(bar=>{
