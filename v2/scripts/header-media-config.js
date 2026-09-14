@@ -44,6 +44,16 @@
     'rewatched:5':tmdb('/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg')
   };
 
+  // Display-only titles. Canonical movie data remains untouched so modals, links,
+  // metadata and search keep the full film names.
+  const displayTitles={
+    '2000-2024:5':'Batman',
+    'animation:3':'Spiderman',
+    'animation:4':'Nightmare before…',
+    'rewatched:2':'Lord of the Rings',
+    'rewatched:4':'Les 12 travaux'
+  };
+
   // Portrait optical crops. These are intentionally editorial rather than mathematically centered:
   // faces / figures sit above the film-name block and iconic negative space is preserved where useful.
   const mobileFocus={
@@ -94,8 +104,10 @@
   window.ASWA40_HEADER_MEDIA={
     backdrops,
     mobileFocus,
+    displayTitles,
     key,
     backdrop:(top,film)=>backdrops[key(top,film)]||'',
-    focusMobile:(top,film)=>mobileFocus[key(top,film)]||'50% 50%'
+    focusMobile:(top,film)=>mobileFocus[key(top,film)]||'50% 50%',
+    title:(top,film)=>displayTitles[key(top,film)]||film?.title||''
   };
 })();
