@@ -1,0 +1,112 @@
+/* ASWA40 browser performance pass — loaded last.
+   Keeps the visual system intact while avoiding expensive permanent GPU layers.
+   Safari gets a lighter compositing path for full-screen blur/backdrop effects. */
+
+@media (min-width:701px) and (hover:hover) and (pointer:fine){
+  /* Do not reserve compositor layers for every poster/accordion at rest. */
+  .desktop-native .tile,
+  .desktop-native .content,
+  .design-header-media-layer,
+  .design-header-media-layer img,
+  .design1975-media-layer,
+  .design1975-media-layer img{
+    will-change:auto!important;
+  }
+
+  /* Promote only elements participating in a live transition. */
+  .design-header-media-layer.is-active,
+  .design-header-media-layer.is-incoming,
+  .design-header-media-layer.is-outgoing,
+  .design1975-media-layer.is-active,
+  .design1975-media-layer.is-incoming,
+  .design1975-media-layer.is-outgoing{
+    will-change:opacity!important;
+  }
+  .desktop-native .tile.cf-active,
+  .desktop-native .tile.cf-near1,
+  .desktop-native .tile.cf-near2,
+  .desktop-native .tile.cf-near3,
+  .desktop-native .ghost-card.ghost-focus,
+  .desktop-native .ghost-card.ghost-near{
+    will-change:transform,opacity!important;
+  }
+}
+
+/* Graceful fallback for engines without backdrop-filter. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .modal-bg{background:rgba(2,4,5,.76)!important}
+  .film-modal{background:rgba(10,13,15,.96)!important}
+  .era-hud.era-hud-selector,.era-hud-menu{background:rgba(12,13,13,.97)!important}
+  .desktop-native .era-screen[data-top-id="1975-1999"] .sec{background:rgba(11,14,16,.94)!important}
+}
+
+/* Safari/WebKit: large animated filters and nested backdrop blurs are the main
+   source of dropped frames. Use opacity/transform compositing instead. */
+html.browser-safari .design-header-media-layer,
+html.browser-safari .design1975-media-layer{
+  transition:opacity .28s ease!important;
+}
+html.browser-safari .design-header-media-layer img,
+html.browser-safari .design1975-media-layer img{
+  filter:none!important;
+  transform:scale(1.022)!important;
+  transition:transform .34s cubic-bezier(.2,.72,.18,1)!important;
+  will-change:auto!important;
+}
+html.browser-safari .design-header-media-layer.is-active img,
+html.browser-safari .design-header-media-layer.is-outgoing img,
+html.browser-safari .design1975-media-layer.is-active img,
+html.browser-safari .design1975-media-layer.is-outgoing img{
+  transform:scale(1.006)!important;
+}
+
+html.browser-safari .modal-bg{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  background:rgba(2,4,5,.72)!important;
+}
+html.browser-safari .film-modal{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  background:rgba(10,13,15,.95)!important;
+}
+html.browser-safari .era-hud.era-hud-selector,
+html.browser-safari .era-hud-menu,
+html.browser-safari .full-progress{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+html.browser-safari .era-hud.era-hud-selector{background:rgba(14,14,14,.96)!important}
+html.browser-safari .era-hud-menu{background:rgba(12,13,13,.98)!important}
+html.browser-safari .full-progress{background:rgba(10,13,14,.96)!important}
+
+/* Keep the 1975 atmosphere without a continuously blurred fixed surface. */
+html.browser-safari .design1975-content-bg .design1975-bg-layer{
+  background-attachment:scroll!important;
+  filter:none!important;
+  transform:scale(1.035)!important;
+  opacity:0!important;
+}
+html.browser-safari .design1975-content-bg .design1975-bg-layer.is-active{opacity:.28!important}
+html.browser-safari .desktop-native .era-screen[data-top-id="1975-1999"] .sec{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  background:linear-gradient(180deg,rgba(17,21,23,.90),rgba(9,12,14,.88))!important;
+}
+
+/* Poster hover still keeps depth/opacity; skip image filtering across whole grids. */
+html.browser-safari .coverflow-active .tile,
+html.browser-safari .heroTop.coverflow-active .tile,
+html.browser-safari .heroTop .tile.cf-active,
+html.browser-safari .grid[data-flow="rest"] .tile.cf-active,
+html.browser-safari .grid[data-flow="bottom"] .tile.cf-active,
+html.browser-safari .full-grid .tile.cf-active,
+html.browser-safari .ghost-active .ghost-card,
+html.browser-safari .ghost-card.ghost-focus{
+  filter:none!important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .design-header-media-layer,
+  .design1975-media-layer{transition:none!important}
+}
