@@ -4,55 +4,10 @@
 
   const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
-  const escXml=s=>String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const slug=s=>norm(s).replace(/\s+/g,'-');
-  const posterByTitle=new Map();
-  TOPS.forEach(top=>(top.films||[]).forEach(f=>{if(f.img)posterByTitle.set(norm(f.title),f.img)}));
-  const ghostPlaceholder=(title,accent='#e60d45')=>`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900"><rect width="600" height="900" fill="#0b0d0f"/><path d="M0 0h600v8H0z" fill="${accent}"/><text x="42" y="720" fill="#f4f4ef" font-family="Arial,sans-serif" font-size="42" font-weight="700">${escXml(title)}</text><text x="42" y="770" fill="#8e979b" font-family="Arial,sans-serif" font-size="20">ABSENT DU CLASSEMENT</text></svg>`)}`;
 
-  const curatedGhosts={
-    'sci-fi-realiste':[
-      ['Primer','Primer (film)'],['Coherence','Coherence (film)'],['Arrival','Arrival (film)'],['The Andromeda Strain','The Andromeda Strain (film)'],['Aniara','Aniara (film)']
-    ],
-    animation:[
-      ['Fantasia','Fantasia (1940 film)'],['The Wind Rises','The Wind Rises'],['Anomalisa','Anomalisa'],['The Red Turtle','The Red Turtle'],['The Secret of Kells','The Secret of Kells']
-    ],
-    biopics:[
-      ['The Pianist','The Pianist (2002 film)'],['Capote','Capote (film)'],['Gandhi','Gandhi (film)'],['The Elephant Man','The Elephant Man (film)'],['A Beautiful Mind','A Beautiful Mind (film)']
-    ]
-  };
-
-  const ensureGhostSection=top=>{
-    if(!top||top.id==='rewatched')return;
-    if((!top.ghosts||!top.ghosts.length)&&curatedGhosts[top.id]){
-      top.ghosts=curatedGhosts[top.id].map(([title,wiki])=>({
-        title,wiki,
-        copy:'Absent du classement.',
-        img:posterByTitle.get(norm(title))||ghostPlaceholder(title,top.theme?.accent)
-      }));
-    }
-    if(!top.ghosts?.length)return;
-    const hasForgotten=top.sections?.some(s=>s.kind==='ghosts'&&!/ovni/i.test(String(s.title||'')));
-    if(hasForgotten)return;
-    const section={
-      kicker:top.id==='documentaires'?'Aucun vote':'Absents du classement',
-      title:'Les grands oubliés',
-      kind:'ghosts'
-    };
-    const bottomIndex=top.sections?.findIndex(s=>s.kind==='bottom'||/ovni/i.test(String(s.title||'')))??-1;
-    if(bottomIndex>=0)top.sections.splice(bottomIndex,0,section);else top.sections.push(section);
-  };
-
-  TOPS.forEach(top=>{
-    (top.sections||[]).forEach(section=>{if(section.kind==='full')section.title='Le reste'});
-    const year=top.sidebar?.find(item=>item.kind==='year');
-    if(year){
-      const years=String(year.title||'').match(/(?:19|20)\d{2}/g)||[];
-      if(/décennie/i.test(String(year.label||'')))year.label='Décennie reine';
-      else year.label=years.length>1?'Années reines':'Année reine';
-    }
-    ensureGhostSection(top);
-  });
+  // Shared content/section normalization runs before this file on both mobile and
+  // desktop. This file is intentionally DOM-only: do not invent editorial data here.
 
   // app-desktop hydrates closed full-ranking sections lazily. Its binder queries
   // descendants only, so when the hydrated section itself is passed as the root,
