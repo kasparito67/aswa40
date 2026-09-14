@@ -62,14 +62,46 @@
 .desktop-native .era-screen .site-sidebar .director-title{
   --insight:var(--a)!important;
 }
+
+/* Subsection headers are true full-bleed rows inside the black sidebar plane.
+   The hover wash now reaches both edges of the box while preserving the original
+   text/icon alignment that was based on the sidebar's 18px inner gutter. */
+.desktop-native .era-screen .site-sidebar .insight-card,
+.desktop-native .era-screen .site-sidebar .year-toggle,
+.desktop-native .era-screen .site-sidebar .director-toggle{
+  width:calc(100% + 36px)!important;
+  max-width:none!important;
+  margin-left:-18px!important;
+  margin-right:-18px!important;
+  transition:background .18s ease,box-shadow .18s ease,color .18s ease!important;
+}
+.desktop-native .era-screen .site-sidebar .insight-card{
+  padding-left:18px!important;
+  padding-right:18px!important;
+}
+.desktop-native .era-screen .site-sidebar .year-toggle{
+  padding-left:61px!important;
+  padding-right:18px!important;
+}
+.desktop-native .era-screen .site-sidebar .director-toggle{
+  padding-left:18px!important;
+  padding-right:18px!important;
+}
+.desktop-native .era-screen .site-sidebar .year-toggle:before,
+.desktop-native .era-screen .site-sidebar .director-toggle:before{
+  left:18px!important;
+}
+.desktop-native .era-screen .site-sidebar .director-copy{
+  padding-left:43px!important;
+}
 .desktop-native .era-screen .site-sidebar .insight-card:hover,
 .desktop-native .era-screen .site-sidebar .insight-card:focus-visible,
 .desktop-native .era-screen .site-sidebar .year-toggle:hover,
 .desktop-native .era-screen .site-sidebar .year-toggle:focus-visible,
 .desktop-native .era-screen .site-sidebar .director-toggle:hover,
 .desktop-native .era-screen .site-sidebar .director-toggle:focus-within{
-  background:color-mix(in srgb,var(--a) 8%,transparent)!important;
-  box-shadow:inset 2px 0 0 var(--a)!important;
+  background:color-mix(in srgb,var(--a) 10%,transparent)!important;
+  box-shadow:inset 3px 0 0 var(--a)!important;
 }
 
 /* Sidebar disclosure control: just a plus. It becomes a subtle × when open. */
@@ -116,6 +148,10 @@
 }
 
 /* Vertical continuation cue: remove the stem and leave only the V. */
+.desktop-native .hero-scroll-cue{
+  color:rgba(255,255,255,.82)!important;
+  transition:color .18s ease,transform .2s ease!important;
+}
 .desktop-native .hero-scroll-cue:before{display:none!important;content:none!important}
 .desktop-native .hero-scroll-cue:after{
   left:50%!important;
@@ -126,6 +162,10 @@
   border-right:1.7px solid currentColor!important;
   border-bottom:1.7px solid currentColor!important;
   transform:translate(-50%,-70%) rotate(45deg)!important;
+}
+.desktop-native .era-screen .hero-scroll-cue:hover,
+.desktop-native .era-screen .hero-scroll-cue:focus-visible{
+  color:var(--a)!important;
 }
 
 /* Horizontal Top navigation: pure chevrons, no arrow bars or circular UI chrome. */
