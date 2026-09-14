@@ -23,11 +23,27 @@
         letter-spacing:.035em;
       }
       .tmdb-legal-footer-inner{
-        display:flex;
+        display:grid;
+        grid-template-columns:1fr auto 1fr;
+        align-items:center;
+        gap:14px;
+        min-width:0;
+      }
+      .tmdb-legal-attribution{
+        grid-column:2;
+        display:inline-flex;
         align-items:center;
         justify-content:center;
         gap:11px;
         min-width:0;
+      }
+      .tmdb-legal-version{
+        grid-column:3;
+        justify-self:end;
+        white-space:nowrap;
+        color:inherit;
+        font:inherit;
+        letter-spacing:inherit;
       }
       .tmdb-legal-logo-link{
         display:inline-flex;
@@ -51,7 +67,17 @@
           line-height:1.5;
         }
         .tmdb-legal-footer-inner{
+          grid-template-columns:minmax(0,1fr) auto;
+          gap:10px;
+        }
+        .tmdb-legal-attribution{
+          grid-column:1;
+          justify-content:flex-start;
           gap:9px;
+          text-align:left;
+        }
+        .tmdb-legal-version{
+          grid-column:2;
         }
         .tmdb-legal-logo{
           width:50px;
@@ -70,6 +96,9 @@
 
       const inner=document.createElement('div');
       inner.className='tmdb-legal-footer-inner';
+
+      const attribution=document.createElement('div');
+      attribution.className='tmdb-legal-attribution';
 
       const link=document.createElement('a');
       link.className='tmdb-legal-logo-link';
@@ -90,7 +119,12 @@
       text.className='tmdb-legal-copy';
       text.textContent=copy;
 
-      inner.append(link,text);
+      const version=document.createElement('span');
+      version.className='tmdb-legal-version';
+      version.textContent='v 1.0';
+
+      attribution.append(link,text);
+      inner.append(attribution,version);
       footer.appendChild(inner);
       screen.appendChild(footer);
     });
