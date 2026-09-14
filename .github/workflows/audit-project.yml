@@ -6,6 +6,7 @@ on:
       - audit-debug-sept11
       - design-overhaul-sept11
       - design-overhaul-phase-a
+      - audit/prelaunch-2026-09-14
   workflow_dispatch:
 
 permissions:
@@ -23,3 +24,5 @@ jobs:
           node-version: '24'
       - name: Run project audit
         run: node scripts/audit-project.mjs
+      - name: Run prelaunch audit
+        run: node scripts/prelaunch-audit.mjs
