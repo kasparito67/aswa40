@@ -13,6 +13,7 @@
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
   const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const slug=s=>norm(s).replace(/\s+/g,'-');
+  const desktopFine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 
   let state=null;
   let drag=null;
@@ -20,6 +21,10 @@
   let wheelSum=0;
   let wheelLocked=false;
   let wheelTimer=0;
+  let wheelLastAt=0;
+  let wheelLastTrigger=0;
+  let wheelLastAbs=0;
+  let wheelQueue=[];
 
   const ghostCardFor=(top,index)=>stage.querySelector(`.era-screen[data-top-id="${CSS.escape(top.id)}"] .ghost-card[data-ghost="${index}"]`);
   const posterFor=(top,index,ghost,card=null)=>{
@@ -58,26 +63,44 @@
     modal.style.opacity='';
   };
 
+  const drainWheelQueue=()=>{
+    if(!desktopFine||animating||!wheelQueue.length||!state||!modalBg.classList.contains('open')||!modal.classList.contains('is-ghost-detail'))return;
+    const dir=wheelQueue.shift();
+    step(dir);
+  };
+  const enqueueWheel=dir=>{
+    if(wheelQueue.length>=6)return;
+    wheelQueue.push(dir);
+    drainWheelQueue();
+  };
+
   const step=dir=>{
     if(!state||animating)return;
     const ghosts=state.top?.ghosts||[];
     if(ghosts.length<2)return;
     const nextIndex=(state.index+dir+ghosts.length)%ghosts.length;
     animating=true;
+    resetVisual();
     const outX=dir>0?-46:46;
     const inX=-outX;
+    const outDuration=desktopFine?78:115;
+    const inDuration=desktopFine?102:145;
     const outgoing=modal.animate(
       [{transform:'translate3d(0,0,0)',opacity:1},{transform:`translate3d(${outX}px,0,0)`,opacity:.22}],
-      {duration:115,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'}
+      {duration:outDuration,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'}
     );
     Promise.resolve(outgoing.finished).catch(()=>{}).then(()=>{
       paint(state.top,nextIndex);
       const incoming=modal.animate(
         [{transform:`translate3d(${inX}px,0,0)`,opacity:.22},{transform:'translate3d(0,0,0)',opacity:1}],
-        {duration:145,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'}
+        {duration:inDuration,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'}
       );
       return Promise.resolve(incoming.finished).catch(()=>{});
-    }).finally(()=>{animating=false;resetVisual()});
+    }).finally(()=>{
+      animating=false;
+      resetVisual();
+      if(desktopFine)queueMicrotask(drainWheelQueue);
+    });
   };
 
   stage.addEventListener('click',event=>{
@@ -133,20 +156,39 @@
   modal.addEventListener('pointerup',finishDrag,true);
   modal.addEventListener('pointercancel',finishDrag,true);
 
-  const resetWheel=()=>{wheelSum=0;wheelLocked=false};
+  const resetWheel=()=>{wheelSum=0;wheelLocked=false;wheelLastAbs=0};
   window.addEventListener('wheel',event=>{
     if(!modalBg.classList.contains('open')||!modal.classList.contains('is-ghost-detail'))return;
     const ax=Math.abs(event.deltaX),ay=Math.abs(event.deltaY);
-    if(ax<3||ay>ax*1.12)return;
+    if(ax<2||ay>ax*1.12)return;
     event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
-    clearTimeout(wheelTimer);wheelTimer=setTimeout(resetWheel,48);
+
+    const now=performance.now();
+    const gap=now-wheelLastAt;
+    const strongNewImpulse=desktopFine&&wheelLocked&&now-wheelLastTrigger>45&&ax>=7&&ax>Math.max(7,wheelLastAbs*1.28);
+    if((desktopFine&&gap>38)||(!desktopFine&&gap>48)||strongNewImpulse)resetWheel();
+    wheelLastAt=now;
+    wheelLastAbs=ax;
+
+    clearTimeout(wheelTimer);
+    wheelTimer=setTimeout(resetWheel,desktopFine?34:48);
     if(wheelLocked)return;
+
     wheelSum+=event.deltaX;
-    if(Math.abs(wheelSum)<46)return;
+    if(desktopFine&&!animating){
+      const visual=Math.max(-26,Math.min(26,-wheelSum*.34));
+      modal.style.transition='none';
+      modal.style.transform=`translate3d(${visual}px,0,0)`;
+      modal.style.opacity=String(Math.max(.91,1-Math.abs(visual)/340));
+    }
+
+    if(Math.abs(wheelSum)<(desktopFine?30:46))return;
     wheelLocked=true;
+    wheelLastTrigger=now;
     const dir=wheelSum>0?1:-1;
     wheelSum=0;
-    step(dir);
+    resetVisual();
+    if(desktopFine)enqueueWheel(dir);else step(dir);
   },{capture:true,passive:false});
 
   window.addEventListener('keydown',event=>{
@@ -158,7 +200,7 @@
 
   new MutationObserver(()=>{
     if(modalBg.classList.contains('open'))return;
-    state=null;drag=null;animating=false;resetWheel();resetVisual();
+    state=null;drag=null;animating=false;wheelQueue=[];resetWheel();resetVisual();
     delete modal.dataset.ghostTopId;delete modal.dataset.ghostIndex;
   }).observe(modalBg,{attributes:true,attributeFilter:['class']});
 })();
