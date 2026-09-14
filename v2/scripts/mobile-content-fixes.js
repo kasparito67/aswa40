@@ -13,16 +13,47 @@
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
   const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
   const slug=s=>norm(s).replace(/\s+/g,'-');
+  const imageCache=new Map();
+  const imagePending=new Map();
+
+  const wikiImage=pageName=>{
+    if(!pageName)return Promise.resolve('');
+    if(imageCache.has(pageName))return Promise.resolve(imageCache.get(pageName));
+    if(imagePending.has(pageName))return imagePending.get(pageName);
+    const request=fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(String(pageName).replace(/ /g,'_'))}`)
+      .then(r=>r.ok?r.json():null)
+      .then(data=>data?.originalimage?.source||data?.thumbnail?.source||'')
+      .catch(()=>'')
+      .then(src=>{imageCache.set(pageName,src);imagePending.delete(pageName);return src});
+    imagePending.set(pageName,request);
+    return request;
+  };
+
+  const hydrateGhostImage=(card,ghost)=>{
+    if(!card||!ghost?.wiki||card.dataset.mobileGhostImageBound==='1')return;
+    card.dataset.mobileGhostImageBound='1';
+    wikiImage(ghost.wiki).then(src=>{
+      if(!src||!card.isConnected)return;
+      const img=card.querySelector('img');if(!img)return;
+      const preload=new Image();
+      preload.referrerPolicy='no-referrer';
+      preload.onload=()=>{img.src=src;ghost.img=src;card.classList.add('has-real-ghost-image')};
+      preload.src=src;
+    });
+  };
 
   const enhance=()=>{
     stage.querySelectorAll('.ghost-card:not([data-r])').forEach(card=>{
-      if(card.dataset.mobileGhostBound==='1')return;
-      card.dataset.mobileGhostBound='1';
-      card.classList.add('is-clickable-ghost');
       const screen=card.closest('.era-screen');
       const top=TOPS.find(t=>t.id===screen?.dataset.topId);
       const ghost=top?.ghosts?.[Number(card.dataset.ghost)];
-      if(ghost)card.setAttribute('aria-label',`Ouvrir la fiche de ${ghost.title}`);
+      if(!ghost)return;
+      if(card.dataset.mobileGhostBound!=='1'){
+        card.dataset.mobileGhostBound='1';
+        card.classList.add('is-clickable-ghost');
+        card.setAttribute('aria-label',`Ouvrir la fiche de ${ghost.title}`);
+      }
+      hydrateGhostImage(card,ghost);
     });
   };
 
