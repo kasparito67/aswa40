@@ -2,6 +2,15 @@
   const desktop=window.__ASWA40_FORCE_DESKTOP__===true||matchMedia('(min-width:701px) and (hover:hover) and (pointer:fine)').matches;
   if(!desktop)return;
 
+  const safari=document.documentElement.classList.contains('browser-safari');
+  const routeMatch=String(location.pathname||'').match(/^\/tops\/([^/]+)\/?$/);
+  const initialTopId=routeMatch?decodeURIComponent(routeMatch[1]):(TOPS?.[0]?.id||'1975-1999');
+  const deliverySource=src=>{
+    const value=String(src||'');
+    if(!value.includes('image.tmdb.org/t/p/'))return value;
+    const size=(safari||innerWidth<=1680)?'w1280':'original';
+    return value.replace(/\/t\/p\/(?:original|w\d+)\//,`/t/p/${size}/`);
+  };
   const fallbacks={
     'Star Wars':'https://image.tmdb.org/t/p/original/aJCtkxLLzkk1pECehVjKHA2lBgw.jpg',
     'Apocalypse Now':'https://image.tmdb.org/t/p/original/9Qs9oyn4iE8QtQjGZ0Hp2WyYNXT.jpg',
@@ -9,9 +18,7 @@
     'Pulp Fiction':'https://image.tmdb.org/t/p/original/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg',
     'Fargo':'https://image.tmdb.org/t/p/original/36P236xmuc8aWmXK7YkOM5EAKbA.jpg'
   };
-  // The curated Top 5 hero sources are authoritative for this design pass.
-  // This prevents stale/wrong media metadata from overriding the intended film.
-  const tmdbBackdrop=f=>fallbacks[f?.title]||f?.backdrop||f?.backdropPath&&`https://image.tmdb.org/t/p/original${f.backdropPath}`||f?.img||'';
+  const tmdbBackdrop=f=>deliverySource(fallbacks[f?.title]||f?.backdrop||f?.backdropPath&&`https://image.tmdb.org/t/p/original${f.backdropPath}`||f?.img||'');
 
   function setText(el,text){if(el)el.textContent=text}
   function renameSidebar(screen){
@@ -57,12 +64,12 @@
     screen.classList.add('design-1975');
 
     const sources=films.map(tmdbBackdrop);
-    sources.forEach(src=>{if(src){const im=new Image();im.decoding='async';im.src=src}});
+    const isInitialTop=initialTopId==='1975-1999';
 
     const stack=document.createElement('div');
     stack.className='design1975-media-stack';
     stack.setAttribute('aria-hidden','true');
-    stack.innerHTML=sources.map((src,i)=>`<div class="design1975-media-layer${i===0?' is-active':''}" data-design-media="${i}"><img src="${src}" alt="" decoding="async" fetchpriority="${i===0?'high':'low'}"></div>`).join('');
+    stack.innerHTML=sources.map((src,i)=>`<div class="design1975-media-layer${i===0?' is-active':''}" data-design-media="${i}"><img ${i===0?`src="${src}" loading="${isInitialTop?'eager':'lazy'}"`:`data-src="${src}" loading="lazy"`} alt="" decoding="async" fetchpriority="${i===0&&isInitialTop?'high':'low'}"></div>`).join('');
     hero.prepend(stack);
 
     const nav=document.createElement('nav');
@@ -79,13 +86,30 @@
     const contentBg=document.createElement('div');
     contentBg.className='design1975-content-bg';
     contentBg.setAttribute('aria-hidden','true');
-    contentBg.innerHTML=sources.map((src,i)=>`<div class="design1975-bg-layer${i===0?' is-active':''}" data-design-bg="${i}" style="background-image:url('${src.replaceAll("'","%27")}')"></div>`).join('');
+    contentBg.innerHTML=sources.map((src,i)=>`<div class="design1975-bg-layer${i===0?' is-active':''}" data-design-bg="${i}" data-bg-src="${src.replaceAll('"','&quot;')}"${i===0?` style="background-image:url('${src.replaceAll("'","%27")}')"`:''}></div>`).join('');
     screen.insertBefore(contentBg,screen.querySelector('.shell'));
 
     const media=[...stack.querySelectorAll('.design1975-media-layer')];
     const bgs=[...contentBg.querySelectorAll('.design1975-bg-layer')];
     const buttons=[...nav.querySelectorAll('button')];
     let locked=0,shown=0,hover=null,token=0;
+
+    const ensureImage=i=>{
+      const img=media[i]?.querySelector('img');
+      const bg=bgs[i];
+      if(bg&&!bg.style.backgroundImage){
+        const bgSrc=bg.dataset.bgSrc;
+        if(bgSrc)bg.style.backgroundImage=`url("${bgSrc.replaceAll('"','%22')}")`;
+      }
+      if(!img)return Promise.resolve();
+      if(!img.getAttribute('src')){
+        const src=img.dataset.src;
+        if(src){img.src=src;delete img.dataset.src}
+      }
+      if(img.complete&&img.naturalWidth)return Promise.resolve();
+      if(img.decode)return img.decode().catch(()=>{});
+      return new Promise(resolve=>{img.addEventListener('load',resolve,{once:true});img.addEventListener('error',resolve,{once:true})});
+    };
 
     const renderMenu=()=>{
       const previewing=hover!==null&&hover!==locked;
@@ -97,17 +121,22 @@
     };
     const switchHero=i=>{
       if(i===shown){bgs.forEach((bg,n)=>bg.classList.toggle('is-active',n===i));progress.style.setProperty('--design-index',i);return}
-      const current=media[shown],next=media[i],my=++token;
-      media.forEach((layer,n)=>{if(n!==shown&&n!==i)layer.classList.remove('is-active','is-incoming','is-outgoing')});
-      current.classList.remove('is-active','is-incoming');current.classList.add('is-outgoing');
-      next.classList.remove('is-active','is-outgoing');next.classList.add('is-incoming');next.getBoundingClientRect();
-      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      const my=++token;
+      ensureImage(i).then(()=>{
         if(my!==token)return;
-        next.classList.remove('is-incoming');next.classList.add('is-active');shown=i;
-        bgs.forEach((bg,n)=>bg.classList.toggle('is-active',n===i));
-        progress.style.setProperty('--design-index',i);
-        setTimeout(()=>{if(my===token)current.classList.remove('is-outgoing')},480);
-      }));
+        const current=media[shown],next=media[i];
+        if(!current||!next)return;
+        media.forEach((layer,n)=>{if(n!==shown&&n!==i)layer.classList.remove('is-active','is-incoming','is-outgoing')});
+        current.classList.remove('is-active','is-incoming');current.classList.add('is-outgoing');
+        next.classList.remove('is-active','is-outgoing');next.classList.add('is-incoming');next.getBoundingClientRect();
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          if(my!==token)return;
+          next.classList.remove('is-incoming');next.classList.add('is-active');shown=i;
+          bgs.forEach((bg,n)=>bg.classList.toggle('is-active',n===i));
+          progress.style.setProperty('--design-index',i);
+          setTimeout(()=>{if(my===token)current.classList.remove('is-outgoing')},360);
+        }));
+      });
     };
     const preview=i=>{hover=i;renderMenu();switchHero(i)};
     const clear=()=>{hover=null;renderMenu();switchHero(locked)};
