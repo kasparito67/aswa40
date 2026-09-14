@@ -1,0 +1,140 @@
+/* ASWA40 desktop polish · sidebar details + header title scale
+   Keeps the validated layouts intact and only corrects the two visual issues
+   identified in review: floating sidebar disclosures and consistent title art. */
+
+/* --------------------------------------------------------------------------
+   Header title scale
+   Tops 3–6 use normalized 1920×1080 artwork. `contain` made the actual lettering
+   tiny because most of that canvas is transparent. Crop those assets optically
+   using the same recipe already validated on mobile / the 1975 title treatment.
+   -------------------------------------------------------------------------- */
+.desktop-native .era-screen[data-top-id="sci-fi-realiste"].design-header-system .hero-title-art-wrap,
+.desktop-native .era-screen[data-top-id="animation"].design-header-system .hero-title-art-wrap,
+.desktop-native .era-screen[data-top-id="biopics"].design-header-system .hero-title-art-wrap,
+.desktop-native .era-screen[data-top-id="documentaires"].design-header-system .hero-title-art-wrap{
+  top:18px!important;
+  right:max(24px,calc((100vw - 1240px)/2))!important;
+  left:auto!important;
+  width:clamp(430px,37vw,610px)!important;
+  max-width:46vw!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:800/330!important;
+  display:block!important;
+  overflow:hidden!important;
+  transform:none!important;
+}
+.desktop-native .era-screen[data-top-id="sci-fi-realiste"].design-header-system .hero-title-art,
+.desktop-native .era-screen[data-top-id="animation"].design-header-system .hero-title-art,
+.desktop-native .era-screen[data-top-id="biopics"].design-header-system .hero-title-art,
+.desktop-native .era-screen[data-top-id="documentaires"].design-header-system .hero-title-art{
+  position:absolute!important;
+  width:240%!important;
+  max-width:none!important;
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  left:-68%!important;
+  top:-95.455%!important;
+  object-fit:initial!important;
+  object-position:initial!important;
+  transform:none!important;
+  filter:none!important;
+}
+
+/* Re.Watch is a tight asset, like 2000–2024. Give it the same desktop scale. */
+.desktop-native .era-screen[data-top-id="rewatched"].design-header-system .hero-title-art-wrap{
+  width:clamp(410px,36vw,610px)!important;
+  max-width:46vw!important;
+  min-height:120px!important;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar disclosures
+   The parent sidebar remains the black editorial rail. Expanded content no
+   longer becomes a nested UI card: no rounded container, no outline, no fill.
+   -------------------------------------------------------------------------- */
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-detail,
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-detail,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-detail,
+.desktop-native .era-screen.design-editorial-body .insight-detail,
+.desktop-native .era-screen.design-editorial-body .year-insight-detail,
+.desktop-native .era-screen.design-editorial-body .director-detail{
+  background:transparent!important;
+  border:0!important;
+  border-width:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-item.is-open .insight-detail,
+.desktop-native .era-screen.design-editorial-body .insight-item.is-open .insight-detail{
+  border:0!important;
+  border-width:0!important;
+  background:transparent!important;
+}
+
+/* Float the insight copy beneath the heading, aligned with its text column. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-detail ul,
+.desktop-native .era-screen.design-editorial-body .insight-detail ul{
+  margin:0!important;
+  padding-left:43px!important;
+  padding-right:2px!important;
+  color:rgba(255,255,255,.68)!important;
+  font:500 13px/1.52 Inter,system-ui,sans-serif!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-item.is-open .insight-detail ul,
+.desktop-native .era-screen.design-editorial-body .insight-item.is-open .insight-detail ul{
+  padding-top:3px!important;
+  padding-bottom:23px!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-detail li,
+.desktop-native .era-screen.design-editorial-body .insight-detail li{
+  padding-left:2px;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-detail li+li,
+.desktop-native .era-screen.design-editorial-body .insight-detail li+li{
+  margin-top:9px!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .insight-detail li::marker{
+  color:var(--design-red)!important;
+}
+.desktop-native .era-screen.design-editorial-body .insight-detail li::marker{
+  color:var(--editorial-accent)!important;
+}
+
+/* Years and directors use the same floating left edge. */
+.desktop-native .era-screen[data-top-id="1975-1999"] .year-insight-detail-inner,
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-detail-inner,
+.desktop-native .era-screen.design-editorial-body .year-insight-detail-inner,
+.desktop-native .era-screen.design-editorial-body .director-detail-inner{
+  padding-left:43px!important;
+  padding-right:0!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-detail-inner,
+.desktop-native .era-screen.design-editorial-body .director-detail-inner{
+  padding-top:0!important;
+  padding-bottom:16px!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-list,
+.desktop-native .era-screen.design-editorial-body .director-list{
+  gap:0!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-row,
+.desktop-native .era-screen.design-editorial-body .director-row{
+  margin:0!important;
+  padding:12px 0!important;
+  border:0!important;
+  border-bottom:1px solid rgba(255,255,255,.10)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-row:last-child,
+.desktop-native .era-screen.design-editorial-body .director-row:last-child{
+  border-bottom:0!important;
+}
+.desktop-native .era-screen[data-top-id="1975-1999"] .director-row:hover,
+.desktop-native .era-screen.design-editorial-body .director-row:hover{
+  background:transparent!important;
+}
