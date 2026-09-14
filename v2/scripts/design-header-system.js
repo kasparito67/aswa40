@@ -18,6 +18,7 @@
     if(index===0&&top?.hero?.image)return top.hero.image;
     return top?.hero?.image||film?.img||'';
   };
+  const displayTitle=(top,film)=>typeof mediaConfig.title==='function'?mediaConfig.title(top,film):(film?.title||'');
 
   function enhance(screen){
     if(!screen||screen.dataset.designHeaderSystem==='1'||screen.dataset.topId==='1975-1999'||typeof TOPS==='undefined'||!Array.isArray(TOPS))return false;
@@ -44,8 +45,9 @@
     nav.setAttribute('aria-label',`Top 5 — ${top.label}`);
     nav.innerHTML=films.map((film,i)=>{
       const year=film.year?`<span class="year">${esc(film.year)}</span>`:'';
-      const long=String(film.title||'').length>24?' is-long':'';
-      return `<button type="button" data-design-header-index="${i}" class="${i===0?'is-locked':''}${long}"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="film-name">${esc(film.title)}</span>${year}</button>`;
+      const title=displayTitle(top,film);
+      const long=String(title||'').length>24?' is-long':'';
+      return `<button type="button" data-design-header-index="${i}" class="${i===0?'is-locked':''}${long}" aria-label="${esc(film.title)}"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="film-name">${esc(title)}</span>${year}</button>`;
     }).join('');
     hero.append(nav);
 
