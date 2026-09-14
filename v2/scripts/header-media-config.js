@@ -41,11 +41,15 @@
     'rewatched:2':tmdb('/oiwc338EoBgS4sEI2ixAny4KQKg.jpg'),
     'rewatched:3':tmdb('/5bzPWQ2dFUl2aZKkp7ILJVVkRed.jpg'),
     'rewatched:4':tmdb('/yQ0Nn4KIiLf60LTMDjEhRzPqTta.jpg'),
-    'rewatched:5':tmdb('/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg')
+    'rewatched:5':tmdb('/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg'),
+
+    'films-de-guerre:1':'https://image.tmdb.org/t/p/original/yozBWKbyeXtPGN75PlHurOaVvEz.jpg',
+    'films-de-guerre:2':'https://image.tmdb.org/t/p/original/8viWxsL4lwmQZB8QHOCHwMvBGXd.jpg',
+    'films-de-guerre:3':'https://image.tmdb.org/t/p/original/mUxmb6Nbk7KrM3C8dZs6zH9rMjq.jpg',
+    'films-de-guerre:4':'https://image.tmdb.org/t/p/original/hsDyfAk2ml82IrpPC4AHvxvuTsn.jpg',
+    'films-de-guerre:5':'https://image.tmdb.org/t/p/original/1Jpkm9qZcsT0mSyVXgs4VlGjPNI.jpg'
   };
 
-  // Display-only titles. Canonical movie data remains untouched so modals, links,
-  // metadata and search keep the full film names.
   const displayTitles={
     '2000-2024:5':'Batman',
     'animation:3':'Spiderman',
@@ -54,8 +58,6 @@
     'rewatched:4':'Les 12 travaux'
   };
 
-  // Give the 2000–2024 era its own warmer, editorial identity instead of echoing
-  // the 1975 red. Loaded before either renderer mounts, so desktop + mobile agree.
   if(typeof TOPS!=='undefined'&&Array.isArray(TOPS)){
     const top2000=TOPS.find(top=>top.id==='2000-2024');
     if(top2000?.theme){
@@ -64,60 +66,17 @@
     }
   }
 
-  // Portrait optical crops. These are intentionally editorial rather than mathematically centered:
-  // faces / figures sit above the film-name block and iconic negative space is preserved where useful.
   const mobileFocus={
-    '1975-1999:1':'50% 43%',
-    '1975-1999:2':'50% 45%',
-    '1975-1999:3':'54% 43%',
-    '1975-1999:4':'50% 42%',
-    '1975-1999:5':'50% 41%',
-
-    '2000-2024:1':'50% 41%',
-    '2000-2024:2':'50% 40%',
-    '2000-2024:3':'50% 43%',
-    '2000-2024:4':'54% 38%',
-    '2000-2024:5':'50% 40%',
-
-    'sci-fi-realiste:1':'52% 42%',
-    'sci-fi-realiste:2':'50% 42%',
-    'sci-fi-realiste:3':'46% 45%',
-    'sci-fi-realiste:4':'50% 42%',
-    'sci-fi-realiste:5':'50% 39%',
-
-    'animation:1':'57% 44%',
-    'animation:2':'50% 43%',
-    'animation:3':'50% 42%',
-    'animation:4':'50% 39%',
-    'animation:5':'50% 40%',
-
-    'biopics:1':'50% 39%',
-    'biopics:2':'52% 41%',
-    'biopics:3':'54% 38%',
-    'biopics:4':'50% 40%',
-    'biopics:5':'54% 40%',
-
-    'documentaires:1':'50% 42%',
-    'documentaires:2':'50% 42%',
-    'documentaires:3':'52% 45%',
-    'documentaires:4':'44% 43%',
-    'documentaires:5':'50% 42%',
-
-    'rewatched:1':'50% 43%',
-    'rewatched:2':'50% 41%',
-    'rewatched:3':'50% 42%',
-    'rewatched:4':'50% 42%',
-    'rewatched:5':'50% 40%'
+    '1975-1999:1':'50% 43%','1975-1999:2':'50% 45%','1975-1999:3':'54% 43%','1975-1999:4':'50% 42%','1975-1999:5':'50% 41%',
+    '2000-2024:1':'50% 41%','2000-2024:2':'50% 40%','2000-2024:3':'50% 43%','2000-2024:4':'54% 38%','2000-2024:5':'50% 40%',
+    'sci-fi-realiste:1':'52% 42%','sci-fi-realiste:2':'50% 42%','sci-fi-realiste:3':'46% 45%','sci-fi-realiste:4':'50% 42%','sci-fi-realiste:5':'50% 39%',
+    'animation:1':'57% 44%','animation:2':'50% 43%','animation:3':'50% 42%','animation:4':'50% 39%','animation:5':'50% 40%',
+    'biopics:1':'50% 39%','biopics:2':'52% 41%','biopics:3':'54% 38%','biopics:4':'50% 40%','biopics:5':'54% 40%',
+    'documentaires:1':'50% 42%','documentaires:2':'50% 42%','documentaires:3':'52% 45%','documentaires:4':'44% 43%','documentaires:5':'50% 42%',
+    'rewatched:1':'50% 43%','rewatched:2':'50% 41%','rewatched:3':'50% 42%','rewatched:4':'50% 42%','rewatched:5':'50% 40%',
+    'films-de-guerre:1':'50% 42%','films-de-guerre:2':'50% 42%','films-de-guerre:3':'50% 42%','films-de-guerre:4':'50% 42%','films-de-guerre:5':'50% 42%'
   };
 
   const key=(top,film)=>`${top?.id||''}:${film?.rank??''}`;
-  window.ASWA40_HEADER_MEDIA={
-    backdrops,
-    mobileFocus,
-    displayTitles,
-    key,
-    backdrop:(top,film)=>backdrops[key(top,film)]||'',
-    focusMobile:(top,film)=>mobileFocus[key(top,film)]||'50% 50%',
-    title:(top,film)=>displayTitles[key(top,film)]||film?.title||''
-  };
+  window.ASWA40_HEADER_MEDIA={backdrops,mobileFocus,displayTitles,key,backdrop:(top,film)=>backdrops[key(top,film)]||'',focusMobile:(top,film)=>mobileFocus[key(top,film)]||'50% 50%',title:(top,film)=>displayTitles[key(top,film)]||film?.title||''};
 })();
