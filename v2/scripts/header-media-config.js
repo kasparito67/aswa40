@@ -41,7 +41,13 @@
     'rewatched:2':tmdb('/oiwc338EoBgS4sEI2ixAny4KQKg.jpg'),
     'rewatched:3':tmdb('/5bzPWQ2dFUl2aZKkp7ILJVVkRed.jpg'),
     'rewatched:4':tmdb('/yQ0Nn4KIiLf60LTMDjEhRzPqTta.jpg'),
-    'rewatched:5':tmdb('/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg')
+    'rewatched:5':tmdb('/ih2xVgeMS8R5WUetYE8Mr9hVTlB.jpg'),
+
+    'films-de-guerre:1':'https://image.tmdb.org/t/p/original/yozBWKbyeXtPGN75PlHurOaVvEz.jpg',
+    'films-de-guerre:2':'https://image.tmdb.org/t/p/original/8viWxsL4lwmQZB8QHOCHwMvBGXd.jpg',
+    'films-de-guerre:3':'https://image.tmdb.org/t/p/original/mUxmb6Nbk7KrM3C8dZs6zH9rMjq.jpg',
+    'films-de-guerre:4':'https://image.tmdb.org/t/p/original/hsDyfAk2ml82IrpPC4AHvxvuTsn.jpg',
+    'films-de-guerre:5':'https://image.tmdb.org/t/p/original/1Jpkm9qZcsT0mSyVXgs4VlGjPNI.jpg'
   };
 
   // Display-only titles. Canonical movie data remains untouched so modals, links,
@@ -107,7 +113,13 @@
     'rewatched:2':'50% 41%',
     'rewatched:3':'50% 42%',
     'rewatched:4':'50% 42%',
-    'rewatched:5':'50% 40%'
+    'rewatched:5':'50% 40%',
+
+    'films-de-guerre:1':'50% 42%',
+    'films-de-guerre:2':'50% 42%',
+    'films-de-guerre:3':'50% 42%',
+    'films-de-guerre:4':'50% 42%',
+    'films-de-guerre:5':'50% 42%'
   };
 
   const key=(top,film)=>`${top?.id||''}:${film?.rank??''}`;
