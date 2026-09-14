@@ -25,7 +25,7 @@ async function diagnostics(page,label){
 try{
   const dc=await browser.newContext({viewport:{width:1440,height:900}});const d=await dc.newPage();await diagnostics(d,'desktop');
   await d.goto(`http://127.0.0.1:${port}/tops/1975-1999`,{waitUntil:'domcontentloaded'});await d.waitForSelector('.era-screen.is-active-top');
-  const side= d.locator('.era-screen.is-active-top .site-sidebar');
+  const side=d.locator('.era-screen.is-active-top .site-sidebar');
   const card=side.locator('.insight-card').first();
   const geo=await d.evaluate(()=>{const s=document.querySelector('.era-screen.is-active-top .site-sidebar').getBoundingClientRect(),c=document.querySelector('.era-screen.is-active-top .insight-card').getBoundingClientRect();return{sL:s.left,sR:s.right,cL:c.left,cR:c.right,r:getComputedStyle(document.querySelector('.era-screen.is-active-top .insight-card')).borderRadius}});
   assert(Math.abs(geo.sL-geo.cL)<2&&Math.abs(geo.sR-geo.cR)<2,'desktop sidebar hover row is not full bleed');
@@ -40,6 +40,31 @@ try{
   const full=d.locator('.era-screen.is-active-top .sec[data-kind="full"]');await full.locator('.toggle').click();await d.waitForTimeout(80);
   const before=await full.locator('.full-grid .tile').count();const more=full.locator('.full-reveal-button');
   if(await more.isVisible()){await more.click();await d.waitForTimeout(260);const after=await full.locator('.full-grid .tile').count();assert(after>before,'desktop Voir plus did not append films')}
+
+  // Rapid trackpad swipes must queue rather than disappear while the 210ms modal
+  // transition is still running. Three discrete swipes should land exactly 3 cards on.
+  await d.locator('.era-screen.is-active-top .heroTop .tile').first().click();
+  await d.waitForSelector('#modalBg.open');
+  const expectedAfterThree=await d.evaluate(()=>TOPS.find(t=>t.id==='2000-2024').films[3].title);
+  for(let i=0;i<3;i++){
+    await d.evaluate(()=>window.dispatchEvent(new WheelEvent('wheel',{deltaX:72,deltaY:0,bubbles:true,cancelable:true})));
+    await d.waitForTimeout(80);
+  }
+  await d.waitForTimeout(720);
+  const afterSwipe=(await d.locator('#modalTitle').textContent()).trim();
+  assert(afterSwipe===expectedAfterThree,`desktop rapid modal swipes landed on '${afterSwipe}', expected '${expectedAfterThree}'`);
+  await d.locator('#modalClose').click();
+
+  // Forgotten films are a real section on desktop too, not only a mobile patch.
+  await d.goto(`http://127.0.0.1:${port}/tops/documentaires`,{waitUntil:'domcontentloaded'});await d.waitForSelector('.era-screen.is-active-top');
+  const desktopGhostSec=d.locator('.era-screen.is-active-top .sec[data-kind="ghosts"]');
+  assert(await desktopGhostSec.count()===1,'desktop documentaires: Grands oubliés section missing');
+  if(await desktopGhostSec.count()){
+    await desktopGhostSec.locator('.toggle').click();await d.waitForTimeout(100);
+    const ghosts=desktopGhostSec.locator('.ghost-card');
+    assert(await ghosts.count()===7,`desktop documentaires: expected 7 forgotten films, got ${await ghosts.count()}`);
+    if(await ghosts.count()>=5){await ghosts.nth(4).click();await d.waitForSelector('#modalBg.open');assert((await d.locator('#modalTitle').textContent()).trim()==='Harlan County, USA','desktop documentary identity fix did not reach modal');await d.locator('#modalClose').click()}
+  }
   await dc.close();
 
   const mc=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const m=await mc.newPage();await diagnostics(m,'mobile');
@@ -59,7 +84,11 @@ try{
 
   await m.goto(`http://127.0.0.1:${port}/tops/documentaires`,{waitUntil:'domcontentloaded'});await m.waitForSelector('.era-screen.mobile-cinema-header');
   const ghostSec=m.locator('.sec[data-kind="ghosts"]');assert(await ghostSec.count()===1,'mobile documentaires: Grands oubliés section missing');
-  if(await ghostSec.count()){await ghostSec.locator('.toggle').click();await m.waitForTimeout(80);const ghost=ghostSec.locator('.ghost-card').first();assert(await ghost.count()>0,'mobile documentaires: no forgotten-film cards');if(await ghost.count()){await ghost.click();await m.waitForSelector('#modalBg.open',{timeout:5000});assert((await m.locator('#modalTitle').textContent()).trim().length>0,'mobile forgotten-film modal did not populate')}}
+  if(await ghostSec.count()){
+    await ghostSec.locator('.toggle').click();await m.waitForTimeout(100);
+    const ghosts=ghostSec.locator('.ghost-card');assert(await ghosts.count()===7,`mobile documentaires: expected 7 forgotten films, got ${await ghosts.count()}`);
+    if(await ghosts.count()>=5){await ghosts.nth(4).click();await m.waitForSelector('#modalBg.open',{timeout:5000});assert((await m.locator('#modalTitle').textContent()).trim()==='Harlan County, USA','mobile documentary identity fix did not reach modal')}
+  }
   await mc.close();
 }finally{await browser.close();server.close()}
 
