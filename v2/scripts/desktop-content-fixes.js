@@ -128,13 +128,18 @@
       const rows=[...directorCard.querySelectorAll('.director-row')];
       rows.forEach((row,i)=>{
         const raw=entries[i];
-        const entry=Array.isArray(raw)?{name:raw[0],films:raw[1]}:raw||{};
+        const legacyEntry=Array.isArray(raw);
+        const entry=legacyEntry?{name:raw[0],films:raw[1]}:raw||{};
         const name=entry.name||row.querySelector('b')?.textContent||'';
         const directImg=row.querySelector(':scope > img');
-        if(directImg){
+        // Object-based entries (Top 2000) already carry real director portraits.
+        // Array-based legacy entries used film posters as placeholder “faces”; discard
+        // those and replace them with a real portrait / initials fallback.
+        if(directImg&&!legacyEntry){
           directImg.classList.add('director-row-avatar-img');
           return;
         }
+        if(directImg&&legacyEntry)directImg.remove();
         let avatar=row.querySelector(':scope > .director-row-avatar');
         if(!avatar){avatar=document.createElement('span');avatar.className='director-row-avatar';row.prepend(avatar)}
         hydratePortrait(avatar,name);
