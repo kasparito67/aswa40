@@ -54,5 +54,15 @@
     (direction>0?next:prev).click();
   },{capture:true,passive:false});
 
+  // Forgotten films are standalone sheets, not members of the ranked modal rail.
+  // Keep keyboard arrows from accidentally jumping back into the last ranked film.
+  window.addEventListener('keydown',event=>{
+    if(!modalBg.classList.contains('open')||!modal.classList.contains('is-ghost-detail'))return;
+    if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+  },{capture:true});
+
   new MutationObserver(()=>{if(!modalBg.classList.contains('open'))reset()}).observe(modalBg,{attributes:true,attributeFilter:['class']});
 })();
