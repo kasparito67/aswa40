@@ -31,6 +31,7 @@
         // DOM-only desktop polish and interaction fixes.
         await load('scripts/desktop-content-fixes.js');
         await load('scripts/app-desktop.js');
+        await load('scripts/ghost-modal-rail.js');
         await load('scripts/modal-swipe-patch.js');
         await load('scripts/top-nav.js');
         await load('scripts/parallax.js');
@@ -41,6 +42,7 @@
         await load('scripts/runtime.js');
         await load('scripts/app.js');
         await load('scripts/mobile-content-fixes.js');
+        await load('scripts/ghost-modal-rail.js');
         // parallax.js exits immediately on mobile, so do not download/parse it here.
       }
     }catch(err){
