@@ -22,8 +22,6 @@
   let wheelLocked=false;
   let wheelTimer=0;
   let wheelLastAt=0;
-  let wheelLastTrigger=0;
-  let wheelLastAbs=0;
   let wheelQueue=[];
 
   const ghostCardFor=(top,index)=>stage.querySelector(`.era-screen[data-top-id="${CSS.escape(top.id)}"] .ghost-card[data-ghost="${index}"]`);
@@ -69,7 +67,7 @@
     step(dir);
   };
   const enqueueWheel=dir=>{
-    if(wheelQueue.length>=6)return;
+    if(wheelQueue.length>=2)return;
     wheelQueue.push(dir);
     drainWheelQueue();
   };
@@ -156,35 +154,32 @@
   modal.addEventListener('pointerup',finishDrag,true);
   modal.addEventListener('pointercancel',finishDrag,true);
 
-  const resetWheel=()=>{wheelSum=0;wheelLocked=false;wheelLastAbs=0};
+  const resetWheel=()=>{wheelSum=0;wheelLocked=false};
   window.addEventListener('wheel',event=>{
     if(!modalBg.classList.contains('open')||!modal.classList.contains('is-ghost-detail'))return;
     const ax=Math.abs(event.deltaX),ay=Math.abs(event.deltaY);
-    if(ax<2||ay>ax*1.12)return;
+    if(ax<3||ay>ax*1.12)return;
     event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
 
     const now=performance.now();
-    const gap=now-wheelLastAt;
-    const strongNewImpulse=desktopFine&&wheelLocked&&now-wheelLastTrigger>45&&ax>=7&&ax>Math.max(7,wheelLastAbs*1.28);
-    if((desktopFine&&gap>38)||(!desktopFine&&gap>48)||strongNewImpulse)resetWheel();
+    const quietGap=desktopFine?48:48;
+    if(now-wheelLastAt>quietGap)resetWheel();
     wheelLastAt=now;
-    wheelLastAbs=ax;
 
     clearTimeout(wheelTimer);
-    wheelTimer=setTimeout(resetWheel,desktopFine?34:48);
+    wheelTimer=setTimeout(resetWheel,quietGap);
     if(wheelLocked)return;
 
     wheelSum+=event.deltaX;
     if(desktopFine&&!animating){
-      const visual=Math.max(-26,Math.min(26,-wheelSum*.34));
+      const visual=Math.max(-26,Math.min(26,-wheelSum*.30));
       modal.style.transition='none';
       modal.style.transform=`translate3d(${visual}px,0,0)`;
-      modal.style.opacity=String(Math.max(.91,1-Math.abs(visual)/340));
+      modal.style.opacity=String(Math.max(.92,1-Math.abs(visual)/360));
     }
 
-    if(Math.abs(wheelSum)<(desktopFine?30:46))return;
+    if(Math.abs(wheelSum)<(desktopFine?40:46))return;
     wheelLocked=true;
-    wheelLastTrigger=now;
     const dir=wheelSum>0?1:-1;
     wheelSum=0;
     resetVisual();
