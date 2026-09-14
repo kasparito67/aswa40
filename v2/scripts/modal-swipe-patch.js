@@ -32,18 +32,35 @@
     quietTimer=setTimeout(resetGesture,42);
   };
 
-  // app-desktop animates one modal change for ~210ms and ignores another click while
-  // that animation is active. Queue physical swipe intents instead of dropping them:
-  // one detected swipe = one card, regardless of how quickly the next swipe begins.
+  const modalBusy=()=>{
+    const snapshot=modalBg.querySelector('.film-modal:not(#filmModal)');
+    const running=modal.getAnimations?.().some(animation=>animation.playState==='running'||animation.playState==='pending');
+    return Boolean(snapshot||running);
+  };
+
+  // Each physical swipe intent is queued immediately. Instead of guessing the
+  // renderer's animation duration, drain the queue only when the previous modal
+  // transition is actually idle. This guarantees one card per swipe without losing
+  // fast successive gestures on trackpads with variable frame timing.
   const pump=()=>{
     if(pumping||!queue.length||!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail'))return;
     pumping=true;
-    const direction=queue.shift();
-    (direction>0?next:prev).click();
-    pumpTimer=setTimeout(()=>{
-      pumping=false;
-      if(queue.length)requestAnimationFrame(pump);
-    },225);
+    const step=()=>{
+      if(!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail')){
+        pumping=false;
+        queue=[];
+        return;
+      }
+      if(!queue.length){pumping=false;return}
+      if(modalBusy()){
+        pumpTimer=setTimeout(step,18);
+        return;
+      }
+      const direction=queue.shift();
+      (direction>0?next:prev).click();
+      pumpTimer=setTimeout(step,18);
+    };
+    step();
   };
   const enqueue=direction=>{
     // Keep the interaction responsive without allowing an accidental trackpad storm
