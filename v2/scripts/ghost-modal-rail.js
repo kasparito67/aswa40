@@ -79,18 +79,20 @@
     const nextIndex=(state.index+dir+ghosts.length)%ghosts.length;
     animating=true;
     resetVisual();
-    const outX=dir>0?-46:46;
+    const distance=desktopFine?40:46;
+    const outX=dir>0?-distance:distance;
     const inX=-outX;
-    const outDuration=desktopFine?78:115;
-    const inDuration=desktopFine?102:145;
+    const outDuration=desktopFine?58:115;
+    const inDuration=desktopFine?82:145;
+    const fadedOpacity=desktopFine?.34:.22;
     const outgoing=modal.animate(
-      [{transform:'translate3d(0,0,0)',opacity:1},{transform:`translate3d(${outX}px,0,0)`,opacity:.22}],
+      [{transform:'translate3d(0,0,0)',opacity:1},{transform:`translate3d(${outX}px,0,0)`,opacity:fadedOpacity}],
       {duration:outDuration,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'}
     );
     Promise.resolve(outgoing.finished).catch(()=>{}).then(()=>{
       paint(state.top,nextIndex);
       const incoming=modal.animate(
-        [{transform:`translate3d(${inX}px,0,0)`,opacity:.22},{transform:'translate3d(0,0,0)',opacity:1}],
+        [{transform:`translate3d(${inX}px,0,0)`,opacity:fadedOpacity},{transform:'translate3d(0,0,0)',opacity:1}],
         {duration:inDuration,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'}
       );
       return Promise.resolve(incoming.finished).catch(()=>{});
@@ -162,7 +164,7 @@
     event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
 
     const now=performance.now();
-    const quietGap=desktopFine?48:48;
+    const quietGap=48;
     if(now-wheelLastAt>quietGap)resetWheel();
     wheelLastAt=now;
 
