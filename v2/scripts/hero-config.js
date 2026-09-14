@@ -35,6 +35,10 @@
     'rewatched':{
       titleArt:'../assets/header-rewatch.svg',
       titleAlt:'Top 50 Re.Watch'
+    },
+    'films-de-guerre':{
+      titleArt:'../assets/header-war.svg',
+      titleAlt:'Top 25 Films de guerre'
     }
   };
 
