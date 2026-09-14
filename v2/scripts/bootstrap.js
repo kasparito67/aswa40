@@ -31,6 +31,7 @@
         // DOM-only desktop polish and interaction fixes.
         await load('scripts/desktop-content-fixes.js');
         await load('scripts/app-desktop.js');
+        await load('scripts/desktop-accordion-fix.js');
         await load('scripts/ghost-modal-rail.js');
         await load('scripts/modal-swipe-patch.js');
         await load('scripts/top-nav.js');
