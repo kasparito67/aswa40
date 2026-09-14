@@ -13,69 +13,72 @@
   let quietTimer=0;
   let queue=[];
   let pumping=false;
-  let pumpTimer=0;
 
+  const THRESHOLD=30;
+  const FAST_RATE=1.35;
+
+  const modalBusy=()=>Boolean(modalBg.querySelector('.film-modal:not(#filmModal)'));
+  const clearPreview=()=>{
+    if(modalBusy())return;
+    modal.style.transition='';
+    modal.style.transform='';
+    modal.style.opacity='';
+  };
   const resetGesture=()=>{
     sumX=0;
     locked=false;
     lastAbsX=0;
+    clearPreview();
   };
   const resetAll=()=>{
     resetGesture();
     queue=[];
     pumping=false;
     clearTimeout(quietTimer);
-    clearTimeout(pumpTimer);
   };
   const scheduleQuietReset=()=>{
     clearTimeout(quietTimer);
-    quietTimer=setTimeout(resetGesture,42);
+    quietTimer=setTimeout(resetGesture,34);
   };
 
-  const modalBusy=()=>{
-    const snapshot=modalBg.querySelector('.film-modal:not(#filmModal)');
-    const running=modal.getAnimations?.().some(animation=>animation.playState==='running'||animation.playState==='pending');
-    return Boolean(snapshot||running);
+  const accelerateTransition=()=>{
+    requestAnimationFrame(()=>{
+      try{
+        modalBg.getAnimations?.({subtree:true}).forEach(animation=>{
+          if(animation.playState==='running'||animation.playState==='pending')animation.updatePlaybackRate?.(FAST_RATE);
+        });
+      }catch(_){/* Older engines simply keep the native transition speed. */}
+    });
   };
 
-  // Each physical swipe intent is queued immediately. Instead of guessing the
-  // renderer's animation duration, drain the queue only when the previous modal
-  // transition is actually idle. This guarantees one card per swipe without losing
-  // fast successive gestures on trackpads with variable frame timing.
-  const pump=()=>{
-    if(pumping||!queue.length||!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail'))return;
+  // Drain exactly one queued card as soon as the renderer is idle. A MutationObserver
+  // below wakes this up on the exact frame the outgoing snapshot disappears, avoiding
+  // the old 18 ms polling loop and its visible pause between rapid trackpad swipes.
+  const drain=()=>{
+    if(pumping||!queue.length||!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail')||modalBusy())return;
     pumping=true;
-    const step=()=>{
-      if(!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail')){
-        pumping=false;
-        queue=[];
-        return;
-      }
-      if(!queue.length){pumping=false;return}
-      if(modalBusy()){
-        pumpTimer=setTimeout(step,18);
-        return;
-      }
-      const direction=queue.shift();
-      (direction>0?next:prev).click();
-      pumpTimer=setTimeout(step,18);
-    };
-    step();
+    const direction=queue.shift();
+    clearPreview();
+    (direction>0?next:prev).click();
+    accelerateTransition();
+    requestAnimationFrame(()=>{
+      pumping=false;
+      if(!modalBusy())drain();
+    });
   };
   const enqueue=direction=>{
-    // Keep the interaction responsive without allowing an accidental trackpad storm
-    // to schedule an unbounded rail traversal.
-    if(queue.length>=5)return;
+    if(queue.length>=6)return;
     queue.push(direction);
-    pump();
+    drain();
   };
 
-  // Intercept before app-desktop's older wheel handler. Momentum from a single swipe
-  // stays locked, while a new impulse (or a short quiet gap) re-arms immediately.
+  // Capture before app-desktop's legacy wheel handler. The card now follows the first
+  // pixels of the gesture, commits earlier, and still treats one physical impulse as
+  // one card. A fresh impulse can be queued while the previous transition is finishing.
   window.addEventListener('wheel',event=>{
     if(!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail'))return;
     const ax=Math.abs(event.deltaX),ay=Math.abs(event.deltaY);
-    if(ax<3||ay>ax*1.12)return;
+    if(ax<2||ay>ax*1.12)return;
 
     event.preventDefault();
     event.stopPropagation();
@@ -83,8 +86,8 @@
 
     const now=performance.now();
     const gap=now-lastEventAt;
-    const strongNewImpulse=locked&&now-lastTriggerAt>65&&ax>=10&&ax>Math.max(10,lastAbsX*1.35);
-    if(gap>48||strongNewImpulse)resetGesture();
+    const strongNewImpulse=locked&&now-lastTriggerAt>45&&ax>=7&&ax>Math.max(7,lastAbsX*1.28);
+    if(gap>38||strongNewImpulse)resetGesture();
 
     lastEventAt=now;
     lastAbsX=ax;
@@ -92,17 +95,35 @@
     if(locked)return;
 
     sumX+=event.deltaX;
-    if(Math.abs(sumX)<46)return;
+
+    if(!modalBusy()){
+      const visual=Math.max(-28,Math.min(28,-sumX*.34));
+      modal.style.transition='none';
+      modal.style.transform=`translate3d(${visual}px,0,0)`;
+      modal.style.opacity=String(Math.max(.91,1-Math.abs(visual)/340));
+    }
+
+    if(Math.abs(sumX)<THRESHOLD)return;
 
     locked=true;
     lastTriggerAt=now;
     const direction=sumX>0?1:-1;
     sumX=0;
+    clearPreview();
     enqueue(direction);
   },{capture:true,passive:false});
 
-  // Forgotten films are standalone sheets, not members of the ranked modal rail.
-  // Keep keyboard arrows from accidentally jumping back into the last ranked film.
+  // app-desktop removes its outgoing snapshot only when both transition animations are
+  // finished. React immediately to that DOM mutation instead of waking up on a timer.
+  new MutationObserver(()=>{
+    if(!modalBg.classList.contains('open')){resetAll();return}
+    if(!modalBusy()){
+      pumping=false;
+      drain();
+    }
+  }).observe(modalBg,{attributes:true,attributeFilter:['class'],childList:true});
+
+  // Ghost sheets own a separate rail in ghost-modal-rail.js.
   window.addEventListener('keydown',event=>{
     if(!modalBg.classList.contains('open')||!modal.classList.contains('is-ghost-detail'))return;
     if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
@@ -110,6 +131,4 @@
     event.stopPropagation();
     event.stopImmediatePropagation();
   },{capture:true});
-
-  new MutationObserver(()=>{if(!modalBg.classList.contains('open'))resetAll()}).observe(modalBg,{attributes:true,attributeFilter:['class']});
 })();
