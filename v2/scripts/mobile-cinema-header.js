@@ -32,6 +32,7 @@
     return originalHero(top)||film?.img||'';
   };
   const focusFor=(top,film)=>typeof mediaConfig.focusMobile==='function'?mediaConfig.focusMobile(top,film):'50% 50%';
+  const displayTitle=(top,film)=>typeof mediaConfig.title==='function'?mediaConfig.title(top,film):(film?.title||'');
   const deliverySource=src=>{
     const value=String(src||'');
     if(!value.includes('image.tmdb.org/t/p/'))return value;
@@ -60,7 +61,7 @@
 
     const copy=document.createElement('div');
     copy.className='mobile-cinema-copy';
-    copy.innerHTML=`<div class="mobile-cinema-rank">${String(films[0].rank).padStart(2,'0')}</div><div class="mobile-cinema-film"><b>${esc(films[0].title)}</b><span>${esc(meta(films[0]))}</span></div><div class="mobile-cinema-count">01 / 05</div>`;
+    copy.innerHTML=`<div class="mobile-cinema-rank">${String(films[0].rank).padStart(2,'0')}</div><div class="mobile-cinema-film"><b>${esc(displayTitle(top,films[0]))}</b><span>${esc(meta(films[0]))}</span></div><div class="mobile-cinema-count">01 / 05</div>`;
     hero.append(copy);
 
     const tabs=document.createElement('div');
@@ -100,7 +101,7 @@
       });
       const film=films[i];
       rank.textContent=String(film.rank).padStart(2,'0');
-      title.textContent=film.title;
+      title.textContent=displayTitle(top,film);
       filmMeta.textContent=meta(film);
       count.textContent=`${String(i+1).padStart(2,'0')} / 05`;
     };
