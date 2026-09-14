@@ -84,7 +84,7 @@
     const inX=-outX;
     const outDuration=desktopFine?58:115;
     const inDuration=desktopFine?82:145;
-    const fadedOpacity=desktopFine?.34:.22;
+    const fadedOpacity=desktopFine ? 0.34 : 0.22;
     const outgoing=modal.animate(
       [{transform:'translate3d(0,0,0)',opacity:1},{transform:`translate3d(${outX}px,0,0)`,opacity:fadedOpacity}],
       {duration:outDuration,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'}
