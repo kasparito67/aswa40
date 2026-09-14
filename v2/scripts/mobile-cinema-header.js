@@ -62,7 +62,7 @@
     const dots=films.map((film,i)=>`<button type="button" class="mobile-cinema-dot${i===0?' is-active':''}" data-mobile-cinema-index="${i}" aria-pressed="${i===0?'true':'false'}" aria-label="Afficher ${esc(film.title)}"></button>`).join('');
     const copy=document.createElement('div');
     copy.className='mobile-cinema-copy';
-    copy.innerHTML=`<div class="mobile-cinema-rank">${String(films[0].rank).padStart(2,'0')}</div><div class="mobile-cinema-film"><b>${esc(displayTitle(top,films[0]))}</b><span>${esc(meta(films[0]))}</span></div><div class="mobile-cinema-count" role="group" aria-label="Navigation du Top 5">${dots}</div>`;
+    copy.innerHTML=`<div class="mobile-cinema-rank">${String(films[0].rank).padStart(2,'0')}</div><div class="mobile-cinema-film"><b>${esc(displayTitle(top,films[0]))}</b><span>${esc(meta(films[0]))}</span></div><div class="mobile-cinema-count mobile-cinema-tabs" role="group" aria-label="Navigation du Top 5">${dots}</div>`;
     hero.append(copy);
 
     const layers=[...media.querySelectorAll('.mobile-cinema-layer')];
