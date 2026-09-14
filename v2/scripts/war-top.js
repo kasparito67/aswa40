@@ -21,8 +21,19 @@
     [56,'The Imitation Game',4,'1/6','#22',2014],[57,'M*A*S*H',3,'1/6','#23',1970],[58,'The Duellists',3,'1/6','#23',1977],[59,'Jarhead',2,'1/6','#24',2005],[60,'Three Kings',2,'1/6','#24',1999]
   ];
   const films=raw.map(([rank,title,pts,votes,best,year])=>({rank,title,pts,votes,best,year:String(year),img:posterFor(title)}));
-  const byRank=rank=>films.find(f=>f.rank===rank);
-  const ghost=(rank,copy)=>{const f=byRank(rank);return {rank,title:f.title,img:f.img,copy}};
+
+  // The PDF's #1–60 is the complete set of films that received at least one vote.
+  // Forgotten films must therefore be absent from that entire corpus: true 0-vote omissions.
+  const forgotten=[
+    ['La Grande Illusion','0 vote · un monument du cinéma de guerre classique absent des six listes.'],
+    ['All Quiet on the Western Front','0 vote · l’un des grands archétypes du film antimilitariste, totalement absent du corpus.'],
+    ['The Best Years of Our Lives','0 vote · la guerre vue par le retour des soldats et ses séquelles, une absence majeure.'],
+    ['The Cranes Are Flying','0 vote · classique soviétique majeur, absent malgré la forte présence de la Seconde Guerre mondiale.'],
+    ["Ivan's Childhood",'0 vote · Tarkovski et le front de l’Est ne trouvent aucune place dans les choix.'],
+    ['Patton','0 vote · grand classique hollywoodien du genre, mais aucun des six ne le cite.'],
+    ['The Ascent','0 vote · un autre sommet soviétique de la guerre, entièrement absent des listes.'],
+    ['A Bridge Too Far','0 vote · fresque de guerre emblématique qui ne reçoit pourtant aucun vote.']
+  ].map(([title,copy])=>({title,img:posterFor(title),copy}));
 
   const yearStart=1957,yearEnd=2017;
   const bars=Array.from({length:yearEnd-yearStart+1},()=>0);
@@ -35,16 +46,7 @@
     theme:{accent:'#b7a66a',secondary:'#929783',bg:'#090a08',panel:'#13150f'},
     hero:{image:posterFor('Full Metal Jacket'),line:'Top 25',em:'Films de guerre',position:'center 34%'},
     films,
-    ghosts:[
-      ghost(26,'19 pts · 2/6 votes · premier film laissé juste sous le Top 25.'),
-      ghost(27,'18 pts · 2/6 votes · un quasi-consensus récent qui reste pourtant hors palmarès.'),
-      ghost(28,'18 pts · 1/6 vote · #8 chez son seul défenseur.'),
-      ghost(33,'15 pts · 1/6 vote · un classique majeur du Vietnam étonnamment solitaire.'),
-      ghost(35,'14 pts · 1/6 vote · Melville reste une signature personnelle plutôt qu’un consensus.'),
-      ghost(42,'12 pts · 1/6 vote · la guerre vue par l’animation, très loin du noyau dominant.'),
-      ghost(46,'10 pts · 1/6 vote · le versant japonais d’Iwo Jima n’a convaincu qu’un participant.'),
-      ghost(55,'4 pts · 1/6 vote · un classique historique presque absent du vote collectif.')
-    ],
+    ghosts:forgotten,
     ovnis:{
       ranks:[29,32,36,39,43,57],
       comments:{
@@ -59,7 +61,7 @@
     sections:[
       {kicker:'Le palmarès collectif',title:'TOP 25',kind:'top25',count:25},
       {kicker:'Le classement complet',title:'#26–60',kind:'full',start:26,batch:35},
-      {kicker:'Sous le radar collectif',title:'Les grands oubliés',kind:'ghosts'},
+      {kicker:'Aucun vote',title:'Les grands oubliés',kind:'ghosts'},
       {kicker:'Les signatures personnelles',title:'Les OVNIS',kind:'bottom',count:6}
     ],
     sidebar:[
