@@ -6,6 +6,7 @@ on:
       - audit-debug-sept11
       - design-overhaul-sept11
       - design-overhaul-phase-a
+      - audit/prelaunch-2026-09-14
   workflow_dispatch:
 
 permissions:
@@ -14,7 +15,7 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 14
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,3 +29,5 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Run browser smoke
         run: node scripts/smoke-browser.mjs
+      - name: Run prelaunch browser audit
+        run: node scripts/prelaunch-browser-audit.mjs
