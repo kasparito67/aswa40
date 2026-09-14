@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <script>
     (()=>{
+      const ua=navigator.userAgent||'';
+      const isSafari=/Safari\//.test(ua)&&!/Chrome\//.test(ua)&&!/Chromium\//.test(ua)&&!/CriOS\//.test(ua)&&!/Edg\//.test(ua)&&!/OPR\//.test(ua)&&!/FxiOS\//.test(ua);
+      if(isSafari)document.documentElement.classList.add('browser-safari');
+
       const params=new URLSearchParams(location.search);
       const forceDesktop=params.get('desktop')==='1';
       window.__ASWA40_FORCE_DESKTOP__=forceDesktop;
@@ -57,6 +61,7 @@
   <link rel="stylesheet" href="styles/mobile-desktop-parity.css">
   <link rel="stylesheet" href="styles/mobile-live-arrow-polish.css">
   <link rel="stylesheet" href="styles/final-v1.css?v=1.0">
+  <link rel="stylesheet" href="styles/browser-performance.css?v=1.0">
 </head>
 <body>
   <div class="app" id="app">
