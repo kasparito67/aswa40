@@ -1,0 +1,59 @@
+/* Mobile header navigation polish: circular era controls + compact Top-5 dots. */
+@media(max-width:700px),(pointer:coarse){
+  /* The numbered 01/05 counter is now a compact set of direct film selectors. */
+  .era-screen.mobile-cinema-header .mobile-cinema-copy{
+    bottom:32px!important;
+  }
+  .era-screen.mobile-cinema-header .mobile-cinema-count{
+    min-width:70px!important;
+    padding:0 0 3px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:0!important;
+    color:inherit!important;
+    white-space:normal!important;
+  }
+  .era-screen.mobile-cinema-header .mobile-cinema-dot{
+    position:relative;
+    width:14px;
+    height:22px;
+    flex:0 0 14px;
+    padding:0;
+    border:0;
+    border-radius:50%;
+    background:transparent;
+    appearance:none;
+    cursor:pointer;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .era-screen.mobile-cinema-header .mobile-cinema-dot:before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:5px;
+    height:5px;
+    border:1px solid rgba(255,255,255,.52);
+    border-radius:50%;
+    background:transparent;
+    transform:translate(-50%,-50%);
+    transition:background .16s ease,border-color .16s ease,transform .16s ease,opacity .16s ease;
+  }
+  .era-screen.mobile-cinema-header .mobile-cinema-dot.is-active:before{
+    border-color:var(--accent,#e60d45);
+    background:var(--accent,#e60d45);
+    transform:translate(-50%,-50%) scale(1.18);
+  }
+  .era-screen.mobile-cinema-header .mobile-cinema-dot.is-loading:before{opacity:.38}
+  .era-screen.mobile-cinema-header .mobile-cinema-dot:focus-visible{outline:1px solid var(--accent,#e60d45);outline-offset:-3px}
+
+  /* Defensive: the old numbered strip should never coexist with the dot control. */
+  .era-screen.mobile-cinema-header .mobile-cinema-tabs{display:none!important}
+
+  /* Site-level previous/next Top controls are circular on touch/mobile. */
+  body:has(.era-screen.mobile-cinema-header) .era-arrow{
+    border-radius:50%!important;
+  }
+}
