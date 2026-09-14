@@ -11,20 +11,50 @@
   let lastTriggerAt=0;
   let lastAbsX=0;
   let quietTimer=0;
+  let queue=[];
+  let pumping=false;
+  let pumpTimer=0;
 
-  const reset=()=>{
+  const resetGesture=()=>{
     sumX=0;
     locked=false;
     lastAbsX=0;
   };
+  const resetAll=()=>{
+    resetGesture();
+    queue=[];
+    pumping=false;
+    clearTimeout(quietTimer);
+    clearTimeout(pumpTimer);
+  };
   const scheduleQuietReset=()=>{
     clearTimeout(quietTimer);
-    quietTimer=setTimeout(reset,52);
+    quietTimer=setTimeout(resetGesture,42);
   };
 
-  // Intercept before app-desktop's older modal wheel handler. A physical swipe can
-  // advance only one card, but a new strong impulse can re-arm immediately even if
-  // the previous gesture still has a little trackpad momentum trailing behind it.
+  // app-desktop animates one modal change for ~210ms and ignores another click while
+  // that animation is active. Queue physical swipe intents instead of dropping them:
+  // one detected swipe = one card, regardless of how quickly the next swipe begins.
+  const pump=()=>{
+    if(pumping||!queue.length||!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail'))return;
+    pumping=true;
+    const direction=queue.shift();
+    (direction>0?next:prev).click();
+    pumpTimer=setTimeout(()=>{
+      pumping=false;
+      if(queue.length)requestAnimationFrame(pump);
+    },225);
+  };
+  const enqueue=direction=>{
+    // Keep the interaction responsive without allowing an accidental trackpad storm
+    // to schedule an unbounded rail traversal.
+    if(queue.length>=5)return;
+    queue.push(direction);
+    pump();
+  };
+
+  // Intercept before app-desktop's older wheel handler. Momentum from a single swipe
+  // stays locked, while a new impulse (or a short quiet gap) re-arms immediately.
   window.addEventListener('wheel',event=>{
     if(!modalBg.classList.contains('open')||modal.classList.contains('is-ghost-detail'))return;
     const ax=Math.abs(event.deltaX),ay=Math.abs(event.deltaY);
@@ -36,8 +66,8 @@
 
     const now=performance.now();
     const gap=now-lastEventAt;
-    const strongNewImpulse=locked&&now-lastTriggerAt>105&&ax>=11&&ax>Math.max(11,lastAbsX*1.45);
-    if(gap>58||strongNewImpulse)reset();
+    const strongNewImpulse=locked&&now-lastTriggerAt>65&&ax>=10&&ax>Math.max(10,lastAbsX*1.35);
+    if(gap>48||strongNewImpulse)resetGesture();
 
     lastEventAt=now;
     lastAbsX=ax;
@@ -51,7 +81,7 @@
     lastTriggerAt=now;
     const direction=sumX>0?1:-1;
     sumX=0;
-    (direction>0?next:prev).click();
+    enqueue(direction);
   },{capture:true,passive:false});
 
   // Forgotten films are standalone sheets, not members of the ranked modal rail.
@@ -64,5 +94,5 @@
     event.stopImmediatePropagation();
   },{capture:true});
 
-  new MutationObserver(()=>{if(!modalBg.classList.contains('open'))reset()}).observe(modalBg,{attributes:true,attributeFilter:['class']});
+  new MutationObserver(()=>{if(!modalBg.classList.contains('open'))resetAll()}).observe(modalBg,{attributes:true,attributeFilter:['class']});
 })();
