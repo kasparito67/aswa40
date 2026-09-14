@@ -36,6 +36,7 @@
         await load('scripts/ghost-modal-rail.js');
         await load('scripts/modal-swipe-patch.js');
         await load('scripts/top-nav.js');
+        await load('scripts/desktop-final-polish.js');
         await load('scripts/parallax.js');
       }else{
         // Mobile gets only its own performance/data preflight and header system.
