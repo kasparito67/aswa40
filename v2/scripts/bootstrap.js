@@ -28,6 +28,7 @@
         // then keep a small observer alive for post-render polish and lazy sections.
         await load('scripts/desktop-content-fixes.js');
         await load('scripts/app-desktop.js');
+        await load('scripts/modal-swipe-patch.js');
         await load('scripts/top-nav.js');
         await load('scripts/parallax.js');
       }else{
