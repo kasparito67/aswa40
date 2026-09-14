@@ -1,0 +1,32 @@
+/* Live mobile-only page navigation polish. Keep the existing Top-5/header UI unchanged. */
+@media(max-width:700px),(pointer:coarse){
+  body:has(.era-screen.mobile-cinema-header) .era-arrow{
+    width:38px!important;
+    height:38px!important;
+    padding:0!important;
+    border-radius:50%!important;
+    display:grid!important;
+    place-items:center!important;
+    font-size:0!important;
+    line-height:0!important;
+  }
+
+  body:has(.era-screen.mobile-cinema-header) .era-arrow::before{
+    content:"";
+    display:block;
+    width:8px;
+    height:8px;
+    box-sizing:border-box;
+    border-top:1.5px solid currentColor;
+    border-right:1.5px solid currentColor;
+    transform-origin:50% 50%;
+  }
+
+  body:has(.era-screen.mobile-cinema-header) .era-prev::before{
+    transform:rotate(-135deg);
+  }
+
+  body:has(.era-screen.mobile-cinema-header) .era-next::before{
+    transform:rotate(45deg);
+  }
+}
