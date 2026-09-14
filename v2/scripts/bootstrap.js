@@ -45,6 +45,9 @@
         await load('scripts/ghost-modal-rail.js');
         // parallax.js exits immediately on mobile, so do not download/parse it here.
       }
+
+      // Shared legal attribution belongs at the bottom of every Top on both platforms.
+      await load('scripts/legal-footer.js');
     }catch(err){
       console.error('ASWA40 bootstrap failed',err);
     }
