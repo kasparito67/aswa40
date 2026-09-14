@@ -13,7 +13,6 @@
   body:has(.era-screen.mobile-cinema-header) .era-arrow::before{
     content:"";
     position:absolute;
-    left:50%;
     top:50%;
     width:8px;
     height:8px;
@@ -24,13 +23,16 @@
     pointer-events:none;
   }
 
-  /* The visible chevron is not optically centred inside its rotated 8px box.
-     Nudge each direction back toward the circle's visual centre. */
+  /* A two-stroke chevron built from the top/right edges of a square has its
+     visible centre about 2.8px away from the square's geometric centre after
+     rotation. Position that visible centre, not the source box, on the circle. */
   body:has(.era-screen.mobile-cinema-header) .era-prev::before{
-    transform:translate(-50%,-50%) translateX(1.5px) rotate(-135deg);
+    left:calc(50% + 2.8px);
+    transform:translate(-50%,-50%) rotate(-135deg);
   }
 
   body:has(.era-screen.mobile-cinema-header) .era-next::before{
-    transform:translate(-50%,-50%) translateX(-1.5px) rotate(45deg);
+    left:calc(50% - 2.8px);
+    transform:translate(-50%,-50%) rotate(45deg);
   }
 }
