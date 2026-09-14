@@ -116,8 +116,6 @@
     open(top,index,card);
   },true);
 
-  // Capture touch/pointer gestures before the ranked-film modal handler. Forgotten
-  // films form their own closed rail, so a swipe never falls back into top.films.
   modal.addEventListener('pointerdown',event=>{
     if(!modal.classList.contains('is-ghost-detail')||event.pointerType==='mouse'||event.target.closest('button,a'))return;
     drag={id:event.pointerId,x:event.clientX,y:event.clientY,dx:0,dy:0,locked:false};
