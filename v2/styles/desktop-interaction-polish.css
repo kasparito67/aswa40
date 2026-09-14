@@ -1,0 +1,160 @@
+/* ASWA40 desktop interaction polish — palette-driven states + cleaner navigation. */
+
+/* Main section disclosures use a pure chevron, never a + or stemmed arrow. */
+.desktop-native .era-screen .sec>.toggle .arr{
+  width:34px!important;
+  height:34px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:0!important;
+  background:transparent!important;
+  color:rgba(255,255,255,.65)!important;
+  font-size:0!important;
+  transform:none!important;
+  transition:color .18s ease!important;
+}
+.desktop-native .era-screen .sec>.toggle .arr:before{
+  content:""!important;
+  display:block!important;
+  width:11px!important;
+  height:11px!important;
+  border:0!important;
+  border-right:1.7px solid currentColor!important;
+  border-bottom:1.7px solid currentColor!important;
+  transform:translateY(-3px) rotate(45deg)!important;
+  transition:transform .22s ease,color .18s ease!important;
+}
+.desktop-native .era-screen .sec.open>.toggle .arr:before{
+  transform:translateY(3px) rotate(225deg)!important;
+}
+
+/* Every section speaks its own Top palette on rollover. Closed modules get a
+   stronger invitation state; open modules stay quieter. */
+.desktop-native .era-screen .sec>.toggle{
+  transition:background .18s ease,box-shadow .18s ease!important;
+}
+.desktop-native .era-screen .sec>.toggle strong{
+  transition:color .18s ease!important;
+}
+.desktop-native .era-screen .sec>.toggle:hover strong,
+.desktop-native .era-screen .sec>.toggle:focus-visible strong,
+.desktop-native .era-screen .sec>.toggle:hover .arr,
+.desktop-native .era-screen .sec>.toggle:focus-visible .arr{
+  color:var(--a)!important;
+}
+.desktop-native .era-screen .sec:not(.open)>.toggle:hover,
+.desktop-native .era-screen .sec:not(.open)>.toggle:focus-visible{
+  background:color-mix(in srgb,var(--a) 11%,transparent)!important;
+  box-shadow:inset 3px 0 0 var(--a)!important;
+  outline:0!important;
+}
+
+/* Sidebar: one page palette, not a rainbow of card-specific colors. */
+.desktop-native .era-screen .site-sidebar .insight-item{
+  --insight:var(--a)!important;
+}
+.desktop-native .era-screen .site-sidebar .insight-card{
+  --icon:var(--a)!important;
+}
+.desktop-native .era-screen .site-sidebar .insight-icon,
+.desktop-native .era-screen .site-sidebar .insight-card b,
+.desktop-native .era-screen .site-sidebar .year-insight-year,
+.desktop-native .era-screen .site-sidebar .director-title{
+  --insight:var(--a)!important;
+}
+.desktop-native .era-screen .site-sidebar .insight-card:hover,
+.desktop-native .era-screen .site-sidebar .insight-card:focus-visible,
+.desktop-native .era-screen .site-sidebar .year-toggle:hover,
+.desktop-native .era-screen .site-sidebar .year-toggle:focus-visible,
+.desktop-native .era-screen .site-sidebar .director-toggle:hover,
+.desktop-native .era-screen .site-sidebar .director-toggle:focus-within{
+  background:color-mix(in srgb,var(--a) 8%,transparent)!important;
+  box-shadow:inset 2px 0 0 var(--a)!important;
+}
+
+/* Sidebar disclosure control: just a plus. It becomes a subtle × when open. */
+.desktop-native .era-screen .site-sidebar .insight-chevron,
+.desktop-native .era-screen .site-sidebar .year-arrow,
+.desktop-native .era-screen .site-sidebar .director-arrow{
+  width:28px!important;
+  height:28px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:0!important;
+  background:transparent!important;
+  color:rgba(255,255,255,.68)!important;
+  font-size:0!important;
+  transform:none!important;
+}
+.desktop-native .era-screen .site-sidebar .insight-chevron:before,
+.desktop-native .era-screen .site-sidebar .year-arrow:before,
+.desktop-native .era-screen .site-sidebar .director-arrow:before{
+  content:"+"!important;
+  display:block!important;
+  color:currentColor!important;
+  font:400 21px/1 Inter,system-ui,sans-serif!important;
+  transition:transform .2s ease,color .18s ease!important;
+}
+.desktop-native .era-screen .site-sidebar .insight-item.is-open .insight-chevron,
+.desktop-native .era-screen .site-sidebar .year-insight-card.is-open .year-arrow,
+.desktop-native .era-screen .site-sidebar .director-card.is-open .director-arrow{
+  transform:none!important;
+  color:var(--a)!important;
+}
+.desktop-native .era-screen .site-sidebar .insight-item.is-open .insight-chevron:before,
+.desktop-native .era-screen .site-sidebar .year-insight-card.is-open .year-arrow:before,
+.desktop-native .era-screen .site-sidebar .director-card.is-open .director-arrow:before{
+  transform:rotate(45deg)!important;
+}
+
+/* Detail-row rollovers inherit the active Top too. */
+.desktop-native .era-screen .site-sidebar .year-highlight:hover b,
+.desktop-native .era-screen .site-sidebar .year-highlight:focus-visible b,
+.desktop-native .era-screen .site-sidebar .director-row:hover b,
+.desktop-native .era-screen .site-sidebar .director-row:focus-visible b{
+  color:var(--a)!important;
+}
+
+/* Vertical continuation cue: remove the stem and leave only the V. */
+.desktop-native .hero-scroll-cue:before{display:none!important;content:none!important}
+.desktop-native .hero-scroll-cue:after{
+  left:50%!important;
+  top:50%!important;
+  bottom:auto!important;
+  width:13px!important;
+  height:13px!important;
+  border-right:1.7px solid currentColor!important;
+  border-bottom:1.7px solid currentColor!important;
+  transform:translate(-50%,-70%) rotate(45deg)!important;
+}
+
+/* Horizontal Top navigation: pure chevrons, no arrow bars or circular UI chrome. */
+.desktop-native .era-arrow{
+  width:48px!important;
+  height:64px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  font-size:0!important;
+}
+.desktop-native .era-arrow:before{
+  display:block;
+  color:rgba(255,255,255,.82);
+  font:300 46px/.8 Inter,system-ui,sans-serif;
+  transition:color .18s ease,transform .18s ease;
+}
+.desktop-native .era-prev:before{content:"‹"}
+.desktop-native .era-next:before{content:"›"}
+.desktop-native .era-arrow:hover:before{color:var(--active-accent);transform:scale(1.08)}
+.desktop-native .era-arrow:hover{background:transparent!important}
+
+/* Forgotten films are proper poster cards + detail sheets. */
+.desktop-native .era-screen .ghost-card.is-clickable-ghost{cursor:pointer}
+.desktop-native .era-screen .ghost-card.is-clickable-ghost:hover .ghost-copy b,
+.desktop-native .era-screen .ghost-card.is-clickable-ghost:focus-visible .ghost-copy b{color:var(--a)}
+.desktop-native .era-screen .ghost-card.is-clickable-ghost:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.film-modal.is-ghost-detail .modal-nav{display:none!important}
+.film-modal.is-ghost-detail .modal-rank{color:var(--active-accent)!important}
