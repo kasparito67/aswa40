@@ -138,3 +138,115 @@
 .desktop-native .era-screen.design-editorial-body .director-row:hover{
   background:transparent!important;
 }
+
+/* --------------------------------------------------------------------------
+   Desktop navigation refinement
+   Side-arrow tooltips, a continuation cue at the hero/content junction, and the
+   compact Top selector all share one optical baseline.
+   -------------------------------------------------------------------------- */
+.desktop-native .era-arrow{
+  overflow:visible!important;
+}
+.desktop-native .era-arrow:after{
+  content:attr(data-tooltip);
+  position:absolute;
+  top:50%;
+  z-index:120;
+  width:max-content;
+  max-width:240px;
+  padding:7px 10px 8px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:0;
+  background:rgba(7,9,10,.94);
+  color:rgba(255,255,255,.9);
+  box-shadow:0 10px 26px rgba(0,0,0,.28);
+  font:600 11px/1 Inter,system-ui,sans-serif;
+  letter-spacing:-.01em;
+  white-space:nowrap;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .14s ease .36s,transform .14s ease .36s,visibility 0s linear .5s;
+}
+.desktop-native .era-prev:after{
+  left:calc(100% + 12px);
+  transform:translate(-4px,-50%);
+}
+.desktop-native .era-next:after{
+  right:calc(100% + 12px);
+  transform:translate(4px,-50%);
+}
+.desktop-native .era-arrow[data-tooltip]:not([data-tooltip=""]):hover:after,
+.desktop-native .era-arrow[data-tooltip]:not([data-tooltip=""]):focus-visible:after{
+  opacity:1;
+  visibility:visible;
+  transform:translate(0,-50%);
+  transition-delay:.36s,.36s,0s;
+}
+
+.desktop-native .hero-scroll-cue{
+  position:absolute;
+  z-index:32;
+  left:50%;
+  bottom:18px;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:rgba(255,255,255,.88);
+  cursor:pointer;
+  transform:translateX(-50%);
+  transition:transform .2s ease,color .2s ease;
+}
+.desktop-native .hero-scroll-cue:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:5px;
+  width:1px;
+  height:25px;
+  background:currentColor;
+  transform:translateX(-50%);
+}
+.desktop-native .hero-scroll-cue:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:7px;
+  width:10px;
+  height:10px;
+  border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;
+  transform:translateX(-50%) rotate(45deg);
+}
+.desktop-native .hero-scroll-cue:hover{
+  color:#fff;
+  transform:translate(-50%,4px);
+}
+.desktop-native .hero-scroll-cue:focus-visible{
+  outline:1px solid color-mix(in srgb,var(--a) 75%,white);
+  outline-offset:3px;
+}
+
+/* Match the selector's center to the continuation cue center. The right edge is
+   exactly aligned with the right edge of the side-scroll arrow (right:100px). */
+.desktop-native .era-hud.era-hud-selector{
+  position:fixed!important;
+  z-index:82!important;
+  left:auto!important;
+  right:100px!important;
+  top:calc(clamp(700px,88vh,880px) - 64px)!important;
+  bottom:auto!important;
+  transform:none!important;
+  margin:0!important;
+}
+
+@media(max-width:1100px){
+  .desktop-native .era-hud.era-hud-selector{right:18px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .desktop-native .hero-scroll-cue,
+  .desktop-native .era-arrow:after{transition:none!important}
+}
