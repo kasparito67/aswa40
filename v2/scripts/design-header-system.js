@@ -4,6 +4,15 @@
 
   const esc=s=>String(s??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
   const mediaConfig=window.ASWA40_HEADER_MEDIA||{};
+  const safari=document.documentElement.classList.contains('browser-safari');
+  const routeMatch=String(location.pathname||'').match(/^\/tops\/([^/]+)\/?$/);
+  const initialTopId=routeMatch?decodeURIComponent(routeMatch[1]):(TOPS?.[0]?.id||'');
+  const deliverySource=src=>{
+    const value=String(src||'');
+    if(!value.includes('image.tmdb.org/t/p/'))return value;
+    const size=(safari||innerWidth<=1680)?'w1280':'original';
+    return value.replace(/\/t\/p\/(?:original|w\d+)\//,`/t/p/${size}/`);
+  };
   const legacyBackdrop=(top,film)=>{
     if(top?.id!=='2000-2024'||typeof filmBackdrops!=='object'||!filmBackdrops)return '';
     const src=filmBackdrops[String(film?.rank)]||filmBackdrops[film?.rank];
@@ -28,8 +37,9 @@
     const films=(top.films||[]).slice(0,5);
     if(films.length<5)return false;
 
-    const sources=films.map((film,i)=>backdropFor(top,film,i));
+    const sources=films.map((film,i)=>deliverySource(backdropFor(top,film,i)));
     if(!sources[0])return false;
+    const isInitialTop=top.id===initialTopId;
 
     screen.dataset.designHeaderSystem='1';
     screen.classList.add('design-header-system');
@@ -37,7 +47,7 @@
     const stack=document.createElement('div');
     stack.className='design-header-media-stack';
     stack.setAttribute('aria-hidden','true');
-    stack.innerHTML=sources.map((src,i)=>`<div class="design-header-media-layer${i===0?' is-active':''}" data-design-header-media="${i}" data-header-media-key="${esc(`${top.id}:${films[i].rank}`)}"><img ${i===0?`src="${esc(src)}"`:`data-src="${esc(src)}"`} alt="" decoding="async" fetchpriority="${i===0?'high':'low'}"></div>`).join('');
+    stack.innerHTML=sources.map((src,i)=>`<div class="design-header-media-layer${i===0?' is-active':''}" data-design-header-media="${i}" data-header-media-key="${esc(`${top.id}:${films[i].rank}`)}"><img ${i===0?`src="${esc(src)}" loading="${isInitialTop?'eager':'lazy'}"`:`data-src="${esc(src)}" loading="lazy"`} alt="" decoding="async" fetchpriority="${i===0&&isInitialTop?'high':'low'}"></div>`).join('');
     hero.prepend(stack);
 
     const nav=document.createElement('nav');
@@ -100,7 +110,7 @@
           next.classList.add('is-active');
           shown=i;
           progress.style.setProperty('--design-index',i);
-          setTimeout(()=>{if(my===token)current.classList.remove('is-outgoing')},480);
+          setTimeout(()=>{if(my===token)current.classList.remove('is-outgoing')},360);
         }));
       });
     };
