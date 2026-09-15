@@ -11,6 +11,9 @@
 
   (async()=>{
     try{
+      // Mobile title art starts warming immediately, before the heavier renderer boot.
+      if(!desktopNative)await load('scripts/mobile-startup-preflight.js?v=1');
+
       // Shared content normalization must run before the platform-specific renderers
       // so mobile and desktop expose the same section names and documented extras.
       await load('scripts/shared-content-normalization.js');
