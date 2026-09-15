@@ -111,15 +111,17 @@
     const bottomIndex=top.sections.findIndex(s=>s.kind==='bottom');
     if(bottomIndex>=0)top.sections.splice(bottomIndex,0,section);else top.sections.push(section);
   };
-  const addGhost=(top,{title,year,copy,img})=>{
+  const addGhost=(top,{title,year,copy,img,wiki})=>{
     ensureGhostSection(top);
     let ghost=top.ghosts.find(g=>norm(g.title)===norm(title));
     if(!ghost){
       ghost={title,year:String(year||''),copy,img:img||existingPoster(title)||missingPoster(title)};
+      if(wiki)ghost.wiki=wiki;
       top.ghosts.push(ghost);
     }else{
       ghost.year=ghost.year||String(year||'');
       ghost.copy=copy||ghost.copy;
+      if(wiki&&!ghost.wiki)ghost.wiki=wiki;
       if((!ghost.img||placeholder(ghost.img))&&img)ghost.img=img;
     }
     return ghost;
@@ -137,42 +139,49 @@
   }
 
   const sciFi=TOPS.find(t=>t.id==='sci-fi-realiste');
-  let edgeGhost=null;
   if(sciFi){
-    edgeGhost=addGhost(sciFi,{
-      title:'Edge of Tomorrow',year:2014,
-      copy:'0 vote · absent des listes de ce Top malgré sa science-fiction militaire à mécanique temporelle.'
-    });
-    addGhost(sciFi,{
-      title:'Interstellar',year:2014,
-      copy:'0 vote · un incontournable de la science-fiction contemporaine absent des listes de ce Top.',
-      img:existingPoster('Interstellar')||'../assets/posters/2000-2024/100-interstellar.jpg'
-    });
-  }
+    // Restore the original five forgotten films, then append the two additions.
+    // Do not replace/reorder the original editorial selection.
+    const forgotten=[
+      {title:'Primer',year:2004,wiki:'Primer (film)',copy:'Absent du classement.'},
+      {title:'Coherence',year:2013,wiki:'Coherence (film)',copy:'Absent du classement.'},
+      {title:'Arrival',year:2016,wiki:'Arrival (film)',copy:'Absent du classement.',img:existingPoster('Arrival')},
+      {title:'The Andromeda Strain',year:1971,wiki:'The Andromeda Strain (film)',copy:'Absent du classement.'},
+      {title:'Aniara',year:2018,wiki:'Aniara (film)',copy:'Absent du classement.'},
+      {title:'Edge of Tomorrow',year:2014,wiki:'Edge of Tomorrow',copy:'0 vote · absent des listes de ce Top malgré sa science-fiction militaire à mécanique temporelle.'},
+      {title:'Interstellar',year:2014,wiki:'Interstellar (film)',copy:'0 vote · un incontournable de la science-fiction contemporaine absent des listes de ce Top.',img:existingPoster('Interstellar')||'../assets/posters/2000-2024/100-interstellar.jpg'}
+    ];
+    forgotten.forEach(item=>addGhost(sciFi,item));
 
-  // Edge of Tomorrow is not elsewhere in the local poster library. Resolve its
-  // theatrical poster once from the Wikipedia infobox, then patch the visible card.
-  if(edgeGhost&&placeholder(edgeGhost.img)&&typeof fetch==='function'){
-    const hydrateEdge=async()=>{
-      try{
-        const url='https://en.wikipedia.org/w/api.php?action=query&redirects=1&titles=Edge%20of%20Tomorrow&prop=revisions%7Cpageimages&rvprop=content&rvslots=main&piprop=thumbnail%7Cname&pithumbsize=700&formatversion=2&format=json&origin=*';
-        const res=await fetch(url,{mode:'cors',credentials:'omit'});if(!res.ok)return;
-        const page=(await res.json())?.query?.pages?.[0];if(!page||page.missing)return;
-        const text=page?.revisions?.[0]?.slots?.main?.content||'';
-        const match=text.match(/^\|\s*image\s*=\s*(?:\[\[File:)?([^|\]\n]+?)(?:\]\])?\s*$/im);
-        let poster='';
-        if(match){
-          const filename=match[1].trim().replace(/^File:/i,'');
-          if(filename&&!/\.svg$/i.test(filename))poster=`https://en.wikipedia.org/wiki/Special:Redirect/file/${encodeURIComponent(filename.replace(/ /g,'_'))}?width=700`;
-        }
-        if(!poster&&page.thumbnail?.source&&Number(page.thumbnail.height||0)>Number(page.thumbnail.width||0)*1.12)poster=page.thumbnail.source;
-        if(!poster)return;
-        edgeGhost.img=poster;
-        const index=sciFi.ghosts.indexOf(edgeGhost);
-        document.querySelectorAll(`.era-screen[data-top-id="sci-fi-realiste"] .ghost-card[data-ghost="${index}"] img`).forEach(img=>{img.src=poster});
-      }catch{}
-    };
-    if('requestIdleCallback' in window)requestIdleCallback(hydrateEdge,{timeout:700});else setTimeout(hydrateEdge,80);
+    // Keep the original five first even if a previous hotfix created the two additions first.
+    const order=new Map(forgotten.map((item,i)=>[norm(item.title),i]));
+    sciFi.ghosts.sort((a,b)=>(order.get(norm(a.title))??999)-(order.get(norm(b.title))??999));
+
+    // Resolve any missing forgotten-film posters from the matching Wikipedia infobox.
+    const pending=sciFi.ghosts.filter(g=>placeholder(g.img)&&g.wiki);
+    if(pending.length&&typeof fetch==='function'){
+      const hydrateGhost=async ghost=>{
+        try{
+          const url=`https://en.wikipedia.org/w/api.php?action=query&redirects=1&titles=${encodeURIComponent(ghost.wiki)}&prop=revisions%7Cpageimages&rvprop=content&rvslots=main&piprop=thumbnail%7Cname&pithumbsize=700&formatversion=2&format=json&origin=*`;
+          const res=await fetch(url,{mode:'cors',credentials:'omit'});if(!res.ok)return;
+          const page=(await res.json())?.query?.pages?.[0];if(!page||page.missing)return;
+          const text=page?.revisions?.[0]?.slots?.main?.content||'';
+          const match=text.match(/^\|\s*image\s*=\s*(?:\[\[File:)?([^|\]\n]+?)(?:\]\])?\s*$/im);
+          let poster='';
+          if(match){
+            const filename=match[1].trim().replace(/^File:/i,'');
+            if(filename&&!/\.svg$/i.test(filename))poster=`https://en.wikipedia.org/wiki/Special:Redirect/file/${encodeURIComponent(filename.replace(/ /g,'_'))}?width=700`;
+          }
+          if(!poster&&page.thumbnail?.source&&Number(page.thumbnail.height||0)>Number(page.thumbnail.width||0)*1.12)poster=page.thumbnail.source;
+          if(!poster)return;
+          ghost.img=poster;
+          const index=sciFi.ghosts.indexOf(ghost);
+          document.querySelectorAll(`.era-screen[data-top-id="sci-fi-realiste"] .ghost-card[data-ghost="${index}"] img`).forEach(img=>{img.src=poster});
+        }catch{}
+      };
+      const hydrateAll=()=>Promise.all(pending.map(hydrateGhost));
+      if('requestIdleCallback' in window)requestIdleCallback(hydrateAll,{timeout:700});else setTimeout(hydrateAll,80);
+    }
   }
 
   // WAR IS HELL is a wide 950×234 SVG, not one of the 16:9 title-art sheets. Give
