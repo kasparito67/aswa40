@@ -6,7 +6,8 @@
     'animation':{image:'https://image.tmdb.org/t/p/original/jkwVCMIkN3j284EPIDIGnskTd69.jpg',position:'center 42%',fit:'cover',scale:1,titleArt:'../assets/header-animation-normalized.svg',titleAlt:'Top 25 Animation'},
     'biopics':{image:'https://image.tmdb.org/t/p/original/7TF4p86ZafnxFuNqWdhpHXFO244.jpg',position:'center 40%',fit:'cover',scale:1,titleArt:'../assets/header-biopics-final.svg',titleAlt:'Top Biopics et faits vécus'},
     'rewatched':{titleArt:'../assets/header-rewatch.svg',titleAlt:'Top 50 Re.Watch'},
-    'films-de-guerre':{titleArt:'../assets/header-war.svg',titleAlt:'Top 25 Films de guerre'}
+    'films-de-guerre':{titleArt:'../assets/header-war.svg',titleAlt:'Top 25 Films de guerre'},
+    'films-troublants':{titleArt:'../assets/header-films-troublants.svg',titleAlt:'Top 10 Films troublants'}
   };
 
   TOPS.forEach(top=>{
